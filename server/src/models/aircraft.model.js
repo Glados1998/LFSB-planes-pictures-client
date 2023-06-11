@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-
+const mongoose = require ( "mongoose" );
 const { Schema } = mongoose;
+
 
 const aircraftSchema = new Schema ( {
     image : String ,
