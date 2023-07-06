@@ -75,7 +75,5 @@ w
 G.idea/sonarlint/issuestore/6/8/684633b668b24c06fe5d5ba72b7ed42a437aa655,5/1/51a731bdbc0a4abc7a68ebfbf69b0056daa93a55
 M
 server/src/routes/operator.js,7/a/7a441ebe8c9153e62d0e1aa89f5b2da57c834704
-I
-client/tailwind.config.js,6/b/6b273cff573b0a837bad584f90d7d827bf358bb1
 ;
 server/.env,7/4/74c0224311d9cb9feca55cc2c27a2b847c0286e7

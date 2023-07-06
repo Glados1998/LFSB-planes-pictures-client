@@ -75,7 +75,5 @@ S
 Q.idea/sonarlint/securityhotspotstore/b/5/b501873f4be0d5dcbdf0883bc9e7e4036792d2ad,3/d/3d66ac6e99895104f57618be38ce7e8228649baf
 w
 G.idea/sonarlint/issuestore/6/8/684633b668b24c06fe5d5ba72b7ed42a437aa655,5/1/51a731bdbc0a4abc7a68ebfbf69b0056daa93a55
-I
-client/tailwind.config.js,6/b/6b273cff573b0a837bad584f90d7d827bf358bb1
 ;
 server/.env,7/4/74c0224311d9cb9feca55cc2c27a2b847c0286e7
