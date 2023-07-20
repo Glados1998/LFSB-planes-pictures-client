@@ -1,9 +1,10 @@
 import React from "react";
+import AdminLayout from "@/components/Admin-layout";
 
-export default function index() {
+export default function admin() {
     return (
-        <div>
+        <AdminLayout>
             <h1>Admin</h1>
-        </div>
+        </AdminLayout>
     )
 }
