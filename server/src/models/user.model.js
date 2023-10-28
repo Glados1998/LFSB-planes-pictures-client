@@ -6,27 +6,20 @@ const userSchema = new Schema ( {
         type : String ,
         required : true
     } ,
-    username : {
-        type : String ,
-        required : true ,
-        unique : true
-    } ,
-    role : {
+    /*role : {
         type : Schema.Types.ObjectId ,
         ref : "Role"
+    } ,*/
+    email : {
+        type : String ,
+        required : true ,
+        unique : true ,
+        match : /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
     } ,
-    credential : {
-        email : {
-            type : String ,
-            required : true ,
-            unique : true ,
-            match : /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
-        } ,
-        password : {
-            type : String ,
-            required : true
-        }
-    } ,
+    password : {
+        type : String ,
+        required : true
+    }
 } , {
     timestamps : true
 } );
@@ -37,8 +30,9 @@ const roleSchema = new Schema ( {
         required : true ,
         unique : true
     } ,
-    // Add any other fields related to roles
 } );
 
 const User = mongoose.model ( "User" , userSchema );
 const Role = mongoose.model ( "Role" , roleSchema );
+
+module.exports = { User , Role };
