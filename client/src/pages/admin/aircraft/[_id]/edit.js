@@ -10,7 +10,8 @@ export default function Edit() {
     const { _id } = router.query;
     const [ aircraft , setAircraft ] = useState ( null );
     const [ operators , setOperators ] = useState ( [] );
-    const [imagePreview, setImagePreview] = useState(null);
+    const [ aircraftNames , setAircraftNames ] = useState ( [] );
+    const [ imagePreview , setImagePreview ] = useState ( null );
 
 
     useEffect ( () => {
@@ -19,30 +20,42 @@ export default function Edit() {
             axios.get ( `http://localhost:8000/api/aircraft/${_id}` )
                 .then ( response => {
                     setAircraft ( response.data );
-                    setImagePreview(response.data.image);
+                    console.log ( response.data )
+                    setImagePreview ( response.data.image );
                 } )
                 .catch ( error => {
                     console.error ( 'Error fetching operator:' , error );
                 } );
         }
         // Fetch operators for dropdown
-        axios.get ( 'http://localhost:8000/api/operator' )
+        axios.get ( 'http://localhost:8000/api/operator')
             .then ( response => {
                 setOperators ( response.data );
             } ).catch ( error => {
             console.error ( 'Error fetching operators:' , error );
         } );
+
+        axios.get ( 'http://localhost:8000/api/aircraft-name' )
+            .then ( response => {
+                setAircraftNames ( response.data );
+            } )
+            .catch ( error => {
+                console.error ( 'Error fetching aircraft-names:' , error );
+            } );
+
     } , [ _id ] );
 
     const handleSubmit = async (e) => {
         e.preventDefault ();
 
         const imageFile = e.target.image.files[0];
-        const encodedImage = imageFile ? await toBase64(imageFile) : aircraft.image;
+        const encodedImage = imageFile ? await toBase64 ( imageFile ) : aircraft.image;
 
         const aircraftData = {
-            image: encodedImage,
+            image : encodedImage ,
             operator : e.target.operator.value ,
+            aircraft_name : e.target.aircraft_name.value ,
+            aircraft_type : e.target.aircraft_type.value ,
             year_of_manufacturing : e.target.year_of_manufacturing.value ,
             year_of_first_flight : e.target.year_of_first_flight.value ,
             aircraft_identification : {
@@ -74,20 +87,21 @@ export default function Edit() {
     }
 
     const handleImageChange = async (e) => {
-        if (e.target.files && e.target.files[0]) {
+        if ( e.target.files && e.target.files[0] ) {
             const imageFile = e.target.files[0];
-            const encodedImage = await toBase64(imageFile);
-            setImagePreview(encodedImage);
+            const encodedImage = await toBase64 ( imageFile );
+            setImagePreview ( encodedImage );
         }
     };
 
     return (
         <div>
             <h1>Edit Aircraft - {_id}</h1>
-            {imagePreview && <img src={imagePreview} alt="Preview" style={{maxWidth: '200px'}} />}            <form onSubmit={handleSubmit}>
+            {imagePreview && <img src={imagePreview} alt="Preview" style={{ maxWidth : '200px' }}/>}
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label>Image</label>
-                    <input type="file" name="image" required onChange={handleImageChange} />                </div>
+                    <input type="file" name="image" onChange={handleImageChange}/></div>
                 <div>
                     <label htmlFor="operator">Operator:</label>
                     <select id="operator" name="operator" required defaultValue={aircraft?.operator?._id}>
@@ -96,6 +110,24 @@ export default function Edit() {
                                 {operator.name}
                             </option>
                         ) )}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="aircraft_name">Aircraft name:</label>
+                    <select id="aircraft_name" name="aircraft_name" required
+                            defaultValue={aircraft?.aircraft_name?._id}>
+                        {aircraftNames.map ( aircraftName => (
+                            <option key={aircraftName._id} value={aircraftName._id}>
+                                {aircraftName.name}
+                            </option>
+                        ) )}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="aircraft_type">Aircraft type:</label>
+                    <select id="aircraft_type" name="aircraft_type" required defaultValue={aircraft?.aircraft_type}>
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
                     </select>
                 </div>
                 <div>

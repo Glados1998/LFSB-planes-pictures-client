@@ -8,17 +8,44 @@ export default function Header() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const router = useRouter();
 
+    const checkAuth = () => {
+        const token = localStorage.getItem('token');
+        setIsAuthenticated(!!token);
+    };
+
+    useEffect(() => {
+        // Check auth on component mount
+        checkAuth();
+
+        // Listen for route changes
+        const handleRouteChange = () => {
+            checkAuth();
+        };
+
+        router.events.on('routeChangeComplete', handleRouteChange);
+
+        // Cleanup
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange);
+        };
+    }, []);
+
+
+
 
     const handleLogout = async () => {
         try {
             const response = await axios.post('http://localhost:8000/api/user/logout');
             if (response.status === 200) {
-                await router.push ( '/' );
+                localStorage.removeItem('token');  // remove the token
+                setIsAuthenticated(false);  // set user as unauthenticated
+                await router.push('/');
             }
         } catch (err) {
             console.error(err);
         }
     };
+
 
     return (
         <header className={'bg-blue-400 text-white p-4'}>
@@ -34,11 +61,6 @@ export default function Header() {
                     <li className={'font-medium hover:text-slate-300'}>
                         <Link href='/'>
                             Home
-                        </Link>
-                    </li>
-                    <li className={'font-medium hover:text-slate-300'}>
-                        <Link href='/about'>
-                            About
                         </Link>
                     </li>
                     <li className={'font-medium hover:text-slate-300'}>

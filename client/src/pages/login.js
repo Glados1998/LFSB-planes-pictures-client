@@ -22,9 +22,10 @@ export default function Login() {
             console.log ( response)
             if (response.data && response.data.user) {
                 // Store the token and redirect to admin dashboard (as an example)
-                localStorage.setItem('token', response.data.user);
-                await router.push ( '/admin' );
+                localStorage.setItem('token', response.data.user.id); // It seems you are storing user id, not a jwt token
+                await router.push('/admin');
             }
+
         } catch (err) {
             setError(err.response?.data?.message || 'Something went wrong.');
             console.error ( err)

@@ -7,6 +7,7 @@ const mongoose = require ( 'mongoose' );
 const userRouter = require ( './src/routes/user' );
 const aircraftRouter = require ( './src/routes/aircraft' );
 const operatorRouter = require ( './src/routes/operator' );
+const aircraftNameRouter = require ( './src/routes/aircraftName' );
 const { json , urlencoded } = require ( "express" );
 
 
@@ -28,6 +29,7 @@ app.use ( express.urlencoded ( { extended : true , limit : '20mb' } ) );
 app.use ( '/api/user' , userRouter );
 app.use ( '/api/aircraft' , aircraftRouter );
 app.use ( '/api/operator' , operatorRouter );
+app.use ( '/api/aircraft-name' , aircraftNameRouter );
 
 app.listen ( port , () => {
     console.log ( `Server listening on localhost:${port}` );
