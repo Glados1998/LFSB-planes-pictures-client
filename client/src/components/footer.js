@@ -2,7 +2,6 @@ import Link from "next/link";
 
 const navigation = [
     { label : 'Home' , path : '/' } ,
-    { label : 'About' , path : '/about' } ,
     { label : 'Gallery' , path : '/gallery/'},
     { label : 'Admin login' , path : '/login'}
 ]

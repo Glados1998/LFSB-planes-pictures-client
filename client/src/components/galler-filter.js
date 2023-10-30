@@ -26,11 +26,10 @@ export default function GalleryFilter({ onFilterChange }) {
     }, []);
 
     return (
-        <div>
-            <h1>Gallery Filter</h1>
+        <div className={'grid grid-flow-col mb-3'}>
             <div>
-                <label>Operator:</label>
-                <select onChange={e => onFilterChange('operator', e.target.value)}>
+                <label className={'font-bold text-base'}>Operator:</label>
+                <select className={'rounded-md bg-gray-200 p-1'} onChange={e => onFilterChange('operator', e.target.value)}>
                     <option value="">Operator</option>
                     {operators.map(operator => (
                         <option key={operator._id} value={operator._id}>{operator.name}</option>
@@ -38,8 +37,8 @@ export default function GalleryFilter({ onFilterChange }) {
                 </select>
             </div>
             <div>
-                <label>Aircraft Name:</label>
-                <select onChange={e => onFilterChange('aircraftName', e.target.value)}>
+                <label className={'font-bold text-base'}>Aircraft Name:</label>
+                <select className={'rounded-md bg-gray-200 p-1'} onChange={e => onFilterChange('aircraftName', e.target.value)}>
                     <option value="">Aircraft Name</option>
                     {aircraftNames.map(aircraftName => (
                         <option key={aircraftName._id} value={aircraftName._id}>{aircraftName.name}</option>
@@ -47,20 +46,20 @@ export default function GalleryFilter({ onFilterChange }) {
                 </select>
             </div>
             <div>
-                <label>Aircraft Type:</label>
-                <select onChange={e => onFilterChange('aircraftType', e.target.value)}>
+                <label className={'font-bold text-base'}>Aircraft Type:</label>
+                <select className={'rounded-md bg-gray-200 p-1'} onChange={e => onFilterChange('aircraftType', e.target.value)}>
                     <option value="">Select Aircraft Type</option>
                     <option value="private">Private</option>
                     <option value="public">Public</option>
                 </select>
             </div>
             <div>
-                <label>Registry:</label>
-                <input type="text" onChange={e => onFilterChange('registry', e.target.value)} />
+                <label className={'font-bold text-base'}>Registry:</label>
+                <input className={'rounded-md bg-gray-200 p-1 w-32'} type="text" onChange={e => onFilterChange('registry', e.target.value)} />
             </div>
             <div>
-                <label>Serial Number:</label>
-                <input type="text" onChange={e => onFilterChange('serialNumber', e.target.value)} />
+                <label className={'font-bold text-base'}>Serial Number:</label>
+                <input className={'rounded-md bg-gray-200 p-1 w-32'} type="text" onChange={e => onFilterChange('serialNumber', e.target.value)} />
             </div>
         </div>
     );

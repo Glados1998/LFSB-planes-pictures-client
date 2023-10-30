@@ -161,8 +161,6 @@ V
 &client/src/components/galler-filter.js,e/c/ec0c75e59675c7559aa90bba79cca72f609e9b6c
 U
 %client/src/components/admin-header.js,9/7/97522853d96dadabaadeba6ac7583a79c0bf3719
-P
- client/src/pages/gallery/[id].js,2/8/28e3b7cbba6433a6d5047c9257747c9f290a51d0
 G
 client/src/pages/400.js,6/1/619afd42f2be1a922f3b4203ce31ad7db87c5881
 O
@@ -177,8 +175,6 @@ G
 client/src/pages/500.js,0/c/0cb23100d255d38a1113bfe611083033fb0b3705
 M
 client/src/pages/_document.js,b/b/bb1604bfb2d628aa8bdb1c19134662e0a2983b44
-I
-client/src/pages/about.js,9/d/9d02e0c1060c300db14a975584b691ccd16617f3
 O
 client/src/components/layout.js,7/9/794486c508f6a3cf3a71b4d36bbbf608d6d988f1
 O
@@ -216,3 +212,35 @@ f
 -client/src/pages/admin/aircraft/[_id]/edit.js,3/d/3d2733acc4f629617db9b1b2353ffed91a440a6c
 V
 &client/src/pages/admin/aircraft/add.js,8/b/8b892a8655082cb234880eb3cc173d4f4addf0fb
+w
+G.idea/sonarlint/issuestore/b/e/be75cdf29f06e544f52615aa334712141529da12,4/1/41e7812f0c9b089ceb5ed3f612e9321ecd5e27ea
+H
+client/package-lock.json,2/6/26a733df8ec5f9ebc34add7f3b884bb18c2b5048
+T
+$client/src/pages/admin/role/[_id].js,0/8/08c8006fc650f32dc93addf3cab04ff8e4aba8f1
+T
+$client/src/pages/admin/user/[_id].js,e/6/e6797f689088ed1b9b728ff9d58c6a5720246a6d
+R
+"client/src/pages/admin/role/add.js,2/8/282ff5fd42e680c8fb5568b5d856d270f9d3e4a5
+R
+"client/src/pages/admin/user/add.js,c/6/c67f5a84698fbcea0a9c32af666dadb898b28cf9
+M
+client/src/styles/globals.css,f/f/ff8ddbb54db96e1d52f56c972a4405ae93a0e76b
+D
+client/jsconfig.json,b/4/b45949baddaa384f5b2deaf6544804c52909b3f3
+D
+client/src/layout.js,3/c/3cc07efc883b10792542b8df5ed246f9fe8e0baa
+S
+#client/src/utils/imageConversion.js,d/9/d9d4cdc652c55ba5903a88984bba88ab7fee2b09
+[
++client/src/pages/admin/aircraft-name/add.js,f/e/fef34150a25fbf4b380d84f9241d3a604f13c0e9
+Q
+!server/src/routes/aircraftName.js,1/9/19e429786423a5c3ee814b024eba422ea8590539
+]
+-client/src/pages/admin/aircraft-name/index.js,5/f/5fd82daf1fead3a480fabe9954a3379d420fef74
+b
+2client/src/pages/admin/aircraft-name/[_id]/edit.js,8/d/8db014c4b3b1a2200a76294906a963d82612b480
+Q
+!client/src/pages/gallery/[_id].js,8/2/82aa560758095da885cd3b7303ed142200eb19e9
+H
+client/postcss.config.js,b/5/b501873f4be0d5dcbdf0883bc9e7e4036792d2ad

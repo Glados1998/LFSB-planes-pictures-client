@@ -25,17 +25,25 @@ export default function AircraftDetail() {
     if (!aircraft) return <div>Loading...</div>;
 
     return (
-        <div>
-            <h1>Aircraft Details</h1>
-            <img src={aircraft.image} alt={`Aircraft ${aircraft.aircraft_identification.registry}`} style={{ width: '100%' }}/>
-            <p><strong>Operator:</strong> {aircraft.operator.name}</p>
-            <p><strong>Registry:</strong> {aircraft.aircraft_identification.registry}</p>
-            <p><strong>Serial Number:</strong> {aircraft.aircraft_identification.serial_number}</p>
-            <p><strong>Aircraft Name:</strong> {aircraft.aircraft_name.name}</p>
-            <p><strong>Aircraft Type:</strong> {aircraft.aircraft_type}</p>
-            <Link href="/gallery">
-                Back to Gallery
-            </Link>
+        <div className={'grid grid-cols-2 gap-20'}>
+            <div>
+                <img src={aircraft.image} alt={`Aircraft ${aircraft.aircraft_identification.registry}`} className={'rounded-md shadow-md'}/>
+            </div>
+            <div className={'grid grid-flow-row'}>
+                <div className={'grid grid-flow-row gap-1.5'}>
+                    <p className={'font-bold text-4xl mb-3'}>{aircraft.aircraft_name.name} - {aircraft.operator.name}</p>
+                    <p className={'text-2xl'}><strong>Registry:</strong> {aircraft.aircraft_identification.registry}</p>
+                    <p className={'text-2xl'}><strong>Serial Number:</strong> {aircraft.aircraft_identification.serial_number}</p>
+                    <p className={'text-2xl'}><strong>Aircraft Type:</strong> {aircraft.aircraft_type}</p>
+                    <p className={'text-2xl'}><strong>Year of manufacturing:</strong> {aircraft.year_of_manufacturing}</p>
+                    <p className={'text-2xl'}><strong>Year of first flight:</strong> {aircraft.year_of_first_flight}</p>
+                </div>
+                <div>
+                    <Link href="/gallery" className={'rounded-md text-xl bg-blue-500 text-white font-medium text-md p-1 hover:shadow-md hover:bg-blue-600'}>
+                        Gallery
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 }
