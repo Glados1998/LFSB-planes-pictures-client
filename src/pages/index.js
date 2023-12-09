@@ -23,7 +23,11 @@ export default function Home() {
                 <div className={'text'}>
                     <h1>About me</h1>
                     <p>
-                        lorem ipsum
+                        Hellos my name is Laurent Greder I am a passionate <span>spotter.</span> <br/>
+                        I have been taking pictures of aircraft for several years now here at <span>EuroAirport Basel-Mulhouse-Freiburg.</span>
+                    </p>
+                    <p>
+                        Occasionally I also take pictures of aircraft at <span>Geneva Airport (LSGG)</span> and <span>Zurich Airport (LSZH).</span>
                     </p>
                 </div>
             </div>

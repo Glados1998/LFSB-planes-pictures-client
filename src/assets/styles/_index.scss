@@ -15,7 +15,6 @@ body {
 
 main {
   padding: 4rem;
-  height: 100vh;
 }
 
 .home {
@@ -36,16 +35,6 @@ main {
     p {
       font-size:  1.2rem;
       font-weight: 600;
-      span {
-        padding: .1rem;
-        transition: all 0.2s ease-in-out;
-        &:hover {
-          color: $text-white;
-          background: $Tempest-Browser-Privacy-Panel-1-hex;
-          padding: .1rem;
-          transition: all 0.2s ease-in-out;
-        }
-      }
     }
   }
 
@@ -61,6 +50,17 @@ main {
       font-size: 1.2rem;
       font-weight: 600;
       line-height: 1.5rem;
+    }
+  }
+
+  span {
+    padding: .1rem;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      color: $text-white;
+      background: $Tempest-Browser-Privacy-Panel-1-hex;
+      padding: .1rem;
+      transition: all 0.2s ease-in-out;
     }
   }
 }
