@@ -2,7 +2,7 @@
 
 .footer {
   background: $text-white;
-  position: absolute;
+  position: relative;
   width: 100%;
   bottom: 0;
 }
@@ -19,12 +19,28 @@
   margin-left: 4rem;
 }
 
-.footer__info  {
+.footer__info {
   display: grid;
   grid-auto-flow: row;
   font-size: 0.9rem;
+
   p {
     margin: 0.3rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: $black;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    padding: .1rem;
+
+    &:hover {
+      padding: .1rem;
+      color: $text-white;
+      transition: all 0.2s ease-in-out;
+      background: $Tempest-Browser-Privacy-Panel-1-hex;
+    }
   }
 }
 

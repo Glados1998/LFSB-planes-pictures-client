@@ -1,5 +1,5 @@
 // These styles apply to every route in the application
-import '@/styles/main.scss'
+import '@/assets/styles/main.scss'
 import Layout from '../components/layout'
 
 export default function App({ Component , pageProps }) {

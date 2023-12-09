@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 .footer {
   background: #ffffff;
-  position: absolute;
+  position: relative;
   width: 100%;
   bottom: 0;
 }
@@ -27,6 +27,19 @@
 }
 .footer__info p {
   margin: 0.3rem;
+}
+.footer__info a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  padding: 0.1rem;
+}
+.footer__info a:hover {
+  padding: 0.1rem;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+  background: #2540D9;
 }
 
 .footer__nav {
@@ -94,6 +107,49 @@ body {
 
 main {
   padding: 4rem;
+  height: 100vh;
+}
+
+.home {
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: max-content;
+}
+.home_headline {
+  width: 60rem;
+  justify-self: center;
+  text-align: center;
+}
+.home_headline hr {
+  width: 10rem;
+  border-width: 1.5px;
+}
+.home_headline p {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.home_headline p span {
+  padding: 0.1rem;
+  transition: all 0.2s ease-in-out;
+}
+.home_headline p span:hover {
+  color: #ffffff;
+  background: #2540D9;
+  padding: 0.1rem;
+  transition: all 0.2s ease-in-out;
+}
+.home_about {
+  margin-top: 5rem;
+  justify-self: center;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 2rem;
+}
+.home_about .text {
+  width: 40rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.5rem;
 }
 
 /*# sourceMappingURL=main.css.map */
