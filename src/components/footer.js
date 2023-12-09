@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const navigation = [
-    {label: 'Home', path: '/'},
-    {label: 'Gallery', path: '/gallery/'},
-    {label: 'Admin', path: '/login'}
+    {label: 'Home', path: '/', target: '_self'},
+    {label: 'Gallery', path: '/gallery/', target: '_self'},
+    {label: 'Admin', path: 'https://strapi-production-1911.up.railway.app/admin', target: '_self'},
 ]
 
 export default function Footer() {
@@ -13,9 +13,9 @@ export default function Footer() {
                 <div className='footer__cols-item'>
                     <h3>LFSB Planes Pictures</h3>
                     <div className='footer__info'>
-                        <span>&copy; {new Date().getFullYear()} | All rights reserved</span>
-                        <span>Made by <a href='https://www.jerome-greder.com' target='_blank'>Jérôme Greder</a></span>
-                        <span>Content managed with <a href='https://strapi.io' target='_blank'>Strapi</a></span>
+                        <p>&copy; {new Date().getFullYear()} | All rights reserved</p>
+                        <p>Made by <a href='https://www.jerome-greder.com' target='_blank'>Jérôme Greder</a></p>
+                        <p>Content managed with <a href='https://strapi.io' target='_blank'>Strapi</a></p>
                     </div>
                 </div>
                 <div className='footer__cols-item'>
@@ -23,7 +23,7 @@ export default function Footer() {
                     <ul className='footer__nav'>
                         {navigation.map(item => (
                             <li key={item.label} className='footer__nav-link'>
-                                <Link href={item.path}>{item.label}</Link>
+                                <Link href={item.path} target={item.target}>{item.label}</Link>
                             </li>
                         ))}
                     </ul>

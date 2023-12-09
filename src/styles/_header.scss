@@ -25,7 +25,6 @@
     &_bar {
       display: grid;
       grid-auto-flow: column;
-      grid-gap: 1rem;
       grid-auto-columns: max-content;
       justify-items: center;
       list-style: none;

@@ -17,15 +17,15 @@
 
 .footer__cols-item {
   margin-left: 4rem;
-  width: 20rem;
 }
 
-.footer__info span {
-  width: auto;
+.footer__info  {
   display: grid;
   grid-auto-flow: row;
-  grid-gap: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  p {
+    margin: 0.3rem;
+  }
 }
 
 .footer__nav {
