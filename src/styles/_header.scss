@@ -1,0 +1,46 @@
+@import "colors";
+
+.header {
+  background-color: $text-white;
+  color: $black;
+  margin: 0;
+  padding: 0;
+
+  &_nav {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1rem;
+    grid-auto-columns: max-content;
+    justify-items: center;
+    align-items: center;
+
+    &_logo {
+      margin-left: 4rem;
+
+      h1 {
+        margin: 0;
+      }
+    }
+
+    &_bar {
+      display: grid;
+      grid-auto-flow: column;
+      grid-gap: 1rem;
+      grid-auto-columns: max-content;
+      justify-items: center;
+      list-style: none;
+
+      &_link > a {
+        text-decoration: none;
+        color: $black;
+        font-weight: 600;
+        padding: 1rem;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background: $Tempest-Browser-Privacy-Panel-1-hex;
+          color: $text-white;
+        }
+      }
+    }
+  }
+}

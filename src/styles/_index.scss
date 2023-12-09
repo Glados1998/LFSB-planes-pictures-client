@@ -1,0 +1,18 @@
+@import "button";
+@import "footer";
+@import "header";
+@import "colors";
+@import "card";
+@import "input";
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+body {
+  font-family: 'Inter', sans-serif, Arial, Helvetica, sans-serif;
+  background: $Tempest-Browser-Privacy-Panel-5-hex;
+  margin: 0;
+}
+
+main {
+  padding: 4rem;
+}

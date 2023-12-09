@@ -1,0 +1,100 @@
+/* Color Theme Swatches in Hex */
+/* Color Theme Swatches in Hex */
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+.footer {
+  background: #ffffff;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer__cols {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 3rem;
+  grid-auto-columns: max-content;
+  justify-items: center;
+}
+
+.footer__cols-item {
+  margin-left: 4rem;
+  width: 20rem;
+}
+
+.footer__info span {
+  width: auto;
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.footer__nav {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 0.5rem;
+}
+
+.footer__nav-link > a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+}
+
+/* Color Theme Swatches in Hex */
+.header {
+  background-color: #ffffff;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+.header_nav {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  grid-auto-columns: max-content;
+  justify-items: center;
+  align-items: center;
+}
+.header_nav_logo {
+  margin-left: 4rem;
+}
+.header_nav_logo h1 {
+  margin: 0;
+}
+.header_nav_bar {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  grid-auto-columns: max-content;
+  justify-items: center;
+  list-style: none;
+}
+.header_nav_bar_link > a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 600;
+  padding: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+.header_nav_bar_link > a:hover {
+  background: #2540D9;
+  color: #ffffff;
+}
+
+/* Color Theme Swatches in Hex */
+/* Color Theme Swatches in Hex */
+/* Color Theme Swatches in Hex */
+body {
+  font-family: "Inter", sans-serif, Arial, Helvetica, sans-serif;
+  background: #E9EBF2;
+  margin: 0;
+}
+
+main {
+  padding: 4rem;
+}
+
+/*# sourceMappingURL=main.css.map */

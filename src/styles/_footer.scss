@@ -1,0 +1,43 @@
+@import "colors";
+
+.footer {
+  background: $text-white;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer__cols {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 3rem;
+  grid-auto-columns: max-content;
+  justify-items: center;
+}
+
+.footer__cols-item {
+  margin-left: 4rem;
+  width: 20rem;
+}
+
+.footer__info span {
+  width: auto;
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.footer__nav {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 0.5rem;
+}
+
+.footer__nav-link > a {
+  text-decoration: none;
+  color: $black;
+  font-weight: 500;
+}
