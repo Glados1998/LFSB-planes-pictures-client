@@ -33,7 +33,7 @@ main {
     }
 
     p {
-      font-size:  1.2rem;
+      font-size: 1.2rem;
       font-weight: 600;
     }
   }
@@ -56,11 +56,29 @@ main {
   span {
     padding: .1rem;
     transition: all 0.2s ease-in-out;
+
     &:hover {
       color: $text-white;
       background: $Tempest-Browser-Privacy-Panel-1-hex;
       padding: .1rem;
       transition: all 0.2s ease-in-out;
     }
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: max-content;
+  grid-gap: 2rem;
+
+  &_area {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    grid-gap: 3rem;
+    height: 40rem;
+    overflow-x: auto;
+    padding: 1rem;
   }
 }
