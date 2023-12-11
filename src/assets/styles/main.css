@@ -64,10 +64,8 @@
 }
 .header_nav {
   display: grid;
-  grid-auto-flow: column;
-  grid-gap: 1rem;
-  grid-auto-columns: max-content;
-  justify-items: center;
+  grid-template-columns: auto 1fr auto; /* Logo, Flexible Space, Language Switcher */
+  justify-content: space-between; /* Aligns items to each side */
   align-items: center;
 }
 .header_nav_logo {
@@ -75,6 +73,7 @@
 }
 .header_nav_logo h1 {
   margin: 0;
+  text-align: center;
 }
 .header_nav_bar {
   display: grid;
@@ -93,6 +92,9 @@
 .header_nav_bar_link > a:hover {
   background: #2540D9;
   color: #ffffff;
+}
+.header_nav_language {
+  margin-right: 4rem;
 }
 
 /* Color Theme Swatches in Hex */

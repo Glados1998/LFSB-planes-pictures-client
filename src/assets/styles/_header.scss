@@ -8,10 +8,8 @@
 
   &_nav {
     display: grid;
-    grid-auto-flow: column;
-    grid-gap: 1rem;
-    grid-auto-columns: max-content;
-    justify-items: center;
+    grid-template-columns: auto 1fr auto; /* Logo, Flexible Space, Language Switcher */
+    justify-content: space-between; /* Aligns items to each side */
     align-items: center;
 
     &_logo {
@@ -19,6 +17,8 @@
 
       h1 {
         margin: 0;
+        text-align: center;
+
       }
     }
 
@@ -40,6 +40,10 @@
           color: $text-white;
         }
       }
+    }
+
+    &_language {
+      margin-right: 4rem;
     }
   }
 }
