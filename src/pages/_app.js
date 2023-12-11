@@ -1,4 +1,3 @@
-// These styles apply to every route in the application
 import '@/assets/styles/main.scss'
 import Layout from '../components/layout'
 

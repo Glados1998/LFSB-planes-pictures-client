@@ -87,3 +87,49 @@
   }
 
 }
+
+
+.language_switcher {
+
+  &-button {
+    text-decoration: none;
+    color: $black;
+    font-weight: 600;
+    padding: 1rem;
+    width: 5rem;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    background: none;
+
+    &:hover {
+      background: $Tempest-Browser-Privacy-Panel-1-hex;
+      color: $text-white;
+    }
+  }
+
+  &-content {
+    position: absolute;
+    box-shadow: 0 0 0 0 rgba($grey,0.2);
+
+    &-selection {
+      font-weight: 600;
+      width: 7rem;
+      text-align: center;
+      padding: 1rem 0 1rem 0;
+      background: $text-white;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background: $Tempest-Browser-Privacy-Panel-1-hex;
+        color: $text-white;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+}
+
+.selected {
+  background: $Tempest-Browser-Privacy-Panel-2-hex;
+  color: $text-white;
+
+}

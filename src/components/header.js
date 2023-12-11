@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Link from 'next/link';
 import axios from "axios";
 import {useRouter} from "next/router";
+import LanguageSwitcher from "@/components/language-switcher";
 
 export default function Header() {
 
@@ -21,6 +22,9 @@ export default function Header() {
                         <Link href='/gallery'>Gallery</Link>
                     </li>
                 </ul>
+                <div className={'header_nav_language'}>
+                    <LanguageSwitcher/>
+                </div>
             </nav>
         </header>
     );
