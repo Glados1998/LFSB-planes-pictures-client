@@ -11,18 +11,16 @@ export default function Card({plane}) {
                 <Image src={plane.attributes.image.data.attributes.url} alt={plane.attributes.type.data.attributes.label} width={300} height={200}/>
             </div>
             <div className="card__content">
-                <div className="card__title">
+                <div className="card__content-title">
                     <h3>{plane.attributes.type.data.attributes.label}</h3>
-                </div>
-                <div className="card__description">
                     <p>{plane.attributes.operator.data.attributes.label}</p>
-                    <p>Published: {formatDate(plane.attributes.publishedAt)}</p>
                 </div>
             </div>
             <div className="card__footer">
-                <div className="button">
+                <button className="button">
                     See details
-                </div>
+                </button>
+                <p>Published: {formatDate(plane.attributes.publishedAt)}</p>
             </div>
         </Link>
     )

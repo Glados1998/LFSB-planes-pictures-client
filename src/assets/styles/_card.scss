@@ -12,10 +12,22 @@
   border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
   border-radius: 1.5rem;
   box-shadow: 0 0 1rem 0 rgba($grey, 1);
-  width: fit-content;
+  width: 300px;
   height: fit-content;
   transition: all 0.3s ease-in-out;
   transform: scale(1.00);
+
+  &__footer {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-rows: max-content;
+    grid-gap: 1rem;
+
+    p {
+      margin: 0;
+      align-self: center;
+    }
+  }
 
   .button {
     transition: all 0.3s ease-in-out;
@@ -24,6 +36,8 @@
     padding: .4rem;
     width: fit-content;
     border-radius: .5rem;
+    border: none;
+    background: $text-white;
   }
 
   &:hover {
@@ -38,6 +52,29 @@
       padding: .4rem;
       width: fit-content;
       border-radius: .5rem;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-auto-flow: row;
+
+    &-title {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        justify-items: center;
+        grid-gap: 1rem;
+
+        h3, p {
+            margin: 0;
+            align-self: center;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: 500;
+        }
     }
   }
 
