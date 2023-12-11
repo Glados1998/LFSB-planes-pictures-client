@@ -1,11 +1,13 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import qs from 'qs';
 import GalleryFilter from "@/components/galler-filter";
 import Card from "@/components/card";
 
 export default function Gallery() {
     const [aircraft, setAircraft] = useState([]);
+    const [pagination, setPagination] = useState({});
+    const [pageIndex, setPageIndex] = useState(1)
     const [filters, setFilters] = useState({
         operator: '',
         type: '',
@@ -37,14 +39,17 @@ export default function Gallery() {
             skipNulls: true
         });
 
-        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?${queryString}`)
+        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
             .then(res => {
                 setAircraft(res.data.data);
+                setPagination(res.data.meta.pagination);
+                console.log(res.data)
+                console.log(pagination)
             })
             .catch(err => {
                 console.error(err);
             });
-    }, [filters]);
+    }, [filters,pageIndex]);
 
     // Handle filter changes
     const handleFilterChange = (filterType, value) => {
@@ -53,9 +58,23 @@ export default function Gallery() {
             [filterType]: value
         }));
     };
+
+    // Pagination handlers
+    const handlePrevious = () => {
+        if (pageIndex > 1) {
+            setPageIndex(pageIndex - 1);
+        }
+    };
+
+    const handleNext = () => {
+        if (pageIndex < pagination.pageCount) {
+            setPageIndex(pageIndex + 1);
+        }
+    };
+
     return (
         <div className={'gallery'}>
-            <div className={'filter'}>
+            <div className={'filter-component'}>
                 <GalleryFilter onFilterChange={handleFilterChange}/>
             </div>
             <div className={'gallery_area'}>
@@ -68,7 +87,15 @@ export default function Gallery() {
                 }
             </div>
             <div className={'gallery_footer pagination'}>
-
+                <button className={"btn btn-pagination"} onClick={handlePrevious} disabled={pageIndex === 1}>
+                    Previous
+                </button>
+                <span>
+                    {`${pageIndex} of ${pagination.pageCount}`}
+                </span>
+                <button className={"btn btn-pagination"} onClick={handleNext} disabled={pageIndex === pagination.pageCount}>
+                    Next
+                </button>
             </div>
         </div>
     );

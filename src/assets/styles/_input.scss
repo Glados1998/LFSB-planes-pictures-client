@@ -6,7 +6,10 @@
   grid-auto-columns: max-content;
   justify-content: center;
   padding: 1rem;
-  grid-gap: 2rem;
+  background: $text-white;
+  border-radius: 2rem;
+  width: fit-content;
+  align-self: center;
 
   &_input {
     display: grid;
@@ -25,15 +28,10 @@
     input {
       padding: .5rem;
       border-radius: .5rem;
-      border: 2px solid $grey;
+      border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
       transition: all 0.3s ease-in-out;
 
-      &:focus {
-        outline: none;
-        border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
-      }
-
-      &:hover {
+      &:focus, &:hover {
         border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
       }
 
@@ -45,9 +43,10 @@
     select {
       padding: .5rem;
       border-radius: .5rem;
-      border: 2px solid $grey;
+      border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
       font-weight: 600;
-        transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      background: $text-white;
 
       &:hover {
         border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
@@ -55,4 +54,36 @@
       }
     }
   }
+}
+
+
+.btn {
+  color: $black;
+  background: $text-white;
+  border: none;
+  padding: .4rem;
+  width: fit-content;
+  border-radius: .5rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: $Tempest-Browser-Privacy-Panel-1-hex;
+    transition: all 0.3s ease-in-out;
+    color: $text-white;
+    padding: .4rem;
+    width: fit-content;
+    border-radius: .5rem;
+  }
+
+  &:disabled {
+    background: $disabled;
+    color: $disabled-text;
+    border: none;
+    padding: .4rem;
+    width: fit-content;
+    border-radius: .5rem;
+    font-weight: 600;
+  }
+
 }

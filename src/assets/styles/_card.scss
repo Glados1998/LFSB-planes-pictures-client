@@ -11,7 +11,7 @@
   padding: 1rem;
   border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
   border-radius: 1.5rem;
-  box-shadow: 0 0 1rem 0 rgba($grey, 0.2);
+  box-shadow: 0 0 1rem 0 rgba($grey, 1);
   width: fit-content;
   height: fit-content;
   transition: all 0.3s ease-in-out;
@@ -27,7 +27,7 @@
   }
 
   &:hover {
-    box-shadow: 0 0 1rem 0 rgba($grey, 0.4);
+    box-shadow: 0 0 1rem 0 rgba($grey, 0.2);
     transition: all 0.3s ease-in-out;
     transform: scale(1.02);
     border: $Tempest-Browser-Privacy-Panel-1-hex solid 2px;

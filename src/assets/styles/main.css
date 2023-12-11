@@ -108,7 +108,7 @@
   padding: 1rem;
   border: 2px solid #E9EBF2;
   border-radius: 1.5rem;
-  box-shadow: 0 0 1rem 0 rgba(194, 194, 194, 0.2);
+  box-shadow: 0 0 1rem 0 #c2c2c2;
   width: fit-content;
   height: fit-content;
   transition: all 0.3s ease-in-out;
@@ -123,7 +123,7 @@
   border-radius: 0.5rem;
 }
 .card:hover {
-  box-shadow: 0 0 1rem 0 rgba(194, 194, 194, 0.4);
+  box-shadow: 0 0 1rem 0 rgba(194, 194, 194, 0.2);
   transition: all 0.3s ease-in-out;
   transform: scale(1.02);
   border: #2540D9 solid 2px;
@@ -150,7 +150,10 @@
   grid-auto-columns: max-content;
   justify-content: center;
   padding: 1rem;
-  grid-gap: 2rem;
+  background: #ffffff;
+  border-radius: 2rem;
+  width: fit-content;
+  align-self: center;
 }
 .filter_input {
   display: grid;
@@ -168,14 +171,10 @@
 .filter_input input {
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: 2px solid #c2c2c2;
+  border: 2px solid #E9EBF2;
   transition: all 0.3s ease-in-out;
 }
-.filter_input input:focus {
-  outline: none;
-  border: 2px solid #2540D9;
-}
-.filter_input input:hover {
+.filter_input input:focus, .filter_input input:hover {
   border: 2px solid #2540D9;
 }
 .filter_input input:invalid {
@@ -184,13 +183,42 @@
 .filter_input select {
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: 2px solid #c2c2c2;
+  border: 2px solid #E9EBF2;
   font-weight: 600;
   transition: all 0.3s ease-in-out;
+  background: #ffffff;
 }
 .filter_input select:hover {
   border: 2px solid #2540D9;
   transition: all 0.3s ease-in-out;
+}
+
+.btn {
+  color: #000000;
+  background: #ffffff;
+  border: none;
+  padding: 0.4rem;
+  width: fit-content;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+  background: #2540D9;
+  transition: all 0.3s ease-in-out;
+  color: #ffffff;
+  padding: 0.4rem;
+  width: fit-content;
+  border-radius: 0.5rem;
+}
+.btn:disabled {
+  background: #BDBDBD;
+  color: #9E9E9E;
+  border: none;
+  padding: 0.4rem;
+  width: fit-content;
+  border-radius: 0.5rem;
+  font-weight: 600;
 }
 
 body {
@@ -258,13 +286,23 @@ main {
   grid-auto-rows: max-content;
   grid-gap: 2rem;
 }
+.gallery .filter-component {
+  justify-self: center;
+}
 .gallery_area {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 3rem;
+  grid-gap: 2rem;
   height: 40rem;
   overflow-x: auto;
   padding: 1rem;
+  justify-items: center;
+}
+.gallery_footer {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  grid-gap: 1rem;
   justify-content: center;
 }
 
