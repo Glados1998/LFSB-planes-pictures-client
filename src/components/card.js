@@ -8,7 +8,7 @@ export default function Card({plane}) {
     return (
         <Link href={`/gallery/${plane.id}`} className={'card card__shadow'}>
             <div className="card__image">
-                <Image src={plane.attributes.image.data.attributes.url} alt={'test'} width={300} height={200}/>
+                <Image src={plane.attributes.image.data.attributes.url} alt={plane.attributes.type.data.attributes.label} width={300} height={200}/>
             </div>
             <div className="card__content">
                 <div className="card__title">

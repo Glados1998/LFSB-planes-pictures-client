@@ -4,7 +4,7 @@ import axios from 'axios';
 export default function GalleryFilter({onFilterChange}) {
 
     const [operators, setOperators] = useState([]);
-    const [aircraftNames, setAircraftNames] = useState([]);
+    const [aircraftTypes, setAircraftTypes] = useState([]);
 
     useEffect(() => {
 
@@ -18,40 +18,44 @@ export default function GalleryFilter({onFilterChange}) {
 
         axios.get('https://strapi-production-1911.up.railway.app/api/aircarft-types')
             .then(response => {
-                setAircraftNames(response.data.data);
+                setAircraftTypes(response.data.data);
             })
             .catch(error => {
                 console.error('Error fetching aircraft-names:', error);
             });
     }, []);
 
+    const handleFilterChange = (filterType, value) => {
+        onFilterChange(filterType, value);
+    };
+
     return (
-        <div>
-            <div>
+        <div className={'filter'}>
+            <div className={'filter_input operator'}>
                 <label>Operator:</label>
-                <select onChange={e => onFilterChange('operator', e.target.value)}>
+                <select onChange={e => handleFilterChange('operator', e.target.value)}>
                     <option value="">Operator</option>
                     {operators.map(operator => (
                         <option key={operator.id} value={operator.id}>{operator.attributes.label}</option>
                     ))}
                 </select>
             </div>
-            <div>
-                <label>Aircraft Name:</label>
-                <select onChange={e => onFilterChange('aircraftName', e.target.value)}>
-                    <option value="">Aircraft Name</option>
-                    {aircraftNames.map(aircraftName => (
+            <div className={'filter_input aircraft-name'}>
+                <label>Aircraft Type:</label>
+                <select onChange={e => handleFilterChange('type', e.target.value)}>
+                    <option value="">Aircraft Type</option>
+                    {aircraftTypes.map(aircraftName => (
                         <option key={aircraftName.id} value={aircraftName.id}>{aircraftName.attributes.label}</option>
                     ))}
                 </select>
             </div>
-            <div>
+            <div className={'filter_input registry'}>
                 <label>Registry:</label>
-                <input type="text" onChange={e => onFilterChange('registry', e.target.value)}/>
+                <input type="text" onChange={e => handleFilterChange('registration', e.target.value)}/>
             </div>
-            <div>
+            <div className={'filter_input serial-number'}>
                 <label>Serial Number:</label>
-                <input type="text" onChange={e => onFilterChange('serialNumber', e.target.value)}/>
+                <input type="text" onChange={e => handleFilterChange('serviceNumber', e.target.value)}/>
             </div>
         </div>
     );

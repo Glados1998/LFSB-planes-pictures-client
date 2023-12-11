@@ -1,1 +1,58 @@
 @import "colors";
+
+.filter {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  justify-content: center;
+  padding: 1rem;
+  grid-gap: 2rem;
+
+  &_input {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    grid-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    label {
+      font-weight: 600;
+    }
+
+    input {
+      padding: .5rem;
+      border-radius: .5rem;
+      border: 2px solid $grey;
+      transition: all 0.3s ease-in-out;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
+      }
+
+      &:hover {
+        border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
+      }
+
+      &:invalid {
+        border: 2px solid $danger;
+      }
+    }
+
+    select {
+      padding: .5rem;
+      border-radius: .5rem;
+      border: 2px solid $grey;
+      font-weight: 600;
+        transition: all 0.3s ease-in-out;
+
+      &:hover {
+        border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
