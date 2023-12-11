@@ -33,7 +33,7 @@ export default function Gallery() {
         // Use qs to stringify the filter query
         const queryString = qs.stringify({
             ...filterQuery,
-            populate: '*' // Include populate if needed for Strapi
+            populate: '*'
         }, {
             encodeValuesOnly: true,
             skipNulls: true
@@ -43,8 +43,6 @@ export default function Gallery() {
             .then(res => {
                 setAircraft(res.data.data);
                 setPagination(res.data.meta.pagination);
-                console.log(res.data)
-                console.log(pagination)
             })
             .catch(err => {
                 console.error(err);

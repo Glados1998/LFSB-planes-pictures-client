@@ -101,6 +101,12 @@ main {
     grid-auto-columns: max-content;
     grid-gap: 1rem;
     justify-content: center;
+
+    span {
+      align-self: center;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
   }
 }
 
@@ -117,12 +123,12 @@ main {
   }
 
   &__content {
-    margin-top: 3rem;
     display: grid;
     grid-auto-flow: row;
     grid-auto-rows: max-content;
     grid-gap: 1rem;
     width: 40rem;
+    place-self: center;
 
     &-title {
       display: grid;
@@ -131,14 +137,19 @@ main {
       justify-items: center;
       grid-gap: 1rem;
 
-      h3 {
-        font-size: 1.5rem;
+      h2 {
+        font-size: 2.5rem;
         font-weight: 600;
       }
 
       h2, p {
         margin: 0;
-        justify-self: center;
+        align-self: center;
+      }
+
+      p {
+        font-size: 1.2rem;
+        font-weight: 600;
       }
     }
 
@@ -148,7 +159,7 @@ main {
     }
 
     &-footer {
-      place-self: end start;
+
     }
 
     &-footer > a {

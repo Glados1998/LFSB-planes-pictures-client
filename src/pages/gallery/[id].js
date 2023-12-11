@@ -36,17 +36,17 @@ export default function AircraftDetail() {
             <div className={'detail__content'}>
                 <div className={'detail__content-title'}>
                     <h2>{aircraft.attributes.type.data.attributes.label}</h2>
-                    <span>/</span>
                     <p>{aircraft.attributes.operator.data.attributes.label}</p>
                 </div>
                 <div className={'detail__content-info'}>
                     <p>Year of first flight: {formatDate(aircraft.attributes.yearOfFirstFlight)}</p>
                     <p>Serial Number: {aircraft.attributes.serviceNumber}</p>
+                    <p>Registration: {aircraft.attributes.registration}</p>
                     <p>Year of construction: {aircraft.attributes.yearOfConstruction}</p>
                     <p>Published: {formatDate(aircraft.attributes.publishedAt)}</p>
                 </div>
                 <div className={'detail__content-footer'}>
-                    <Link href="/gallery">
+                <Link href="/gallery">
                         Back to gallery
                     </Link>
                 </div>
