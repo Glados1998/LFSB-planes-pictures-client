@@ -108,7 +108,7 @@
   text-decoration: none;
   background: #ffffff;
   padding: 1rem;
-  border: 2px solid #E9EBF2;
+  border: 2px solid transparent;
   border-radius: 1.5rem;
   box-shadow: 0 0 1rem 0 #c2c2c2;
   width: 300px;
@@ -334,6 +334,7 @@ main {
   font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.5rem;
+  place-self: center;
 }
 .home_about .image img {
   border-radius: 0.5rem;

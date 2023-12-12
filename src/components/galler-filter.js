@@ -49,14 +49,14 @@ export default function GalleryFilter({onFilterChange}) {
                     ))}
                 </select>
             </div>
-            <div className={'filter_input registry'}>
+            {/*<div className={'filter_input registry'}>
                 <label>Registry:</label>
                 <input type="text" onChange={e => handleFilterChange('registration', e.target.value)}/>
             </div>
             <div className={'filter_input serial-number'}>
                 <label>Service Number:</label>
                 <input type="text" onChange={e => handleFilterChange('serviceNumber', e.target.value)}/>
-            </div>
+            </div>*/}
         </div>
     );
 }

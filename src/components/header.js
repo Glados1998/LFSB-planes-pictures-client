@@ -22,9 +22,9 @@ export default function Header() {
                         <Link href='/gallery'>Gallery</Link>
                     </li>
                 </ul>
-                <div className={'header_nav_language'}>
+                {/*<div className={'header_nav_language'}>
                     <LanguageSwitcher/>
-                </div>
+                </div>*/}
             </nav>
         </header>
     );

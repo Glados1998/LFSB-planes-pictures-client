@@ -1,5 +1,5 @@
 import Image from "next/image";
-import papaHeadshot from "src/assets/images/papa-profile.JPEG";
+import papaHeadshot from "src/assets/images/papa-profile2.JPG";
 
 export default function Home() {
     return (
@@ -23,7 +23,7 @@ export default function Home() {
             </div>
             <div className={'home_about'}>
                 <div className={'image'}>
-                    <Image src={papaHeadshot} alt={'Laurent Greder'} width={350} height={550} objectFit={'cover'}/>
+                    <Image src={papaHeadshot} alt={'Laurent Greder'} width={650} height={500} objectFit={'cover'}/>
                 </div>
                 <div className={'text'}>
                     <h1>About the Photographer</h1>
