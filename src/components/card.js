@@ -18,9 +18,9 @@ export default function Card({plane}) {
             </div>
             <div className="card__footer">
                 <button className="button">
-                    See details
+                    Voire plus
                 </button>
-                <p>Published: {formatDate(plane.attributes.publishedAt)}</p>
+                <p>Publié le {formatDate(plane.attributes.createdAt)}</p>
             </div>
         </Link>
     )

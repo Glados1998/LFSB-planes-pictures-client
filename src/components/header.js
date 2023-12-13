@@ -16,10 +16,10 @@ export default function Header() {
                 </div>
                 <ul className={'header_nav_bar'}>
                     <li className={'header_nav_bar_link'}>
-                        <Link href='/'>Home</Link>
+                        <Link href='/'>Acceuil</Link>
                     </li>
                     <li className={'header_nav_bar_link'}>
-                        <Link href='/gallery'>Gallery</Link>
+                        <Link href='/gallery'>Galerie</Link>
                     </li>
                 </ul>
                 {/*<div className={'header_nav_language'}>

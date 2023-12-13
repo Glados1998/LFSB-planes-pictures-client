@@ -86,13 +86,13 @@ export default function Gallery() {
             </div>
             <div className={'gallery_footer pagination'}>
                 <button className={"btn btn-pagination"} onClick={handlePrevious} disabled={pageIndex === 1}>
-                    Previous
+                    Précédent
                 </button>
                 <span>
                     {`${pageIndex} of ${pagination.pageCount}`}
                 </span>
                 <button className={"btn btn-pagination"} onClick={handleNext} disabled={pageIndex === pagination.pageCount}>
-                    Next
+                    Suivant
                 </button>
             </div>
         </div>

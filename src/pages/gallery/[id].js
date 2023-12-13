@@ -27,8 +27,7 @@ export default function AircraftDetail() {
 
     if (!aircraft) return <div>Loading...</div>;
 
-    return (
-        <div className={'detail'}>
+    return (<div className={'detail'}>
             <div className={'detail__image'}>
                 <Image src={aircraft.attributes.image.data.attributes.formats.large.url}
                        alt={aircraft.attributes.type.data.attributes.label} width={700} height={500}/>
@@ -39,15 +38,15 @@ export default function AircraftDetail() {
                     <p>{aircraft.attributes.operator.data.attributes.label}</p>
                 </div>
                 <div className={'detail__content-info'}>
-                    <p>Year of first flight: {formatDate(aircraft.attributes.yearOfFirstFlight)}</p>
-                    <p>Serial Number: {aircraft.attributes.serviceNumber}</p>
-                    <p>Registration: {aircraft.attributes.registration}</p>
-                    <p>Year of construction: {aircraft.attributes.yearOfConstruction}</p>
-                    <p>Published: {formatDate(aircraft.attributes.publishedAt)}</p>
+                    <p>Année du premier vol : {formatDate(aircraft.attributes.yearOfFirstFlight)}</p>
+                    <p>Numéro de service : {aircraft.attributes.serviceNumber} </p>
+                    <p>Immatriculation : {aircraft.attributes.registration}</p>
+                    <p>Année de construction : {aircraft.attributes.yearOfConstruction}</p>
+                    <p>Publié le: {formatDate(aircraft.attributes.publishedAt)}</p>
                 </div>
                 <div className={'detail__content-footer'}>
-                <Link href="/gallery">
-                        Back to gallery
+                    <Link href="/gallery">
+                        Retour à la galerie
                     </Link>
                 </div>
             </div>

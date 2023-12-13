@@ -7,16 +7,17 @@ export default function Home() {
             <div className="home_headline">
                 <div className="home_headline-text">
                     <h2>
-                        Discover the Skies Through My Lens
+                        Découvrez le ciel à travers mon objectif
                     </h2>
-                    <h1>
+                    <h1 className={'title'}>
                         LFSB Planes Pictures
                     </h1>
                     <hr/>
                     <p>
-                        Step into a world where the roar of jet engines and the elegance of aircraft design come alive.
-                        Welcome to my private photo gallery, capturing the dynamic spirit of aviation at <span>EuroAirport Basel-Mulhouse-Freiburg</span> –
-                        a crossroads of cultures and aeronautical innovation.
+                        Entrez dans un monde où le rugissement des moteurs à réaction et l'élégance du design des avions
+                        prennent vie. Bienvenue dans ma galerie photo privée, capturant l'esprit dynamique de l'aviation
+                        à <span>l'EuroAirport Bâle-Mulhouse-Fribourg</span> –
+                        un carrefour des cultures et de l'innovation aéronautique.
                     </p>
                 </div>
 
@@ -26,18 +27,19 @@ export default function Home() {
                     <Image src={papaHeadshot} alt={'Laurent Greder'} width={650} height={500} objectFit={'cover'}/>
                 </div>
                 <div className={'text'}>
-                    <h1>About the Photographer</h1>
+                    <h1>À propos du photographe</h1>
                     <p>
-                        Greetings! I am Laurent Greder, an avid aviation enthusiast and dedicated spotter. My journey
-                        with aircraft photography began several years ago, fueled by a deep fascination for these
-                        engineering marvels and the stories they carry across the skies.
+                        Salutations ! Je suis Laurent Greder, un passionné d'aviation et spotter dévoué. Mon parcours
+                        dans la photographie aéronautique a commencé il y a plusieurs années, alimenté par une
+                        fascination profonde pour ces merveilles d'ingénierie et les histoires qu'elles portent à
+                        travers les cieux.
                     </p>
                     <p>
-                        While my primary canvas is the bustling <span>EuroAirport Basel-Mulhouse-Freiburg</span>, I
-                        occasionally find myself capturing the unique aviation scenes
-                        at <span>Geneva Airport (LSGG)</span> and <span>Zurich Airport (LSZH)</span>. Each location
-                        offers a distinct glimpse into the world of aviation, from busy international hubs to serene,
-                        sky-bound departures.
+                        Bien que mon principal terrain de jeu soit l'effervescent <span>EuroAirport Bâle-Mulhouse-Fribourg</span>,
+                        il m'arrive occasionnellement de capturer des scènes d'aviation uniques à
+                        <span>l'aéroport de Genève (LSGG)</span> and <span>l'aéroport de Zurich (LSZH)</span>.
+                        Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux
+                        départs sereins vers le ciel.
                     </p>
                 </div>
             </div>

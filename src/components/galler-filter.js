@@ -32,18 +32,18 @@ export default function GalleryFilter({onFilterChange}) {
     return (
         <div className={'filter'}>
             <div className={'filter_input operator'}>
-                <label>Operator:</label>
+                <label>Company aérienne:</label>
                 <select onChange={e => handleFilterChange('operator', e.target.value)}>
-                    <option value="">Operator</option>
+                    <option value="">Company aérienne</option>
                     {operators.map(operator => (
                         <option key={operator.id} value={operator.id}>{operator.attributes.label}</option>
                     ))}
                 </select>
             </div>
             <div className={'filter_input aircraft-name'}>
-                <label>Type:</label>
+                <label>Type d'avion:</label>
                 <select onChange={e => handleFilterChange('type', e.target.value)}>
-                    <option value="">Type</option>
+                    <option value="">Type d'avion</option>
                     {aircraftTypes.map(aircraftName => (
                         <option key={aircraftName.id} value={aircraftName.id}>{aircraftName.attributes.label}</option>
                     ))}
