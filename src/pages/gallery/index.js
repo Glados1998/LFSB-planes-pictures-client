@@ -3,8 +3,10 @@ import {useEffect, useState} from 'react';
 import qs from 'qs';
 import GalleryFilter from "@/components/galler-filter";
 import Card from "@/components/card";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function Gallery() {
+    const [sysMessage, setSysMessage] = useState('')
     const [aircraft, setAircraft] = useState([]);
     const [pagination, setPagination] = useState({});
     const [pageIndex, setPageIndex] = useState(1)
@@ -39,13 +41,18 @@ export default function Gallery() {
             skipNulls: true
         });
 
-        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
+        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=2`)
             .then(res => {
-                setAircraft(res.data.data);
-                setPagination(res.data.meta.pagination);
+                if (res.data.data.length) {
+                    setAircraft(res.data.data);
+                    setPagination(res.data.meta.pagination);
+                } else {
+                    setSysMessage('No aircrafts found');
+                }
             })
             .catch(err => {
                 console.error(err);
+                setSysMessage('Error fetching aircrafts');
             });
     }, [filters,pageIndex]);
 
@@ -75,24 +82,26 @@ export default function Gallery() {
             <div className={'filter-component'}>
                 <GalleryFilter onFilterChange={handleFilterChange}/>
             </div>
-            <div className={'gallery_area'}>
-                {
-                    aircraft.map((item, index) => {
-                        return (
-                            <Card plane={item} key={index}/>
-                        )
-                    })
-                }
-            </div>
+            {sysMessage ? (
+                <div className={'gallery_message'}>
+                    <p>{sysMessage}</p>
+                </div>
+            ) : (
+                <div className={'gallery_area'}>
+                    {aircraft.map(plane => (
+                        <Card key={plane.id} plane={plane}/>
+                    ))}
+                </div>
+            )}
             <div className={'gallery_footer pagination'}>
-                <button className={"btn btn-pagination"} onClick={handlePrevious} disabled={pageIndex === 1}>
-                    Précédent
+                <button className={"btn-pagination"} onClick={handlePrevious} disabled={pageIndex === 1}>
+                    <FaArrowLeft />
                 </button>
                 <span>
-                    {`${pageIndex} of ${pagination.pageCount}`}
+                    {`${pageIndex} sur ${pagination.pageCount}`}
                 </span>
-                <button className={"btn btn-pagination"} onClick={handleNext} disabled={pageIndex === pagination.pageCount}>
-                    Suivant
+                <button className={"btn-pagination"} onClick={handleNext} disabled={pageIndex === pagination.pageCount}>
+                    <FaArrowRight />
                 </button>
             </div>
         </div>

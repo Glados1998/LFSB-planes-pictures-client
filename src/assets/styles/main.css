@@ -226,7 +226,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.btn {
+.btn, .btn-pagination {
   color: #000000;
   background: #ffffff;
   border: none;
@@ -236,7 +236,7 @@
   font-weight: 600;
   transition: all 0.3s ease-in-out;
 }
-.btn:hover {
+.btn:hover, .btn-pagination:hover {
   background: #2540D9;
   transition: all 0.3s ease-in-out;
   color: #ffffff;
@@ -244,7 +244,7 @@
   width: fit-content;
   border-radius: 0.5rem;
 }
-.btn:disabled {
+.btn:disabled, .btn-pagination:disabled {
   background: #BDBDBD;
   color: #9E9E9E;
   border: none;
@@ -252,6 +252,39 @@
   width: fit-content;
   border-radius: 0.5rem;
   font-weight: 600;
+}
+
+.btn-pagination {
+  display: flex; /* Enables flexbox */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  padding: 0.7rem;
+  border-radius: 100%;
+  width: fit-content;
+  height: fit-content;
+}
+.btn-pagination:hover {
+  background: #2540D9;
+  transition: all 0.3s ease-in-out;
+  color: #ffffff;
+  width: fit-content;
+  padding: 0.7rem;
+  border-radius: 100%;
+}
+.btn-pagination:disabled {
+  background: #BDBDBD;
+  color: #9E9E9E;
+  border: none;
+  width: fit-content;
+  font-weight: 600;
+  padding: 0.7rem;
+  border-radius: 100%;
+}
+.btn-pagination svg {
+  display: block; /* Removes any extra space below the SVG */
+  margin: auto; /* Additional assurance for centering */
+  width: 1rem;
+  height: 1rem;
 }
 
 .language_switcher-button {
