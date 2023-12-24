@@ -56,4 +56,14 @@
   text-decoration: none;
   color: $black;
   font-weight: 500;
+
+  transition: all 0.2s ease-in-out;
+  padding: .1rem;
+
+  &:hover {
+    padding: .1rem;
+    color: $text-white;
+    transition: all 0.2s ease-in-out;
+    background: $Tempest-Browser-Privacy-Panel-1-hex;
+  }
 }

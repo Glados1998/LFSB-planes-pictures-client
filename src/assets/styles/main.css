@@ -53,6 +53,14 @@
   text-decoration: none;
   color: #000000;
   font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  padding: 0.1rem;
+}
+.footer__nav-link > a:hover {
+  padding: 0.1rem;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+  background: #2540D9;
 }
 
 /* Color Theme Swatches in Hex */

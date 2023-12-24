@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 import qs from 'qs';
 import GalleryFilter from "@/components/galler-filter";
 import Card from "@/components/card";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
 
 export default function Gallery() {
     const [sysMessage, setSysMessage] = useState('')
@@ -41,20 +41,20 @@ export default function Gallery() {
             skipNulls: true
         });
 
-        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=2`)
+        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
             .then(res => {
                 if (res.data.data.length) {
                     setAircraft(res.data.data);
                     setPagination(res.data.meta.pagination);
                 } else {
-                    setSysMessage('No aircrafts found');
+                    setSysMessage('Aucun données trouvées');
                 }
             })
             .catch(err => {
                 console.error(err);
-                setSysMessage('Error fetching aircrafts');
+                setSysMessage('Une erreur est survenue lors de la récupération des données');
             });
-    }, [filters,pageIndex]);
+    }, [filters, pageIndex]);
 
     // Handle filter changes
     const handleFilterChange = (filterType, value) => {
@@ -95,13 +95,13 @@ export default function Gallery() {
             )}
             <div className={'gallery_footer pagination'}>
                 <button className={"btn-pagination"} onClick={handlePrevious} disabled={pageIndex === 1}>
-                    <FaArrowLeft />
+                    <FaArrowLeft/>
                 </button>
                 <span>
                     {`${pageIndex} sur ${pagination.pageCount}`}
                 </span>
-                <button className={"btn-pagination"} onClick={handleNext} disabled={pageIndex === pagination.pageCount}>
-                    <FaArrowRight />
+                <button className={"btn-pagination"} onClick={handleNext} disabled={pageIndex === pagination.pageCount || aircraft.length === 0}>
+                    <FaArrowRight/>
                 </button>
             </div>
         </div>
