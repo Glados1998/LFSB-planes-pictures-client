@@ -38,6 +38,12 @@
       &:invalid {
         border: 2px solid $danger;
       }
+
+      &:disabled {
+        border: 2px solid $disabled;
+        color: $disabled-text;
+        cursor: not-allowed;
+      }
     }
 
     select {
@@ -51,6 +57,12 @@
       &:hover {
         border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
         transition: all 0.3s ease-in-out;
+      }
+
+      &:disabled {
+        border: 2px solid $disabled;
+        color: $disabled-text;
+        cursor: not-allowed;
       }
     }
   }

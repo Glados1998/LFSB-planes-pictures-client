@@ -95,6 +95,55 @@ main {
     justify-items: center;
   }
 
+  &_message {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 2rem;
+    justify-items: center;
+    align-items: center;
+    padding: 1rem;
+
+    .message-box {
+      display: grid;
+      grid-auto-flow: column;
+      grid-gap: 1rem;
+      justify-items: center;
+      align-items: center;
+      padding: 2rem;
+      border-radius: 2rem;
+      background: lighten($danger, 10%);
+      color: $text-white;
+      border: 2.5px solid $danger;
+      transition: all 0.4s ease-in-out;
+
+      .icon {
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        color: $text-white;
+
+      }
+
+      p {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        background: $danger;
+        transition: all 0.4s ease-in-out;
+        color: $text-white;
+        padding: 2rem;
+        width: fit-content;
+        border-radius: 2rem;
+      }
+    }
+
+  }
+
+
   &_footer {
     display: grid;
     grid-auto-flow: column;
@@ -183,4 +232,14 @@ main {
       }
     }
   }
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+.main-content {
+  flex-grow: 1; /* Allows the content to grow and push the footer down */
 }

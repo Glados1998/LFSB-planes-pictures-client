@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import formatDate from "@/utils/timestamp-format";
+import {notFound} from "@/assets/images/imageNotFound.jpg";
 
 export default function AircraftDetail() {
     const router = useRouter();
@@ -66,7 +67,7 @@ export default function AircraftDetail() {
         <div className={'detail'}>
             {imageUrl && (
                 <div className={'detail__image'}>
-                    <Image src={imageUrl} alt={aircraftType || 'Aircraft'} width={700} height={500}/>
+                    <Image src={imageUrl || notFound} alt={aircraftType || 'Aircraft'} width={700} height={500}/>
                 </div>
             )}
             <div className={'detail__content'}>

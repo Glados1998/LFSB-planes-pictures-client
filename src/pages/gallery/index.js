@@ -4,6 +4,7 @@ import qs from 'qs';
 import GalleryFilter from "@/components/galler-filter";
 import Card from "@/components/card";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
+import {PiWarningFill} from "react-icons/pi";
 
 export default function Gallery() {
     const [sysMessage, setSysMessage] = useState('')
@@ -43,11 +44,13 @@ export default function Gallery() {
 
         axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
             .then(res => {
-                if (res.data.data.length) {
+                if (res.data.data.length > 0) {
                     setAircraft(res.data.data);
                     setPagination(res.data.meta.pagination);
+                    console.log(aircraft)
                 } else {
-                    setSysMessage('Aucun données trouvées');
+                    setSysMessage('Aucun données trouvées.');
+                    console.log(aircraft)
                 }
             })
             .catch(err => {
@@ -80,30 +83,39 @@ export default function Gallery() {
     return (
         <div className={'gallery'}>
             <div className={'filter-component'}>
-                <GalleryFilter onFilterChange={handleFilterChange}/>
+                <GalleryFilter onFilterChange={handleFilterChange} dataPresent={aircraft.length > 0}/>
             </div>
-            {sysMessage ? (
+
+            {aircraft.length > 0 ? (
+                <>
+                    <div className={'gallery_area'}>
+                        {aircraft.map(plane => (
+                            <Card key={plane.id} plane={plane}/>
+                        ))}
+                    </div>
+                    <div className={'gallery_footer pagination'}>
+                        <button className={"btn-pagination"} onClick={handlePrevious} disabled={pageIndex === 1}>
+                            <FaArrowLeft/>
+                        </button>
+                        <span>
+                            {`${pageIndex} sur ${pagination.pageCount}`}
+                        </span>
+                        <button className={"btn-pagination"} onClick={handleNext}
+                                disabled={pageIndex === pagination.pageCount || aircraft.length === 0}>
+                            <FaArrowRight/>
+                        </button>
+                    </div>
+                </>
+            ) : sysMessage && (
                 <div className={'gallery_message'}>
-                    <p>{sysMessage}</p>
-                </div>
-            ) : (
-                <div className={'gallery_area'}>
-                    {aircraft.map(plane => (
-                        <Card key={plane.id} plane={plane}/>
-                    ))}
+                    <div className="message-box">
+                        <div className="icon">
+                            <PiWarningFill/>
+                        </div>
+                        <p>{sysMessage}</p>
+                    </div>
                 </div>
             )}
-            <div className={'gallery_footer pagination'}>
-                <button className={"btn-pagination"} onClick={handlePrevious} disabled={pageIndex === 1}>
-                    <FaArrowLeft/>
-                </button>
-                <span>
-                    {`${pageIndex} sur ${pagination.pageCount}`}
-                </span>
-                <button className={"btn-pagination"} onClick={handleNext} disabled={pageIndex === pagination.pageCount || aircraft.length === 0}>
-                    <FaArrowRight/>
-                </button>
-            </div>
         </div>
     );
 }

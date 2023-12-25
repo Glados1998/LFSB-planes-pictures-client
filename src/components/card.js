@@ -1,26 +1,34 @@
 import Link from "next/link";
 import Image from "next/image";
 import formatDate from "@/utils/timestamp-format";
+import {notFound} from "@/assets/images/imageNotFound.jpg";
 
 
 export default function Card({plane}) {
 
+    const {attributes} = plane;
+
+    const imageUrl = attributes.image?.data?.attributes?.formats?.large?.url;
+    const aircraftType = attributes.type?.data?.attributes?.label;
+    const operator = attributes.operator?.data?.attributes?.label;
+    const publishedAt = formatDate(attributes?.publishedAt);
+
     return (
         <Link href={`/gallery/${plane.id}`} className={'card card__shadow'}>
             <div className="card__image">
-                <Image src={plane.attributes.image.data.attributes.url} alt={plane.attributes.type.data.attributes.label} width={300} height={200}/>
+                <Image src={imageUrl || notFound} alt={aircraftType} width={300} height={200}/>
             </div>
             <div className="card__content">
                 <div className="card__content-title">
-                    <h3>{plane.attributes.type.data.attributes.label}</h3>
-                    <p>{plane.attributes.operator.data.attributes.label}</p>
+                    <h3>{aircraftType}</h3>
+                    <p>{operator}</p>
                 </div>
             </div>
             <div className="card__footer">
                 <button className="button">
-                    Voire plus
+                    Voir plus
                 </button>
-                <p>Publié le {formatDate(plane.attributes.createdAt)}</p>
+                <p>Publié le {publishedAt}</p>
             </div>
         </Link>
     )

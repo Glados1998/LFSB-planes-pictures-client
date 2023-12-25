@@ -1,7 +1,7 @@
-import {useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 import axios from 'axios';
 
-export default function GalleryFilter({onFilterChange}) {
+export default function GalleryFilter({onFilterChange, dataPresent}) {
 
     const [operators, setOperators] = useState([]);
     const [aircraftTypes, setAircraftTypes] = useState([]);
@@ -33,7 +33,7 @@ export default function GalleryFilter({onFilterChange}) {
         <div className={'filter'}>
             <div className={'filter_input operator'}>
                 <label>Company aérienne:</label>
-                <select onChange={e => handleFilterChange('operator', e.target.value)}>
+                <select onChange={e => handleFilterChange('operator', e.target.value)} disabled={!dataPresent}>
                     <option value="">Company aérienne</option>
                     {operators.map(operator => (
                         <option key={operator.id} value={operator.id}>{operator.attributes.label}</option>
@@ -42,7 +42,7 @@ export default function GalleryFilter({onFilterChange}) {
             </div>
             <div className={'filter_input aircraft-name'}>
                 <label>Type d'avion:</label>
-                <select onChange={e => handleFilterChange('type', e.target.value)}>
+                <select onChange={e => handleFilterChange('type', e.target.value)} disabled={!dataPresent}>
                     <option value="">Type d'avion</option>
                     {aircraftTypes.map(aircraftName => (
                         <option key={aircraftName.id} value={aircraftName.id}>{aircraftName.attributes.label}</option>
