@@ -20,8 +20,8 @@ export default function Card({plane}) {
             </div>
             <div className="card__content">
                 <div className="card__content-title">
-                    <h3>{aircraftType}</h3>
-                    <p>{operator}</p>
+                    <h3>{aircraftType || 'N/A'}</h3>
+                    <p>{operator || 'N/A'}</p>
                 </div>
             </div>
             <div className="card__footer">

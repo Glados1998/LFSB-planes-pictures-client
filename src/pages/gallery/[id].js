@@ -73,7 +73,7 @@ export default function AircraftDetail() {
             <div className={'detail__content'}>
                 {aircraftType && (
                     <div className={'detail__content-title'}>
-                        <h2>{aircraftType}</h2>
+                        <h2>{aircraftType || 'N/A'}</h2>
                         <p>{operator || 'N/A'}</p>
                     </div>
                 )}
