@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import formatDate from "@/utils/timestamp-format";
 import {notFound} from "@/assets/images/imageNotFound.jpg";
+import ImageOverlay from "@/components/image-overlay";
 
 export default function AircraftDetail() {
     const router = useRouter();
@@ -13,6 +14,7 @@ export default function AircraftDetail() {
     const [aircraft, setAircraft] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [sysMessage, setSysMessage] = useState('');
+    const [showOverlay, setShowOverlay] = useState(false);
 
     useEffect(() => {
         if (id) {
@@ -43,7 +45,7 @@ export default function AircraftDetail() {
         return (
             <div>
                 <p>{sysMessage}</p>
-                <Link href="/gallery">Return to gallery</Link>
+                <Link href="/gallery">Retour à la galerie</Link>
             </div>
         );
     }
@@ -63,20 +65,27 @@ export default function AircraftDetail() {
     const publishedAt = formatDate(attributes?.publishedAt);
 
 
+    const handleImageClick = () => {
+        setShowOverlay(true);
+    };
+
+    const handleOverlayClose = () => {
+        setShowOverlay(false);
+    };
+
+
     return (
+        <>
         <div className={'detail'}>
-            {imageUrl && (
                 <div className={'detail__image'}>
-                    <Image src={imageUrl || notFound} alt={aircraftType || 'Aircraft'} width={700} height={500}/>
+                    <Image src={imageUrl || notFound} alt={aircraftType || 'Not found'} width={700} height={500}
+                           onClick={handleImageClick}/>
                 </div>
-            )}
             <div className={'detail__content'}>
-                {aircraftType && (
                     <div className={'detail__content-title'}>
                         <h2>{aircraftType || 'N/A'}</h2>
                         <p>{operator || 'N/A'}</p>
                     </div>
-                )}
                 <div className={'detail__content-info'}>
                     <p>Année du premier vol : {yearOfFirstFlight || 'N/A'}</p>
                     <p>Numéro de service : {serviceNumber || 'N/A'}</p>
@@ -91,5 +100,9 @@ export default function AircraftDetail() {
                 </div>
             </div>
         </div>
+            {showOverlay && (
+                <ImageOverlay imageUrl={imageUrl} onClose={handleOverlayClose}/>
+            )}
+        </>
     );
 }

@@ -1,0 +1,20 @@
+@import "colors";
+
+.image-overlay {
+  position: fixed; /* This positions the overlay relative to the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+  background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black */
+  display: grid;
+  place-items: center; /* This centers the content (image) inside the overlay */
+  z-index: 1000; /* High z-index to ensure it overlays everything else */
+
+  &__image > img {
+    border-radius: 1rem;
+  }
+
+  &__footer {
+  }
+}
