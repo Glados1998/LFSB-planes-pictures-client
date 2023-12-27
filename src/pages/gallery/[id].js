@@ -62,7 +62,6 @@ export default function AircraftDetail() {
     const serviceNumber = attributes.serviceNumber;
     const registration = attributes.registration;
     const yearOfConstruction = attributes.yearOfConstruction;
-    const publishedAt = formatDate(attributes?.publishedAt);
 
 
     const handleImageClick = () => {
