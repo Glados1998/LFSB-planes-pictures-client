@@ -91,7 +91,6 @@ export default function AircraftDetail() {
                     <p>Numéro de service : {serviceNumber || 'N/A'}</p>
                     <p>Immatriculation : {registration || 'N/A'}</p>
                     <p>Année de construction : {yearOfConstruction || 'N/A'}</p>
-                    <p>Publié le: {publishedAt}</p>
                 </div>
                 <div className={'detail__content-footer'}>
                     <Link href="/gallery">

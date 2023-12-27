@@ -28,7 +28,6 @@ export default function Card({plane}) {
                 <button className="button">
                     Voir plus
                 </button>
-                <p>Publié le {publishedAt}</p>
             </div>
         </Link>
     )
