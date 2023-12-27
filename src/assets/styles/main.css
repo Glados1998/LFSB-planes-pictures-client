@@ -219,12 +219,12 @@
   border: 2px solid #2540D9;
 }
 .filter_input input:invalid {
-    border: 2px solid #BF1F2C;
+  border: 2px solid #BF1F2C;
 }
 .filter_input input:disabled {
-    border: 2px solid #BDBDBD;
-    color: #9E9E9E;
-    cursor: not-allowed;
+  border: 2px solid #BDBDBD;
+  color: #9E9E9E;
+  cursor: not-allowed;
 }
 .filter_input select {
   padding: 0.5rem;
@@ -239,9 +239,9 @@
   transition: all 0.3s ease-in-out;
 }
 .filter_input select:disabled {
-    border: 2px solid #BDBDBD;
-    color: #9E9E9E;
-    cursor: not-allowed;
+  border: 2px solid #BDBDBD;
+  color: #9E9E9E;
+  cursor: not-allowed;
 }
 
 .btn, .btn-pagination {
@@ -253,9 +253,9 @@
   border-radius: 0.5rem;
   font-weight: 600;
   transition: all 0.3s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .btn:hover, .btn-pagination:hover {
   background: #2540D9;
@@ -347,19 +347,18 @@
 
 /* Color Theme Swatches in Hex */
 .image-overlay {
-    position: fixed; /* This positions the overlay relative to the viewport */
-    top: 0;
-    left: 0;
-    width: 100vw; /* 100% of the viewport width */
-    height: 100vh; /* 100% of the viewport height */
-    background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black */
-    display: grid;
-    place-items: center; /* This centers the content (image) inside the overlay */
-    z-index: 1000; /* High z-index to ensure it overlays everything else */
+  position: fixed; /* This positions the overlay relative to the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+  background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black */
+  display: grid;
+  place-items: center; /* This centers the content (image) inside the overlay */
+  z-index: 1000; /* High z-index to ensure it overlays everything else */
 }
-
 .image-overlay__image > img {
-    border-radius: 1rem;
+  border-radius: 1rem;
 }
 body {
   font-family: "Inter", sans-serif, Arial, Helvetica, sans-serif;
@@ -440,45 +439,45 @@ main {
   justify-items: center;
 }
 .gallery_message {
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: 2rem;
-    justify-items: center;
-    align-items: center;
-    padding: 1rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem;
 }
 .gallery_message .message-box {
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: 1rem;
-    justify-items: center;
-    align-items: center;
-    padding: 2rem;
-    border-radius: 2rem;
-    background: #de3341;
-    color: #ffffff;
-    border: 2.5px solid #BF1F2C;
-    transition: all 0.4s ease-in-out;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 2rem;
+  background: #de3341;
+  color: #ffffff;
+  border: 2.5px solid #BF1F2C;
+  transition: all 0.4s ease-in-out;
 }
 .gallery_message .message-box .icon {
-    font-size: 2rem;
-    display: flex;
-    justify-content: center;
-    color: #ffffff;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
 }
 .gallery_message .message-box p {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
 }
 .gallery_message .message-box:hover {
-    transform: scale(1.05);
-    background: #BF1F2C;
-    transition: all 0.4s ease-in-out;
-    color: #ffffff;
-    padding: 2rem;
-    width: fit-content;
-    border-radius: 2rem;
+  transform: scale(1.05);
+  background: #BF1F2C;
+  transition: all 0.4s ease-in-out;
+  color: #ffffff;
+  padding: 2rem;
+  width: fit-content;
+  border-radius: 2rem;
 }
 .gallery_footer {
   display: grid;
@@ -505,14 +504,13 @@ main {
 .detail__image img {
   border-radius: 0.5rem;
   box-shadow: 0 0 1rem 0 #c2c2c2;
-    transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
-
 .detail__image img:hover {
-    transform: scale(1.05);
-    transition: all 0.6s ease-in-out;
-    box-shadow: 0 0 1rem 0 rgba(194, 194, 194, 0.5);
-    cursor: pointer;
+  transform: scale(1.05);
+  transition: all 0.6s ease-in-out;
+  box-shadow: 0 0 1rem 0 rgba(194, 194, 194, 0.5);
+  cursor: pointer;
 }
 .detail__content {
   display: grid;
@@ -564,13 +562,13 @@ main {
 }
 
 .layout-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
 }
 
 .main-content {
-    flex-grow: 1; /* Allows the content to grow and push the footer down */
+  flex-grow: 1; /* Allows the content to grow and push the footer down */
 }
 
 /*# sourceMappingURL=main.css.map */
