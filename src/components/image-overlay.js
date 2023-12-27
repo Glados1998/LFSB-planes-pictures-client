@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import Image from 'next/image';
 
 export default function ImageOverlay({imageUrl, onClose}) {
-    // Close the overlay when the 'Esc' key is pressed
+
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === 'Escape') {
@@ -11,7 +11,6 @@ export default function ImageOverlay({imageUrl, onClose}) {
         };
         window.addEventListener('keydown', handleKeyDown);
 
-        // Clean up the event listener when the component is unmounted
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };

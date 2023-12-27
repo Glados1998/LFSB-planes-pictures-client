@@ -45,6 +45,7 @@
     transition: all 0.3s ease-in-out;
     transform: scale(1.02);
     border: $Tempest-Browser-Privacy-Panel-1-hex solid 2px;
+
     .button {
       background: $Tempest-Browser-Privacy-Panel-1-hex;
       transition: all 0.3s ease-in-out;
@@ -60,22 +61,22 @@
     grid-auto-flow: row;
 
     &-title {
-        display: grid;
+      display: grid;
       grid-auto-flow: row;
-        grid-auto-columns: max-content;
+      grid-auto-columns: max-content;
       justify-items: left;
-        grid-gap: 1rem;
+      grid-gap: 1rem;
 
-        h3, p {
-            margin: 0;
-            align-self: center;
-        }
+      h3, p {
+        margin: 0;
+        align-self: center;
+      }
 
-        p {
-            font-size: 1rem;
-            font-weight: 500;
-          color: darken($grey, 40%);
-        }
+      p {
+        font-size: 1rem;
+        font-weight: 500;
+        color: darken($grey, 40%);
+      }
     }
   }
 
