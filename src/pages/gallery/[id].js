@@ -10,9 +10,10 @@ import axios from 'axios';
 import {useEffect, useState} from 'react';
 import Link from "next/link";
 import Image from "next/image";
-import formatDate from "@/utils/timestamp-format";
+import formatDate from "@/utils/timeStampFormat";
 import {notFound} from "@/assets/images/imageNotFound.jpg";
 import ImageOverlay from "@/components/image-overlay";
+import MetaDataReader from "@/utils/metaDataReader";
 
 export default function AircraftDetail() {
     // Use the Next.js router to get the id from the query
@@ -22,6 +23,7 @@ export default function AircraftDetail() {
     // State variable for the aircraft data, loading state, system message, and overlay visibility
     const [state, setState] = useState({
         aircraft: null,
+        metaData: null,
         isLoading: true,
         sysMessage: '',
         showOverlay: false
@@ -37,6 +39,9 @@ export default function AircraftDetail() {
                     // If data is returned, update the aircraft state
                     if (response.data.data) {
                         setState(prevState => ({...prevState, aircraft: response.data.data}));
+                        MetaDataReader(response.data.data.attributes.image.data.attributes.url).then(r => {
+                            console.log(r);
+                        }).catch(e => console.error(e));
                     } else {
                         // If no data is returned, set a system message
                         setState(prevState => ({...prevState, sysMessage: 'No data found'}));
