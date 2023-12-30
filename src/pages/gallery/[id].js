@@ -40,10 +40,9 @@ export default function AircraftDetail() {
                     if (response.data.data) {
                         setState(prevState => ({...prevState, aircraft: response.data.data}));
                         MetaDataReader(response.data.data.attributes.image.data.attributes.url).then(r => {
-                            console.log(r);
+                            setState(prevState => ({...prevState, metaData: r}));
                         }).catch(e => console.error(e));
                     } else {
-                        // If no data is returned, set a system message
                         setState(prevState => ({...prevState, sysMessage: 'No data found'}));
                     }
                 })
