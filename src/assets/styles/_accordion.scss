@@ -1,0 +1,19 @@
+@import "colors";
+
+.accordion {
+  background: $text-white;
+  border-radius: .5rem;
+
+
+  &_header {
+    background: lighten($grey, 10%);
+    border-radius: .5rem;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transition: all 0.3s ease-in-out;
+      transform: scale(1.02);
+      border: $Tempest-Browser-Privacy-Panel-1-hex solid 2px;
+    }
+  }
+}

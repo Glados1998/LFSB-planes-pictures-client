@@ -361,6 +361,25 @@
 .image-overlay__image > img {
   border-radius: 1rem;
 }
+
+/* Color Theme Swatches in Hex */
+.accordion {
+    background: #ffffff;
+    border-radius: 0.5rem;
+}
+
+.accordion_header {
+    background: gainsboro;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.accordion_header:hover {
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.02);
+    border: #2540D9 solid 2px;
+}
+
 body {
   font-family: "Inter", sans-serif, Arial, Helvetica, sans-serif;
   background: #E9EBF2;

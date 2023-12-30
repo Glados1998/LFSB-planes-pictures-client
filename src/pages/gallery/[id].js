@@ -14,6 +14,7 @@ import formatDate from "@/utils/timeStampFormat";
 import {notFound} from "@/assets/images/imageNotFound.jpg";
 import ImageOverlay from "@/components/image-overlay";
 import MetaDataReader from "@/utils/metaDataReader";
+import Accordion from "@/components/accordion";
 
 export default function AircraftDetail() {
     // Use the Next.js router to get the id from the query
@@ -101,10 +102,32 @@ export default function AircraftDetail() {
                         <p>{operator || 'N/A'}</p>
                     </div>
                     <div className={'detail__content-info'}>
-                        <p>Date du premier vol : {yearOfFirstFlight || 'N/A'}</p>
-                        <p>Année de construction : {yearOfConstruction || 'N/A'}</p>
-                        <p>Numéro de service : {serviceNumber || 'N/A'}</p>
-                        <p>Immatriculation : {registration || 'N/A'}</p>
+                        <Accordion
+                            controllerElement={(isExpanded) => (
+                                <p>
+                                    {isExpanded ? "Hide" : "Show"} Content
+                                </p>
+
+                            )}
+                        >
+                            <p>Date du premier vol : {yearOfFirstFlight || 'N/A'}</p>
+                            <p>Année de construction : {yearOfConstruction || 'N/A'}</p>
+                            <p>Numéro de service : {serviceNumber || 'N/A'}</p>
+                            <p>Immatriculation : {registration || 'N/A'}</p>
+                        </Accordion>
+                        <Accordion
+                            controllerElement={(isExpanded) => (
+                                <button>
+                                    {isExpanded ? "Hide" : "Show"} Content
+                                </button>
+                            )}
+                        >
+                            <p>Date du premier vol : {yearOfFirstFlight || 'N/A'}</p>
+                            <p>Année de construction : {yearOfConstruction || 'N/A'}</p>
+                            <p>Numéro de service : {serviceNumber || 'N/A'}</p>
+                            <p>Immatriculation : {registration || 'N/A'}</p>
+                        </Accordion>
+
                     </div>
                     <div className={'detail__content-footer'}>
                         <Link href="/gallery">
