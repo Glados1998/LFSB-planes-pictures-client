@@ -16,7 +16,7 @@ import ImageOverlay from "@/components/image-overlay";
 import MetaDataReader from "@/utils/metaDataReader";
 import Accordion from "@/components/accordion";
 import {FaArrowDown, FaArrowUp} from "react-icons/fa";
-import {MdAccessAlarm, MdCamera, MdCameraAlt} from "react-icons/md";
+import {MdAccessAlarm, MdBlurOn, MdCamera, MdCameraAlt, MdFlashOff, MdFlashOn, MdIso} from "react-icons/md";
 
 export default function AircraftDetail() {
     // Use the Next.js router to get the id from the query
@@ -105,7 +105,7 @@ export default function AircraftDetail() {
     const yearOfConstruction = attributes.yearOfConstruction;
 
     //extract the metadata
-    const flash = state.metaData?.Flash?.description || 'N/A';
+    const flash = state.metaData?.Flash?.value?.Fired?.value || 'N/A';
     const iso = state.metaData?.ISOSpeedRatings?.value || 'N/A';
     const model = state.metaData?.Model?.description || 'N/A';
     const modelMaker = state.metaData?.Make?.description || 'N/A';
@@ -133,7 +133,8 @@ export default function AircraftDetail() {
                         <Accordion
                             controllerElement={(isExpanded) => (
                                 <span>
-                                    {isExpanded ? <FaArrowUp/> : <FaArrowDown/>} Détails de l'appareil
+                                    {isExpanded ? <FaArrowUp className={'arrow'}/> :
+                                        <FaArrowDown className={'arrow'}/>} Détails de l'appareil
                                 </span>
                             )}
                         >
@@ -145,7 +146,8 @@ export default function AircraftDetail() {
                         <Accordion
                             controllerElement={(isExpanded) => (
                                 <span>
-                                    {isExpanded ? <FaArrowUp/> : <FaArrowDown/>} Détails de l'image
+                                    {isExpanded ? <FaArrowUp className={'arrow'}/> :
+                                        <FaArrowDown className={'arrow'}/>} Détails de l'image
                                 </span>
                             )}
                         >
@@ -179,15 +181,51 @@ export default function AircraftDetail() {
                                         </div>
                                     </div>
                                     <div className="image-metadata-container-content-column">
-                                        colonne 2
+                                        <div className="image-metadata-container-content-column-item">
+                                            <i title={'Iso'}>
+                                                <MdIso/>
+                                            </i>
+                                            <span>{iso}</span>
+                                        </div>
+                                        <div className="image-metadata-container-content-column-item">
+                                            {flash === 'true' ? (
+                                                <>
+                                                    <i title={'Flash'}>
+                                                        <MdFlashOn/>
+                                                    </i>
+                                                    <span>Fash (Déclenché)</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <i title={'Flash'}>
+                                                        <MdFlashOff/>
+                                                    </i>
+                                                    <span>
+                                                        Flash (Éteint, non déclenché)
+                                                    </span>
+                                                </>
+                                            )}
+                                        </div>
                                     </div>
                                     <div className="image-metadata-container-content-column">
-                                        colonne 3
+                                        <div className="image-metadata-container-content-column-item">
+                                            <i title={'Distance focale'}>
+                                                <MdBlurOn/>
+                                            </i>
+                                            <span>{focalLength}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="image-metadata-container-footer">
+                                    <div className="image-metadata-container-footer-copyright">
+                                        <span>&copy; {copyright}</span>
+                                    </div>
+                                    <div className="image-metadata-container-footer-artist">
+                                        <span>{artist}</span>
                                     </div>
                                 </div>
                             </div>
                         </Accordion>
-
                     </div>
                     <div className={'detail__content-footer'}>
                         <Link href="/gallery">

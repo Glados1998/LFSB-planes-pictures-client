@@ -2,7 +2,7 @@
 
 .accordion {
   background: $text-white;
-  border-radius: .5rem;
+  border-radius: 1rem;
   margin-bottom: 1rem;
   transition: all 0.3s ease-in-out;
   transform: scale(1.00);
@@ -17,6 +17,15 @@
     transition: all 0.3s ease-in-out;
     color: #000;
 
+    &:hover {
+      .arrow {
+        transition: all 0.3s ease-in-out;
+        background: $Tempest-Browser-Privacy-Panel-1-hex;
+        color: $text-white;
+        border-radius: .5rem;
+        padding: .4rem;
+      }
+    }
   }
 
   &_content {
@@ -32,5 +41,11 @@
     transition: all 0.3s ease-in-out;
     transform: scale(1.02);
     border: $Tempest-Browser-Privacy-Panel-1-hex solid 2px;
+  }
+
+  .arrow {
+    transition: all 0.3s ease-in-out;
+    border-radius: .5rem;
+    padding: .4rem;
   }
 }
