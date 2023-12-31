@@ -11,7 +11,7 @@ import {useEffect, useState} from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import formatDate from "@/utils/timeStampFormat";
-import {notFound} from "@/assets/images/imageNotFound.jpg";
+import notFound from "@/assets/images/imageNotFound.jpg";
 import ImageOverlay from "@/components/image-overlay";
 import MetaDataReader from "@/utils/metaDataReader";
 
@@ -78,7 +78,7 @@ export default function AircraftDetail() {
 
     // Extract the aircraft attributes for easier access
     const {attributes} = state.aircraft;
-    const imageUrl = attributes.image?.data?.attributes?.formats?.large?.url;
+    const imageUrl = attributes.image?.data?.attributes?.url;
     const aircraftType = attributes.type?.data?.attributes?.label;
     const operator = attributes.operator?.data?.attributes?.label;
     const yearOfFirstFlight = formatDate(attributes?.yearOfFirstFlight);

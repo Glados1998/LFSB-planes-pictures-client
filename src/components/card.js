@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import {notFound} from "@/assets/images/imageNotFound.jpg";
+import notFound from "@/assets/images/imageNotFound.jpg";
 
 export default function Card({plane}) {
     const {attributes} = plane;
     const {image, type, operator} = attributes;
 
-    const imageUrl = image?.data?.attributes?.formats?.large?.url || notFound;
+    const imageUrl = image?.data?.attributes?.url || notFound;
     const aircraftType = type?.data?.attributes?.label || 'N/A';
     const operatorLabel = operator?.data?.attributes?.label || 'N/A';
 
