@@ -218,10 +218,6 @@ main {
       font-weight: 600;
     }
 
-    &-footer {
-
-    }
-
     &-footer > a {
       transition: all 0.3s ease-in-out;
       color: $black;
@@ -333,7 +329,5 @@ main {
         font-size: 1.05rem;
       }
     }
-
-
   }
 }

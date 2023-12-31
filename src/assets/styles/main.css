@@ -379,7 +379,6 @@
   transition: all 0.3s ease-in-out;
   color: #000;
 }
-
 .accordion_header > span:hover .arrow {
   transition: all 0.3s ease-in-out;
   background: #2540D9;
@@ -399,7 +398,6 @@
   transform: scale(1.02);
   border: #2540D9 solid 2px;
 }
-
 .accordion .arrow {
   transition: all 0.3s ease-in-out;
   border-radius: 0.5rem;
@@ -670,7 +668,6 @@ main {
   width: 8rem;
   word-wrap: break-word;
 }
-
 .image-metadata-container-footer {
   display: grid;
   grid-auto-flow: column;
@@ -679,7 +676,6 @@ main {
   justify-content: center;
   margin-top: 2rem;
 }
-
 .image-metadata-container-footer-copyright span, .image-metadata-container-footer-artist span {
   align-self: center;
   font-weight: normal;
