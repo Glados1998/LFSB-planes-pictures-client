@@ -9,7 +9,7 @@ export default function Accordion({controllerElement, children}) {
                 {controllerElement(isExpanded)}
             </div>
             {isExpanded && (
-                <div className={'accordion__content'}>
+                <div className={'accordion_content'}>
                     {children}
                 </div>
             )}

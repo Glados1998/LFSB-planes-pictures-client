@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import {notFound} from "@/assets/images/imageNotFound.jpg";
+import notFound from "@/assets/images/imageNotFound.jpg";
 
 export default function Card({plane}) {
     const {attributes} = plane;
