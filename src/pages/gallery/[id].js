@@ -14,6 +14,9 @@ import formatDate from "@/utils/timeStampFormat";
 import notFound from "@/assets/images/imageNotFound.jpg";
 import ImageOverlay from "@/components/image-overlay";
 import MetaDataReader from "@/utils/metaDataReader";
+import Accordion from "@/components/accordion";
+import {FaArrowDown, FaArrowUp} from "react-icons/fa";
+import {MdAccessAlarm, MdBlurOn, MdCamera, MdCameraAlt, MdFlashOff, MdFlashOn, MdIso} from "react-icons/md";
 
 export default function AircraftDetail() {
     // Use the Next.js router to get the id from the query
@@ -39,9 +42,6 @@ export default function AircraftDetail() {
                     // If data is returned, update the aircraft state
                     if (response.data.data) {
                         setState(prevState => ({...prevState, aircraft: response.data.data}));
-                        MetaDataReader(response.data.data.attributes.image.data.attributes.url).then(r => {
-                            setState(prevState => ({...prevState, metaData: r}));
-                        }).catch(e => console.error(e));
                     } else {
                         setState(prevState => ({...prevState, sysMessage: 'No data found'}));
                     }
@@ -57,6 +57,24 @@ export default function AircraftDetail() {
                 });
         }
     }, [id]);
+
+    useEffect(() => {
+        if (state.aircraft) {
+            const imageUrl = state.aircraft.attributes.image?.data?.attributes?.url;
+            console.log(imageUrl)
+            if (imageUrl) {
+                MetaDataReader(imageUrl)
+                    .then(data => {
+                        setState(prevState => ({...prevState, metaData: data}));
+                    })
+                    .catch(error => console.error('Error fetching EXIF data:', error));
+            }
+        }
+    }, [state.aircraft]);
+
+    useEffect(() => {
+        console.log('Updated metaData:', state.metaData);
+    }, [state.metaData]);
 
     // Render loading, error, or no data states
     if (state.isLoading) {
@@ -86,6 +104,17 @@ export default function AircraftDetail() {
     const registration = attributes.registration;
     const yearOfConstruction = attributes.yearOfConstruction;
 
+    //extract the metadata
+    const flash = state.metaData?.Flash?.value?.Fired?.value || 'N/A';
+    const iso = state.metaData?.ISOSpeedRatings?.value || 'N/A';
+    const model = state.metaData?.Model?.description || 'N/A';
+    const modelMaker = state.metaData?.Make?.description || 'N/A';
+    const focalNumber = state.metaData?.FNumber?.description || 'N/A';
+    const focalLength = state.metaData?.FocalLength?.description || 'N/A';
+    const exposureTime = state.metaData?.ExposureTime?.description || 'N/A';
+    const artist = state.metaData?.Artist?.description || 'Laurent Greder';
+    const copyright = state.metaData?.Copyright?.description || 'All Right Reserved';
+
     // Render the aircraft details and image overlay
     return (
         <>
@@ -101,10 +130,102 @@ export default function AircraftDetail() {
                         <p>{operator || 'N/A'}</p>
                     </div>
                     <div className={'detail__content-info'}>
-                        <p>Date du premier vol : {yearOfFirstFlight || 'N/A'}</p>
-                        <p>Année de construction : {yearOfConstruction || 'N/A'}</p>
-                        <p>Numéro de service : {serviceNumber || 'N/A'}</p>
-                        <p>Immatriculation : {registration || 'N/A'}</p>
+                        <Accordion
+                            controllerElement={(isExpanded) => (
+                                <span>
+                                    {isExpanded ? <FaArrowUp className={'arrow'}/> :
+                                        <FaArrowDown className={'arrow'}/>} Détails de l'appareil
+                                </span>
+                            )}
+                        >
+                            <p>Date du premier vol : {yearOfFirstFlight || 'N/A'}</p>
+                            <p>Année de construction : {yearOfConstruction || 'N/A'}</p>
+                            <p>Numéro de service : {serviceNumber || 'N/A'}</p>
+                            <p>Immatriculation : {registration || 'N/A'}</p>
+                        </Accordion>
+                        <Accordion
+                            controllerElement={(isExpanded) => (
+                                <span>
+                                    {isExpanded ? <FaArrowUp className={'arrow'}/> :
+                                        <FaArrowDown className={'arrow'}/>} Détails de l'image
+                                </span>
+                            )}
+                        >
+                            <div className="image-metadata-container">
+                                <div className="image-metadata-container-header">
+                                    <i title={'camera'}>
+                                        <MdCameraAlt/>
+                                    </i>
+                                    <div className="image-metadata-container-header-camera">
+                                        <h3>
+                                            {model}
+                                        </h3>
+                                        <span>
+                                        {modelMaker}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div className="image-metadata-container-content">
+                                    <div className="image-metadata-container-content-column">
+                                        <div className="image-metadata-container-content-column-item">
+                                            <i title={'Ouverture'}>
+                                                <MdCamera/>
+                                            </i>
+                                            <span>{focalNumber}</span>
+                                        </div>
+                                        <div className="image-metadata-container-content-column-item">
+                                            <i title={'Ouverture'}>
+                                                <MdAccessAlarm/>
+                                            </i>
+                                            <span>{exposureTime}</span>
+                                        </div>
+                                    </div>
+                                    <div className="image-metadata-container-content-column">
+                                        <div className="image-metadata-container-content-column-item">
+                                            <i title={'Iso'}>
+                                                <MdIso/>
+                                            </i>
+                                            <span>{iso}</span>
+                                        </div>
+                                        <div className="image-metadata-container-content-column-item">
+                                            {flash === 'true' ? (
+                                                <>
+                                                    <i title={'Flash'}>
+                                                        <MdFlashOn/>
+                                                    </i>
+                                                    <span>Fash (Déclenché)</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <i title={'Flash'}>
+                                                        <MdFlashOff/>
+                                                    </i>
+                                                    <span>
+                                                        Flash (Éteint, non déclenché)
+                                                    </span>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="image-metadata-container-content-column">
+                                        <div className="image-metadata-container-content-column-item">
+                                            <i title={'Distance focale'}>
+                                                <MdBlurOn/>
+                                            </i>
+                                            <span>{focalLength}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="image-metadata-container-footer">
+                                    <div className="image-metadata-container-footer-copyright">
+                                        <span>&copy; {copyright}</span>
+                                    </div>
+                                    <div className="image-metadata-container-footer-artist">
+                                        <span>{artist}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </Accordion>
                     </div>
                     <div className={'detail__content-footer'}>
                         <Link href="/gallery">
