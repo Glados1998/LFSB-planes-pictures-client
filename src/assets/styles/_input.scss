@@ -68,7 +68,6 @@
   }
 }
 
-
 .btn {
   color: $black;
   background: $text-white;
@@ -100,14 +99,13 @@
     border-radius: .5rem;
     font-weight: 600;
   }
-
 }
 
 .btn-pagination {
   @extend .btn;
-  display: flex; /* Enables flexbox */
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: .7rem;
   border-radius: 100%;
   width: fit-content;
@@ -133,13 +131,12 @@
   }
 
   svg {
-    display: block; /* Removes any extra space below the SVG */
-    margin: auto; /* Additional assurance for centering */
+    display: block;
+    margin: auto;
     width: 1rem;
     height: 1rem;
   }
 }
-
 
 .language_switcher {
 
@@ -183,5 +180,4 @@
 .selected {
   background: $Tempest-Browser-Privacy-Panel-2-hex;
   color: $text-white;
-
 }

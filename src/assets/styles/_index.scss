@@ -7,7 +7,6 @@
 @import 'accordion';
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-
 body {
   font-family: 'Inter', sans-serif, Arial, Helvetica, sans-serif;
   background: $Tempest-Browser-Privacy-Panel-5-hex;
@@ -242,11 +241,11 @@ main {
 .layout-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Full viewport height */
+  min-height: 100vh;
 }
 
 .main-content {
-  flex-grow: 1; /* Allows the content to grow and push the footer down */
+  flex-grow: 1;
 }
 
 .image-metadata-container {

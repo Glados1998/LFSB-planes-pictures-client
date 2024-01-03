@@ -12,7 +12,8 @@
   border: 2px solid transparent;
   border-radius: 1.5rem;
   box-shadow: 0 0 1rem 0 rgba($grey, 1);
-  width: 300px;
+  width: 350px;
+  max-width: 100%;
   height: fit-content;
   transition: all 0.3s ease-in-out;
   transform: scale(1.00);
@@ -59,6 +60,7 @@
   &__content {
     display: grid;
     grid-auto-flow: row;
+    width: inherit;
 
     &-title {
       display: grid;
@@ -66,10 +68,12 @@
       grid-auto-columns: max-content;
       justify-items: left;
       grid-gap: 1rem;
+      width: inherit;
 
       h3, p {
         margin: 0;
         align-self: center;
+        width: inherit;
       }
 
       p {

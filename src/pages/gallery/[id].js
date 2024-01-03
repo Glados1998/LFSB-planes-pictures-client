@@ -9,7 +9,6 @@ import {useRouter} from 'next/router';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import Link from "next/link";
-import Image from "next/image";
 import formatDate from "@/utils/timeStampFormat";
 import notFound from "@/assets/images/imageNotFound.jpg";
 import ImageOverlay from "@/components/image-overlay";
@@ -72,10 +71,6 @@ export default function AircraftDetail() {
         }
     }, [state.aircraft]);
 
-    useEffect(() => {
-        console.log('Updated metaData:', state.metaData);
-    }, [state.metaData]);
-
     // Render loading, error, or no data states
     if (state.isLoading) {
         return <div>Loading aircraft details...</div>;
@@ -121,8 +116,8 @@ export default function AircraftDetail() {
             <div className={'detail'}>
                 <div className={'detail__image'}>
                     {/* Image that opens the overlay when clicked */}
-                    <Image src={imageUrl || notFound} alt={aircraftType || 'Not found'} width={700} height={500}
-                           onClick={() => setState(prevState => ({...prevState, showOverlay: true}))}/>
+                    <img src={imageUrl || notFound} alt={aircraftType || 'Not found'} width={700} height={500}
+                         onClick={() => setState(prevState => ({...prevState, showOverlay: true}))}/>
                 </div>
                 <div className={'detail__content'}>
                     <div className={'detail__content-title'}>

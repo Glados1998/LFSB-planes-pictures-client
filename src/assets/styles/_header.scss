@@ -8,8 +8,8 @@
 
   &_nav {
     display: grid;
-    grid-template-columns: auto 1fr auto; /* Logo, Flexible Space, Language Switcher */
-    justify-content: space-between; /* Aligns items to each side */
+    grid-template-columns: auto 1fr auto;
+    justify-content: space-between;
     align-items: center;
 
     &_logo {

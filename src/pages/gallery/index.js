@@ -47,10 +47,8 @@ export default function Gallery() {
                 if (res.data.data.length > 0) {
                     setAircraft(res.data.data);
                     setPagination(res.data.meta.pagination);
-                    console.log(aircraft)
                 } else {
                     setSysMessage('Aucun données trouvées.');
-                    console.log(aircraft)
                 }
             })
             .catch(err => {
