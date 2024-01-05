@@ -116,7 +116,8 @@ export default function AircraftDetail() {
             <div className={'detail'}>
                 <div className={'detail__image'}>
                     {/* Image that opens the overlay when clicked */}
-                    <img src={imageUrl || notFound} alt={aircraftType || 'Not found'} width={700} height={500}
+                    <img className={'normal-img'} src={imageUrl || notFound} alt={aircraftType || 'Not found'}
+                         width={700} height={500}
                          onClick={() => setState(prevState => ({...prevState, showOverlay: true}))}/>
                 </div>
                 <div className={'detail__content'}>

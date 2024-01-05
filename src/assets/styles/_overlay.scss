@@ -18,3 +18,15 @@
   &__footer {
   }
 }
+
+@media (max-width: 1080px) and (min-width: 768px) {
+  .image-overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .image-overlay {
+    display: none;
+  }
+}
