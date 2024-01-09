@@ -29,10 +29,10 @@ export default function Header() {
                 {showMenu && <div className={'header_nav_menu'}>
                     <ul className={'header_nav_menu'}>
                         <li className={'header_nav_menu_link'}>
-                            <Link href='/'>Acceuil</Link>
+                            <Link href='/' onClick={() => setShowMenu(!showMenu)}>Acceuil</Link>
                         </li>
                         <li className={'header_nav_menu_link'}>
-                            <Link href='/gallery'>Galerie</Link>
+                            <Link href='/gallery' onClick={() => setShowMenu(!showMenu)}>Galerie</Link>
                         </li>
                     </ul>
                 </div>}
