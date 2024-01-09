@@ -1634,7 +1634,6 @@ main {
     justify-content: center;
     margin: 5rem 0 5rem 0;
   }
-
   .detail__image {
     place-self: center;
   }
@@ -1683,11 +1682,9 @@ main {
     font-size: 1rem;
     font-weight: normal;
   }
-
   .detail__content-footer {
     place-self: center;
   }
-
   .detail__content-footer a {
     transition: all 0.3s ease-in-out;
     color: #000000;
@@ -1697,7 +1694,6 @@ main {
     border-radius: 0.5rem;
     text-decoration: none;
   }
-
   .detail__content-footer a:hover {
     background: #2540D9;
     transition: all 0.3s ease-in-out;
