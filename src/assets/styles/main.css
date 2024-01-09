@@ -1629,12 +1629,18 @@ main {
   .detail {
     display: grid;
     grid-auto-flow: row;
-    grid-auto-columns: max-content;
+    grid-auto-rows: min-content;
     grid-gap: 1em;
     justify-content: center;
     margin: 5rem 0 5rem 0;
   }
+
+  .detail__image {
+    place-self: center;
+  }
   .detail__image img {
+    width: 380px;
+    height: auto;
     border-radius: 0.5rem;
     box-shadow: 0 0 1rem 0 #c2c2c2;
     transition: all 0.3s ease-in-out;
@@ -1650,7 +1656,7 @@ main {
     grid-auto-flow: row;
     grid-auto-rows: max-content;
     grid-gap: 1rem;
-    width: 40rem;
+    width: inherit;
     place-self: center;
   }
   .detail__content-title {
@@ -1661,7 +1667,7 @@ main {
     grid-gap: 0.5rem;
   }
   .detail__content-title h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
   }
   .detail__content-title h2, .detail__content-title p {
@@ -1677,16 +1683,22 @@ main {
     font-size: 1rem;
     font-weight: normal;
   }
-  .detail__content-footer > a {
+
+  .detail__content-footer {
+    place-self: center;
+  }
+
+  .detail__content-footer a {
     transition: all 0.3s ease-in-out;
     color: #000000;
-    font-weight: 600;
+    font-weight: 500;
     padding: 0.4rem;
     width: fit-content;
     border-radius: 0.5rem;
     text-decoration: none;
   }
-  .detail__content-footer > a:hover {
+
+  .detail__content-footer a:hover {
     background: #2540D9;
     transition: all 0.3s ease-in-out;
     color: #ffffff;
@@ -1713,6 +1725,7 @@ main {
   }
   .image-metadata-container-header-camera h3 {
     margin: 0 0 0.1rem 0;
+    font-size: 1.2rem;
   }
   .image-metadata-container-header-camera span {
     font-size: 1rem;
@@ -1723,13 +1736,13 @@ main {
     margin-top: 1.5rem;
     display: grid;
     grid-auto-flow: column;
-    justify-content: space-evenly;
+    justify-content: left;
   }
   .image-metadata-container-content-column {
     display: grid;
     grid-auto-flow: row;
     grid-auto-rows: max-content;
-    grid-gap: 1.5rem;
+    grid-gap: 1.1rem;
     justify-items: left;
   }
   .image-metadata-container-content-column-item {
@@ -1737,29 +1750,29 @@ main {
     align-items: center;
   }
   .image-metadata-container-content-column-item i {
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: flex;
     justify-content: center;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
   }
   .image-metadata-container-content-column-item span {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: normal;
-    width: 8rem;
+    width: 4rem;
     word-wrap: break-word;
   }
   .image-metadata-container-footer {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: max-content;
-    grid-gap: 1rem;
+    grid-gap: 0.5rem;
     justify-content: center;
     margin-top: 2rem;
   }
   .image-metadata-container-footer-copyright span, .image-metadata-container-footer-artist span {
     align-self: center;
     font-weight: normal;
-    font-size: 1.05rem;
+    font-size: 0.9rem;
   }
 }
 
