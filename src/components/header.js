@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Link from 'next/link';
+import {FaAngleDown, FaAngleUp} from 'react-icons/fa';
 
 export default function Header() {
+
+    const [showMenu, setShowMenu] = useState(false);
 
     return (
         <header className={'header'}>
@@ -11,6 +14,10 @@ export default function Header() {
                         LFSB Planes Pictures
                     </h1>
                 </div>
+                <div className="header_nav_toogle">
+                    {showMenu ? <FaAngleUp onClick={() => setShowMenu(!showMenu)}/> :
+                        <FaAngleDown onClick={() => setShowMenu(!showMenu)}/>}
+                </div>
                 <ul className={'header_nav_bar'}>
                     <li className={'header_nav_bar_link'}>
                         <Link href='/'>Acceuil</Link>
@@ -19,6 +26,16 @@ export default function Header() {
                         <Link href='/gallery'>Galerie</Link>
                     </li>
                 </ul>
+                {showMenu && <div className={'header_nav_menu'}>
+                    <ul className={'header_nav_menu'}>
+                        <li className={'header_nav_menu_link'}>
+                            <Link href='/'>Acceuil</Link>
+                        </li>
+                        <li className={'header_nav_menu_link'}>
+                            <Link href='/gallery'>Galerie</Link>
+                        </li>
+                    </ul>
+                </div>}
                 {/*<div className={'header_nav_language'}>
                     <LanguageSwitcher/>
                 </div>*/}
