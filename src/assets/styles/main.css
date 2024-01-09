@@ -68,6 +68,7 @@
     position: relative;
     width: 100%;
     bottom: 0;
+    padding: 1rem 0;
   }
   .footer__cols {
     display: grid;
@@ -80,13 +81,13 @@
     margin-left: 0;
   }
   .footer__cols-item h3 {
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 600;
   }
   .footer__info {
     display: grid;
     grid-auto-flow: row;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   .footer__info p {
     margin: 0.3rem;
@@ -117,6 +118,7 @@
     font-weight: 500;
     transition: all 0.2s ease-in-out;
     padding: 0.1rem;
+    font-size: 0.8rem;
   }
   .footer__nav-link > a:hover {
     padding: 0.1rem;
