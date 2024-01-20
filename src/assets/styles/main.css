@@ -276,6 +276,18 @@
   grid-auto-flow: row;
   width: inherit;
 }
+
+.card__content h3, .card__content p {
+    margin: 0;
+    align-self: center;
+    width: inherit;
+}
+
+.card__content p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #5c5c5c;
+}
 .card__content-title {
   display: grid;
   grid-auto-flow: row;
@@ -284,15 +296,12 @@
   grid-gap: 1rem;
   width: inherit;
 }
-.card__content-title h3, .card__content-title p {
-  margin: 0;
-  align-self: center;
-  width: inherit;
-}
-.card__content-title p {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #5c5c5c;
+
+.card__content-subtitle {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 0.5rem;
+    margin-top: 0.5rem;
 }
 .card__image img {
   width: 100%;

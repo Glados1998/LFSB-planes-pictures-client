@@ -62,6 +62,18 @@
     grid-auto-flow: row;
     width: inherit;
 
+    h3, p {
+      margin: 0;
+      align-self: center;
+      width: inherit;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 500;
+      color: darken($grey, 40%);
+    }
+
     &-title {
       display: grid;
       grid-auto-flow: row;
@@ -69,18 +81,13 @@
       justify-items: left;
       grid-gap: 1rem;
       width: inherit;
+    }
 
-      h3, p {
-        margin: 0;
-        align-self: center;
-        width: inherit;
-      }
-
-      p {
-        font-size: 1rem;
-        font-weight: 500;
-        color: darken($grey, 40%);
-      }
+    &-subtitle {
+      display: grid;
+      grid-auto-flow: row;
+      grid-gap: .5rem;
+      margin-top: .5rem;
     }
   }
 
@@ -190,7 +197,6 @@
       border-radius: .5rem;
     }
   }
-
 }
 
 @media (max-width: 767px) {
