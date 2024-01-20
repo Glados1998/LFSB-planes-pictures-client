@@ -1,6 +1,7 @@
 import {useEffect} from 'react';
 import Image from 'next/image';
 import notFound from "@/assets/images/imageNotFound.jpg";
+import {MdClose} from "react-icons/md";
 
 export default function ImageOverlay({imageUrl, onClose}) {
 
@@ -18,15 +19,16 @@ export default function ImageOverlay({imageUrl, onClose}) {
     }, [onClose]);
 
     return (
-        <div className='image-overlay'>
-            <div className='image-overlay__image'>
+        <div className='overlay'>
+            <div className='overlay-column'>
                 <Image src={imageUrl || notFound} alt='Aircraft' width={1200} height={800}/>
+                <div className='overlay-column__side'>
+                    <button onClick={onClose}>
+                        <MdClose/>
+                    </button>
+                </div>
             </div>
-            <div className='image-overlay__footer'>
-                <button className='btn' onClick={onClose}>
-                    Fermer
-                </button>
-            </div>
+
         </div>
     );
 }

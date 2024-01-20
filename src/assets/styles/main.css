@@ -276,17 +276,15 @@
   grid-auto-flow: row;
   width: inherit;
 }
-
 .card__content h3, .card__content p {
-    margin: 0;
-    align-self: center;
-    width: inherit;
+  margin: 0;
+  align-self: center;
+  width: inherit;
 }
-
 .card__content p {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #5c5c5c;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #5c5c5c;
 }
 .card__content-title {
   display: grid;
@@ -296,12 +294,11 @@
   grid-gap: 1rem;
   width: inherit;
 }
-
 .card__content-subtitle {
-    display: grid;
-    grid-auto-flow: row;
-    grid-gap: 0.5rem;
-    margin-top: 0.5rem;
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 .card__image img {
   width: 100%;
@@ -806,20 +803,76 @@
     cursor: not-allowed;
   }
 }
-.image-overlay {
+
+.overlay {
   position: fixed;
+  display: flex;
+  justify-content: center;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
-  display: grid;
-  place-items: center;
   z-index: 1000;
 }
-.image-overlay__image > img {
+
+.overlay-column {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min-content;
+  grid-gap: 1rem;
+  place-items: center;
+  justify-content: center;
+}
+
+.overlay-column img {
   border-radius: 1rem;
 }
+
+.overlay-column__side {
+  position: relative;
+  top: -22.5rem;
+}
+
+.overlay-column__side button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem;
+  border-radius: 100%;
+  width: fit-content;
+  height: fit-content;
+  transition: all 0.3s ease-in-out;
+}
+
+.overlay-column__side button:hover {
+  background: #2540D9;
+  transition: all 0.3s ease-in-out;
+  color: #ffffff;
+  width: fit-content;
+  padding: 0.4rem;
+  border-radius: 100%;
+}
+
+.overlay-column__side button:disabled {
+  background: #BDBDBD;
+  color: #9E9E9E;
+  border: none;
+  width: fit-content;
+  font-weight: 600;
+  padding: 0.4rem;
+  border-radius: 100%;
+}
+
+.overlay-column__side button svg {
+  display: block;
+  margin: auto;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 @media (max-width: 1080px) and (min-width: 768px) {
   .image-overlay {
     display: none;
