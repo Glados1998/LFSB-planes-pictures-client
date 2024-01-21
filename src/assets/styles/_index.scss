@@ -212,8 +212,29 @@ main {
     }
 
     &-info {
-      font-size: 1.2rem;
-      font-weight: 600;
+      span {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      &-column {
+        display: grid;
+        grid-auto-flow: column;
+        grid-gap: 1rem;
+
+        &-row {
+          &-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            span {
+              font-size: 1rem;
+              font-weight: 600;
+            }
+          }
+        }
+      }
     }
 
     &-footer > a {
@@ -537,8 +558,29 @@ main {
       }
 
       &-info {
-        font-size: 1rem;
-        font-weight: normal;
+        span {
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+
+        &-column {
+          display: grid;
+          grid-auto-flow: column;
+          grid-gap: 1rem;
+
+          &-row {
+            &-item {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              span {
+                font-size: 1rem;
+                font-weight: 600;
+              }
+            }
+          }
+        }
       }
 
       &-footer > a {
@@ -866,8 +908,29 @@ main {
       }
 
       &-info {
-        font-size: 1rem;
-        font-weight: normal;
+        span {
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+
+        &-column {
+          display: grid;
+          grid-auto-flow: row;
+          grid-gap: .5rem;
+
+          &-row {
+            &-item {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              span {
+                font-size: 1rem;
+                font-weight: 600;
+              }
+            }
+          }
+        }
       }
 
       &-footer {

@@ -134,10 +134,28 @@ export default function AircraftDetail() {
                                 </span>
                             )}
                         >
-                            <p>Date du premier vol : {yearOfFirstFlight || 'N/A'}</p>
-                            <p>Année de construction : {yearOfConstruction || 'N/A'}</p>
-                            <p>Numéro de service : {serviceNumber || 'N/A'}</p>
-                            <p>Immatriculation : {registration || 'N/A'}</p>
+                            <div className="detail__content-info-column">
+                                <div className="detail__content-info-column-row">
+                                    <div className="detail__content-info-column-row-item">
+                                        <p>Date du premier vol :</p>
+                                        <span>{yearOfFirstFlight || 'N/A'}</span>
+                                    </div>
+                                    <div className="detail__content-info-column-row-item">
+                                        <p>Année de construction :</p>
+                                        <span>{yearOfConstruction || 'N/A'}</span>
+                                    </div>
+                                </div>
+                                <div className="detail__content-info-column-row">
+                                    <div className="detail__content-info-column-row-item">
+                                        <p>Numéro de service :</p>
+                                        <span>{serviceNumber || 'N/A'}</span>
+                                    </div>
+                                    <div className="detail__content-info-column-row-item">
+                                        <p>Immatriculation :</p>
+                                        <span>{registration || 'N/A'}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </Accordion>
                         <Accordion
                             controllerElement={(isExpanded) => (
