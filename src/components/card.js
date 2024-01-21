@@ -9,6 +9,7 @@ export default function Card({plane}) {
     const imageUrl = image?.data?.attributes?.url || notFound;
     const aircraftType = type?.data?.attributes?.label || 'N/A';
     const operatorLabel = operator?.data?.attributes?.label || 'N/A';
+    const aircraftRegistration = attributes?.registration || 'N/A';
 
     return (
         <Link href={`/gallery/${plane.id}`} className={'card card__shadow'}>
@@ -18,7 +19,10 @@ export default function Card({plane}) {
             <div className="card__content">
                 <div className="card__content-title">
                     <h3>{aircraftType}</h3>
+                </div>
+                <div className="card__content-subtitle">
                     <p>{operatorLabel}</p>
+                    <p>{aircraftRegistration}</p>
                 </div>
             </div>
             <div className="card__footer">
