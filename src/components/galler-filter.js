@@ -10,6 +10,7 @@
  */
 import {useEffect, useState} from "react";
 import axios from 'axios';
+import SearchSelectInput from "@/components/SearchSelectInput";
 
 export default function GalleryFilter({onFilterChange, dataPresent}) {
     // State variables for operators and aircraft types
@@ -35,30 +36,29 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
             });
     }, []);
 
+    function handleTypeSelect(selectedType) {
+        const selectedId = selectedType.id;
+        onFilterChange('type', selectedId);
+    }
+
+    function handleOperatorSelect(selectedOperator) {
+        const selectedId = selectedOperator.id;
+        onFilterChange('operator', selectedId);
+    }
+
+
     // Render the filter interface
     return (
         <div className={'filter'}>
             <div className={'filter_input operator'}>
                 <label>Company aérienne:</label>
                 {/* Select input for operators. Calls the onFilterChange callback when the value changes. */}
-                <select onChange={e => onFilterChange('operator', e.target.value)} disabled={!dataPresent}>
-                    <option value="">Company aérienne</option>
-                    {/* Map over the operators and render an option for each */}
-                    {operators.map(operator => (
-                        <option key={operator.id} value={operator.id}>{operator.attributes.label}</option>
-                    ))}
-                </select>
+                <SearchSelectInput options={operators} onSelect={handleOperatorSelect}/>
             </div>
             <div className={'filter_input aircraft-name'}>
                 <label>Type d'avion:</label>
                 {/* Select input for aircraft types. Calls the onFilterChange callback when the value changes. */}
-                <select onChange={e => onFilterChange('type', e.target.value)} disabled={!dataPresent}>
-                    <option value="">Type d'avion</option>
-                    {/* Map over the aircraft types and render an option for each */}
-                    {aircraftTypes.map(aircraftName => (
-                        <option key={aircraftName.id} value={aircraftName.id}>{aircraftName.attributes.label}</option>
-                    ))}
-                </select>
+                <SearchSelectInput options={aircraftTypes} onSelect={handleTypeSelect}/>
             </div>
         </div>
     );

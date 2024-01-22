@@ -14,8 +14,6 @@ export default function Gallery() {
     const [filters, setFilters] = useState({
         operator: '',
         type: '',
-        serviceNumber: '',
-        registration: ''
     });
 
     // Fetch aircrafts based on filters
@@ -23,6 +21,7 @@ export default function Gallery() {
         // Construct the query object for filters
         const filterQuery = Object.entries(filters).reduce((acc, [key, value]) => {
             if (value) {
+                console.log(key, value)
                 // Use the direct string comparison for serviceNumber and registration
                 if (key === 'serviceNumber' || key === 'registration') {
                     acc[`filters[${key}][$eq]`] = value;
