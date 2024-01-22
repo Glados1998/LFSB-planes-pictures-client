@@ -1720,10 +1720,10 @@ main {
     place-self: center;
   }
   .detail__image img {
-      width: 360px;
+    width: 360px;
     height: auto;
     border-radius: 0.5rem;
-      box-shadow: none;
+    box-shadow: none;
     transition: all 0.3s ease-in-out;
   }
   .detail__content {
@@ -1755,7 +1755,7 @@ main {
     color: #5c5c5c;
   }
   .detail__content-info span {
-      font-size: 1rem;
+    font-size: 1rem;
     font-weight: 600;
   }
   .detail__content-info-column {
