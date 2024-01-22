@@ -15,7 +15,16 @@ import ImageOverlay from "@/components/image-overlay";
 import MetaDataReader from "@/utils/metaDataReader";
 import Accordion from "@/components/accordion";
 import {FaArrowDown, FaArrowUp} from "react-icons/fa";
-import {MdAccessAlarm, MdBlurOn, MdCamera, MdCameraAlt, MdFlashOff, MdFlashOn, MdIso} from "react-icons/md";
+import {
+    MdAccessAlarm,
+    MdBlurOn,
+    MdCalendarMonth,
+    MdCamera,
+    MdCameraAlt,
+    MdFlashOff,
+    MdFlashOn,
+    MdIso
+} from "react-icons/md";
 import Image from "next/image";
 
 export default function AircraftDetail() {
@@ -66,6 +75,7 @@ export default function AircraftDetail() {
                 MetaDataReader(imageUrl)
                     .then(data => {
                         setState(prevState => ({...prevState, metaData: data}));
+                        console.log(data)
                     })
                     .catch(error => console.error('Error fetching EXIF data:', error));
             }
@@ -110,6 +120,7 @@ export default function AircraftDetail() {
     const exposureTime = state.metaData?.ExposureTime?.description || 'N/A';
     const artist = state.metaData?.Artist?.description || 'Laurent Greder';
     const copyright = state.metaData?.Copyright?.description || 'All Right Reserved';
+    const creationDate = formatDate(state.metaData?.CreateDate?.value || 'N/A');
 
     // Render the aircraft details and image overlay
     return (
@@ -227,6 +238,12 @@ export default function AircraftDetail() {
                                                 <MdBlurOn/>
                                             </i>
                                             <span>{focalLength}</span>
+                                        </div>
+                                        <div className="image-metadata-container-content-column-item">
+                                            <i title={'Date de création'}>
+                                                <MdCalendarMonth/>
+                                            </i>
+                                            <span>{creationDate}</span>
                                         </div>
                                     </div>
                                 </div>
