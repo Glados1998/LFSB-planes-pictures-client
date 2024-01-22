@@ -1181,24 +1181,20 @@ main {
   font-weight: 600;
   color: #5c5c5c;
 }
-
 .detail__content-info span {
   font-size: 1.2rem;
   font-weight: 600;
 }
-
 .detail__content-info-column {
   display: grid;
   grid-auto-flow: column;
   grid-gap: 1rem;
 }
-
 .detail__content-info-column-row-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 .detail__content-info-column-row-item span {
   font-size: 1rem;
   font-weight: 600;
@@ -1475,24 +1471,20 @@ main {
     font-weight: 600;
     color: #5c5c5c;
   }
-
   .detail__content-info span {
     font-size: 1.2rem;
     font-weight: 600;
   }
-
   .detail__content-info-column {
     display: grid;
     grid-auto-flow: column;
     grid-gap: 1rem;
   }
-
   .detail__content-info-column-row-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
   .detail__content-info-column-row-item span {
     font-size: 1rem;
     font-weight: 600;
@@ -1768,24 +1760,20 @@ main {
     font-weight: 600;
     color: #5c5c5c;
   }
-
   .detail__content-info span {
     font-size: 1.2rem;
     font-weight: 600;
   }
-
   .detail__content-info-column {
     display: grid;
     grid-auto-flow: row;
     grid-gap: 0.5rem;
   }
-
   .detail__content-info-column-row-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
   .detail__content-info-column-row-item span {
     font-size: 1rem;
     font-weight: 600;
