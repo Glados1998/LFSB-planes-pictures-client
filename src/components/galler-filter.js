@@ -26,8 +26,9 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
         Promise.all([fetchOperators, fetchAircraftTypes])
             .then(([operatorsResponse, aircraftTypesResponse]) => {
                 // Set the state variables with the fetched data
-                setOperators(operatorsResponse.data.data);
-                setAircraftTypes(aircraftTypesResponse.data.data);
+                // Sort the data alphabetically by label before setting the state
+                setOperators(operatorsResponse.data.data.sort((a, b) => a.attributes.label.localeCompare(b.attributes.label)));
+                setAircraftTypes(aircraftTypesResponse.data.data.sort((a, b) => a.attributes.label.localeCompare(b.attributes.label)));
             })
             .catch(error => {
                 // Log any errors that occur during the API calls

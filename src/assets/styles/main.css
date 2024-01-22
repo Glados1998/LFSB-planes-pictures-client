@@ -1181,24 +1181,20 @@ main {
   font-weight: 600;
   color: #5c5c5c;
 }
-
 .detail__content-info span {
   font-size: 1.2rem;
   font-weight: 600;
 }
-
 .detail__content-info-column {
   display: grid;
   grid-auto-flow: column;
   grid-gap: 1rem;
 }
-
 .detail__content-info-column-row-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 .detail__content-info-column-row-item span {
   font-size: 1rem;
   font-weight: 600;
@@ -1475,24 +1471,20 @@ main {
     font-weight: 600;
     color: #5c5c5c;
   }
-
   .detail__content-info span {
     font-size: 1.2rem;
     font-weight: 600;
   }
-
   .detail__content-info-column {
     display: grid;
     grid-auto-flow: column;
     grid-gap: 1rem;
   }
-
   .detail__content-info-column-row-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
   .detail__content-info-column-row-item span {
     font-size: 1rem;
     font-weight: 600;
@@ -1728,17 +1720,11 @@ main {
     place-self: center;
   }
   .detail__image img {
-    width: 380px;
+      width: 360px;
     height: auto;
     border-radius: 0.5rem;
-    box-shadow: 0 0 1rem 0 #c2c2c2;
+      box-shadow: none;
     transition: all 0.3s ease-in-out;
-  }
-  .detail__image img:hover {
-    transform: scale(1.05);
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 0 1rem 0 rgba(194, 194, 194, 0.5);
-    cursor: zoom-in;
   }
   .detail__content {
     display: grid;
@@ -1768,24 +1754,20 @@ main {
     font-weight: 600;
     color: #5c5c5c;
   }
-
   .detail__content-info span {
-    font-size: 1.2rem;
+      font-size: 1rem;
     font-weight: 600;
   }
-
   .detail__content-info-column {
     display: grid;
     grid-auto-flow: row;
     grid-gap: 0.5rem;
   }
-
   .detail__content-info-column-row-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
   .detail__content-info-column-row-item span {
     font-size: 1rem;
     font-weight: 600;
