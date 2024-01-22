@@ -243,7 +243,7 @@ export default function AircraftDetail() {
                     </div>
                     <div className={'detail__content-footer'}>
                         <Link href="/gallery">
-                            Retour à la galerie
+                            Retour
                         </Link>
                     </div>
                 </div>

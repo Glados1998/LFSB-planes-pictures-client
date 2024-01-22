@@ -860,18 +860,11 @@ main {
       place-self: center;
 
       img {
-        width: 380px;
+        width: 360px;
         height: auto;
         border-radius: .5rem;
-        box-shadow: 0 0 1rem 0 rgba($grey, 1);
+        box-shadow: none;
         transition: all 0.3s ease-in-out;
-
-        &:hover {
-          transform: scale(1.05);
-          transition: all 0.3s ease-in-out;
-          box-shadow: 0 0 1rem 0 rgba($grey, .5);
-          cursor: zoom-in;
-        }
       }
     }
 
@@ -909,7 +902,7 @@ main {
 
       &-info {
         span {
-          font-size: 1.2rem;
+          font-size: 1rem;
           font-weight: 600;
         }
 
