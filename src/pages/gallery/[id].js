@@ -11,11 +11,12 @@ import {useEffect, useState} from 'react';
 import Link from "next/link";
 import formatDate from "@/utils/timeStampFormat";
 import notFound from "@/assets/images/imageNotFound.jpg";
-import ImageOverlay from "@/components/image-overlay";
+import ImageOverlay from "@/components/imageOverlay";
 import MetaDataReader from "@/utils/metaDataReader";
 import Accordion from "@/components/accordion";
 import {FaArrowDown, FaArrowUp} from "react-icons/fa";
 import {MdAccessAlarm, MdBlurOn, MdCamera, MdCameraAlt, MdFlashOff, MdFlashOn, MdIso} from "react-icons/md";
+import Image from "next/image";
 
 export default function AircraftDetail() {
     // Use the Next.js router to get the id from the query
@@ -116,7 +117,7 @@ export default function AircraftDetail() {
             <div className={'detail'}>
                 <div className={'detail__image'}>
                     {/* Image that opens the overlay when clicked */}
-                    <img className={'normal-img'} src={imageUrl || notFound} alt={aircraftType || 'Not found'}
+                    <Image className={'normal-img'} src={imageUrl || notFound} alt={aircraftType || 'Not found'}
                          width={700} height={500}
                          onClick={() => setState(prevState => ({...prevState, showOverlay: true}))}/>
                 </div>
