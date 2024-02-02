@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import qs from 'qs';
-import GalleryFilter from "@/components/galler-filter";
+import GalleryFilter from "@/components/gallerFilter";
 import Card from "@/components/card";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
 import {PiWarningFill} from "react-icons/pi";
@@ -36,13 +36,13 @@ export default function Gallery() {
         // Use qs to stringify the filter query
         const queryString = qs.stringify({
             ...filterQuery,
-            populate: '*'
+            populate: '*',
         }, {
             encodeValuesOnly: true,
             skipNulls: true
         });
 
-        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
+        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?sort[0]=publishedAt:desc&${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
             .then(res => {
                 if (res.data.data.length > 0) {
                     setAircraft(res.data.data);

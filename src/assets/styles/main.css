@@ -68,7 +68,6 @@
     position: relative;
     width: 100%;
     bottom: 0;
-    padding: 1rem 0;
   }
   .footer__cols {
     display: grid;
@@ -81,13 +80,13 @@
     margin-left: 0;
   }
   .footer__cols-item h3 {
-    font-size: 0.9rem;
-    font-weight: 600;
+      font-size: 1rem;
+    font-weight: 500;
   }
   .footer__info {
     display: grid;
     grid-auto-flow: row;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
   .footer__info p {
     margin: 0.3rem;
@@ -118,7 +117,6 @@
     font-weight: 500;
     transition: all 0.2s ease-in-out;
     padding: 0.1rem;
-    font-size: 0.8rem;
   }
   .footer__nav-link > a:hover {
     padding: 0.1rem;
@@ -179,9 +177,8 @@
     padding: 0;
   }
   .header_nav {
-    grid-template-rows: auto auto;
-    grid-template-columns: 1fr;
-    grid-gap: 0.5rem;
+      grid-template-rows: auto;
+      grid-template-columns: 1fr auto;
     padding: 1rem;
   }
   .header_nav_logo {

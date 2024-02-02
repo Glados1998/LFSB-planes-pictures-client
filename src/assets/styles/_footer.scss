@@ -79,7 +79,6 @@
     position: relative;
     width: 100%;
     bottom: 0;
-    padding: 1rem 0;
   }
 
   .footer__cols {
@@ -94,15 +93,15 @@
     margin-left: 0;
 
     h3 {
-      font-size: .9rem;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 500;
     }
   }
 
   .footer__info {
     display: grid;
     grid-auto-flow: row;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 
     p {
       margin: 0.3rem;
@@ -136,9 +135,9 @@
     text-decoration: none;
     color: $black;
     font-weight: 500;
+
     transition: all 0.2s ease-in-out;
     padding: .1rem;
-    font-size: .8rem;
 
     &:hover {
       padding: .1rem;
@@ -147,4 +146,5 @@
       background: $Tempest-Browser-Privacy-Panel-1-hex;
     }
   }
+
 }
