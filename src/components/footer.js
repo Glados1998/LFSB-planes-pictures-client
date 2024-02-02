@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const navigation = [
-    {label: 'Acceuil', path: '/', target: '_self'},
+    {label: 'Accueil', path: '/', target: '_self'},
     {label: 'Galerie', path: '/gallery/', target: '_self'},
     {label: 'Tableau de bord', path: 'https://strapi-production-1911.up.railway.app/admin', target: '_self'},
 ]
