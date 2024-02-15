@@ -493,16 +493,16 @@
 }
 .filter_input {
   display: grid;
-    grid-auto-flow: row;
+  grid-auto-flow: row;
   grid-auto-columns: max-content;
-    grid-gap: 0.5rem;
+  grid-gap: 0.5rem;
   justify-content: center;
   align-items: center;
   padding: 1rem;
   border-radius: 1rem;
 }
 .filter_input label {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 input, select {
@@ -512,17 +512,14 @@ input, select {
   font-weight: 600;
   transition: all 0.3s ease-in-out;
   background: #ffffff;
-    width: 10rem;
+  width: 10rem;
 }
-
 input:focus, input:hover, select:focus, select:hover {
   border: 2px solid #2540D9;
 }
-
 input:invalid, select:invalid {
-    border: 2px solid #BF1F2C;
+  border: 2px solid #BF1F2C;
 }
-
 input:disabled, select:disabled {
   border: 2px solid #BDBDBD;
   color: #9E9E9E;
@@ -530,8 +527,8 @@ input:disabled, select:disabled {
 }
 
 ::placeholder {
-    color: #000000;
-    opacity: 1;
+  color: #000000;
+  opacity: 1;
 }
 
 .btn, .btn-pagination {
@@ -660,14 +657,14 @@ input:disabled, select:disabled {
     font-weight: 600;
   }
 
-    .filter_input input, .filter_input select {
+  .filter_input input, .filter_input select {
     padding: 0.5rem;
     border-radius: 0.3rem;
     border: 2px solid #E9EBF2;
     transition: all 0.3s ease-in-out;
   }
 
-    .filter_input input:disabled, .filter_input select:disabled {
+  .filter_input input:disabled, .filter_input select:disabled {
     border: 2px solid #BDBDBD;
     color: #9E9E9E;
     cursor: not-allowed;
@@ -762,14 +759,14 @@ input:disabled, select:disabled {
     font-weight: 600;
   }
 
-    .filter_input input, .filter_input select {
+  .filter_input input, .filter_input select {
     padding: 0.5rem;
     border-radius: 0.3rem;
     border: 2px solid #E9EBF2;
     transition: all 0.3s ease-in-out;
   }
 
-    .filter_input input:disabled, .filter_input select:disabled {
+  .filter_input input:disabled, .filter_input select:disabled {
     border: 2px solid #BDBDBD;
     color: #9E9E9E;
     cursor: not-allowed;
