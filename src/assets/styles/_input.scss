@@ -13,59 +13,47 @@
 
   &_input {
     display: grid;
-    grid-auto-flow: column;
+    grid-auto-flow: row;
     grid-auto-columns: max-content;
-    grid-gap: 1rem;
+    grid-gap: .5rem;
     justify-content: center;
     align-items: center;
     padding: 1rem;
     border-radius: 1rem;
 
     label {
-      font-weight: 600;
-    }
-
-    input {
-      padding: .5rem;
-      border-radius: .5rem;
-      border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
-      transition: all 0.3s ease-in-out;
-
-      &:focus, &:hover {
-        border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
-      }
-
-      &:invalid {
-        border: 2px solid $danger;
-      }
-
-      &:disabled {
-        border: 2px solid $disabled;
-        color: $disabled-text;
-        cursor: not-allowed;
-      }
-    }
-
-    select {
-      padding: .5rem;
-      border-radius: .5rem;
-      border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
-      font-weight: 600;
-      transition: all 0.3s ease-in-out;
-      background: $text-white;
-
-      &:hover {
-        border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
-        transition: all 0.3s ease-in-out;
-      }
-
-      &:disabled {
-        border: 2px solid $disabled;
-        color: $disabled-text;
-        cursor: not-allowed;
-      }
+      font-weight: 500;
     }
   }
+}
+
+input, select {
+  padding: .5rem;
+  border-radius: .5rem;
+  border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  background: $text-white;
+  width: 10rem;
+
+  &:focus, &:hover {
+    border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
+  }
+
+  &:invalid {
+    border: 2px solid $danger;
+  }
+
+  &:disabled {
+    border: 2px solid $disabled;
+    color: $disabled-text;
+    cursor: not-allowed;
+  }
+}
+
+::placeholder {
+  color: $black;
+  opacity: 1;
 }
 
 .btn {
@@ -208,26 +196,11 @@
         font-weight: 600;
       }
 
-      input {
+      input, select {
         padding: .5rem;
         border-radius: .3rem;
         border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
         transition: all 0.3s ease-in-out;
-
-        &:disabled {
-          border: 2px solid $disabled;
-          color: $disabled-text;
-          cursor: not-allowed;
-        }
-      }
-
-      select {
-        padding: .5rem;
-        border-radius: .3rem;
-        border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
-        font-weight: 600;
-        transition: all 0.3s ease-in-out;
-        background: $text-white;
 
         &:disabled {
           border: 2px solid $disabled;
@@ -339,26 +312,11 @@
         font-weight: 600;
       }
 
-      input {
+      input, select {
         padding: .5rem;
         border-radius: .3rem;
         border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
         transition: all 0.3s ease-in-out;
-
-        &:disabled {
-          border: 2px solid $disabled;
-          color: $disabled-text;
-          cursor: not-allowed;
-        }
-      }
-
-      select {
-        padding: .5rem;
-        border-radius: .3rem;
-        border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
-        font-weight: 600;
-        transition: all 0.3s ease-in-out;
-        background: $text-white;
 
         &:disabled {
           border: 2px solid $disabled;

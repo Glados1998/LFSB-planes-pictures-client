@@ -61,6 +61,12 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
                     ))}
                 </select>
             </div>
+            <div className={'filter_input registration'}>
+                <label>Matriculation:</label>
+                {/* Select input for aircraft registration. Calls the onFilterChange callback when the value changes. */}
+                <input type={'text'} onChange={e => onFilterChange('registration', e.target.value)}
+                       disabled={!dataPresent} placeholder={"Matriculation"}/>
+            </div>
         </div>
     );
 }

@@ -25,11 +25,12 @@ export default function Gallery() {
             if (value) {
                 // Use the direct string comparison for serviceNumber and registration
                 if (key === 'serviceNumber' || key === 'registration') {
-                    acc[`filters[${key}][$eq]`] = value;
+                    acc[`filters[${key}][$eqi]`] = value;
                 } else {
-                    acc[`filters[${key}][id][$eq]`] = value;
+                    acc[`filters[${key}][id][$eqi]`] = value;
                 }
             }
+            console.log(acc, key, value)
             return acc;
         }, {});
 
@@ -63,6 +64,7 @@ export default function Gallery() {
             ...prevFilters,
             [filterType]: value
         }));
+        console.log(value, filterType, filters)
     };
 
     // Pagination handlers
