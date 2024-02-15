@@ -656,14 +656,12 @@ input:disabled, select:disabled {
   .filter_input label {
     font-weight: 600;
   }
-
   .filter_input input, .filter_input select {
     padding: 0.5rem;
     border-radius: 0.3rem;
     border: 2px solid #E9EBF2;
     transition: all 0.3s ease-in-out;
   }
-
   .filter_input input:disabled, .filter_input select:disabled {
     border: 2px solid #BDBDBD;
     color: #9E9E9E;
@@ -758,14 +756,12 @@ input:disabled, select:disabled {
   .filter_input label {
     font-weight: 600;
   }
-
   .filter_input input, .filter_input select {
     padding: 0.5rem;
     border-radius: 0.3rem;
     border: 2px solid #E9EBF2;
     transition: all 0.3s ease-in-out;
   }
-
   .filter_input input:disabled, .filter_input select:disabled {
     border: 2px solid #BDBDBD;
     color: #9E9E9E;
