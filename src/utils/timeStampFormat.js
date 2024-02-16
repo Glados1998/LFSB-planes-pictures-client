@@ -4,9 +4,9 @@
  * @param {number} timestamp - The timestamp to be converted into a date string.
  * @returns {string} The date string in 'en-GB' format.
  */
-function formatDate(timestamp) {
+function FormatDate(timestamp) {
     const date = new Date(timestamp);
     return date.toLocaleDateString('en-GB');
 }
 
-export default formatDate;
+export default FormatDate;

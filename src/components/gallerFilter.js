@@ -40,10 +40,10 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
     return (
         <div className={'filter'}>
             <div className={'filter_input operator'}>
-                <label>Company aérienne:</label>
+                <label>Compagnie aérienne:</label>
                 {/* Select input for operators. Calls the onFilterChange callback when the value changes. */}
                 <select onChange={e => onFilterChange('operator', e.target.value)} disabled={!dataPresent}>
-                    <option value="">Company aérienne</option>
+                    <option value="">Compagnie aérienne</option>
                     {/* Map over the operators and render an option for each */}
                     {operators.map(operator => (
                         <option key={operator.id} value={operator.id}>{operator.attributes.label}</option>
@@ -62,10 +62,10 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
                 </select>
             </div>
             <div className={'filter_input registration'}>
-                <label>Matriculation:</label>
+                <label>Immatriculation :</label>
                 {/* Select input for aircraft registration. Calls the onFilterChange callback when the value changes. */}
                 <input type={'text'} onChange={e => onFilterChange('registration', e.target.value)}
-                       disabled={!dataPresent} placeholder={"Matriculation"}/>
+                       disabled={!dataPresent} placeholder={"Immatriculation"}/>
             </div>
         </div>
     );
