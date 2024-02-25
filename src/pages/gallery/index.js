@@ -42,7 +42,7 @@ export default function Gallery() {
             skipNulls: true
         });
 
-        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?sort[0]=DateOfPictureShoot&${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
+        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?sort[0]=DateOfPictureShoot:desc&${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
             .then(res => {
                 if (res.data.data.length > 0) {
                     setAircraft(res.data.data);
