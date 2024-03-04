@@ -1,4 +1,3 @@
-// components/Gallery.js
 import React, {useState} from 'react';
 import Card from "@/components/card";
 import Pagination from "@/components/pagination"; // Assuming you have a separated Pagination component
@@ -11,7 +10,6 @@ export default function Gallery() {
     const [filters, setFilters] = useState({
         operator: '',
         type: '',
-        serviceNumber: '',
         registration: ''
     });
     const [pageIndex, setPageIndex] = useState(1);
@@ -34,7 +32,6 @@ export default function Gallery() {
                 <>
                     {isLoading ? (
                         <div className={'gallery_area'}>
-                            {/* Render a number of skeletons equal to the number expected cards */}
                             {[...Array(12)].map((e, i) => <CardSkeleton key={i}/>)}
                         </div>
                     ) : (
