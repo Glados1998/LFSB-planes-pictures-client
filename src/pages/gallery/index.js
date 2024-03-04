@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import Card from "@/components/card";
-import Pagination from "@/components/pagination"; // Assuming you have a separated Pagination component
 import {PiWarningFill} from "react-icons/pi";
 import useFetchAircraft from "@/hooks/useFetchAircraft";
 import CardSkeleton from "@/components/CardSkeleton";
 import GalleryFilter from "@/components/gallerFilter";
+import Pagination from "@/components/Pagination";
 
 export default function Gallery() {
     const [filters, setFilters] = useState({

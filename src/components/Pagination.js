@@ -1,7 +1,7 @@
 import React from 'react';
 import {FaArrowLeft, FaArrowRight} from 'react-icons/fa';
 
-const Pagination = ({pageIndex, setPageIndex, pagination}) => {
+export default function Pagination({pageIndex, setPageIndex, pagination}) {
     const handlePrevious = (event) => {
         event.preventDefault(); // Prevent default if inside a form
         if (pageIndex > 1) {
@@ -32,5 +32,3 @@ const Pagination = ({pageIndex, setPageIndex, pagination}) => {
         </div>
     );
 };
-
-export default Pagination;
