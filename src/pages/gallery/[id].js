@@ -159,7 +159,7 @@ export default function AircraftDetail() {
                                 </div>
                                 <div className="detail__content-info-column-row">
                                     <div className="detail__content-info-column-row-item">
-                                        <p>Numéro de service :</p>
+                                        <p>Numéro de serie :</p>
                                         <span>{serviceNumber || 'N/A'}</span>
                                     </div>
                                     <div className="detail__content-info-column-row-item">

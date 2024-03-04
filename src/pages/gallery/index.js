@@ -1,82 +1,25 @@
-import axios from 'axios';
-import {useEffect, useState} from 'react';
-import qs from 'qs';
-import GalleryFilter from "@/components/gallerFilter";
+import React, {useState} from 'react';
 import Card from "@/components/card";
-import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
+import Pagination from "@/components/pagination"; // Assuming you have a separated Pagination component
 import {PiWarningFill} from "react-icons/pi";
+import useFetchAircraft from "@/hooks/useFetchAircraft";
+import CardSkeleton from "@/components/CardSkeleton";
+import GalleryFilter from "@/components/gallerFilter";
 
 export default function Gallery() {
-    const [sysMessage, setSysMessage] = useState('')
-    const [aircraft, setAircraft] = useState([]);
-    const [pagination, setPagination] = useState({});
-    const [pageIndex, setPageIndex] = useState(1)
     const [filters, setFilters] = useState({
         operator: '',
         type: '',
-        serviceNumber: '',
         registration: ''
     });
+    const [pageIndex, setPageIndex] = useState(1);
+    const {aircraft, pagination, sysMessage, isLoading} = useFetchAircraft(filters, pageIndex);
 
-    // Fetch aircrafts based on filters
-    useEffect(() => {
-        // Construct the query object for filters
-        const filterQuery = Object.entries(filters).reduce((acc, [key, value]) => {
-            if (value) {
-                // Use the direct string comparison for serviceNumber and registration
-                if (key === 'serviceNumber' || key === 'registration') {
-                    acc[`filters[${key}][$eqi]`] = value;
-                } else {
-                    acc[`filters[${key}][id][$eqi]`] = value;
-                }
-            }
-            return acc;
-        }, {});
-
-        // Use qs to stringify the filter query
-        const queryString = qs.stringify({
-            ...filterQuery,
-            populate: '*',
-        }, {
-            encodeValuesOnly: true,
-            skipNulls: true
-        });
-
-        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?sort[0]=DateOfPictureShoot:desc&${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
-            .then(res => {
-                if (res.data.data.length > 0) {
-                    setAircraft(res.data.data);
-                    setPagination(res.data.meta.pagination);
-                } else {
-                    setSysMessage('Aucun données trouvées.');
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                setSysMessage('Une erreur est survenue lors de la récupération des données');
-            });
-    }, [filters, pageIndex]);
-
-    // Handle filter changes
     const handleFilterChange = (filterType, value) => {
         setFilters(prevFilters => ({
             ...prevFilters,
             [filterType]: value
         }));
-        console.log(value, filterType, filters)
-    };
-
-    // Pagination handlers
-    const handlePrevious = () => {
-        if (pageIndex > 1) {
-            setPageIndex(pageIndex - 1);
-        }
-    };
-
-    const handleNext = () => {
-        if (pageIndex < pagination.pageCount) {
-            setPageIndex(pageIndex + 1);
-        }
     };
 
     return (
@@ -87,30 +30,22 @@ export default function Gallery() {
 
             {aircraft.length > 0 ? (
                 <>
-                    <div className={'gallery_area'}>
-                        {aircraft.map(plane => (
-                            <Card key={plane.id} plane={plane}/>
-                        ))}
-                    </div>
-                    <div className={'gallery_footer pagination'}>
-                        <button className={"btn-pagination"} onClick={handlePrevious} disabled={pageIndex === 1}>
-                            <FaArrowLeft/>
-                        </button>
-                        <span>
-                            {`${pageIndex} sur ${pagination.pageCount}`}
-                        </span>
-                        <button className={"btn-pagination"} onClick={handleNext}
-                                disabled={pageIndex === pagination.pageCount || aircraft.length === 0}>
-                            <FaArrowRight/>
-                        </button>
-                    </div>
+                    {isLoading ? (
+                        <div className={'gallery_area'}>
+                            {[...Array(12)].map((e, i) => <CardSkeleton key={i}/>)}
+                        </div>
+                    ) : (
+                        <div className={'gallery_area'}>
+                            {aircraft.map(plane => <Card key={plane.id} plane={plane}/>)}
+                        </div>
+                    )}
+
+                    <Pagination pageIndex={pageIndex} setPageIndex={setPageIndex} pagination={pagination}/>
                 </>
             ) : sysMessage && (
                 <div className={'gallery_message'}>
                     <div className="message-box">
-                        <div className="icon">
-                            <PiWarningFill/>
-                        </div>
+                        <div className="icon"><PiWarningFill/></div>
                         <p>{sysMessage}</p>
                     </div>
                 </div>
