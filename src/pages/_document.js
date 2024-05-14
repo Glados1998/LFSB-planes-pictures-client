@@ -10,7 +10,7 @@ export default function Document() {
             <meta name="keywords"
                   content="aviation, avion, plane, aircraft, aéronef, aéroport, airport, Basel, Mulhouse, Freiburg, Bâle, Mulhouse, Fribourg, LFSB, LSZM, LSGG, LSZH, LFSB Planes Pictures, LFSB Planes, LFSB, LFSB Spotting, LFSB Aviation, LFSB Avion, LFSB Avions, LFSB Avions Photos, LFSB Photos, LFSB Photos Avions, LFSB Photos Avion"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <link rel="icon" href="/icons8-plane-16.ico" sizes="any"/>
+            <link rel="icon" href="/assets/icons8-plane-16.ico" sizes="any"/>
         </Head>
         <body>
         <Main/>

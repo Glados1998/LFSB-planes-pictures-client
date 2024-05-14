@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
 import {FaAngleDown, FaAngleUp} from 'react-icons/fa';
+import LanguageSwitcher from "@/components/languageSwitcher";
 
 export default function Header() {
 
@@ -36,9 +37,9 @@ export default function Header() {
                         </li>
                     </ul>
                 </div>}
-                {/*<div className={'header_nav_language'}>
+                <div className={'header_nav_language'}>
                     <LanguageSwitcher/>
-                </div>*/}
+                </div>
             </nav>
         </header>
     );

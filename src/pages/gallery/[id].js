@@ -9,10 +9,10 @@ import {useRouter} from 'next/router';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import Link from "next/link";
-import formatDate from "@/utils/timeStampFormat";
+import formatDate from "../../../utils/timeStampFormat";
 import notFound from "@/assets/images/imageNotFound.jpg";
 import ImageOverlay from "@/components/imageOverlay";
-import MetaDataReader from "@/utils/metaDataReader";
+import MetaDataReader from "../../../utils/metaDataReader";
 import Accordion from "@/components/accordion";
 import {FaArrowDown, FaArrowUp} from "react-icons/fa";
 import {

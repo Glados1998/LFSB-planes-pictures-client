@@ -1,13 +1,27 @@
 import Image from "next/image";
 import papaHeadshot from "src/assets/images/papa-profile2.JPG";
+import {useTranslations} from 'next-intl';
+
+export async function getStaticProps(context) {
+    return {
+        props: {
+            // You can get the messages from anywhere you like. The recommended
+            // pattern is to put them in JSON files separated by locale and read
+            // the desired one based on the `locale` received from Next.js.
+            messages: (await import(`public/locales/${context.locale}.json`)).default
+        }
+    };
+}
 
 export default function Home() {
+
+    const t = useTranslations();
     return (
         <div className={'home'}>
             <div className="home_headline">
                 <div className="home_headline-text">
                     <h2>
-                        Découvrez le ciel à travers mon objectif
+                        {t('home.headline')}
                     </h2>
                     <h1 className={'title'}>
                         LFSB Planes Pictures
