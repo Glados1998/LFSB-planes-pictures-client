@@ -73,12 +73,10 @@ export default function AircraftDetail() {
     useEffect(() => {
         if (state.aircraft) {
             const imageUrl = state.aircraft.attributes.image?.data?.attributes?.url;
-            console.log(imageUrl)
             if (imageUrl) {
                 MetaDataReader(imageUrl)
                     .then(data => {
                         setState(prevState => ({...prevState, metaData: data}));
-                        console.log(data)
                     })
                     .catch(error => console.error('Error fetching EXIF data:', error));
             }

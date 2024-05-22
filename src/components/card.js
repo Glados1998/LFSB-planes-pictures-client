@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import notFound from "@/assets/images/imageNotFound.jpg";
+import {useTranslations} from "next-intl";
 
 export async function getStaticProps(context) {
     return {
@@ -14,6 +15,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Card({plane}) {
+    const t = useTranslations("gallery");
     const {attributes} = plane;
     const {image, type, operator} = attributes;
 
@@ -39,7 +41,7 @@ export default function Card({plane}) {
             </div>
             <div className="card__footer">
                 <button className="button">
-                    Voir plus
+                    {t("card.show")}
                 </button>
             </div>
         </Link>

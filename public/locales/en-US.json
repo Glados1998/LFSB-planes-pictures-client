@@ -10,6 +10,9 @@
   },
   "gallery": {
     "details": {
+    },
+    "card": {
+      "show": "Show more"
     }
   },
   "filter": {
