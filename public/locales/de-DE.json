@@ -24,9 +24,9 @@
     },
     "navigation": {
       "navigation": "Navigation",
-      "home": "Accueil",
+      "home": "Startseite",
       "gallery": "Galerie",
-      "dashboard": "Tableau de bord"
+      "dashboard": "Dashboard"
     }
   }
 }

@@ -2,10 +2,13 @@ import React, {useState} from 'react';
 import Link from 'next/link';
 import {FaAngleDown, FaAngleUp} from 'react-icons/fa';
 import LanguageSwitcher from "@/components/languageSwitcher";
+import {useTranslations} from "next-intl";
+
 
 export default function Header() {
 
     const [showMenu, setShowMenu] = useState(false);
+    const t = useTranslations("header");
 
     return (
         <header className={'header'}>
@@ -21,19 +24,19 @@ export default function Header() {
                 </div>
                 <ul className={'header_nav_bar'}>
                     <li className={'header_nav_bar_link'}>
-                        <Link href='/'>Acceuil</Link>
+                        <Link href='/'>{t("home")}</Link>
                     </li>
                     <li className={'header_nav_bar_link'}>
-                        <Link href='/gallery'>Galerie</Link>
+                        <Link href='/gallery'>{t("gallery")}</Link>
                     </li>
                 </ul>
                 {showMenu && <div className={'header_nav_menu'}>
                     <ul className={'header_nav_menu'}>
                         <li className={'header_nav_menu_link'}>
-                            <Link href='/' onClick={() => setShowMenu(!showMenu)}>Acceuil</Link>
+                            <Link href='/' onClick={() => setShowMenu(!showMenu)}>{t("home")}</Link>
                         </li>
                         <li className={'header_nav_menu_link'}>
-                            <Link href='/gallery' onClick={() => setShowMenu(!showMenu)}>Galerie</Link>
+                            <Link href='/gallery' onClick={() => setShowMenu(!showMenu)}>{t("gallery")}</Link>
                         </li>
                     </ul>
                 </div>}

@@ -1,9 +1,11 @@
 import {useEffect, useState} from "react";
 import axios from 'axios';
+import {useTranslations} from "next-intl";
 
 export default function GalleryFilter({onFilterChange, dataPresent}) {
     const [operators, setOperators] = useState([]);
     const [aircraftTypes, setAircraftTypes] = useState([]);
+    const t = useTranslations("header");
 
     useEffect(() => {
         const fetchOperators = axios.get('https://strapi-production-1911.up.railway.app/api/operators');

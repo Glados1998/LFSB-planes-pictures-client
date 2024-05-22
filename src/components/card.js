@@ -1,10 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import notFound from "@/assets/images/imageNotFound.jpg";
+import {useTranslations} from "next-intl";
 
 export default function Card({plane}) {
     const {attributes} = plane;
     const {image, type, operator} = attributes;
+
+    const t = useTranslations("header");
 
     const imageUrl = image?.data?.attributes?.url || notFound;
     const aircraftType = type?.data?.attributes?.label || 'N/A';

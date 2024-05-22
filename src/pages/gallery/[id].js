@@ -26,11 +26,14 @@ import {
     MdIso
 } from "react-icons/md";
 import Image from "next/image";
+import {useTranslations} from "next-intl";
 
 export default function AircraftDetail() {
     // Use the Next.js router to get the id from the query
     const router = useRouter();
     const {id} = router.query;
+
+    const t = useTranslations("gallery.details");
 
     // State variable for the aircraft data, loading state, system message, and overlay visibility
     const [state, setState] = useState({
