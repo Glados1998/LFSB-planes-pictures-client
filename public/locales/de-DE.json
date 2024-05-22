@@ -12,6 +12,11 @@
     "details": {
     }
   },
+  "filter": {
+    "operator": "Flugesellschaft",
+    "type": "Flugzeugtyp",
+    "registration": "Registrierung"
+  },
   "header": {
     "home": "Startseite",
     "gallery": "Galerie"

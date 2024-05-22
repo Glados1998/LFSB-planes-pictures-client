@@ -12,6 +12,11 @@
     "details": {
     }
   },
+  "filter": {
+    "operator": "Operator",
+    "type": "Aircraft type",
+    "registration": "Registration"
+  },
   "header": {
     "home": "Home",
     "gallery": "Gallery"

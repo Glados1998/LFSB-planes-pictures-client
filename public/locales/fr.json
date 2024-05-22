@@ -12,6 +12,11 @@
     "details": {
     }
   },
+  "filter": {
+    "operator": "Compagnie aérienne",
+    "type": "Type d'avion",
+    "registration": "Immatriculation"
+  },
   "header": {
     "home": "Accueil",
     "gallery": "Galerie"
