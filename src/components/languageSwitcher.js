@@ -1,32 +1,33 @@
 import {useState} from "react";
+import {useRouter} from 'next/router';
 
 export default function LanguageSwitcher() {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('English');
+    const {locales, locale: currentLocale, pathname, query} = useRouter();
+    const router = useRouter();
 
     const handleToggle = () => {
         setIsOpen(!isOpen);
     };
 
-    const handleSelect = (option) => {
-        setSelectedOption(option);
+    const handleSelect = (locale) => {
+        router.push({pathname, query}, pathname, {locale});
         setIsOpen(false);
     };
-
-    const optionsLabel = ['Français', 'English', 'Deutsch'];
 
     return (
         <div className={'language_switcher'}>
             <div className={'language_switcher-button'} onClick={handleToggle}>
-                {selectedOption}
+                {currentLocale.toUpperCase()}
             </div>
             {isOpen && (
                 <div className={'language_switcher-content'}>
-                    {optionsLabel.map(optionsLabel => (
+                    {locales.map(locale => (
                         <div
-                            className={`language_switcher-content-selection ${optionsLabel === selectedOption && 'selected'}`}
-                            onClick={() => handleSelect(optionsLabel)}>
-                            {optionsLabel}
+                            key={locale}
+                            className={`language_switcher-content-selection ${locale === currentLocale ? 'selected' : ''}`}
+                            onClick={() => handleSelect(locale)}>
+                            {locale.toUpperCase()}
                         </div>
                     ))}
                 </div>
