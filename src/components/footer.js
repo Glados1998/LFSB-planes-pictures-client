@@ -1,21 +1,27 @@
 import Link from "next/link";
+import {useTranslations} from "next-intl";
 
 const navigation = [
-    {label: 'Accueil', path: '/', target: '_self'},
-    {label: 'Galerie', path: '/gallery/', target: '_self'},
-    {label: 'Tableau de bord', path: 'https://strapi-production-1911.up.railway.app/admin', target: '_self'},
+    {label: 'home', path: '/', target: '_self'},
+    {label: 'gallery', path: '/gallery/', target: '_self'},
+    {label: 'dashboard', path: 'https://strapi-production-1911.up.railway.app/admin', target: '_self'},
 ]
 
 export default function Footer() {
+
+    const t = useTranslations("footer");
+
+
     return (
         <footer className='footer'>
             <div className='footer__cols'>
                 <div className='footer__cols-item'>
                     <h3>LFSB Planes Pictures</h3>
                     <div className='footer__info'>
-                        <p>&copy; {new Date().getFullYear()} | Tous droits réservés</p>
-                        <p>Fait par <a href='https://www.jerome-greder.com' target='_blank'>Jérôme Greder</a></p>
-                        <p>Contenu géré avec <a href='https://strapi.io' target='_blank'>Strapi CMS</a></p>
+                        <p>&copy; {new Date().getFullYear()} | {t("info.copyright")}</p>
+                        <p>{t("info.artist")} <a href='https://www.jerome-greder.com' target='_blank'>Jérôme Greder</a>
+                        </p>
+                        <p>{t("info.strapi")} <a href='https://strapi.io' target='_blank'>Strapi CMS</a></p>
                     </div>
                 </div>
                 <div className='footer__cols-item'>
@@ -23,7 +29,7 @@ export default function Footer() {
                     <ul className='footer__nav'>
                         {navigation.map(item => (
                             <li key={item.label} className='footer__nav-link'>
-                                <Link href={item.path} target={item.target}>{item.label}</Link>
+                                <Link href={item.path} target={item.target}>{t(`navigation.${item.label}`)}</Link>
                             </li>
                         ))}
                     </ul>

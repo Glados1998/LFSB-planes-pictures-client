@@ -1,10 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
 import notFound from "@/assets/images/imageNotFound.jpg";
+import {useTranslations} from "next-intl";
+
+export async function getStaticProps(context) {
+    return {
+        props: {
+            // You can get the messages from anywhere you like. The recommended
+            // pattern is to put them in JSON files separated by locale and read
+            // the desired one based on the `locale` received from Next.js.
+            messages: (await import(`public/locales/${context.locale}.json`)).default
+        }
+    };
+}
 
 export default function Card({plane}) {
+    const t = useTranslations("gallery");
     const {attributes} = plane;
     const {image, type, operator} = attributes;
+
 
     const imageUrl = image?.data?.attributes?.url || notFound;
     const aircraftType = type?.data?.attributes?.label || 'N/A';
@@ -27,7 +41,7 @@ export default function Card({plane}) {
             </div>
             <div className="card__footer">
                 <button className="button">
-                    Voir plus
+                    {t("card.show")}
                 </button>
             </div>
         </Link>

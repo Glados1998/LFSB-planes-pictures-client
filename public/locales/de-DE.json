@@ -1,0 +1,49 @@
+{
+  "home": {
+    "headline": "Entdecken Sie den Himmel durch mein Objektiv",
+    "subheadline": "Betreten Sie eine Welt, in der das Brüllen von Düsentriebwerken und die Eleganz des Flugzeugdesigns\n                        werden lebendig. Willkommen in meiner privaten Fotogalerie, die den dynamischen Geist der Luftfahrt einfängt\n                        bis <span>EuroAirport Basel-Mulhouse-Freiburg</span> -\n                        Kultur und Innovation in der Luftfahrt.",
+    "about": {
+      "headline": "Über den Fotografen",
+      "text1": "Grüße! Ich bin Laurent Greder, ein begeisterter Flieger und engagierter Spotter. Mein Weg\n                        in der Luftfahrtfotografie begann vor einigen Jahren, angetrieben durch eine\n                        Tiefe Faszination für diese Wunder der Technik und die Geschichten, die sie zu\n                        durch den Himmel.",
+      "text2": "Obwohl mein Hauptspielplatz das <span>EuroAirport Basel-Mulhouse-Freiburg</span> ist,\n                        Gelegentlich fotografiere ich einzigartige Luftfahrtszenen in\n                        <span>Flughafen Genf (LSGG)</span> and <span>Flughafen Zürich (LSZH)</span>.\n                        Jeder Standort bietet einen einzigartigen Einblick in die Welt der Luftfahrt, von den belebten internationalen Drehkreuzen bis zu\n                        ruhige Abfahrten in den Himmel.\n                        Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux\n                        départs sereins vers le ciel."
+    }
+  },
+  "gallery": {
+    "details": {
+      "back": "Zurück zur Galerie",
+      "aircraftDetails": "Flugzeugdetails",
+      "yearOfFirstFlight": "Erstflug",
+      "yearOfConstruction": "Baujahr",
+      "serviceNumber": "Dienstnummer",
+      "registration": "Registrierung",
+      "imageDetails": "Bildinformationen",
+      "flashTriggered": "Flash (Ein, ausgelöst)",
+      "flashNotTriggered": "Flash (Aus, nicht ausgelöst)"
+    },
+    "card": {
+      "show": "Mehr Details"
+    }
+  },
+  "filter": {
+    "operator": "Flugesellschaft",
+    "type": "Flugzeugtyp",
+    "registration": "Registrierung"
+  },
+  "header": {
+    "home": "Startseite",
+    "gallery": "Galerie"
+  },
+  "footer": {
+    "info": {
+      "copyright": "Alle Rechte vorbehalten",
+      "artist": "Gestaltet von ",
+      "strapi": "Powered by "
+    },
+    "navigation": {
+      "navigation": "Navigation",
+      "home": "Startseite",
+      "gallery": "Galerie",
+      "dashboard": "Dashboard"
+    }
+  }
+}

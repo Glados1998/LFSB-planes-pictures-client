@@ -13,7 +13,7 @@ export default function LanguageSwitcher() {
         setIsOpen(false);
     };
 
-    const options = ['Français', 'English', 'Deutsch'];
+    const optionsLabel = ['Français', 'English', 'Deutsch'];
 
     return (
         <div className={'language_switcher'}>
@@ -22,9 +22,11 @@ export default function LanguageSwitcher() {
             </div>
             {isOpen && (
                 <div className={'language_switcher-content'}>
-                    {options.map(option => (
-                        <div className={`language_switcher-content-selection ${option === selectedOption && 'selected'}`} onClick={() => handleSelect(option)}>
-                            {option}
+                    {optionsLabel.map(optionsLabel => (
+                        <div
+                            className={`language_switcher-content-selection ${optionsLabel === selectedOption && 'selected'}`}
+                            onClick={() => handleSelect(optionsLabel)}>
+                            {optionsLabel}
                         </div>
                     ))}
                 </div>
