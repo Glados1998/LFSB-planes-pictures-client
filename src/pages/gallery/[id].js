@@ -28,6 +28,25 @@ import {
 import Image from "next/image";
 import {useTranslations} from "next-intl";
 
+export async function getStaticProps(context) {
+    return {
+        props: {
+            // You can get the messages from anywhere you like. The recommended
+            // pattern is to put them in JSON files separated by locale and read
+            // the desired one based on the `locale` received from Next.js.
+            messages: (await import(`public/locales/${context.locale}.json`)).default
+        }
+    };
+}
+
+export async function getStaticPaths() {
+    return {
+        paths: ["/gallery/id"],
+        fallback: true
+    };
+}
+
+
 export default function AircraftDetail() {
     // Use the Next.js router to get the id from the query
     const router = useRouter();
@@ -92,7 +111,7 @@ export default function AircraftDetail() {
         return (
             <div>
                 <p>{state.sysMessage}</p>
-                <Link href="/gallery">Retour à la galerie</Link>
+                <Link href="/gallery">{t("back")}</Link>
             </div>
         );
     }
@@ -143,28 +162,28 @@ export default function AircraftDetail() {
                             controllerElement={(isExpanded) => (
                                 <span>
                                     {isExpanded ? <FaArrowUp className={'arrow'}/> :
-                                        <FaArrowDown className={'arrow'}/>} Détails de l'appareil
+                                        <FaArrowDown className={'arrow'}/>} {t("aircraftDetails")}
                                 </span>
                             )}
                         >
                             <div className="detail__content-info-column">
                                 <div className="detail__content-info-column-row">
                                     <div className="detail__content-info-column-row-item">
-                                        <p>Date du premier vol :</p>
+                                        <p>{t("yearOfFirstFlight")} :</p>
                                         <span>{yearOfFirstFlight || 'N/A'}</span>
                                     </div>
                                     <div className="detail__content-info-column-row-item">
-                                        <p>Année de construction :</p>
+                                        <p>{t("yearOfConstruction")} :</p>
                                         <span>{yearOfConstruction || 'N/A'}</span>
                                     </div>
                                 </div>
                                 <div className="detail__content-info-column-row">
                                     <div className="detail__content-info-column-row-item">
-                                        <p>Numéro de serie :</p>
+                                        <p>{t("serviceNumber")} :</p>
                                         <span>{serviceNumber || 'N/A'}</span>
                                     </div>
                                     <div className="detail__content-info-column-row-item">
-                                        <p>Immatriculation :</p>
+                                        <p>{t("registration")} :</p>
                                         <span>{registration || 'N/A'}</span>
                                     </div>
                                 </div>
@@ -174,7 +193,7 @@ export default function AircraftDetail() {
                             controllerElement={(isExpanded) => (
                                 <span>
                                     {isExpanded ? <FaArrowUp className={'arrow'}/> :
-                                        <FaArrowDown className={'arrow'}/>} Détails de l'image
+                                        <FaArrowDown className={'arrow'}/>} {t("yearOfFirstFlight")}
                                 </span>
                             )}
                         >
@@ -220,7 +239,7 @@ export default function AircraftDetail() {
                                                     <i title={'Flash'}>
                                                         <MdFlashOn/>
                                                     </i>
-                                                    <span>Fash (Déclenché)</span>
+                                                    <span>{t("flashTriggered")}</span>
                                                 </>
                                             ) : (
                                                 <>
@@ -228,7 +247,7 @@ export default function AircraftDetail() {
                                                         <MdFlashOff/>
                                                     </i>
                                                     <span>
-                                                        Flash (Éteint, non déclenché)
+                                                        {t("flashNotTriggered")}
                                                     </span>
                                                 </>
                                             )}
@@ -262,7 +281,7 @@ export default function AircraftDetail() {
                     </div>
                     <div className={'detail__content-footer'}>
                         <Link href="/gallery">
-                            Retour
+                            {t("back")}
                         </Link>
                     </div>
                 </div>

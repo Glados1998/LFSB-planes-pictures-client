@@ -10,6 +10,15 @@
   },
   "gallery": {
     "details": {
+      "back": "Retour à la galerie",
+      "aircraftDetails": "Détails de l'avion",
+      "yearOfFirstFlight": "Année du premier vol",
+      "yearOfConstruction": "Année de construction",
+      "serviceNumber": "Numéro de serie",
+      "registration": "Immatriculation",
+      "imageDetails": "Détails de l'image",
+      "flashTriggered": "Fash (Déclenché)",
+      "flashNotTriggered": "Flash (Éteint, non déclenché)"
     },
     "card": {
       "show": "Voir plus"
