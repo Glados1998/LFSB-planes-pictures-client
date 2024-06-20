@@ -193,7 +193,7 @@ export default function AircraftDetail() {
                             controllerElement={(isExpanded) => (
                                 <span>
                                     {isExpanded ? <FaArrowUp className={'arrow'}/> :
-                                        <FaArrowDown className={'arrow'}/>} {t("yearOfFirstFlight")}
+                                        <FaArrowDown className={'arrow'}/>} {t("imageDetails")}
                                 </span>
                             )}
                         >
