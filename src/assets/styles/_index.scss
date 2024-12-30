@@ -258,6 +258,13 @@ main {
   }
 }
 
+.grey-container {
+  background: darken($Tempest-Browser-Privacy-Panel-5-hex, 5%);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
 .image-metadata-container {
   display: grid;
   grid-auto-flow: row;
