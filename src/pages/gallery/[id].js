@@ -149,8 +149,8 @@ export default function AircraftDetail() {
                 <div className={'detail__image'}>
                     {/* Image that opens the overlay when clicked */}
                     <Image className={'normal-img'} src={imageUrl || notFound} alt={aircraftType || 'Not found'}
-                         width={700} height={500}
-                         onClick={() => setState(prevState => ({...prevState, showOverlay: true}))}/>
+                           width={700} height={500}
+                           onClick={() => setState(prevState => ({...prevState, showOverlay: true}))}/>
                 </div>
                 <div className={'detail__content'}>
                     <div className={'detail__content-title'}>
@@ -158,15 +158,11 @@ export default function AircraftDetail() {
                         <p>{operator || 'N/A'}</p>
                     </div>
                     <div className={'detail__content-info'}>
-                        <Accordion
-                            controllerElement={(isExpanded) => (
-                                <span>
-                                    {isExpanded ? <FaArrowUp className={'arrow'}/> :
-                                        <FaArrowDown className={'arrow'}/>} {t("aircraftDetails")}
-                                </span>
-                            )}
-                        >
-                            <div className="detail__content-info-column">
+                        <div className="grey-container">
+                            <div>
+                                <span>{t("aircraftDetails")}</span>
+                            </div>
+                            <div className="detail__content-info-column ">
                                 <div className="detail__content-info-column-row">
                                     <div className="detail__content-info-column-row-item">
                                         <p>{t("yearOfFirstFlight")} :</p>
@@ -188,7 +184,8 @@ export default function AircraftDetail() {
                                     </div>
                                 </div>
                             </div>
-                        </Accordion>
+                        </div>
+
                         <Accordion
                             controllerElement={(isExpanded) => (
                                 <span>

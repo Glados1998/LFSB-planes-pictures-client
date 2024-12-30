@@ -1116,7 +1116,7 @@ input:disabled, select:disabled {
   align-items: center;
   grid-gap: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.6s ease-in-out;
   color: #000;
 }
 .accordion_header > span:hover .arrow {
@@ -1324,7 +1324,7 @@ main {
   align-items: center;
   padding: 2rem;
   border-radius: 2rem;
-  background: #de3341;
+  background: rgb(221.9054054054, 51.0945945946, 64.972972973);
   color: #ffffff;
   border: 2.5px solid #BF1F2C;
   transition: all 0.4s ease-in-out;
@@ -1442,6 +1442,13 @@ main {
   padding: 0.4rem;
   width: fit-content;
   border-radius: 0.5rem;
+}
+
+.grey-container {
+  background: rgb(216.9714285714, 220.4285714286, 232.5285714286);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 }
 
 .image-metadata-container {
@@ -1614,7 +1621,7 @@ main {
     align-items: center;
     padding: 2rem;
     border-radius: 2rem;
-    background: #de3341;
+    background: rgb(221.9054054054, 51.0945945946, 64.972972973);
     color: #ffffff;
     border: 2.5px solid #BF1F2C;
     transition: all 0.4s ease-in-out;
@@ -1898,7 +1905,7 @@ main {
     align-items: center;
     padding: 2rem;
     border-radius: 2rem;
-    background: #de3341;
+    background: rgb(221.9054054054, 51.0945945946, 64.972972973);
     color: #ffffff;
     border: 2.5px solid #BF1F2C;
     transition: all 0.4s ease-in-out;
