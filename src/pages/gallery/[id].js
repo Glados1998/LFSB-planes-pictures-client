@@ -125,7 +125,7 @@ export default function AircraftDetail() {
     const imageUrl = attributes.image?.data?.attributes?.url;
     const aircraftType = attributes.type?.data?.attributes?.label;
     const operator = attributes.operator?.data?.attributes?.label;
-    const yearOfFirstFlight = formatDate(attributes?.yearOfFirstFlight);
+    const yearOfFirstFlight = attributes.yearOfFirstFlight ? formatDate(attributes?.yearOfFirstFlight) : 'N/A';
     const serviceNumber = attributes.serviceNumber;
     const registration = attributes.registration;
     const yearOfConstruction = attributes.yearOfConstruction;
