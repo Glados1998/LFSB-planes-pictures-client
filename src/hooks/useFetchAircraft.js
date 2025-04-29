@@ -22,7 +22,7 @@ const useFetchAircraft = (filters, pageIndex) => {
                     encodeValuesOnly: true,
                     skipNulls: true
                 });
-                const response = await axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?sort[0]=DateOfPictureShoot:desc&${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`);
+                const response = await axios.get(`${process.env.STRAPI_API_URL}/aircrafts?sort[0]=DateOfPictureShoot:desc&${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`);
 
                 if (response.data.data.length > 0) {
                     setData({aircraft: response.data.data, pagination: response.data.meta.pagination});
