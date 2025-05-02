@@ -1,6 +1,7 @@
 import Image from "next/image";
 import papaHeadshot from "src/assets/images/papa-profile2.JPG";
 import {useTranslations} from 'next-intl';
+import {useVisitorCounter} from "@/hooks/visitorCounter";
 
 export async function getStaticProps(context) {
     return {
@@ -14,6 +15,9 @@ export async function getStaticProps(context) {
 }
 
 export default function Home() {
+
+    const {visits, loading, error} = useVisitorCounter();
+    console.log(visits, loading, error);
 
     const t = useTranslations("home");
     return (
@@ -49,6 +53,9 @@ export default function Home() {
                             span: (chunks) => <span>{chunks}</span>,
                         })}
                     </p>
+                </div>
+                <div>
+                    {visits}
                 </div>
             </div>
         </div>

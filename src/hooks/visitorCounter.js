@@ -1,29 +1,33 @@
-// hooks/useVisitorCounter.ts
 import {useEffect, useState} from 'react';
+import axios from 'axios';
 
 export function useVisitorCounter() {
-    const [visits, setVisits] = useState < number | null > null;
+    const [visits, setVisits] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState < Error | null > null;
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const incrementVisitor = async () => {
+        const getVisitorCounter = async () => {
             try {
-                await fetch('https://your-strapi-url.com/api/visitor-counter/increment', {
-                    method: 'POST',
-                });
+                // Fetch current count
+                const res = await axios.get(`https://strapi-production-1911.up.railway.app/api/visitor-counter`);
 
-                const res = await fetch('https://your-strapi-url.com/api/visitor-counter');
-                const data = await res.json();
-                setVisits(data.count);
+                // Check for non-JSON response
+                if (typeof res.data !== 'object') {
+                    throw new Error('Received non-JSON response from API');
+                }
+                console.log('Current visitor count:', res.data);
+                const count = res.data?.data?.attributes?.count;
+                setVisits(count);
             } catch (err) {
+                console.error('Error fetching visitor count:', err);
                 setError(err);
             } finally {
                 setLoading(false);
             }
         };
 
-        incrementVisitor();
+        getVisitorCounter();
     }, []);
 
     return {visits, loading, error};
