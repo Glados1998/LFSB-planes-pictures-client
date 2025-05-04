@@ -1,5 +1,5 @@
 import Image from "next/image";
-import papaHeadshot from "src/assets/images/papa-profile2.JPG";
+import papaHeadshot from "@/assets/images/papa-profile2.jpg";
 import {useTranslations} from 'next-intl';
 import {useVisitorCounter} from "@/hooks/visitorCounter";
 
