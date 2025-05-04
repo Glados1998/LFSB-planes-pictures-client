@@ -13,7 +13,6 @@
     "axios": "1.8.2",
     "cloudinary": "^1.41.1",
     "exifreader": "^4.20.0",
-    "framer-motion": "^10.16.15",
     "i18next": "^23.11.4",
     "next": "15.3.1",
     "next-i18next": "^15.3.0",
