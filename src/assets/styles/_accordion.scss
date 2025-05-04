@@ -1,7 +1,7 @@
-@import "colors";
+@use "colors";
 
 .accordion {
-  background: $text-white;
+  background: colors.$text-white;
   border-radius: 1rem;
   margin-bottom: 1rem;
   transition: all 0.3s ease-in-out;
@@ -20,8 +20,8 @@
     &:hover {
       .arrow {
         transition: all 0.3s ease-in-out;
-        background: $Tempest-Browser-Privacy-Panel-1-hex;
-        color: $text-white;
+        background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
+        color: colors.$text-white;
         border-radius: .5rem;
         padding: .4rem;
       }
@@ -40,7 +40,7 @@
   &:hover {
     transition: all 0.3s ease-in-out;
     transform: scale(1.02);
-    border: $Tempest-Browser-Privacy-Panel-1-hex solid 2px;
+    border: colors.$Tempest-Browser-Privacy-Panel-1-hex solid 2px;
   }
 
   .arrow {
@@ -53,7 +53,7 @@
 @media (max-width: 1024px) and (min-width: 768px) {
 
   .accordion {
-    background: $text-white;
+    background: colors.$text-white;
     border-radius: .7rem;
     margin-bottom: 1rem;
     transition: all 0.3s ease-in-out;
@@ -72,8 +72,8 @@
       &:hover {
         .arrow {
           transition: all 0.3s ease-in-out;
-          background: $Tempest-Browser-Privacy-Panel-1-hex;
-          color: $text-white;
+          background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
+          color: colors.$text-white;
           border-radius: .5rem;
           padding: .2rem;
         }
@@ -92,7 +92,7 @@
     &:hover {
       transition: all 0.3s ease-in-out;
       transform: scale(1.02);
-      border: $Tempest-Browser-Privacy-Panel-1-hex solid 2px;
+      border: colors.$Tempest-Browser-Privacy-Panel-1-hex solid 2px;
     }
 
     .arrow {
@@ -107,7 +107,7 @@
 @media (max-width: 767px) {
 
   .accordion {
-    background: $text-white;
+    background: colors.$text-white;
     border-radius: 1rem;
     margin-bottom: 1rem;
     transition: all 0.3s ease-in-out;
@@ -126,8 +126,8 @@
       &:hover {
         .arrow {
           transition: all 0.3s ease-in-out;
-          background: $Tempest-Browser-Privacy-Panel-1-hex;
-          color: $text-white;
+          background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
+          color: colors.$text-white;
           border-radius: .5rem;
           padding: .4rem;
         }
@@ -146,7 +146,7 @@
     &:hover {
       transition: all 0.3s ease-in-out;
       transform: scale(1.02);
-      border: $Tempest-Browser-Privacy-Panel-1-hex solid 2px;
+      border: colors.$Tempest-Browser-Privacy-Panel-1-hex solid 2px;
     }
 
     .arrow {

@@ -1,4 +1,4 @@
-@import "colors";
+@use "colors";
 
 .overlay {
   position: fixed;
@@ -40,17 +40,17 @@
         transition: all 0.3s ease-in-out;
 
         &:hover {
-          background: $Tempest-Browser-Privacy-Panel-1-hex;
+          background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
           transition: all 0.3s ease-in-out;
-          color: $text-white;
+          color: colors.$text-white;
           width: fit-content;
           padding: .4rem;
           border-radius: 100%;
         }
 
         &:disabled {
-          background: $disabled;
-          color: $disabled-text;
+          background: colors.$disabled;
+          color: colors.$disabled-text;
           border: none;
           width: fit-content;
           font-weight: 600;

@@ -1,16 +1,16 @@
-@import "footer";
-@import "header";
-@import "colors";
-@import "card";
-@import "card-skeleton";
-@import "input";
-@import "overlay";
-@import 'accordion';
+@use "footer";
+@use "header";
+@use "colors";
+@use "card";
+@use "card-skeleton";
+@use "input";
+@use "overlay";
+@use "accordion";
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 body {
   font-family: 'Inter', sans-serif, Arial, Helvetica, sans-serif;
-  background: $Tempest-Browser-Privacy-Panel-5-hex;
+  background: colors.$Tempest-Browser-Privacy-Panel-5-hex;
   margin: 0;
 }
 
@@ -60,7 +60,7 @@ main {
 
     .image img {
       border-radius: .5rem;
-      box-shadow: 0 0 1rem 0 rgba($grey, 1);
+      box-shadow: 0 0 1rem 0 rgba(colors.$grey, 1);
     }
   }
 
@@ -69,8 +69,8 @@ main {
     transition: all 0.2s ease-in-out;
 
     &:hover {
-      color: $text-white;
-      background: $Tempest-Browser-Privacy-Panel-1-hex;
+      color: colors.$text-white;
+      background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
       padding: .1rem;
       transition: all 0.2s ease-in-out;
     }
@@ -113,16 +113,16 @@ main {
       align-items: center;
       padding: 2rem;
       border-radius: 2rem;
-      background: lighten($danger, 10%);
-      color: $text-white;
-      border: 2.5px solid $danger;
+      background: lighten(colors.$danger, 10%);
+      color: colors.$text-white;
+      border: 2.5px solid colors.$danger;
       transition: all 0.4s ease-in-out;
 
       .icon {
         font-size: 2rem;
         display: flex;
         justify-content: center;
-        color: $text-white;
+        color: colors.$text-white;
 
       }
 
@@ -134,9 +134,9 @@ main {
 
       &:hover {
         transform: scale(1.05);
-        background: $danger;
+        background: colors.$danger;
         transition: all 0.4s ease-in-out;
-        color: $text-white;
+        color: colors.$text-white;
         padding: 2rem;
         width: fit-content;
         border-radius: 2rem;
@@ -170,13 +170,13 @@ main {
 
   &__image img {
     border-radius: .5rem;
-    box-shadow: 0 0 1rem 0 rgba($grey, 1);
+    box-shadow: 0 0 1rem 0 rgba(colors.$grey, 1);
     transition: all 0.3s ease-in-out;
 
     &:hover {
       transform: scale(1.05);
       transition: all 0.3s ease-in-out;
-      box-shadow: 0 0 1rem 0 rgba($grey, .5);
+      box-shadow: 0 0 1rem 0 rgba(colors.$grey, .5);
       cursor: zoom-in;
     }
   }
@@ -208,7 +208,7 @@ main {
       p {
         font-size: 1.2rem;
         font-weight: 600;
-        color: darken($grey, 40%);
+        color: darken(colors.$grey, 40%);
       }
     }
 
@@ -240,7 +240,7 @@ main {
 
     &-footer > a {
       transition: all 0.3s ease-in-out;
-      color: $black;
+      color: colors.$black;
       font-weight: 600;
       padding: .4rem;
       width: fit-content;
@@ -248,9 +248,9 @@ main {
       text-decoration: none;
 
       &:hover {
-        background: $Tempest-Browser-Privacy-Panel-1-hex;
+        background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
         transition: all 0.3s ease-in-out;
-        color: $text-white;
+        color: colors.$text-white;
         padding: .4rem;
         width: fit-content;
         border-radius: .5rem;
@@ -260,7 +260,7 @@ main {
 }
 
 .grey-container {
-  background: darken($Tempest-Browser-Privacy-Panel-5-hex, 5%);
+  background: darken(colors.$Tempest-Browser-Privacy-Panel-5-hex, 5%);
   padding: 1rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
@@ -292,7 +292,7 @@ main {
       span {
         font-size: 1rem;
         font-weight: 600;
-        color: darken($grey, 40%);
+        color: darken(colors.$grey, 40%);
       }
     }
   }
@@ -362,7 +362,7 @@ main {
 @media (max-width: 1080px) and (min-width: 768px) {
   body {
     font-family: 'Inter', sans-serif, Arial, Helvetica, sans-serif;
-    background: $Tempest-Browser-Privacy-Panel-5-hex;
+    background: colors.$Tempest-Browser-Privacy-Panel-5-hex;
     margin: 0;
   }
 
@@ -412,7 +412,7 @@ main {
 
       .image img {
         border-radius: .5rem;
-        box-shadow: 0 0 1rem 0 rgba($grey, 1);
+        box-shadow: 0 0 1rem 0 rgba(colors.$grey, 1);
       }
     }
 
@@ -421,8 +421,8 @@ main {
       transition: all 0.2s ease-in-out;
 
       &:hover {
-        color: $text-white;
-        background: $Tempest-Browser-Privacy-Panel-1-hex;
+        color: colors.$text-white;
+        background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
         padding: .1rem;
         transition: all 0.2s ease-in-out;
       }
@@ -465,16 +465,16 @@ main {
         align-items: center;
         padding: 2rem;
         border-radius: 2rem;
-        background: lighten($danger, 10%);
-        color: $text-white;
-        border: 2.5px solid $danger;
+        background: lighten(colors.$danger, 10%);
+        color: colors.$text-white;
+        border: 2.5px solid colors.$danger;
         transition: all 0.4s ease-in-out;
 
         .icon {
           font-size: 2rem;
           display: flex;
           justify-content: center;
-          color: $text-white;
+          color: colors.$text-white;
 
         }
 
@@ -486,9 +486,9 @@ main {
 
         &:hover {
           transform: scale(1.05);
-          background: $danger;
+          background: colors.$danger;
           transition: all 0.4s ease-in-out;
-          color: $text-white;
+          color: colors.$text-white;
           padding: 2rem;
           width: fit-content;
           border-radius: 2rem;
@@ -522,13 +522,13 @@ main {
 
     &__image img {
       border-radius: .5rem;
-      box-shadow: 0 0 1rem 0 rgba($grey, 1);
+      box-shadow: 0 0 1rem 0 rgba(colors.$grey, 1);
       transition: all 0.3s ease-in-out;
 
       &:hover {
         transform: scale(1.05);
         transition: all 0.3s ease-in-out;
-        box-shadow: 0 0 1rem 0 rgba($grey, .5);
+        box-shadow: 0 0 1rem 0 rgba(colors.$grey, .5);
         cursor: zoom-in;
       }
     }
@@ -561,7 +561,7 @@ main {
         p {
           font-size: 1.2rem;
           font-weight: 600;
-          color: darken($grey, 40%);
+          color: darken(colors.$grey, 40%);
         }
       }
 
@@ -593,7 +593,7 @@ main {
 
       &-footer > a {
         transition: all 0.3s ease-in-out;
-        color: $black;
+        color: colors.$black;
         font-weight: 600;
         padding: .4rem;
         width: fit-content;
@@ -601,9 +601,9 @@ main {
         text-decoration: none;
 
         &:hover {
-          background: $Tempest-Browser-Privacy-Panel-1-hex;
+          background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
           transition: all 0.3s ease-in-out;
-          color: $text-white;
+          color: colors.$text-white;
           padding: .4rem;
           width: fit-content;
           border-radius: .5rem;
@@ -638,7 +638,7 @@ main {
         span {
           font-size: 1rem;
           font-weight: 600;
-          color: darken($grey, 40%);
+          color: darken(colors.$grey, 40%);
         }
       }
     }
@@ -704,7 +704,7 @@ main {
 
   body {
     font-family: 'Inter', sans-serif, Arial, Helvetica, sans-serif;
-    background: $Tempest-Browser-Privacy-Panel-5-hex;
+    background: colors.$Tempest-Browser-Privacy-Panel-5-hex;
     margin: 0;
   }
 
@@ -754,7 +754,7 @@ main {
 
       .image img {
         border-radius: .5rem;
-        box-shadow: 0 0 1rem 0 rgba($grey, 1);
+        box-shadow: 0 0 1rem 0 rgba(colors.$grey, 1);
         width: 20rem;
         height: 15rem;
       }
@@ -765,8 +765,8 @@ main {
       transition: all 0.2s ease-in-out;
 
       &:hover {
-        color: $text-white;
-        background: $Tempest-Browser-Privacy-Panel-1-hex;
+        color: colors.$text-white;
+        background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
         padding: .1rem;
         transition: all 0.2s ease-in-out;
       }
@@ -809,16 +809,16 @@ main {
         align-items: center;
         padding: 2rem;
         border-radius: 2rem;
-        background: lighten($danger, 10%);
-        color: $text-white;
-        border: 2.5px solid $danger;
+        background: lighten(colors.$danger, 10%);
+        color: colors.$text-white;
+        border: 2.5px solid colors.$danger;
         transition: all 0.4s ease-in-out;
 
         .icon {
           font-size: 2rem;
           display: flex;
           justify-content: center;
-          color: $text-white;
+          color: colors.$text-white;
 
         }
 
@@ -830,9 +830,9 @@ main {
 
         &:hover {
           transform: scale(1.05);
-          background: $danger;
+          background: colors.$danger;
           transition: all 0.4s ease-in-out;
-          color: $text-white;
+          color: colors.$text-white;
           padding: 2rem;
           width: fit-content;
           border-radius: 2rem;
@@ -904,7 +904,7 @@ main {
         p {
           font-size: 1.2rem;
           font-weight: 600;
-          color: darken($grey, 40%);
+          color: darken(colors.$grey, 40%);
         }
       }
 
@@ -939,7 +939,7 @@ main {
 
         a {
           transition: all 0.3s ease-in-out;
-          color: $black;
+          color: colors.$black;
           font-weight: 500;
           padding: .4rem;
           width: fit-content;
@@ -947,9 +947,9 @@ main {
           text-decoration: none;
 
           &:hover {
-            background: $Tempest-Browser-Privacy-Panel-1-hex;
+            background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
             transition: all 0.3s ease-in-out;
-            color: $text-white;
+            color: colors.$text-white;
             padding: .4rem;
             width: fit-content;
             border-radius: .5rem;
@@ -986,7 +986,7 @@ main {
         span {
           font-size: 1rem;
           font-weight: 600;
-          color: darken($grey, 40%);
+          color: darken(colors.$grey, 40%);
         }
       }
     }

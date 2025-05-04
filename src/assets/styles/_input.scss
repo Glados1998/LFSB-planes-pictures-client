@@ -1,4 +1,4 @@
-@import "colors";
+@use "colors";
 
 .filter {
   display: grid;
@@ -6,7 +6,7 @@
   grid-auto-columns: max-content;
   justify-content: center;
   padding: 1rem;
-  background: $text-white;
+  background: colors.$text-white;
   border-radius: 2rem;
   width: fit-content;
   align-self: center;
@@ -30,35 +30,35 @@
 input, select {
   padding: .5rem;
   border-radius: .5rem;
-  border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
+  border: 2px solid colors.$Tempest-Browser-Privacy-Panel-5-hex;
   font-weight: 600;
   transition: all 0.6s ease-in-out;
-  background: $text-white;
+  background: colors.$text-white;
   width: 10rem;
 
   &:focus, &:hover {
-    border: 2px solid $Tempest-Browser-Privacy-Panel-1-hex;
+    border: 2px solid colors.$Tempest-Browser-Privacy-Panel-1-hex;
   }
 
   &:invalid {
-    border: 2px solid $danger;
+    border: 2px solid colors.$danger;
   }
 
   &:disabled {
-    border: 2px solid $disabled;
-    color: $disabled-text;
+    border: 2px solid colors.$disabled;
+    color: colors.$disabled-text;
     cursor: not-allowed;
   }
 }
 
 ::placeholder {
-  color: $black;
+  color: colors.$black;
   opacity: 1;
 }
 
 .btn {
-  color: $black;
-  background: $text-white;
+  color: colors.$black;
+  background: colors.$text-white;
   border: none;
   padding: .4rem;
   width: fit-content;
@@ -70,17 +70,17 @@ input, select {
   align-items: center;
 
   &:hover {
-    background: $Tempest-Browser-Privacy-Panel-1-hex;
+    background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
     transition: all 0.3s ease-in-out;
-    color: $text-white;
+    color: colors.$text-white;
     padding: .4rem;
     width: fit-content;
     border-radius: .5rem;
   }
 
   &:disabled {
-    background: $disabled;
-    color: $disabled-text;
+    background: colors.$disabled;
+    color: colors.$disabled-text;
     border: none;
     padding: .4rem;
     width: fit-content;
@@ -100,17 +100,17 @@ input, select {
   height: fit-content;
 
   &:hover {
-    background: $Tempest-Browser-Privacy-Panel-1-hex;
+    background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
     transition: all 0.6s ease-in-out;
-    color: $text-white;
+    color: colors.$text-white;
     width: fit-content;
     padding: .7rem;
     border-radius: 100%;
   }
 
   &:disabled {
-    background: $disabled;
-    color: $disabled-text;
+    background: colors.$disabled;
+    color: colors.$disabled-text;
     border: none;
     width: fit-content;
     font-weight: 600;
@@ -130,7 +130,7 @@ input, select {
 
   &-button {
     text-decoration: none;
-    color: $black;
+    color: colors.$black;
     font-weight: 600;
     padding: 1rem;
     width: 5rem;
@@ -139,26 +139,26 @@ input, select {
     background: none;
 
     &:hover {
-      background: $Tempest-Browser-Privacy-Panel-1-hex;
-      color: $text-white;
+      background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
+      color: colors.$text-white;
     }
   }
 
   &-content {
     position: absolute;
-    box-shadow: 0 0 0 0 rgba($grey, 0.2);
+    box-shadow: 0 0 0 0 rgba(colors.$grey, 0.2);
 
     &-selection {
       font-weight: 600;
       width: 7rem;
       text-align: center;
       padding: 1rem 0 1rem 0;
-      background: $text-white;
+      background: colors.$text-white;
       transition: all 0.3s ease-in-out;
 
       &:hover {
-        background: $Tempest-Browser-Privacy-Panel-1-hex;
-        color: $text-white;
+        background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
+        color: colors.$text-white;
         transition: all 0.2s ease-in-out;
       }
     }
@@ -166,8 +166,8 @@ input, select {
 }
 
 .selected {
-  background: $Tempest-Browser-Privacy-Panel-2-hex;
-  color: $text-white;
+  background: colors.$Tempest-Browser-Privacy-Panel-2-hex;
+  color: colors.$text-white;
 }
 
 @media (max-width: 1024px) and (min-width: 768px) {
@@ -178,7 +178,7 @@ input, select {
     grid-auto-columns: max-content;
     justify-content: center;
     padding: .5rem;
-    background: $text-white;
+    background: colors.$text-white;
     border-radius: .9rem;
     width: fit-content;
     align-self: center;
@@ -199,12 +199,12 @@ input, select {
       input, select {
         padding: .5rem;
         border-radius: .3rem;
-        border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
+        border: 2px solid colors.$Tempest-Browser-Privacy-Panel-5-hex;
         transition: all 0.3s ease-in-out;
 
         &:disabled {
-          border: 2px solid $disabled;
-          color: $disabled-text;
+          border: 2px solid colors.$disabled;
+          color: colors.$disabled-text;
           cursor: not-allowed;
         }
       }
@@ -221,17 +221,17 @@ input, select {
     height: fit-content;
 
     &:hover {
-      background: $Tempest-Browser-Privacy-Panel-1-hex;
+      background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
       transition: all 0.3s ease-in-out;
-      color: $text-white;
+      color: colors.$text-white;
       width: fit-content;
       padding: .7rem;
       border-radius: 100%;
     }
 
     &:disabled {
-      background: $disabled;
-      color: $disabled-text;
+      background: colors.$disabled;
+      color: colors.$disabled-text;
       border: none;
       width: fit-content;
       font-weight: 600;
@@ -262,17 +262,17 @@ input, select {
     height: fit-content;
 
     &:hover {
-      background: $Tempest-Browser-Privacy-Panel-1-hex;
+      background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
       transition: all 0.3s ease-in-out;
-      color: $text-white;
+      color: colors.$text-white;
       width: fit-content;
       padding: .4rem;
       border-radius: 100%;
     }
 
     &:disabled {
-      background: $disabled;
-      color: $disabled-text;
+      background: colors.$disabled;
+      color: colors.$disabled-text;
       border: none;
       width: fit-content;
       font-weight: 600;
@@ -294,7 +294,7 @@ input, select {
     grid-auto-columns: max-content;
     justify-content: center;
     padding: .5rem;
-    background: $text-white;
+    background: colors.$text-white;
     border-radius: .9rem;
     width: fit-content;
     align-self: center;
@@ -315,12 +315,12 @@ input, select {
       input, select {
         padding: .5rem;
         border-radius: .3rem;
-        border: 2px solid $Tempest-Browser-Privacy-Panel-5-hex;
+        border: 2px solid colors.$Tempest-Browser-Privacy-Panel-5-hex;
         transition: all 0.3s ease-in-out;
 
         &:disabled {
-          border: 2px solid $disabled;
-          color: $disabled-text;
+          border: 2px solid colors.$disabled;
+          color: colors.$disabled-text;
           cursor: not-allowed;
         }
       }

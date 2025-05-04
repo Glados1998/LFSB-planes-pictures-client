@@ -1,17 +1,17 @@
-@import "colors";
+@use "colors";
 
 .card {
   display: grid;
   grid-auto-flow: row;
   grid-auto-rows: max-content;
   grid-gap: 1rem;
-  color: $black;
+  color: colors.$black;
   text-decoration: none;
-  background: $text-white;
+  background: colors.$text-white;
   padding: 1rem;
   border: 2px solid transparent;
   border-radius: 1.5rem;
-  box-shadow: 0 0 1rem 0 rgba($grey, 1);
+  box-shadow: 0 0 1rem 0 rgba(colors.$grey, 1);
   width: 350px;
   max-width: 100%;
   height: fit-content;
@@ -32,25 +32,25 @@
 
   .button {
     transition: all 0.3s ease-in-out;
-    color: $black;
+    color: colors.$black;
     font-weight: 600;
     padding: .4rem;
     width: fit-content;
     border-radius: .5rem;
     border: none;
-    background: $text-white;
+    background: colors.$text-white;
   }
 
   &:hover {
-    box-shadow: 0 0 1rem 0 rgba($grey, 0.2);
+    box-shadow: 0 0 1rem 0 rgba(colors.$grey, 0.2);
     transition: all 0.3s ease-in-out;
     transform: scale(1.02);
-    border: $Tempest-Browser-Privacy-Panel-1-hex solid 2px;
+    border: colors.$Tempest-Browser-Privacy-Panel-1-hex solid 2px;
 
     .button {
-      background: $Tempest-Browser-Privacy-Panel-1-hex;
+      background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
       transition: all 0.6s ease-in-out;
-      color: $text-white;
+      color: colors.$text-white;
       padding: .4rem;
       width: fit-content;
       border-radius: .5rem;
@@ -71,7 +71,7 @@
     p {
       font-size: 1rem;
       font-weight: 500;
-      color: darken($grey, 40%);
+      color: darken(colors.$grey, 40%);
     }
 
     &-title {
@@ -106,13 +106,13 @@
     grid-auto-flow: row;
     grid-auto-rows: max-content;
     grid-gap: 1rem;
-    color: $black;
+    color: colors.$black;
     text-decoration: none;
-    background: $text-white;
+    background: colors.$text-white;
     padding: .5rem;
     border: 2px solid transparent;
     border-radius: 1rem;
-    box-shadow: 0 0 1rem 0 rgba($grey, 1);
+    box-shadow: 0 0 1rem 0 rgba(colors.$grey, 1);
     width: 280px;
     max-width: 100%;
     height: fit-content;
@@ -133,25 +133,25 @@
 
     .button {
       transition: all 0.3s ease-in-out;
-      color: $black;
+      color: colors.$black;
       font-weight: 600;
       padding: .5rem;
       width: fit-content;
       border-radius: .5rem;
       border: none;
-      background: $text-white;
+      background: colors.$text-white;
     }
 
     &:hover {
-      box-shadow: 0 0 1rem 0 rgba($grey, 0.2);
+      box-shadow: 0 0 1rem 0 rgba(colors.$grey, 0.2);
       transition: all 0.3s ease-in-out;
       transform: scale(1.02);
-      border: $Tempest-Browser-Privacy-Panel-1-hex solid 2px;
+      border: colors.$Tempest-Browser-Privacy-Panel-1-hex solid 2px;
 
       .button {
-        background: $Tempest-Browser-Privacy-Panel-1-hex;
+        background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
         transition: all 0.3s ease-in-out;
-        color: $text-white;
+        color: colors.$text-white;
         padding: .5rem;
         width: fit-content;
         border-radius: .5rem;
@@ -185,7 +185,7 @@
         p {
           font-size: .9rem;
           font-weight: 500;
-          color: darken($grey, 40%);
+          color: darken(colors.$grey, 40%);
         }
       }
     }
@@ -206,13 +206,13 @@
     grid-auto-flow: row;
     grid-auto-rows: max-content;
     grid-gap: 1rem;
-    color: $black;
+    color: colors.$black;
     text-decoration: none;
-    background: $text-white;
+    background: colors.$text-white;
     padding: .5rem;
     border: 2px solid transparent;
     border-radius: 1rem;
-    box-shadow: 0 0 1rem 0 rgba($grey, 1);
+    box-shadow: 0 0 1rem 0 rgba(colors.$grey, 1);
     width: 250px;
     max-width: 100%;
     height: fit-content;
@@ -233,25 +233,25 @@
 
     .button {
       transition: all 0.3s ease-in-out;
-      color: $black;
+      color: colors.$black;
       font-weight: 600;
       padding: .5rem;
       width: fit-content;
       border-radius: .5rem;
       border: none;
-      background: $text-white;
+      background: colors.$text-white;
     }
 
     &:hover {
-      box-shadow: 0 0 1rem 0 rgba($grey, 0.2);
+      box-shadow: 0 0 1rem 0 rgba(colors.$grey, 0.2);
       transition: all 0.3s ease-in-out;
       transform: scale(1.02);
-      border: $Tempest-Browser-Privacy-Panel-1-hex solid 2px;
+      border: colors.$Tempest-Browser-Privacy-Panel-1-hex solid 2px;
 
       .button {
-        background: $Tempest-Browser-Privacy-Panel-1-hex;
+        background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
         transition: all 0.3s ease-in-out;
-        color: $text-white;
+        color: colors.$text-white;
         padding: .5rem;
         width: fit-content;
         border-radius: .5rem;
@@ -285,7 +285,7 @@
         p {
           font-size: .9rem;
           font-weight: 500;
-          color: darken($grey, 40%);
+          color: darken(colors.$grey, 40%);
         }
       }
     }

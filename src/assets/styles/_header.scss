@@ -1,8 +1,8 @@
-@import "colors";
+@use "colors";
 
 .header {
-  background-color: $text-white;
-  color: $black;
+  background-color: colors.$text-white;
+  color: colors.$black;
   margin: 0;
   padding: 0;
 
@@ -34,14 +34,14 @@
 
       &_link > a {
         text-decoration: none;
-        color: $black;
+        color: colors.$black;
         font-weight: 600;
         padding: 1rem;
         transition: all 0.3s ease-in-out;
 
         &:hover {
-          background: $Tempest-Browser-Privacy-Panel-1-hex;
-          color: $text-white;
+          background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
+          color: colors.$text-white;
         }
       }
     }
@@ -58,8 +58,8 @@
 
 @media (max-width: 767px) and (min-width: 320px) {
   .header {
-    background-color: $text-white;
-    color: $black;
+    background-color: colors.$text-white;
+    color: colors.$black;
     margin: 0;
     padding: 0;
 
@@ -95,7 +95,7 @@
 
           a {
             text-decoration: none;
-            color: $black;
+            color: colors.$black;
             font-weight: 600;
             padding: 0;
             transition: all 0.2s ease-in-out;

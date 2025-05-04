@@ -1,7 +1,7 @@
-@import "colors";
+@use "colors";
 
 .footer {
-  background: $text-white;
+  background: colors.$text-white;
   position: relative;
   width: 100%;
   bottom: 0;
@@ -30,16 +30,16 @@
 
   a {
     text-decoration: none;
-    color: $black;
+    color: colors.$black;
     font-weight: 500;
     transition: all 0.2s ease-in-out;
     padding: .1rem;
 
     &:hover {
       padding: .1rem;
-      color: $text-white;
+      color: colors.$text-white;
       transition: all 0.2s ease-in-out;
-      background: $Tempest-Browser-Privacy-Panel-1-hex;
+      background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
     }
   }
 }
@@ -54,7 +54,7 @@
 
 .footer__nav-link > a {
   text-decoration: none;
-  color: $black;
+  color: colors.$black;
   font-weight: 500;
 
   transition: all 0.2s ease-in-out;
@@ -62,9 +62,9 @@
 
   &:hover {
     padding: .1rem;
-    color: $text-white;
+    color: colors.$text-white;
     transition: all 0.2s ease-in-out;
-    background: $Tempest-Browser-Privacy-Panel-1-hex;
+    background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
   }
 }
 
@@ -75,7 +75,7 @@
 @media (max-width: 767px) {
 
   .footer {
-    background: $text-white;
+    background: colors.$text-white;
     position: relative;
     width: 100%;
     bottom: 0;
@@ -109,16 +109,16 @@
 
     a {
       text-decoration: none;
-      color: $black;
+      color: colors.$black;
       font-weight: 500;
       transition: all 0.2s ease-in-out;
       padding: .1rem;
 
       &:hover {
         padding: .1rem;
-        color: $text-white;
+        color: colors.$text-white;
         transition: all 0.2s ease-in-out;
-        background: $Tempest-Browser-Privacy-Panel-1-hex;
+        background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
       }
     }
   }
@@ -133,7 +133,7 @@
 
   .footer__nav-link > a {
     text-decoration: none;
-    color: $black;
+    color: colors.$black;
     font-weight: 500;
 
     transition: all 0.2s ease-in-out;
@@ -141,9 +141,9 @@
 
     &:hover {
       padding: .1rem;
-      color: $text-white;
+      color: colors.$text-white;
       transition: all 0.2s ease-in-out;
-      background: $Tempest-Browser-Privacy-Panel-1-hex;
+      background: colors.$Tempest-Browser-Privacy-Panel-1-hex;
     }
   }
 
