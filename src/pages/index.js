@@ -37,7 +37,6 @@ export default function Home() {
                         })}
                     </p>
                 </div>
-
             </div>
             <div className={'home_about'}>
                 <div className={'image'}>
@@ -54,9 +53,9 @@ export default function Home() {
                         })}
                     </p>
                 </div>
-                <div>
-                    {visits}
-                </div>
+            </div>
+            <div>
+                {visits}
             </div>
         </div>
     )

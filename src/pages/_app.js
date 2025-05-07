@@ -1,4 +1,4 @@
-import '@/assets/styles/main.scss'
+import '@/assets/styles/global.css'
 import Layout from '../components/layout'
 import {NextIntlClientProvider} from "next-intl";
 import {useRouter} from 'next/router';
