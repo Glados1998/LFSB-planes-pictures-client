@@ -91,35 +91,35 @@ export default function Gallery() {
     };
 
     return (
-        <div className={'gallery'}>
-            <div className={'filter-component'}>
+        <div>
+            <div>
                 <GalleryFilter onFilterChange={handleFilterChange} dataPresent={aircraft.length > 0}/>
             </div>
 
             {aircraft.length > 0 ? (
                 <>
-                    <div className={'gallery_area'}>
+                    <div>
                         {aircraft.map(plane => (
                             <Card key={plane.id} plane={plane}/>
                         ))}
                     </div>
-                    <div className={'gallery_footer pagination'}>
-                        <button className={"btn-pagination"} onClick={handlePrevious} disabled={pageIndex === 1}>
+                    <div>
+                        <button onClick={handlePrevious} disabled={pageIndex === 1}>
                             <FaArrowLeft/>
                         </button>
                         <span>
                             {`${pageIndex} sur ${pagination.pageCount}`}
                         </span>
-                        <button className={"btn-pagination"} onClick={handleNext}
+                        <button onClick={handleNext}
                                 disabled={pageIndex === pagination.pageCount || aircraft.length === 0}>
                             <FaArrowRight/>
                         </button>
                     </div>
                 </>
             ) : sysMessage && (
-                <div className={'gallery_message'}>
-                    <div className="message-box">
-                        <div className="icon">
+                <div>
+                    <div>
+                        <div>
                             <PiWarningFill/>
                         </div>
                         <p>{sysMessage}</p>

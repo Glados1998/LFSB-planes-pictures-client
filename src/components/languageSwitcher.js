@@ -16,16 +16,16 @@ export default function LanguageSwitcher() {
     };
 
     return (
-        <div className={'language_switcher'}>
-            <div className={'language_switcher-button'} onClick={handleToggle}>
+        <div className={''}>
+            <div className={''} onClick={handleToggle}>
                 {currentLocale.toUpperCase()}
             </div>
             {isOpen && (
-                <div className={'language_switcher-content'}>
+                <div className={''}>
                     {locales.map(locale => (
                         <div
                             key={locale}
-                            className={`language_switcher-content-selection ${locale === currentLocale ? 'selected' : ''}`}
+                            className={` ${locale === currentLocale ? 'selected' : ''}`}
                             onClick={() => handleSelect(locale)}>
                             {locale.toUpperCase()}
                         </div>

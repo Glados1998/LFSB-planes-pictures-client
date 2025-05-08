@@ -7,7 +7,12 @@
     --color-tempest-Browser-Privacy-Panel-3-hex: #8091F2;
     --color-tempest-Browser-Privacy-Panel-4-hex: #9BA8F2;
     --color-tempest-Browser-Privacy-Panel-5-hex: #E9EBF2;
+    --color-tempest-Browser-Privacy-Panel-6-hex: #202026;
 
     --font-inter: "Inter", sans-serif;
 
+}
+
+body {
+    @apply font-inter m-0 p-0 bg-tempest-Browser-Privacy-Panel-5-hex dark:bg-tempest-Browser-Privacy-Panel-6-hex text-tempest-Browser-Privacy-Panel-6-hex dark:text-white;
 }

@@ -21,13 +21,13 @@ export default function Home() {
 
     const t = useTranslations("home");
     return (
-        <div className={'home'}>
-            <div className="home_headline">
-                <div className="home_headline-text">
+        <div>
+            <div>
+                <div>
                     <h2>
                         {t('headline')}
                     </h2>
-                    <h1 className={'title'}>
+                    <h1>
                         LFSB Planes Pictures
                     </h1>
                     <hr/>
@@ -38,11 +38,11 @@ export default function Home() {
                     </p>
                 </div>
             </div>
-            <div className={'home_about'}>
-                <div className={'image'}>
+            <div>
+                <div>
                     <Image src={papaHeadshot} alt={'Laurent Greder'} width={650} height={500} objectFit={'cover'}/>
                 </div>
-                <div className={'text'}>
+                <div>
                     <h1>{t('about.headline')}</h1>
                     <p>
                         {t("about.text1")}

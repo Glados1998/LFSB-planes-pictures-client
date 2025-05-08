@@ -145,40 +145,40 @@ export default function AircraftDetail() {
     // Render the aircraft details and image overlay
     return (
         <>
-            <div className={'detail'}>
-                <div className={'detail__image'}>
+            <div>
+                <div>
                     {/* Image that opens the overlay when clicked */}
-                    <Image className={'normal-img'} src={imageUrl || notFound} alt={aircraftType || 'Not found'}
+                    <Image src={imageUrl || notFound} alt={aircraftType || 'Not found'}
                            width={700} height={500}
                            onClick={() => setState(prevState => ({...prevState, showOverlay: true}))}/>
                 </div>
-                <div className={'detail__content'}>
-                    <div className={'detail__content-title'}>
+                <div>
+                    <div>
                         <h2>{aircraftType || 'N/A'}</h2>
                         <p>{operator || 'N/A'}</p>
                     </div>
-                    <div className={'detail__content-info'}>
-                        <div className="grey-container">
+                    <div>
+                        <div>
                             <div>
                                 <span>{t("aircraftDetails")}</span>
                             </div>
-                            <div className="detail__content-info-column ">
-                                <div className="detail__content-info-column-row">
-                                    <div className="detail__content-info-column-row-item">
+                            <div>
+                                <div>
+                                    <div>
                                         <p>{t("yearOfFirstFlight")} :</p>
                                         <span>{yearOfFirstFlight || 'N/A'}</span>
                                     </div>
-                                    <div className="detail__content-info-column-row-item">
+                                    <div>
                                         <p>{t("yearOfConstruction")} :</p>
                                         <span>{yearOfConstruction || 'N/A'}</span>
                                     </div>
                                 </div>
-                                <div className="detail__content-info-column-row">
-                                    <div className="detail__content-info-column-row-item">
+                                <div>
+                                    <div>
                                         <p>{t("serviceNumber")} :</p>
                                         <span>{serviceNumber || 'N/A'}</span>
                                     </div>
-                                    <div className="detail__content-info-column-row-item">
+                                    <div>
                                         <p>{t("registration")} :</p>
                                         <span>{registration || 'N/A'}</span>
                                     </div>
@@ -194,12 +194,12 @@ export default function AircraftDetail() {
                                 </span>
                             )}
                         >
-                            <div className="image-metadata-container">
-                                <div className="image-metadata-container-header">
+                            <div>
+                                <div>
                                     <i title={'camera'}>
                                         <MdCameraAlt/>
                                     </i>
-                                    <div className="image-metadata-container-header-camera">
+                                    <div>
                                         <h3>
                                             {model}
                                         </h3>
@@ -208,29 +208,29 @@ export default function AircraftDetail() {
                                     </span>
                                     </div>
                                 </div>
-                                <div className="image-metadata-container-content">
-                                    <div className="image-metadata-container-content-column">
-                                        <div className="image-metadata-container-content-column-item">
+                                <div>
+                                    <div>
+                                        <div>
                                             <i title={'Ouverture'}>
                                                 <MdCamera/>
                                             </i>
                                             <span>{focalNumber}</span>
                                         </div>
-                                        <div className="image-metadata-container-content-column-item">
+                                        <div>
                                             <i title={'Ouverture'}>
                                                 <MdAccessAlarm/>
                                             </i>
                                             <span>{exposureTime}</span>
                                         </div>
                                     </div>
-                                    <div className="image-metadata-container-content-column">
-                                        <div className="image-metadata-container-content-column-item">
+                                    <div>
+                                        <div>
                                             <i title={'Iso'}>
                                                 <MdIso/>
                                             </i>
                                             <span>{iso}</span>
                                         </div>
-                                        <div className="image-metadata-container-content-column-item">
+                                        <div>
                                             {flash === 'true' ? (
                                                 <>
                                                     <i title={'Flash'}>
@@ -250,14 +250,14 @@ export default function AircraftDetail() {
                                             )}
                                         </div>
                                     </div>
-                                    <div className="image-metadata-container-content-column">
-                                        <div className="image-metadata-container-content-column-item">
+                                    <div>
+                                        <div>
                                             <i title={'Distance focale'}>
                                                 <MdBlurOn/>
                                             </i>
                                             <span>{focalLength}</span>
                                         </div>
-                                        <div className="image-metadata-container-content-column-item">
+                                        <div>
                                             <i title={'Date de création'}>
                                                 <MdCalendarMonth/>
                                             </i>
@@ -265,18 +265,18 @@ export default function AircraftDetail() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="image-metadata-container-footer">
-                                    <div className="image-metadata-container-footer-copyright">
+                                <div>
+                                    <div>
                                         <span>&copy; {copyright}</span>
                                     </div>
-                                    <div className="image-metadata-container-footer-artist">
+                                    <div>
                                         <span>{artist}</span>
                                     </div>
                                 </div>
                             </div>
                         </Accordion>
                     </div>
-                    <div className={'detail__content-footer'}>
+                    <div>
                         <Link href="/gallery">
                             {t("back")}
                         </Link>
