@@ -6,7 +6,7 @@ export default function Layout({children}) {
     return (
         <div className={"m-0"}>
             <Header/>
-            <main className={"py-10 px-20"}>
+            <main className={"py-10 flex justify-around"}>
                 {children}
                 <Analytics/>
             </main>
