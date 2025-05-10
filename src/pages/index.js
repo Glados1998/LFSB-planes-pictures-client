@@ -21,45 +21,60 @@ export default function Home() {
 
     const t = useTranslations("home");
     return (
-        <div className="container max-w-8xl">
-            <div className="flex flex-col gap-52">
-                <header className={"flex flex-col md:flex-row gap-8 text-left justify-center"}>
-                    <div>
-                        <span className={"text-2xl font-bold"}>
-                        {t("headline")}
-                        </span>
-                        <hr className={"py-3 border-t-2 w-56"}/>
-                        <h1 className={"text-5xl font-bold"}>
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col gap-24 py-12">
+                <header className="flex flex-col lg:flex-row gap-12 items-center">
+                    <div className="lg:w-1/2">
+                <span className="text-2xl font-bold text-gray-600">
+                    {t("headline")}
+                </span>
+                        <hr className="my-4 border-t-2 w-56 border-gray-300"/>
+                        <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
                             LFSB Planes Pictures
                         </h1>
-                        <p className={"text-xl w-[400px] py-3"}>
+                        <p className="text-lg sm:text-xl text-gray-600 max-w-lg">
                             {t.rich('subheadline', {
-                                span: (chunks) => <span className={"font-semibold"}>{chunks}</span>,
+                                span: (chunks) => <span className="font-semibold">{chunks}</span>,
                             })}
                         </p>
                     </div>
-                    <div className="relative w-full">
-                        <Image src={IntroImage} alt={"header image"} fill={true} objectFit={"cover"}
-                               className={"rounded-lg"} loading={"eager"}/>
+                    <div className="lg:w-1/2 relative aspect-video w-full max-w-2xl">
+                        <Image
+                            src={IntroImage}
+                            alt="header image"
+                            layout="fill"
+                            objectFit="cover"
+                            className="rounded-lg shadow-lg"
+                            priority
+                        />
                     </div>
                 </header>
-                <main className={"flex flex-col md:flex-row gap-8 text-left justify-center"}>
-                    <div className="relative w-[800px] h-[500px]">
-                        <Image src={papaHeadshot} alt={"header image"} fill={true} objectFit={"cover"}
-                               className={"rounded-lg"} loading={"eager"}/>
+
+                <main className="flex flex-col lg:flex-row gap-12 items-center">
+                    <div className="lg:w-1/2 relative aspect-4/3 w-full max-w-2xl">
+                        <Image
+                            src={papaHeadshot}
+                            alt="Laurent Greder"
+                            layout="fill"
+                            objectFit="cover"
+                            className="rounded-lg shadow-lg"
+                            priority
+                        />
                     </div>
-                    <div>
-                        <h1 className={"text-5xl font-bold"}>
+                    <div className="lg:w-1/2">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
                             {t("about.headline")}
-                        </h1>
-                        <p className={"text-xl w-[600px] py-3"}>
-                            {t("about.text1")}
-                        </p>
-                        <p className={"text-xl w-[600px] py-3"}>
-                            {t.rich('about.text2', {
-                                span: (chunks) => <span className={"font-semibold"}>{chunks}</span>,
-                            })}
-                        </p>
+                        </h2>
+                        <div className="space-y-4 text-gray-600">
+                            <p className="text-lg">
+                                {t("about.text1")}
+                            </p>
+                            <p className="text-lg">
+                                {t.rich('about.text2', {
+                                    span: (chunks) => <span className="font-semibold">{chunks}</span>,
+                                })}
+                            </p>
+                        </div>
                     </div>
                 </main>
                 <footer></footer>
