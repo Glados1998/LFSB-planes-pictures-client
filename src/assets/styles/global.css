@@ -16,3 +16,14 @@
 body {
     @apply font-inter m-0 p-0 bg-tempest-Browser-Privacy-Panel-5-hex dark:bg-tempest-Browser-Privacy-Panel-6-hex text-tempest-Browser-Privacy-Panel-6-hex dark:text-white;
 }
+
+.container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 90vw;
+}
+
+@screen xl {
+    .container {
+        max-width: 1280px;
+    }
+}

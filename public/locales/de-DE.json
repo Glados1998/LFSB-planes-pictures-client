@@ -6,6 +6,11 @@
       "headline": "Über den Fotografen",
       "text1": "Grüße! Ich bin Laurent Greder, ein begeisterter Flieger und engagierter Spotter. Mein Weg\n                        in der Luftfahrtfotografie begann vor einigen Jahren, angetrieben durch eine\n                        Tiefe Faszination für diese Wunder der Technik und die Geschichten, die sie zu\n                        durch den Himmel.",
       "text2": "Obwohl mein Hauptspielplatz das <span>EuroAirport Basel-Mulhouse-Freiburg</span> ist,\n                        Gelegentlich fotografiere ich einzigartige Luftfahrtszenen in\n                        <span>Flughafen Genf (LSGG)</span> and <span>Flughafen Zürich (LSZH)</span>.\n                        Jeder Standort bietet einen einzigartigen Einblick in die Welt der Luftfahrt, von den belebten internationalen Drehkreuzen bis zu\n                        ruhige Abfahrten in den Himmel.\n                        Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux\n                        départs sereins vers le ciel."
+    },
+    "visits": {
+      "loading": "Besucherzahl wird geladen...",
+      "error": "Une erreur est survenue lors de la récupération des données des visiteurs",
+      "text": "Nombre de visiteurs : <span>{count}</span>"
     }
   },
   "gallery": {

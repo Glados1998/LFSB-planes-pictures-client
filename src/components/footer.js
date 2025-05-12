@@ -9,7 +9,6 @@ const navigation = [
 
 export default function Footer() {
     const t = useTranslations("footer");
-
     const currentYear = new Date().getFullYear();
 
     return (

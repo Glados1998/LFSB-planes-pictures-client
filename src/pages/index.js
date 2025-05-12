@@ -22,7 +22,7 @@ export default function Home() {
     const t = useTranslations("home");
     return (
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col gap-24 py-12">
+            <div className="grid grid-flow-row gap-24 py-12">
                 <header className="flex flex-col lg:flex-row gap-12 items-center">
                     <div className="lg:w-1/2">
                 <span className="text-2xl font-bold text-gray-600">
@@ -32,7 +32,7 @@ export default function Home() {
                         <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
                             LFSB Planes Pictures
                         </h1>
-                        <p className="text-lg sm:text-xl text-gray-600 max-w-lg">
+                        <p className="text-lg sm:text-xl text-gray-600">
                             {t.rich('subheadline', {
                                 span: (chunks) => <span className="font-semibold">{chunks}</span>,
                             })}
@@ -42,10 +42,9 @@ export default function Home() {
                         <Image
                             src={IntroImage}
                             alt="header image"
-                            layout="fill"
-                            objectFit="cover"
+                            layout="responsive"
                             className="rounded-lg shadow-lg"
-                            priority
+                            loading={"eager"}
                         />
                     </div>
                 </header>
@@ -55,10 +54,10 @@ export default function Home() {
                         <Image
                             src={papaHeadshot}
                             alt="Laurent Greder"
-                            layout="fill"
+                            layout="responsive"
                             objectFit="cover"
                             className="rounded-lg shadow-lg"
-                            priority
+                            loading={"eager"}
                         />
                     </div>
                     <div className="lg:w-1/2">
@@ -77,7 +76,33 @@ export default function Home() {
                         </div>
                     </div>
                 </main>
-                <footer></footer>
+                <footer className={"flex justify-center"}>
+                    <div>
+                        <h3>
+
+                        </h3>
+                    </div>
+                    <div className={`p-4 rounded-lg bg-gray-100 shadow-md`}>
+                        {
+                            loading ? (
+                                <p className="text-lg text-gray-600">
+                                    {t("visits.loading")}
+                                </p>
+                            ) : error ? (
+                                <p className="text-lg text-red-600">
+                                    {t("visits.error")}
+                                </p>
+                            ) : (
+                                <p className="text-lg text-gray-600">
+                                    {t.rich('visits.text', {
+                                        count: visits,
+                                        span: (chunks) => <span className="font-semibold">{chunks}</span>,
+                                    })}
+                                </p>
+                            )
+                        }
+                    </div>
+                </footer>
             </div>
         </div>
     )
