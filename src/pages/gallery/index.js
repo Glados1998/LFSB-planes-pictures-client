@@ -9,9 +9,7 @@ import {PiWarningFill} from "react-icons/pi";
 export async function getStaticProps(context) {
     return {
         props: {
-            // You can get the messages from anywhere you like. The recommended
-            // pattern is to put them in JSON files separated by locale and read
-            // the desired one based on the `locale` received from Next.js.
+
             messages: (await import(`public/locales/${context.locale}.json`)).default
         }
     };
@@ -29,12 +27,9 @@ export default function Gallery() {
         registration: ''
     });
 
-    // Fetch aircrafts based on filters
     useEffect(() => {
-        // Construct the query object for filters
         const filterQuery = Object.entries(filters).reduce((acc, [key, value]) => {
             if (value) {
-                // Use the direct string comparison for serviceNumber
                 if (key === 'registration') {
                     acc[`filters[${key}][$containsi]`] = value;
                 } else {
@@ -44,7 +39,6 @@ export default function Gallery() {
             return acc;
         }, {});
 
-        // Use qs to stringify the filter query
         const queryString = qs.stringify({
             ...filterQuery,
             populate: '*',
@@ -68,7 +62,6 @@ export default function Gallery() {
             });
     }, [filters, pageIndex]);
 
-    // Handle filter changes
     const handleFilterChange = (filterType, value) => {
         setFilters(prevFilters => ({
             ...prevFilters,
@@ -77,7 +70,6 @@ export default function Gallery() {
         console.log(value, filterType, filters)
     };
 
-    // Pagination handlers
     const handlePrevious = () => {
         if (pageIndex > 1) {
             setPageIndex(pageIndex - 1);
@@ -91,30 +83,32 @@ export default function Gallery() {
     };
 
     return (
-        <div>
-            <div>
+        <div className={"container grid grid-flow-row gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
+            <header className={"flex justify-center px-4 py-2 bg-white rounded-lg"}>
                 <GalleryFilter onFilterChange={handleFilterChange} dataPresent={aircraft.length > 0}/>
-            </div>
+            </header>
 
             {aircraft.length > 0 ? (
                 <>
-                    <div>
-                        {aircraft.map(plane => (
-                            <Card key={plane.id} plane={plane}/>
-                        ))}
-                    </div>
-                    <div>
+                    <main className={"flex flex-col flex-wrap justify-center"}>
+                        <div className={"grid grid-cols-3 grid-rows-3 gap-4 justify-items-center"}>
+                            {aircraft.map(plane => (
+                                <Card key={plane.id} plane={plane}/>
+                            ))}
+                        </div>
+                    </main>
+                    <footer className={"flex justify-center items-center gap-4"}>
                         <button onClick={handlePrevious} disabled={pageIndex === 1}>
                             <FaArrowLeft/>
                         </button>
                         <span>
-                            {`${pageIndex} sur ${pagination.pageCount}`}
-                        </span>
+                        {`${pageIndex} sur ${pagination.pageCount}`}
+                    </span>
                         <button onClick={handleNext}
                                 disabled={pageIndex === pagination.pageCount || aircraft.length === 0}>
                             <FaArrowRight/>
                         </button>
-                    </div>
+                    </footer>
                 </>
             ) : sysMessage && (
                 <div>

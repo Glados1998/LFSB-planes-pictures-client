@@ -34,8 +34,8 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
     }, []);
 
     return (
-        <div className={'filter'}>
-            <div className={'filter_input operator'}>
+        <div className={"grid grid-flow-col gap-4"}>
+            <div className={"flex flex-col"}>
                 <label>{t("operator")} :</label>
                 <select onChange={e => onFilterChange('operator', e.target.value)} disabled={!dataPresent}>
                     <option value="">{t("operator")}</option>
@@ -44,7 +44,7 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
                     ))}
                 </select>
             </div>
-            <div className={'filter_input aircraft-name'}>
+            <div className={"flex flex-col"}>
                 <label>{t("type")} :</label>
                 <select onChange={e => onFilterChange('type', e.target.value)} disabled={!dataPresent}>
                     <option value="">{t("type")}</option>
@@ -53,7 +53,7 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
                     ))}
                 </select>
             </div>
-            <div className={'filter_input registration'}>
+            <div className={"flex flex-col"}>
                 <label>{t("registration")} :</label>
                 <input type={'text'} onChange={e => onFilterChange('registration', e.target.value)}
                        disabled={!dataPresent} placeholder={t("registration")}/>
