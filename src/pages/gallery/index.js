@@ -3,8 +3,8 @@ import {useEffect, useState} from 'react';
 import qs from 'qs';
 import GalleryFilter from "@/components/gallerFilter";
 import Card from "@/components/card";
-import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
 import {PiWarningFill} from "react-icons/pi";
+import PaginationComponent from "@/components/paginationComponent";
 
 export async function getStaticProps(context) {
     return {
@@ -91,23 +91,19 @@ export default function Gallery() {
             {aircraft.length > 0 ? (
                 <>
                     <main className={"flex flex-col flex-wrap justify-center"}>
-                        <div className={"grid grid-cols-3 grid-rows-3 gap-4 justify-items-center"}>
+                        <div
+                            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 justify-items-center">
                             {aircraft.map(plane => (
                                 <Card key={plane.id} plane={plane}/>
                             ))}
                         </div>
                     </main>
                     <footer className={"flex justify-center items-center gap-4"}>
-                        <button onClick={handlePrevious} disabled={pageIndex === 1}>
-                            <FaArrowLeft/>
-                        </button>
-                        <span>
-                        {`${pageIndex} sur ${pagination.pageCount}`}
-                    </span>
-                        <button onClick={handleNext}
-                                disabled={pageIndex === pagination.pageCount || aircraft.length === 0}>
-                            <FaArrowRight/>
-                        </button>
+                        <PaginationComponent
+                            pageIndex={pageIndex}
+                            setPageIndex={setPageIndex}
+                            pagination={pagination}
+                        />
                     </footer>
                 </>
             ) : sysMessage && (

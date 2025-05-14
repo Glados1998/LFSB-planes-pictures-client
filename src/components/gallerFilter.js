@@ -6,7 +6,7 @@ import {Combobox} from "@/components/Combobox";
 import {Label} from "@/components/ui/label";
 import debounce from 'lodash/debounce';
 
-const ITEMS_PER_PAGE = 10; // Set the default amount to show
+const ITEMS_PER_PAGE = 15; // Set the default amount to show
 
 export default function GalleryFilter({onFilterChange, dataPresent}) {
     const t = useTranslations("filter");
