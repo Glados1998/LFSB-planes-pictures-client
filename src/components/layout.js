@@ -4,9 +4,9 @@ import {Analytics} from "@vercel/analytics/react"
 
 export default function Layout({children}) {
     return (
-        <div className="layout-container">
+        <div className={"m-0"}>
             <Header/>
-            <main className="main-content">
+            <main className={"py-10 flex justify-around"}>
                 {children}
                 <Analytics/>
             </main>

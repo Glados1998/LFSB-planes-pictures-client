@@ -3,15 +3,13 @@ import {useEffect, useState} from 'react';
 import qs from 'qs';
 import GalleryFilter from "@/components/gallerFilter";
 import Card from "@/components/card";
-import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
 import {PiWarningFill} from "react-icons/pi";
+import PaginationComponent from "@/components/paginationComponent";
 
 export async function getStaticProps(context) {
     return {
         props: {
-            // You can get the messages from anywhere you like. The recommended
-            // pattern is to put them in JSON files separated by locale and read
-            // the desired one based on the `locale` received from Next.js.
+
             messages: (await import(`public/locales/${context.locale}.json`)).default
         }
     };
@@ -29,12 +27,9 @@ export default function Gallery() {
         registration: ''
     });
 
-    // Fetch aircrafts based on filters
     useEffect(() => {
-        // Construct the query object for filters
         const filterQuery = Object.entries(filters).reduce((acc, [key, value]) => {
             if (value) {
-                // Use the direct string comparison for serviceNumber
                 if (key === 'registration') {
                     acc[`filters[${key}][$containsi]`] = value;
                 } else {
@@ -44,7 +39,6 @@ export default function Gallery() {
             return acc;
         }, {});
 
-        // Use qs to stringify the filter query
         const queryString = qs.stringify({
             ...filterQuery,
             populate: '*',
@@ -68,7 +62,6 @@ export default function Gallery() {
             });
     }, [filters, pageIndex]);
 
-    // Handle filter changes
     const handleFilterChange = (filterType, value) => {
         setFilters(prevFilters => ({
             ...prevFilters,
@@ -77,7 +70,6 @@ export default function Gallery() {
         console.log(value, filterType, filters)
     };
 
-    // Pagination handlers
     const handlePrevious = () => {
         if (pageIndex > 1) {
             setPageIndex(pageIndex - 1);
@@ -91,35 +83,33 @@ export default function Gallery() {
     };
 
     return (
-        <div className={'gallery'}>
-            <div className={'filter-component'}>
+        <div className={"container grid grid-flow-row gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
+            <header className={"flex justify-center px-4 py-2 bg-white rounded-lg"}>
                 <GalleryFilter onFilterChange={handleFilterChange} dataPresent={aircraft.length > 0}/>
-            </div>
+            </header>
 
             {aircraft.length > 0 ? (
                 <>
-                    <div className={'gallery_area'}>
-                        {aircraft.map(plane => (
-                            <Card key={plane.id} plane={plane}/>
-                        ))}
-                    </div>
-                    <div className={'gallery_footer pagination'}>
-                        <button className={"btn-pagination"} onClick={handlePrevious} disabled={pageIndex === 1}>
-                            <FaArrowLeft/>
-                        </button>
-                        <span>
-                            {`${pageIndex} sur ${pagination.pageCount}`}
-                        </span>
-                        <button className={"btn-pagination"} onClick={handleNext}
-                                disabled={pageIndex === pagination.pageCount || aircraft.length === 0}>
-                            <FaArrowRight/>
-                        </button>
-                    </div>
+                    <main className={"flex flex-col flex-wrap justify-center"}>
+                        <div
+                            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 justify-items-center">
+                            {aircraft.map(plane => (
+                                <Card key={plane.id} plane={plane}/>
+                            ))}
+                        </div>
+                    </main>
+                    <footer className={"flex justify-center items-center gap-4"}>
+                        <PaginationComponent
+                            pageIndex={pageIndex}
+                            setPageIndex={setPageIndex}
+                            pagination={pagination}
+                        />
+                    </footer>
                 </>
             ) : sysMessage && (
-                <div className={'gallery_message'}>
-                    <div className="message-box">
-                        <div className="icon">
+                <div>
+                    <div>
+                        <div>
                             <PiWarningFill/>
                         </div>
                         <p>{sysMessage}</p>

@@ -6,6 +6,11 @@
       "headline": "À propos du photographe",
       "text1": "Salutations ! Je suis Laurent Greder, un passionné d'aviation et spotter dévoué. Mon parcours\n                        dans la photographie aéronautique a commencé il y a plusieurs années, alimenté par une\n                        fascination profonde pour ces merveilles d'ingénierie et les histoires qu'elles portent à\n                        travers les cieux.",
       "text2": "Bien que mon principal terrain de jeu soit l'effervescent <span>EuroAirport Bâle-Mulhouse-Fribourg</span>,\n                        il m'arrive occasionnellement de capturer des scènes d'aviation uniques à\n                        <span>l'aéroport de Genève (LSGG)</span> and <span>l'aéroport de Zurich (LSZH)</span>.\n                        Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux\n                        départs sereins vers le ciel."
+    },
+    "visits": {
+      "loading": "Chargement du nombre de visiteurs...",
+      "error": "Une erreur est survenue lors de la récupération des données des visiteurs",
+      "text": "Nombre de visiteurs : <span>{count}</span>"
     }
   },
   "gallery": {
@@ -18,7 +23,12 @@
       "registration": "Immatriculation",
       "imageDetails": "Détails de l'image",
       "flashTriggered": "Fash (Déclenché)",
-      "flashNotTriggered": "Flash (Éteint, non déclenché)"
+      "flashNotTriggered": "Flash (Éteint, non déclenché)",
+      "aperture": "Aperçu",
+      "exposureTime": "Temps d'exposition",
+      "flash": "Flash",
+      "focalLength": "Longueur focale",
+      "creationDate": "Date de création"
     },
     "card": {
       "show": "Voir plus"
