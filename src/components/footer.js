@@ -12,9 +12,9 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-gray-100 text-gray-800 py-4">
-            <div className="mx-auto px-8">
-                <div className="grid md:grid-flow-col gap-8">
+        <footer className="bg-gray-100 text-gray-800 py-4 mt-auto">
+            <div className="container mx-auto px-4">
+                <div className="grid md:grid-cols-2 gap-8">
                     <div>
                         <h2 className="text-xl font-bold mb-4">LFSB Planes Pictures</h2>
                         <div className="space-y-2">
