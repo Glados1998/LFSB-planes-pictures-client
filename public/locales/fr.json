@@ -23,7 +23,12 @@
       "registration": "Immatriculation",
       "imageDetails": "Détails de l'image",
       "flashTriggered": "Fash (Déclenché)",
-      "flashNotTriggered": "Flash (Éteint, non déclenché)"
+      "flashNotTriggered": "Flash (Éteint, non déclenché)",
+      "aperture": "Aperçu",
+      "exposureTime": "Temps d'exposition",
+      "flash": "Flash",
+      "focalLength": "Longueur focale",
+      "creationDate": "Date de création"
     },
     "card": {
       "show": "Voir plus"

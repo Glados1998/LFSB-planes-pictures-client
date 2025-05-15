@@ -23,7 +23,12 @@
       "registration": "Registrierung",
       "imageDetails": "Bildinformationen",
       "flashTriggered": "Flash (Ein, ausgelöst)",
-      "flashNotTriggered": "Flash (Aus, nicht ausgelöst)"
+      "flashNotTriggered": "Flash (Aus, nicht ausgelöst)",
+      "aperture": "Blende",
+      "exposureTime": "Aufnahmezeit",
+      "flash": "Blitz",
+      "focalLength": "Fokuslänge",
+      "creationDate": "Erstellungsdatum"
     },
     "card": {
       "show": "Mehr Details"

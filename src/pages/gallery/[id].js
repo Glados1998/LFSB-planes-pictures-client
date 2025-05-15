@@ -11,10 +11,7 @@ import {useEffect, useState} from 'react';
 import Link from "next/link";
 import formatDate from "../../../utils/timeStampFormat";
 import notFound from "@/assets/images/imageNotFound.jpg";
-import ImageOverlay from "@/components/imageOverlay";
 import MetaDataReader from "../../../utils/metaDataReader";
-import Accordion from "@/components/accordion";
-import {FaArrowDown, FaArrowUp} from "react-icons/fa";
 import {
     MdAccessAlarm,
     MdBlurOn,
@@ -25,15 +22,12 @@ import {
     MdFlashOn,
     MdIso
 } from "react-icons/md";
-import Image from "next/image";
 import {useTranslations} from "next-intl";
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 
 export async function getStaticProps(context) {
     return {
         props: {
-            // You can get the messages from anywhere you like. The recommended
-            // pattern is to put them in JSON files separated by locale and read
-            // the desired one based on the `locale` received from Next.js.
             messages: (await import(`public/locales/${context.locale}.json`)).default
         }
     };
@@ -45,6 +39,24 @@ export async function getStaticPaths() {
         fallback: true
     };
 }
+
+const DetailItem = ({label, value}) => (
+    <div>
+        <p className="font-semibold text-gray-600">{label}:</p>
+        <span className="text-gray-800">{value || 'N/A'}</span>
+    </div>
+);
+
+const ImageDetailItem = ({icon, label, value, subLabel}) => (
+    <div className="flex items-center space-x-3">
+        {icon}
+        <div>
+            <p className="font-semibold text-gray-800">{label}</p>
+            {subLabel && <p className="text-sm text-gray-600">{subLabel}</p>}
+            {value && <span className="text-gray-700">{value}</span>}
+        </div>
+    </div>
+);
 
 
 export default function AircraftDetail() {
@@ -68,7 +80,7 @@ export default function AircraftDetail() {
         // If an id is present, start loading and fetch the aircraft data
         if (id) {
             setState(prevState => ({...prevState, isLoading: true}));
-            axios.get(`${process.env.STRAPI_API_URL}/aircrafts/${id}?populate=*`)
+            axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts/${id}?populate=*`)
                 .then(response => {
                     // If data is returned, update the aircraft state
                     if (response.data.data) {
@@ -145,149 +157,72 @@ export default function AircraftDetail() {
     // Render the aircraft details and image overlay
     return (
         <>
-            <div>
-                <div>
-                    {/* Image that opens the overlay when clicked */}
-                    <Image src={imageUrl || notFound} alt={aircraftType || 'Not found'}
-                           width={700} height={500}
-                           onClick={() => setState(prevState => ({...prevState, showOverlay: true}))}/>
-                </div>
-                <div>
-                    <div>
-                        <h2>{aircraftType || 'N/A'}</h2>
-                        <p>{operator || 'N/A'}</p>
-                    </div>
-                    <div>
+            <div className="container mx-auto px-4 py-8 max-w-7xl">
+                <div className="grid md:grid-cols-2 gap-8">
+                    <header className="w-full h-auto">
+                        <img
+                            src={imageUrl || notFound}
+                            alt={aircraftType || 'Not found'}
+                            className="w-full h-auto object-cover rounded-lg shadow-lg"
+                        />
+                    </header>
+                    <main className="flex flex-col gap-6">
+                        <div className="flex justify-between items-center">
+                            <Link href="/gallery"
+                                  className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                                {t("back")}
+                            </Link>
+                        </div>
                         <div>
-                            <div>
-                                <span>{t("aircraftDetails")}</span>
-                            </div>
-                            <div>
-                                <div>
-                                    <div>
-                                        <p>{t("yearOfFirstFlight")} :</p>
-                                        <span>{yearOfFirstFlight || 'N/A'}</span>
-                                    </div>
-                                    <div>
-                                        <p>{t("yearOfConstruction")} :</p>
-                                        <span>{yearOfConstruction || 'N/A'}</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <p>{t("serviceNumber")} :</p>
-                                        <span>{serviceNumber || 'N/A'}</span>
-                                    </div>
-                                    <div>
-                                        <p>{t("registration")} :</p>
-                                        <span>{registration || 'N/A'}</span>
-                                    </div>
-                                </div>
+                            <h2 className="text-3xl font-bold">{aircraftType || 'N/A'}</h2>
+                            <p className="text-2xl font-semibold text-slate-600">{operator || 'N/A'}</p>
+                            <hr className="my-4 border-t-2 w-56 border-gray-300"/>
+                        </div>
+                        <div className="bg-white rounded-lg p-6 shadow-md">
+                            <h3 className="text-xl font-semibold mb-4">{t("aircraftDetails")}</h3>
+                            <div className="grid grid-cols-2 gap-4">
+                                <DetailItem label={t("yearOfFirstFlight")} value={yearOfFirstFlight}/>
+                                <DetailItem label={t("yearOfConstruction")} value={yearOfConstruction}/>
+                                <DetailItem label={t("serviceNumber")} value={serviceNumber}/>
+                                <DetailItem label={t("registration")} value={registration}/>
                             </div>
                         </div>
 
-                        <Accordion
-                            controllerElement={(isExpanded) => (
-                                <span>
-                                    {isExpanded ? <FaArrowUp className={'arrow'}/> :
-                                        <FaArrowDown className={'arrow'}/>} {t("yearOfFirstFlight")}
-                                </span>
-                            )}
-                        >
-                            <div>
-                                <div>
-                                    <i title={'camera'}>
-                                        <MdCameraAlt/>
-                                    </i>
-                                    <div>
-                                        <h3>
-                                            {model}
-                                        </h3>
-                                        <span>
-                                        {modelMaker}
-                                    </span>
+                        <Accordion type="single" collapsible className="w-full">
+                            <AccordionItem value="item-1">
+                                <AccordionTrigger className="text-xl font-semibold px-6 py-4">
+                                    {t("imageDetails")}
+                                </AccordionTrigger>
+                                <AccordionContent className="p-6">
+                                    <div className="grid grid-cols-2 gap-6">
+                                        <ImageDetailItem icon={<MdCameraAlt className="size-7"/>} label={model}
+                                                         subLabel={modelMaker}/>
+                                        <ImageDetailItem icon={<MdCamera className="size-7"/>} label={t("aperture")}
+                                                         value={focalNumber}/>
+                                        <ImageDetailItem icon={<MdAccessAlarm className="size-7"/>}
+                                                         label={t("exposureTime")} value={exposureTime}/>
+                                        <ImageDetailItem icon={<MdIso className="size-7"/>} label="ISO" value={iso}/>
+                                        <ImageDetailItem
+                                            icon={flash === 'true' ? <MdFlashOn className="size-7"/> :
+                                                <MdFlashOff className="size-7"/>}
+                                            label={t("flash")}
+                                            value={flash === 'true' ? t("flashTriggered") : t("flashNotTriggered")}
+                                        />
+                                        <ImageDetailItem icon={<MdBlurOn className="size-7"/>} label={t("focalLength")}
+                                                         value={focalLength}/>
+                                        <ImageDetailItem icon={<MdCalendarMonth className="size-7"/>}
+                                                         label={t("creationDate")} value={creationDate}/>
                                     </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <i title={'Ouverture'}>
-                                                <MdCamera/>
-                                            </i>
-                                            <span>{focalNumber}</span>
+                                    <div className="mt-6 text-sm text-gray-600">
+                                        <p>&copy; {copyright}</p>
+                                        <p>{artist}</p>
                                         </div>
-                                        <div>
-                                            <i title={'Ouverture'}>
-                                                <MdAccessAlarm/>
-                                            </i>
-                                            <span>{exposureTime}</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div>
-                                            <i title={'Iso'}>
-                                                <MdIso/>
-                                            </i>
-                                            <span>{iso}</span>
-                                        </div>
-                                        <div>
-                                            {flash === 'true' ? (
-                                                <>
-                                                    <i title={'Flash'}>
-                                                        <MdFlashOn/>
-                                                    </i>
-                                                    <span>{t("flashTriggered")}</span>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <i title={'Flash'}>
-                                                        <MdFlashOff/>
-                                                    </i>
-                                                    <span>
-                                                        {t("flashNotTriggered")}
-                                                    </span>
-                                                </>
-                                            )}
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div>
-                                            <i title={'Distance focale'}>
-                                                <MdBlurOn/>
-                                            </i>
-                                            <span>{focalLength}</span>
-                                        </div>
-                                        <div>
-                                            <i title={'Date de création'}>
-                                                <MdCalendarMonth/>
-                                            </i>
-                                            <span>{creationDate}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <span>&copy; {copyright}</span>
-                                    </div>
-                                    <div>
-                                        <span>{artist}</span>
-                                    </div>
-                                </div>
-                            </div>
+                                </AccordionContent>
+                            </AccordionItem>
                         </Accordion>
-                    </div>
-                    <div>
-                        <Link href="/gallery">
-                            {t("back")}
-                        </Link>
-                    </div>
+                    </main>
                 </div>
             </div>
-            {/* Image overlay that can be closed by clicking the close button */}
-            {state.showOverlay && (
-                <ImageOverlay imageUrl={imageUrl}
-                              onClose={() => setState(prevState => ({...prevState, showOverlay: false}))}/>
-            )}
         </>
     );
 }
