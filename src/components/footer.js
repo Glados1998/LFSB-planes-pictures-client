@@ -46,14 +46,14 @@ export default function Footer() {
                                                 href={item.path}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="hover:text-gray-600 font-bold transition-colors duration-300"
+                                                className="hover:text-gray-600 transition-colors duration-300"
                                             >
                                                 {t(`navigation.${item.label}`)}
                                             </a>
                                         ) : (
                                             <Link
                                                 href={item.path}
-                                                className="hover:text-gray-600 font-bold transition-colors duration-300"
+                                                className="hover:text-gray-600 transition-colors duration-300"
                                             >
                                                 {t(`navigation.${item.label}`)}
                                             </Link>
