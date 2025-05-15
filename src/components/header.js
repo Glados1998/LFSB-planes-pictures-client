@@ -19,32 +19,37 @@ export default function Header() {
     return (
         <header className="bg-white shadow-sm">
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-                <Link href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
-                    LFSB Planes Pictures
-                </Link>
+                <div className="flex items-center">
+                    <Link href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600 mr-6">
+                        LFSB Planes Pictures
+                    </Link>
+                    <nav className="hidden md:flex space-x-4">
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.label}
+                                href={item.href}
+                                className="text-gray-800 hover:text-gray-600 font-medium transition duration-300"
+                            >
+                                {t(item.label)}
+                            </Link>
+                        ))}
+                    </nav>
+                </div>
 
-                <nav className="hidden md:flex space-x-4">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.label}
-                            href={item.href}
-                            className="text-gray-800 hover:text-gray-600 font-medium transition duration-300"
-                        >
-                            {t(item.label)}
-                        </Link>
-                    ))}
-                    <LanguageSwitcher/>
-                </nav>
-
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className="md:hidden"
-                    onClick={toggleMenu}
-                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                >
-                    {isMenuOpen ? <X className="h-6 w-6"/> : <Menu className="h-6 w-6"/>}
-                </Button>
+                <div className="flex items-center">
+                    <div className="hidden md:block mr-4">
+                        <LanguageSwitcher/>
+                    </div>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="md:hidden"
+                        onClick={toggleMenu}
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                    >
+                        {isMenuOpen ? <X className="h-6 w-6"/> : <Menu className="h-6 w-6"/>}
+                    </Button>
+                </div>
             </div>
 
             {/* Mobile menu */}
