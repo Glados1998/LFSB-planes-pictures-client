@@ -10,14 +10,14 @@ export function useVisitorCounter() {
         const getVisitorCounter = async () => {
             try {
                 // Fetch current count
-                const apiUrl = process.env.STRAPI_API_URL || 'https://strapi-production-1911.up.railway.app/api';
+                const apiUrl = process.env.STRAPI_API_URL;
+
                 const res = await axios.get(`${apiUrl}/visitor-counter`);
 
                 // Check for non-JSON response
                 if (typeof res.data !== 'object') {
                     throw new Error('Received non-JSON response from API');
                 }
-                console.log('Current visitor count:', res.data);
                 const count = res.data?.data?.attributes?.count;
                 setVisits(count);
             } catch (err) {
