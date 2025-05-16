@@ -47,7 +47,7 @@ export default function Gallery() {
             skipNulls: true
         });
 
-        axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts?sort[0]=DateOfPictureShoot:desc&${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
+        axios.get(`${process.env.STRAPI_API_URL}/aircrafts?sort[0]=DateOfPictureShoot:desc&${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
             .then(res => {
                 if (res.data.data.length > 0) {
                     setAircraft(res.data.data);
@@ -68,18 +68,6 @@ export default function Gallery() {
             [filterType]: value
         }));
         console.log(value, filterType, filters)
-    };
-
-    const handlePrevious = () => {
-        if (pageIndex > 1) {
-            setPageIndex(pageIndex - 1);
-        }
-    };
-
-    const handleNext = () => {
-        if (pageIndex < pagination.pageCount) {
-            setPageIndex(pageIndex + 1);
-        }
     };
 
     return (

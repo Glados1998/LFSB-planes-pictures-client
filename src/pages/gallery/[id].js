@@ -72,7 +72,6 @@ export default function AircraftDetail() {
         metaData: null,
         isLoading: true,
         sysMessage: '',
-        showOverlay: false
     });
 
     // useEffect hook to fetch the aircraft data when the id changes
@@ -80,7 +79,7 @@ export default function AircraftDetail() {
         // If an id is present, start loading and fetch the aircraft data
         if (id) {
             setState(prevState => ({...prevState, isLoading: true}));
-            axios.get(`https://strapi-production-1911.up.railway.app/api/aircrafts/${id}?populate=*`)
+            axios.get(`${process.env.STRAPI_API_URL}/aircrafts/${id}?populate=*`)
                 .then(response => {
                     // If data is returned, update the aircraft state
                     if (response.data.data) {
@@ -216,7 +215,7 @@ export default function AircraftDetail() {
                                     <div className="mt-6 text-sm text-gray-600">
                                         <p>&copy; {copyright}</p>
                                         <p>{artist}</p>
-                                        </div>
+                                    </div>
                                 </AccordionContent>
                             </AccordionItem>
                         </Accordion>
