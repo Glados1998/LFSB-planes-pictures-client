@@ -8,7 +8,7 @@ export function useIncrementVisitor() {
 
         const increment = async () => {
             try {
-                const apiUrl = process.env.STRAPI_API_URL || 'https://strapi-production-1911.up.railway.app/api';
+                const apiUrl = process.env.STRAPI_API_URL;
                 const response = await axios.post(`${apiUrl}/visitor-counter/increment`);
                 if (!isCancelled) {
                     console.log('Visitor count incremented:', response.data);
