@@ -21,11 +21,11 @@ export default function Card({plane}) {
 
     return (
         <Link href={`/gallery/${plane.id}`} className="relative group overflow-hidden shadow-lg rounded-lg">
-            <div className="relative size-full">
+            <div className="relative w-full h-64 md:size-full">
                 <img
                     src={imageUrl}
                     alt={aircraftType}
-                    className="size-max object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-full md:size-max object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div
                     className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-10"></div>
@@ -39,6 +39,5 @@ export default function Card({plane}) {
                 </button>
             </div>
         </Link>
-
     )
 }
