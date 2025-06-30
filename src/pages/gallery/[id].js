@@ -25,6 +25,13 @@ import {
 import {useTranslations} from "next-intl";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 
+/**
+ * Fetches the translation messages for the current locale.
+ * Used by Next.js for static generation.
+ *
+ * @param {object} context - The Next.js context object containing locale info.
+ * @returns {Promise<{props: {messages: object}}>} The props containing translation messages.
+ */
 export async function getStaticProps(context) {
     return {
         props: {
@@ -33,6 +40,12 @@ export async function getStaticProps(context) {
     };
 }
 
+/**
+ * Defines the static paths for the gallery detail pages.
+ * Used by Next.js for static generation.
+ *
+ * @returns {object} The paths and fallback setting for static generation.
+ */
 export async function getStaticPaths() {
     return {
         paths: ["/gallery/id"],
@@ -40,6 +53,15 @@ export async function getStaticPaths() {
     };
 }
 
+c
+/**
+ * Renders a detail item with a label and value.
+ *
+ * @param {object} props
+ * @param {string} props.label - The label for the detail.
+ * @param {string|number} props.value - The value for the detail.
+ * @returns {JSX.Element}
+ */
 const DetailItem = ({label, value}) => (
     <div>
         <p className="font-semibold text-gray-600">{label}:</p>
@@ -47,6 +69,16 @@ const DetailItem = ({label, value}) => (
     </div>
 );
 
+/**
+ * Renders an image detail item with an icon, label, value, and optional sub-label.
+ *
+ * @param {object} props
+ * @param {JSX.Element} props.icon - The icon to display.
+ * @param {string} props.label - The main label.
+ * @param {string|number} [props.value] - The value to display.
+ * @param {string} [props.subLabel] - An optional sub-label.
+ * @returns {JSX.Element}
+ */
 const ImageDetailItem = ({icon, label, value, subLabel}) => (
     <div className="flex items-center space-x-3">
         {icon}
@@ -59,6 +91,14 @@ const ImageDetailItem = ({icon, label, value, subLabel}) => (
 );
 
 
+/**
+ * AircraftDetail is a React component that fetches and displays details of a specific aircraft.
+ * It fetches the aircraft data from an API based on the id from the router query.
+ * It also handles loading and error states, and displays an overlay when the aircraft image is clicked.
+ *
+ * @component
+ * @returns {JSX.Element}
+ */
 export default function AircraftDetail() {
     // Use the Next.js router to get the id from the query
     const router = useRouter();
