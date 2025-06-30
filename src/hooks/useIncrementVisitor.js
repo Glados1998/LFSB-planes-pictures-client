@@ -1,7 +1,17 @@
-// hooks/useIncrementVisitor.js
 import {useEffect} from 'react';
 import axios from 'axios';
 
+/**
+ * Custom React hook to increment the visitor counter via an API call.
+ *
+ * On mount, sends a POST request to the `/visitor-counter/increment` endpoint
+ * of the API defined by the `STRAPI_API_URL` environment variable.
+ * Logs the result or any error to the console.
+ * Ensures no state updates or logs occur if the component is unmounted before the request completes.
+ *
+ * Usage:
+ *   Call `useIncrementVisitor()` inside a React component to increment the visitor count on mount.
+ */
 export function useIncrementVisitor() {
     useEffect(() => {
         let isCancelled = false;

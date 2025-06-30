@@ -6,16 +6,29 @@ import Card from "@/components/card";
 import {PiWarningFill} from "react-icons/pi";
 import PaginationComponent from "@/components/paginationComponent";
 
+/**
+ * Fetches static props for the Gallery page, including localized messages.
+ * @param {object} context - The context object containing locale information.
+ * @returns {Promise<{props: {messages: object}}>} The props object with localized messages.
+ */
 export async function getStaticProps(context) {
     return {
         props: {
-
             messages: (await import(`public/locales/${context.locale}.json`)).default
         }
     };
 }
 
 
+/**
+ * Gallery page component.
+ * Displays a list of aircraft with filtering and pagination.
+ * Fetches data from the Strapi API based on selected filters and page index.
+ * Handles system messages for empty or error states.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Gallery page.
+ */
 export default function Gallery() {
     const [sysMessage, setSysMessage] = useState('')
     const [aircraft, setAircraft] = useState([]);
@@ -62,6 +75,13 @@ export default function Gallery() {
             });
     }, [filters, pageIndex]);
 
+    /**
+     * Handles changes to filter values.
+     * Updates the filters state and logs the change.
+     *
+     * @param {string} filterType - The type of filter being changed.
+     * @param {string} value - The new value for the filter.
+     */
     const handleFilterChange = (filterType, value) => {
         setFilters(prevFilters => ({
             ...prevFilters,

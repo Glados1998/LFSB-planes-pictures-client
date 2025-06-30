@@ -2,12 +2,26 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import qs from 'qs';
 
+/**
+ * React Hook to fetch aircraft data with filters and pagination.
+ *
+ * @param {Object} filters - Filter object, where each key is a filter field and the value is the filter value.
+ * @param {number} pageIndex - The current page for pagination.
+ * @returns {Object} Contains:
+ *   - aircraft: Array of fetched aircraft,
+ *   - pagination: Pagination information,
+ *   - sysMessage: System message (e.g. error or no data found),
+ *   - isLoading: Loading state.
+ */
 const useFetchAircraft = (filters, pageIndex) => {
     const [data, setData] = useState({aircraft: [], pagination: {}});
     const [sysMessage, setSysMessage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        /**
+         * Asynchronous function to fetch aircraft data from the API.
+         */
         const fetchAircraft = async () => {
             setIsLoading(true);
             try {

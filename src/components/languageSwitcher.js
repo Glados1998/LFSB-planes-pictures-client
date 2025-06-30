@@ -3,10 +3,22 @@ import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger
 import {Button} from "@/components/ui/button";
 import {Check} from "lucide-react";
 
+/**
+ * LanguageSwitcher component provides a dropdown menu for switching between available locales.
+ * Utilizes Next.js router for locale management and navigation.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered language switcher dropdown.
+ */
 export default function LanguageSwitcher() {
     const {locales, locale: currentLocale, pathname, query} = useRouter();
     const router = useRouter();
 
+    /**
+     * Handles locale selection and navigates to the same route with the selected locale.
+     *
+     * @param {string} locale - The locale to switch to.
+     */
     const handleSelect = (locale) => {
         router.push({pathname, query}, pathname, {locale});
     };

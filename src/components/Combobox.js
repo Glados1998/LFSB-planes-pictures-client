@@ -8,6 +8,17 @@ import {Button} from "@/components/ui/button"
 import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem,} from "@/components/ui/command"
 import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
 
+/**
+ * Combobox component for selecting an option from a list with search functionality.
+ *
+ * @param {Object} props - Component props.
+ * @param {Array<{label: string, value: string}>} props.options - List of selectable options.
+ * @param {string} props.value - Currently selected value.
+ * @param {function} props.onChange - Callback when the selected value changes.
+ * @param {function} props.onSearch - Callback when the search input changes.
+ * @param {string} props.placeholder - Placeholder text for the input and empty state.
+ * @returns {JSX.Element} The rendered Combobox component.
+ */
 export function Combobox({options, value, onChange, onSearch, placeholder}) {
     const [open, setOpen] = React.useState(false)
 

@@ -9,7 +9,23 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination"
 
+/**
+ * PaginationComponent renders a pagination UI for navigating between pages.
+ *
+ * @param {Object} props
+ * @param {number} props.pageIndex - The current active page index (1-based).
+ * @param {function} props.setPageIndex - Function to update the current page index.
+ * @param {Object} props.pagination - Pagination data.
+ * @param {number} props.pagination.pageCount - Total number of pages.
+ * @returns {JSX.Element} The pagination component.
+ */
 const PaginationComponent = ({pageIndex, setPageIndex, pagination}) => {
+    /**
+     * Handles the click event for the "Previous" button.
+     * Decrements the page index if not on the first page.
+     *
+     * @param {React.MouseEvent} event
+     */
     const handlePrevious = (event) => {
         event.preventDefault();
         if (pageIndex > 1) {
@@ -17,6 +33,12 @@ const PaginationComponent = ({pageIndex, setPageIndex, pagination}) => {
         }
     };
 
+    /**
+     * Handles the click event for the "Next" button.
+     * Increments the page index if not on the last page.
+     *
+     * @param {React.MouseEvent} event
+     */
     const handleNext = (event) => {
         event.preventDefault();
         if (pageIndex < pagination.pageCount) {
@@ -24,6 +46,11 @@ const PaginationComponent = ({pageIndex, setPageIndex, pagination}) => {
         }
     };
 
+    /**
+     * Renders the page number buttons and ellipses based on the current page and total pages.
+     *
+     * @returns {JSX.Element[]} Array of pagination items.
+     */
     const renderPageNumbers = () => {
         const pageNumbers = [];
         const totalPages = pagination.pageCount;
