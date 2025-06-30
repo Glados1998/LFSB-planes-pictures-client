@@ -53,7 +53,7 @@ export async function getStaticPaths() {
     };
 }
 
-c
+
 /**
  * Renders a detail item with a label and value.
  *
