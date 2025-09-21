@@ -221,7 +221,7 @@ export default function AircraftDetail() {
                             <h3 className="text-xl font-semibold mb-4">{t("aircraftDetails")}</h3>
                             <div className="grid grid-cols-2 gap-4">
                                 <DetailItem label={t("yearOfFirstFlight")} value={yearOfFirstFlight}/>
-                                <DetailItem label={t("yearOfConstruction")} value={yearOfConstruction}/>
+                                <DetailItem label={t("yearOfImmatriculation")} value={yearOfConstruction}/>
                                 <DetailItem label={t("serviceNumber")} value={serviceNumber}/>
                                 <DetailItem label={t("registration")} value={registration}/>
                             </div>
