@@ -1,3 +1,5 @@
+import {useTranslations} from "next-intl";
+
 export async function getStaticProps(context) {
     return {
         props: {
@@ -10,5 +12,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Custom404() {
-    return <h1>404 - Page Not Found</h1>
+
+    const t = useTranslations("specialPages");
+    return <h1>{t("404")}</h1>
 }

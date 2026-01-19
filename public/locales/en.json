@@ -55,5 +55,9 @@
       "gallery": "Gallery",
       "dashboard": "Dashboard"
     }
+  },
+  "specialPages": {
+    "500": "500 - Server-side error occurred",
+    "404": "404 - Page Not Found"
   }
 }
