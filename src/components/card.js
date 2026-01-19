@@ -5,7 +5,7 @@ import {useTranslations} from "next-intl";
 export async function getStaticProps(context) {
     return {
         props: {
-            messages: (await import(`public/locales/${context.locale}.json`)).default
+            messages: (await import(`src/assets/locales/${context.locale}.json`)).default
         }
     };
 }
