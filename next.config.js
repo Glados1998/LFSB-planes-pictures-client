@@ -4,8 +4,8 @@ const nextConfig = {
         domains: ['res.cloudinary.com'],
     },
     i18n: {
-        locales: ['FR', 'EN', 'DE'],
-        defaultLocale: 'FR',
+        locales: ['fr', 'en', 'de'],
+        defaultLocale: 'fr',
         localeDetection: true,
     },
     env: {
