@@ -55,9 +55,5 @@
       "gallery": "Galerie",
       "dashboard": "Tableau de bord"
     }
-  },
-  "specialPages": {
-    "500": "500 - Une erreur côté serveur s'est produite",
-    "404": "404 - Page non trouvée"
   }
 }
