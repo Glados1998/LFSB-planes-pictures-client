@@ -1,7 +1,7 @@
 /**
  * Utilities for shared pathnames navigation with internationalization support.
  *
- * This module sets up navigation helpers using `next-intl` for the specified locales.
+ * This module sets up navigation helpers using `next-intl` for the specified messages.
  *
  * @module utils/navigation
  */
@@ -9,7 +9,7 @@
 const {createSharedPathnamesNavigation} = require('next-intl/navigation');
 
 /**
- * Supported locales for the application.
+ * Supported messages for the application.
  * @type {string[]}
  */
 export const locales = ['en', 'de', 'fr'];
