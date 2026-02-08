@@ -176,7 +176,7 @@ export default function AircraftDetail() {
     const imageUrl = attributes.image?.data?.attributes?.url;
     const aircraftType = attributes.type?.data?.attributes?.label;
     const operator = attributes.operator?.data?.attributes?.label;
-    const yearOfFirstFlight = attributes.yearOfFirstFlight ? formatDate(attributes?.yearOfFirstFlight) : 'N/A';
+    const yearOfRegistration = attributes.yearOfRegistration ? formatDate(attributes?.yearOfRegistration) : 'N/A';
     const serviceNumber = attributes.serviceNumber;
     const registration = attributes.registration;
     const yearOfConstruction = attributes.yearOfConstruction;
@@ -220,7 +220,7 @@ export default function AircraftDetail() {
                         <div className="bg-white rounded-lg p-6 shadow-md">
                             <h3 className="text-xl font-semibold mb-4">{t("aircraftDetails")}</h3>
                             <div className="grid grid-cols-2 gap-4">
-                                <DetailItem label={t("yearOfFirstFlight")} value={yearOfFirstFlight}/>
+                                <DetailItem label={t("yearOfRegistration")} value={yearOfRegistration}/>
                                 <DetailItem label={t("yearOfImmatriculation")} value={yearOfConstruction}/>
                                 <DetailItem label={t("serviceNumber")} value={serviceNumber}/>
                                 <DetailItem label={t("registration")} value={registration}/>
