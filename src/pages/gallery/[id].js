@@ -220,7 +220,7 @@ export default function AircraftDetail() {
                         <div className="bg-white rounded-lg p-6 shadow-md">
                             <h3 className="text-xl font-semibold mb-4">{t("aircraftDetails")}</h3>
                             <div className="grid grid-cols-2 gap-4">
-                                <DetailItem label={t("dateOfRegistration")} value={yearOfRegistration}/>
+                                <DetailItem label={t("dateOfRegistration")} value={dateOfRegistration}/>
                                 <DetailItem label={t("yearOfConstruction")} value={yearOfConstruction}/>
                                 <DetailItem label={t("serviceNumber")} value={serviceNumber}/>
                                 <DetailItem label={t("registration")} value={registration}/>
