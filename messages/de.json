@@ -17,8 +17,8 @@
     "details": {
       "back": "Zurück zur Galerie",
       "aircraftDetails": "Flugzeugdetails",
-      "yearOfRegistration": "Jahr der Registrierung",
-      "yearOfImmatriculation": "Jahr der Zulassung",
+      "dateOfRegistration": "Datum der Registrierung",
+      "yearOfConstruction": "Baujahr",
       "serviceNumber": "Dienstnummer",
       "registration": "Registrierung",
       "imageDetails": "Bildinformationen",
