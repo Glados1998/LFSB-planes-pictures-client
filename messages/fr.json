@@ -37,7 +37,8 @@
   "filter": {
     "operator": "Compagnie aérienne",
     "type": "Type d'avion",
-    "registration": "Immatriculation"
+    "registration": "Immatriculation",
+    "reset": "Réinitialiser les filtres"
   },
   "header": {
     "home": "Accueil",

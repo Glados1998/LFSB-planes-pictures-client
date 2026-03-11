@@ -1,10 +1,11 @@
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import axios from 'axios';
 import {useTranslations} from "next-intl";
 import {Input} from "@/components/ui/input";
 import {Combobox} from "@/components/Combobox";
 import {Label} from "@/components/ui/label";
 import debounce from 'lodash/debounce';
+import {Button} from "@/components/ui/button";
 
 const ITEMS_PER_PAGE = 20;
 
@@ -17,13 +18,11 @@ const ITEMS_PER_PAGE = 20;
  * @param {boolean} props.dataPresent - Indicates if data is present to enable/disable registration input.
  * @returns {JSX.Element}
  */
-export default function GalleryFilter({onFilterChange, dataPresent}) {
+export default function GalleryFilter({filters, onFilterChange, onResetFilters, dataPresent}) {
     const t = useTranslations("filter");
 
     const [operators, setOperators] = useState([]);
     const [aircraftTypes, setAircraftTypes] = useState([]);
-    const [selectedOperator, setSelectedOperator] = useState("");
-    const [selectedAircraftType, setSelectedAircraftType] = useState("");
 
     /**
      * Fetches options from the API for the given endpoint and query.
@@ -70,7 +69,6 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
      * @param {string} value - Selected operator value.
      */
     const handleOperatorChange = (value) => {
-        setSelectedOperator(value);
         onFilterChange('operator', value);
     };
 
@@ -80,7 +78,6 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
      * @param {string} value - Selected aircraft type value.
      */
     const handleAircraftTypeChange = (value) => {
-        setSelectedAircraftType(value);
         onFilterChange('type', value);
     };
 
@@ -102,36 +99,55 @@ export default function GalleryFilter({onFilterChange, dataPresent}) {
         debouncedFetchOptions('aircarft-types', query, setAircraftTypes);
     };
 
+    const hasActiveFilters = useMemo(
+        () => Object.values(filters).some(value => typeof value === 'string' ? value.trim() !== '' : Boolean(value)),
+        [filters]
+    );
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="space-y-2">
-                <Label className="text-sm font-medium">{t("operator")}:</Label>
+                <Label className="text-md font-bold">{t("operator")}:</Label>
                 <Combobox
                     options={operators}
-                    value={selectedOperator}
+                    value={filters.operator}
                     onChange={handleOperatorChange}
                     onSearch={handleOperatorSearch}
                     placeholder={t("operator")}
                 />
             </div>
             <div className="space-y-2">
-                <Label className="text-sm font-medium">{t("type")}:</Label>
+                <Label className="text-md font-bold">{t("type")}:</Label>
                 <Combobox
                     options={aircraftTypes}
-                    value={selectedAircraftType}
+                    value={filters.type}
                     onChange={handleAircraftTypeChange}
                     onSearch={handleAircraftTypeSearch}
                     placeholder={t("type")}
                 />
             </div>
             <div className="space-y-2">
-                <Label className="text-sm font-medium">{t("registration")}:</Label>
+                <Label className="text-md font-bold">{t("registration")}:</Label>
                 <Input
+                    className={"bg-white hover:bg-gray-100"}
                     type="text"
+                    value={filters.registration}
                     onChange={(e) => onFilterChange('registration', e.target.value)}
                     disabled={!dataPresent}
                     placeholder={t("registration")}
                 />
+            </div>
+            <div className="space-y-2">
+                <Label className="text-md font-bold">{t("reset")}:</Label>
+                <Button
+                    className={"hover:bg-red-500 hover:text-white"}
+                    type="button"
+                    variant="outline"
+                    onClick={onResetFilters}
+                    disabled={!hasActiveFilters}
+                >
+                    {t("reset")}
+                </Button>
             </div>
         </div>
     );
