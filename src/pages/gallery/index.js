@@ -6,6 +6,12 @@ import Card from "@/components/card";
 import {PiWarningFill} from "react-icons/pi";
 import PaginationComponent from "@/components/paginationComponent";
 
+const EMPTY_FILTERS = {
+    operator: '',
+    type: '',
+    registration: ''
+};
+
 /**
  * Fetches static props for the Gallery page, including localized messages.
  * @param {object} context - The context object containing locale information.
@@ -34,11 +40,7 @@ export default function Gallery() {
     const [aircraft, setAircraft] = useState([]);
     const [pagination, setPagination] = useState({});
     const [pageIndex, setPageIndex] = useState(1)
-    const [filters, setFilters] = useState({
-        operator: '',
-        type: '',
-        registration: ''
-    });
+    const [filters, setFilters] = useState(EMPTY_FILTERS);
 
     useEffect(() => {
         const filterQuery = Object.entries(filters).reduce((acc, [key, value]) => {
@@ -65,12 +67,17 @@ export default function Gallery() {
                 if (res.data.data.length > 0) {
                     setAircraft(res.data.data);
                     setPagination(res.data.meta.pagination);
+                    setSysMessage('');
                 } else {
+                    setAircraft([]);
+                    setPagination({});
                     setSysMessage('Aucun données trouvées.');
                 }
             })
             .catch(err => {
                 console.error(err);
+                setAircraft([]);
+                setPagination({});
                 setSysMessage('Une erreur est survenue lors de la récupération des données');
             });
     }, [filters, pageIndex]);
@@ -83,17 +90,27 @@ export default function Gallery() {
      * @param {string} value - The new value for the filter.
      */
     const handleFilterChange = (filterType, value) => {
+        setPageIndex(1);
         setFilters(prevFilters => ({
             ...prevFilters,
             [filterType]: value
         }));
-        console.log(value, filterType, filters)
+    };
+
+    const handleResetFilters = () => {
+        setPageIndex(1);
+        setFilters(EMPTY_FILTERS);
     };
 
     return (
         <div className={"container grid grid-flow-row gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
-            <header className={"flex justify-center px-4 py-2 bg-white rounded-lg"}>
-                <GalleryFilter onFilterChange={handleFilterChange} dataPresent={aircraft.length > 0}/>
+            <header className={"flex justify-start px-4 py-2"}>
+                <GalleryFilter
+                    filters={filters}
+                    onFilterChange={handleFilterChange}
+                    onResetFilters={handleResetFilters}
+                    dataPresent={aircraft.length > 0}
+                />
             </header>
 
             {aircraft.length > 0 ? (

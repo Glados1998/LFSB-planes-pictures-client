@@ -37,7 +37,8 @@
   "filter": {
     "operator": "Operator",
     "type": "Aircraft type",
-    "registration": "Registration"
+    "registration": "Registration",
+    "reset": "Reset filters"
   },
   "header": {
     "home": "Home",

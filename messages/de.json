@@ -37,7 +37,8 @@
   "filter": {
     "operator": "Flugesellschaft",
     "type": "Flugzeugtyp",
-    "registration": "Registrierung"
+    "registration": "Registrierung",
+    "reset": "Filter zurücksetzen"
   },
   "header": {
     "home": "Startseite",
