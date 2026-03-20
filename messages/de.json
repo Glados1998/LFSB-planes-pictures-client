@@ -48,7 +48,9 @@
   "footer": {
     "info": {
       "copyright": "Alle Rechte vorbehalten",
-      "artist": "Gestaltet von ",
+      "artist": "Gestaltet von",
+      "usedTechnologies": "Erstellt mit",
+      "hostedOn": "Gehostet auf",
       "strapi": "Powered by "
     },
     "navigation": {

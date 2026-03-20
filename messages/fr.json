@@ -48,8 +48,10 @@
   "footer": {
     "info": {
       "copyright": "Tous droits réservés",
-      "artist": "Fait par  ",
-      "strapi": "Contenu géré avec "
+      "artist": "Fait par",
+      "usedTechnologies": "Fait avec",
+      "hostedOn": "Hébergé sur",
+      "strapi": "Propulsé par "
     },
     "navigation": {
       "navigation": "Navigation",
