@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 import {useTranslations} from "next-intl";
 import LanguageSwitcher from "@/components/languageSwitcher";
 import {Menu, X} from "lucide-react";
@@ -8,8 +9,19 @@ import {Button} from "@/components/ui/button";
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const t = useTranslations("header");
+    const router = useRouter();
+    const {locales = [], locale: currentLocale, pathname, query} = router;
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+    const handleLocaleChange = (locale) => {
+        if (locale === currentLocale) {
+            return;
+        }
+
+        router.push({pathname, query}, pathname, {locale});
+        setIsMenuOpen(false);
+    };
 
     const navItems = [
         {href: '/', label: 'home'},
@@ -68,8 +80,32 @@ export default function Header() {
                             {t(item.label)}
                         </Link>
                     ))}
-                    <div className="py-2">
-                        <LanguageSwitcher/>
+                    <div className="py-2 ">
+                        <span className={"mr-2 text-gray-800 font-medium"}>
+                            {t('language')} :
+                        </span>
+                        <div className="mt-2 flex gap-2">
+                            {locales.map((locale) => {
+                                const isActiveLocale = locale === currentLocale;
+
+                                return (
+                                    <button
+                                        key={locale}
+                                        type="button"
+                                        className={`rounded border px-2 py-1 text-sm font-medium transition ${
+                                            isActiveLocale
+                                                ? 'border-gray-800 bg-gray-800 text-white'
+                                                : 'border-gray-300 text-gray-800 hover:border-gray-600'
+                                        }`}
+                                        onClick={() => handleLocaleChange(locale)}
+                                        disabled={isActiveLocale}
+                                        aria-current={isActiveLocale ? 'true' : undefined}
+                                    >
+                                        {locale.toUpperCase()}
+                                    </button>
+                                );
+                            })}
+                        </div>
                     </div>
                 </nav>
             )}
