@@ -38,6 +38,9 @@ export default function Header() {
 
                 <div className="flex items-center">
                     <div className="hidden md:block mr-4">
+                        <span className={"mr-2 text-gray-800  font-medium"}>
+                            {t('language')} :
+                        </span>
                         <LanguageSwitcher/>
                     </div>
                     <Button

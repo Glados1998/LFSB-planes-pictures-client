@@ -42,7 +42,8 @@
   },
   "header": {
     "home": "Startseite",
-    "gallery": "Galerie"
+    "gallery": "Galerie",
+    "language": "Sprache"
   },
   "footer": {
     "info": {
