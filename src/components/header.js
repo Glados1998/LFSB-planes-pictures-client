@@ -5,10 +5,13 @@ import {useTranslations} from "next-intl";
 import LanguageSwitcher from "@/components/languageSwitcher";
 import {Menu, X} from "lucide-react";
 import {Button} from "@/components/ui/button";
+import {useVisitorCounter} from "@/hooks/visitorCounter";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const t = useTranslations("header");
+    const tHome = useTranslations("home");
+    const {visits, loading, error} = useVisitorCounter();
     const router = useRouter();
     const {locales = [], locale: currentLocale, pathname, query} = router;
 
@@ -49,11 +52,23 @@ export default function Header() {
                 </div>
 
                 <div className="flex items-center">
-                    <div className="hidden md:block mr-4">
-                        <span className={"mr-2 text-gray-800  font-medium"}>
-                            {t('language')} :
-                        </span>
-                        <LanguageSwitcher/>
+                    <div className="hidden md:flex items-center gap-4 mr-4">
+                        <div className="flex items-center">
+                            <span className={"mr-2 text-gray-800 font-medium"}>
+                                {t('language')} :
+                            </span>
+                            <LanguageSwitcher/>
+                        </div>
+                        <div className="text-sm text-gray-600">
+                            {loading ? (
+                                <span>{tHome("visits.loading")}</span>
+                            ) : error ? null : (
+                                tHome.rich('visits.text', {
+                                    count: visits,
+                                    span: (chunks) => <span className="font-semibold">{chunks}</span>,
+                                })
+                            )}
+                        </div>
                     </div>
                     <Button
                         variant="ghost"
@@ -106,6 +121,16 @@ export default function Header() {
                                 );
                             })}
                         </div>
+                    </div>
+                    <div className="py-2 text-sm text-gray-600 border-t border-gray-100">
+                        {loading ? (
+                            <span>{tHome("visits.loading")}</span>
+                        ) : error ? null : (
+                            tHome.rich('visits.text', {
+                                count: visits,
+                                span: (chunks) => <span className="font-semibold">{chunks}</span>,
+                            })
+                        )}
                     </div>
                 </nav>
             )}

@@ -2,7 +2,6 @@ import Image from "next/image";
 import papaHeadshot from "@/assets/images/papa-profile2.jpg";
 import IntroImage from "@/assets/images/jan-kopriva-o-R0Qurz28g-unsplash.jpg";
 import {useTranslations} from 'next-intl';
-import {useVisitorCounter} from "@/hooks/visitorCounter";
 
 export async function getStaticProps(context) {
     return {
@@ -17,7 +16,6 @@ export async function getStaticProps(context) {
 
 export default function Home() {
 
-    const {visits, loading, error} = useVisitorCounter();
 
     const t = useTranslations("home");
     return (
@@ -76,33 +74,6 @@ export default function Home() {
                         </div>
                     </div>
                 </main>
-                <footer className={"flex justify-center"}>
-                    <div>
-                        <h3>
-
-                        </h3>
-                    </div>
-                    <div className={`p-4 rounded-lg bg-gray-100 shadow-md`}>
-                        {
-                            loading ? (
-                                <p className="text-lg text-gray-600">
-                                    {t("visits.loading")}
-                                </p>
-                            ) : error ? (
-                                <p className="text-lg text-red-600">
-                                    {t("visits.error")}
-                                </p>
-                            ) : (
-                                <p className="text-lg text-gray-600">
-                                    {t.rich('visits.text', {
-                                        count: visits,
-                                        span: (chunks) => <span className="font-semibold">{chunks}</span>,
-                                    })}
-                                </p>
-                            )
-                        }
-                    </div>
-                </footer>
             </div>
         </div>
     )

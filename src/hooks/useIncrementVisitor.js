@@ -12,8 +12,15 @@ import axios from 'axios';
  * Usage:
  *   Call `useIncrementVisitor()` inside a React component to increment the visitor count on mount.
  */
+const SESSION_KEY = 'lfsb_visited';
+
 export function useIncrementVisitor() {
     useEffect(() => {
+        // Only increment once per browser session to avoid counting refreshes
+        if (sessionStorage.getItem(SESSION_KEY)) {
+            return;
+        }
+
         let isCancelled = false;
 
         const increment = async () => {
@@ -21,6 +28,7 @@ export function useIncrementVisitor() {
                 const apiUrl = process.env.STRAPI_API_URL;
                 const response = await axios.post(`${apiUrl}/visitor-counter/increment`);
                 if (!isCancelled) {
+                    sessionStorage.setItem(SESSION_KEY, '1');
                     console.log('Visitor count incremented:', response.data);
                 }
             } catch (err) {
