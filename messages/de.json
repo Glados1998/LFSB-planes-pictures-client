@@ -42,12 +42,15 @@
   },
   "header": {
     "home": "Startseite",
-    "gallery": "Galerie"
+    "gallery": "Galerie",
+    "language": "Sprache"
   },
   "footer": {
     "info": {
       "copyright": "Alle Rechte vorbehalten",
-      "artist": "Gestaltet von ",
+      "artist": "Gestaltet von",
+      "usedTechnologies": "Erstellt mit",
+      "hostedOn": "Gehostet auf",
       "strapi": "Powered by "
     },
     "navigation": {
