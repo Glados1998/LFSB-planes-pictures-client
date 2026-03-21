@@ -48,7 +48,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
     }, []);
 
     /**
-     * Debounced version of fetchOptions to limit API calls during search.
+     * Debounced a version of fetchOptions to limit API calls during search.
      */
     const debouncedFetchOptions = useCallback(
         debounce((endpoint, query, callback) => {
