@@ -26,11 +26,11 @@ export default function LanguageSwitcher() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="w-[60px]">
+                <Button variant="outline" className="w-10">
                     {currentLocale.toUpperCase()}
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-[60px]">
+            <DropdownMenuContent className="w-10">
                 {locales.map((locale) => (
                     <DropdownMenuItem
                         key={locale}
