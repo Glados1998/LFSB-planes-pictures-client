@@ -4,6 +4,7 @@ import Autoplay from "embla-carousel-autoplay";
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
 import CarouselImageItem from "@/components/carouselImageItem";
 import axios from "axios";
+import CarouselObject from "@/components/CarouselObject";
 
 export async function getStaticProps(context) {
     return {
@@ -18,7 +19,7 @@ export async function getStaticProps(context) {
 
 export default function Home() {
     const t = useTranslations("home");
-    const autoplay = useRef(Autoplay({delay: 6000, stopOnInteraction: false}));
+    const autoplay = useRef(Autoplay({delay: 8000, stopOnInteraction: false}));
     const [aircrafts, setAircrafts] = useState([]);
 
     useEffect(() => {
@@ -48,8 +49,9 @@ export default function Home() {
                                     <CarouselImageItem aircraft={aircraft}/>
                                 </CarouselItem>
                             ))}
-                            {/*<CarouselItem>
-                            </CarouselItem>*/}
+                            <CarouselItem>
+                                <CarouselObject/>
+                            </CarouselItem>
                         </CarouselContent>
                         <CarouselPrevious className="left-5"/>
                         <CarouselNext className="right-5"/>
