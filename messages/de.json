@@ -29,10 +29,14 @@
       "flash": "Blitz",
       "focalLength": "Fokuslänge",
       "creationDate": "Erstellungsdatum"
-    },
-    "card": {
-      "show": "Mehr Details"
     }
+  },
+  "card": {
+    "general": {
+      "show": "Mehr Details"
+    },
+    "meetThe": "Treffen Sie den",
+    "by": "von"
   },
   "filter": {
     "operator": "Flugesellschaft",

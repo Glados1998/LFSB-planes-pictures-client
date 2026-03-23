@@ -1,7 +1,9 @@
-import Image from "next/image";
-import papaHeadshot from "@/assets/images/papa-profile2.jpg";
-import IntroImage from "@/assets/images/jan-kopriva-o-R0Qurz28g-unsplash.jpg";
+import {useEffect, useRef, useState} from "react";
 import {useTranslations} from 'next-intl';
+import Autoplay from "embla-carousel-autoplay";
+import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
+import CarouselImageItem from "@/components/carouselImageItem";
+import axios from "axios";
 
 export async function getStaticProps(context) {
     return {
@@ -15,64 +17,46 @@ export async function getStaticProps(context) {
 }
 
 export default function Home() {
-
-
     const t = useTranslations("home");
-    return (
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-flow-row gap-24 py-12">
-                <header className="flex flex-col lg:flex-row gap-12 items-center">
-                    <div className="lg:w-1/2">
-                <span className="text-2xl font-bold text-gray-600">
-                    {t("headline")}
-                </span>
-                        <hr className="my-4 border-t-2 w-56 border-gray-300"/>
-                        <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
-                            LFSB Planes Pictures
-                        </h1>
-                        <p className="text-lg sm:text-xl text-gray-600">
-                            {t.rich('subheadline', {
-                                span: (chunks) => <span className="font-semibold">{chunks}</span>,
-                            })}
-                        </p>
-                    </div>
-                    <div className="lg:w-1/2 relative aspect-video w-full max-w-2xl">
-                        <Image
-                            src={IntroImage}
-                            alt="header image"
-                            layout="responsive"
-                            className="rounded-lg shadow-lg"
-                            loading={"eager"}
-                        />
-                    </div>
-                </header>
+    const autoplay = useRef(Autoplay({delay: 6000, stopOnInteraction: false}));
+    const [aircrafts, setAircrafts] = useState([]);
 
-                <main className="flex flex-col lg:flex-row gap-12 items-center">
-                    <div className="lg:w-1/2 relative aspect-4/3 w-full max-w-2xl">
-                        <Image
-                            src={papaHeadshot}
-                            alt="Laurent Greder"
-                            layout="responsive"
-                            objectFit="cover"
-                            className="rounded-lg shadow-lg"
-                            loading={"eager"}
-                        />
-                    </div>
-                    <div className="lg:w-1/2">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
-                            {t("about.headline")}
-                        </h2>
-                        <div className="space-y-4 text-gray-600">
-                            <p className="text-lg">
-                                {t("about.text1")}
-                            </p>
-                            <p className="text-lg">
-                                {t.rich('about.text2', {
-                                    span: (chunks) => <span className="font-semibold">{chunks}</span>,
-                                })}
-                            </p>
-                        </div>
-                    </div>
+    useEffect(() => {
+        axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=1&pagination[pageSize]=3&populate=*`)
+            .then(response => {
+                console.log("Fetched aircraft data:", response.data.data);
+                setAircrafts(response.data.data);
+            })
+            .catch(error => {
+                console.error("Error fetching aircraft data:", error);
+            });
+    }, []);
+
+    return (
+        <div className="">
+            <div className="grid grid-flow-row gap-24">
+                <header className="space-y-8">
+                    {/* Wide hero carousel */}
+                    <Carousel
+                        opts={{loop: true}}
+                        plugins={[autoplay.current]}
+                        className="w-full"
+                    >
+                        <CarouselContent>
+                            {aircrafts.map((aircraft, i) => (
+                                <CarouselItem key={i}>
+                                    <CarouselImageItem aircraft={aircraft}/>
+                                </CarouselItem>
+                            ))}
+                            {/*<CarouselItem>
+                            </CarouselItem>*/}
+                        </CarouselContent>
+                        <CarouselPrevious className="left-5"/>
+                        <CarouselNext className="right-5"/>
+                    </Carousel>
+                </header>
+                <main>
+
                 </main>
             </div>
         </div>

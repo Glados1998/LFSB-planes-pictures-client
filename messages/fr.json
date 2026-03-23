@@ -29,10 +29,14 @@
       "flash": "Flash",
       "focalLength": "Longueur focale",
       "creationDate": "Date de création"
-    },
-    "card": {
-      "show": "Voir plus"
     }
+  },
+  "card": {
+    "general": {
+      "show": "Voire plus"
+    },
+    "meetThe": "Rencontrez le",
+    "by": "de"
   },
   "filter": {
     "operator": "Compagnie aérienne",

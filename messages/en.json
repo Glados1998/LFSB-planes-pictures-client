@@ -29,10 +29,14 @@
       "flash": "Flash",
       "focalLength": "Focal length",
       "creationDate": "Creation date"
-    },
-    "card": {
-      "show": "Show more"
     }
+  },
+  "card": {
+    "general": {
+      "show": "Mehr Details"
+    },
+    "meetThe": "Meet the",
+    "by": "by"
   },
   "filter": {
     "operator": "Operator",

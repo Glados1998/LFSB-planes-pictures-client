@@ -11,7 +11,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Card({plane}) {
-    const t = useTranslations("gallery");
+    const t = useTranslations("card");
     const {attributes} = plane;
     const {image, type, operator} = attributes;
 
@@ -35,7 +35,7 @@ export default function Card({plane}) {
                 <p className="text-sm">{operatorLabel}</p>
                 <button
                     className="mt-2 px-4 py-2 bg-white text-black text-sm font-semibold rounded hover:bg-gray-200 hover:cursor-pointer transition-colors duration-300">
-                    {t("card.show")}
+                    {t("general.show")}
                 </button>
             </div>
         </Link>

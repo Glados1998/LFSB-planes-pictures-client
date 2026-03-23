@@ -103,7 +103,7 @@ export default function Gallery() {
     };
 
     return (
-        <div className={"container grid grid-flow-row gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
+        <div className={"container grid grid-flow-row gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"}>
             <header className={"flex justify-start px-4 py-2"}>
                 <GalleryFilter
                     filters={filters}
