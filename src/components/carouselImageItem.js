@@ -14,12 +14,12 @@ export async function getStaticProps(context) {
 export default function CarouselImageItem({aircraft}) {
 
     const {attributes} = aircraft;
-    const {image, type, operator} = attributes;
+    const {image, operator, registration} = attributes;
 
     const t = useTranslations("card");
     const imageUrl = image?.data?.attributes?.url || notFound;
-    const aircraftType = type?.data?.attributes?.label || 'N/A';
     const operatorLabel = operator?.data?.attributes?.label || 'N/A';
+    const registrationLabel = registration || 'N/A';
 
     return (
         <div className={"relative aspect-video w-full overflow-hidden"}>
@@ -27,7 +27,7 @@ export default function CarouselImageItem({aircraft}) {
                 <img
                     src={imageUrl}
                     className="w-full h-full"
-                    alt={aircraftType}
+                    alt={registrationLabel}
                 />
                 <div
                     className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-30"/>
@@ -37,13 +37,18 @@ export default function CarouselImageItem({aircraft}) {
                     <h3 className="text-5xl font-semibold mb-1">
                         <span className={"font-light font-serif italic"}>
                             {t("meetThe")} {" "}</span>
-                        {aircraftType}
+                        {registrationLabel}
                     </h3>
-                    <p className="text-3xl mb-5 font-bold">
+                    <p className="text-3xl font-bold">
                     <span className={"font-light font-serif italic"}>
                         {t("by")} {" "}
                     </span>
                         {operatorLabel}
+                    </p>
+                    <p className={"py-4 text-xl font-light"}>
+                        {t.rich("cta", {
+                            br: () => <br/>
+                        })}
                     </p>
                     <Link href={`/gallery/${aircraft.id}`}
                           className="px-4 py-2 bg-white text-black text-base font-semibold rounded hover:bg-gray-200 hover:cursor-pointer transition-colors duration-300">

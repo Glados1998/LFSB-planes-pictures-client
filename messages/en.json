@@ -33,10 +33,11 @@
   },
   "card": {
     "general": {
-      "show": "Mehr Details"
+      "show": "Show more"
     },
     "meetThe": "Meet the",
-    "by": "by"
+    "by": "by",
+    "cta": "Do you want to know more about this aircraft? <br></br> Click on the button below to see more details."
   },
   "filter": {
     "operator": "Operator",

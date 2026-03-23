@@ -36,7 +36,8 @@
       "show": "Voire plus"
     },
     "meetThe": "Rencontrez le",
-    "by": "de"
+    "by": "de",
+    "cta": "Voulez-vous en savoir plus sur cet avion ? <br></br> Cliquez sur le bouton ci-dessous pour voir plus de détails."
   },
   "filter": {
     "operator": "Compagnie aérienne",
