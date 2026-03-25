@@ -18,32 +18,35 @@ export default function CarouselSlide({...props}) {
                 <div
                     className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-30"/>
             </div>
-            <div className="absolute inset-0 flex flex-col p-16 text-white">
-                <div>
-                    <h3 className="text-5xl mb-1">
-                        <span className="group relative inline-block cursor-default pb-1">
-                            {props.title || 'N/A'}
-                            <span
-                                className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100"/>
-                        </span>
-                    </h3>
-                    <p className="text-3xl">
-                        <span className="group relative inline-block cursor-default pb-1">
-                            {props.subtitle || 'N/A'}
-                            <span
-                                className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100"/>
-                        </span>
-                    </p>
+            <div className="absolute inset-0 flex p-16 text-white">
+                <div className="max-w-3xl space-y-4">
+                    <header className="space-y-1">
+                        <h3 className="mb-1 text-5xl font-semibold">
+                            <span className="group relative inline-block cursor-default pb-1">
+                                {props.title || 'N/A'}
+                                <span
+                                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100"/>
+                            </span>
+                        </h3>
+                        <p className="text-3xl font-bold">
+                            <span className="group relative inline-block cursor-default pb-1">
+                                {props.subtitle || 'N/A'}
+                                <span
+                                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100"/>
+                            </span>
+                        </p>
+                    </header>
+
                     {props.url ? (
                         <>
-                            <p className="py-4 text-xl font-light">
+                            <p className="py-2 text-xl font-light">
                                 {t.rich("cta", {
                                     br: () => <br/>
                                 })}
                             </p>
                             <Link
                                 href={`/${props.url}`}
-                                className="px-4 py-2 bg-white text-black text-base font-semibold rounded hover:bg-gray-200 hover:cursor-pointer transition-colors duration-300"
+                                className="inline-block rounded bg-white px-4 py-2 text-base font-semibold text-black transition-colors duration-300 hover:cursor-pointer hover:bg-gray-200"
                             >
                                 {t("general.show")}
                             </Link>
