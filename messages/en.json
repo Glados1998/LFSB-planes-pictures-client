@@ -1,7 +1,10 @@
 {
   "home": {
-    "headline": "Discover the sky through my lens",
-    "subheadline": "Enter a world where the roar of jet engines and the elegance of aircraft design\n                        come to life. Welcome to my private photo gallery, capturing the dynamic spirit of aviation\n                        to <span>EuroAirport Basel-Mulhouse-Fribourg</span> –\n                        a crossroads of aeronautical cultures and innovation.",
+    "intro": {
+      "headline": "<i> Welcome to </i> <strong> LFSB Planes Pictures </strong>",
+      "text": ""
+    },
+    "subtext1": "Enter a world where the roar of jet engines and the elegance of aircraft design\n                        come to life. Welcome to my private photo gallery, capturing the dynamic spirit of aviation\n                        to <span>EuroAirport Basel-Mulhouse-Fribourg</span> –\n                        a crossroads of aeronautical cultures and innovation.",
     "about": {
       "headline": "About the photographer",
       "text1": "Greetings! I am Laurent Greder, an aviation enthusiast and dedicated spotter. My background\n                        in aviation photography began several years ago, powered by a\n                        deep fascination for these engineering wonders and the stories they bring to\n                        across the heavens.",

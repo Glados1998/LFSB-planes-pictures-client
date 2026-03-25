@@ -1,7 +1,10 @@
 {
   "home": {
-    "headline": "Découvrez le ciel à travers mon objectif",
-    "subheadline": "Entrez dans un monde où le rugissement des moteurs à réaction et l'élégance du design des avions\n                        prennent vie. Bienvenue dans ma galerie photo privée, capturant l'esprit dynamique de l'aviation\n                        à <span>l'EuroAirport Bâle-Mulhouse-Fribourg</span> –\n                        un carrefour des cultures et de l'innovation aéronautique.",
+    "intro": {
+      "headline": "<i> Bienvenue sur </i> <strong> LFSB Planes Pictures </strong>",
+      "text": ""
+    },
+    "subtext1": "Entrez dans un monde où le rugissement des moteurs à réaction et l'élégance du design des avions\n                        prennent vie. Bienvenue dans ma galerie photo privée, capturant l'esprit dynamique de l'aviation\n                        à <span>l'EuroAirport Bâle-Mulhouse-Fribourg</span> –\n                        un carrefour des cultures et de l'innovation aéronautique.",
     "about": {
       "headline": "À propos du photographe",
       "text1": "Salutations ! Je suis Laurent Greder, un passionné d'aviation et spotter dévoué. Mon parcours\n                        dans la photographie aéronautique a commencé il y a plusieurs années, alimenté par une\n                        fascination profonde pour ces merveilles d'ingénierie et les histoires qu'elles portent à\n                        travers les cieux.",

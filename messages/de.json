@@ -1,7 +1,11 @@
 {
   "home": {
-    "headline": "Entdecken Sie den Himmel durch mein Objektiv",
-    "subheadline": "Betreten Sie eine Welt, in der das Brüllen von Düsentriebwerken und die Eleganz des Flugzeugdesigns\n                        werden lebendig. Willkommen in meiner privaten Fotogalerie, die den dynamischen Geist der Luftfahrt einfängt\n                        bis <span>EuroAirport Basel-Mulhouse-Freiburg</span> -\n                        Kultur und Innovation in der Luftfahrt.",
+    "intro": {
+      "headline": "<i> Willkommen auf</i> <strong>LFSB Planes Pictures </strong>",
+      "text": ""
+    },
+    "headline1": "Entdecken Sie den Himmel durch mein Objektiv",
+    "subtext1": "Betreten Sie eine Welt, in der das Brüllen von Düsentriebwerken und die Eleganz des Flugzeugdesigns\n                        werden lebendig. Willkommen in meiner privaten Fotogalerie, die den dynamischen Geist der Luftfahrt einfängt\n                        bis <span>EuroAirport Basel-Mulhouse-Freiburg</span> -\n                        Kultur und Innovation in der Luftfahrt.",
     "about": {
       "headline": "Über den Fotografen",
       "text1": "Grüße! Ich bin Laurent Greder, ein begeisterter Flieger und engagierter Spotter. Mein Weg\n                        in der Luftfahrtfotografie begann vor einigen Jahren, angetrieben durch eine\n                        Tiefe Faszination für diese Wunder der Technik und die Geschichten, die sie zu\n                        durch den Himmel.",

@@ -4,7 +4,8 @@ import Autoplay from "embla-carousel-autoplay";
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
 import CarouselImageItem from "@/components/carouselImageItem";
 import axios from "axios";
-import CarouselObject from "@/components/CarouselObject";
+import CarouselSlide from "@/components/CarouselSlide";
+import IntroImage from "@/assets/images/introImage.jpg";
 
 export async function getStaticProps(context) {
     return {
@@ -21,6 +22,11 @@ export default function Home() {
     const t = useTranslations("home");
     const autoplay = useRef(Autoplay({delay: 8000, stopOnInteraction: false}));
     const [aircrafts, setAircrafts] = useState([]);
+
+    const introHeadline = t.rich("intro.headline", {
+        i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
+        strong: (chunks) => <span className="font-bold">{chunks}</span>
+    });
 
     useEffect(() => {
         axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=1&pagination[pageSize]=3&populate=*`)
@@ -39,19 +45,19 @@ export default function Home() {
                 <header className="space-y-8">
                     {/* Wide hero carousel */}
                     <Carousel
-                        opts={{loop: true}}
-                        plugins={[autoplay.current]}
+                        /*opts={{loop: true}}
+                        plugins={[autoplay.current]}*/
                         className="w-full"
                     >
                         <CarouselContent>
+                            <CarouselItem>
+                                <CarouselSlide image={IntroImage} title={introHeadline} subtitle={t("intro.text")}/>
+                            </CarouselItem>
                             {aircrafts.map((aircraft, i) => (
                                 <CarouselItem key={i}>
                                     <CarouselImageItem aircraft={aircraft}/>
                                 </CarouselItem>
                             ))}
-                            <CarouselItem>
-                                <CarouselObject/>
-                            </CarouselItem>
                         </CarouselContent>
                         <CarouselPrevious className="left-5"/>
                         <CarouselNext className="right-5"/>
