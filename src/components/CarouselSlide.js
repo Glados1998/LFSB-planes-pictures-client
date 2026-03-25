@@ -20,10 +20,10 @@ export default function CarouselSlide({...props}) {
             </div>
             <div className="absolute inset-0 flex flex-col p-16 text-white">
                 <div>
-                    <h3 className="text-5xl mb-1">
+                    <h3 className="text-5xl">
                         {props.title || 'N/A'}
                     </h3>
-                    <p className="text-3xl">
+                    <p className="mt-1">
                         {props.subtitle || 'N/A'}
                     </p>
                     {props.url ? (

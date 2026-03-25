@@ -27,6 +27,9 @@ export default function Home() {
         i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
         strong: (chunks) => <span className="font-bold">{chunks}</span>
     });
+    const introText = t.rich("intro.text", {
+        span: (chunks) => <span className="text-2xl font-light">{chunks}</span>
+    });
 
     useEffect(() => {
         axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=1&pagination[pageSize]=3&populate=*`)
@@ -51,7 +54,7 @@ export default function Home() {
                     >
                         <CarouselContent>
                             <CarouselItem>
-                                <CarouselSlide image={IntroImage} title={introHeadline} subtitle={t("intro.text")}/>
+                                <CarouselSlide image={IntroImage} title={introHeadline} subtitle={introText}/>
                             </CarouselItem>
                             {aircrafts.map((aircraft, i) => (
                                 <CarouselItem key={i}>
