@@ -32,7 +32,7 @@ export default function CarouselSlide({...props}) {
                     {props.url ? (
                         <>
                             <p className="py-2 text-xl font-light">
-                                {t.rich("cta", {
+                                {t.rich("cta2", {
                                     br: () => <br/>
                                 })}
                             </p>
