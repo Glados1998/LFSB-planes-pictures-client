@@ -10,7 +10,6 @@ import {useVisitorCounter} from "@/hooks/visitorCounter";
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const t = useTranslations("header");
-    const tHome = useTranslations("home");
     const {visits, loading, error} = useVisitorCounter();
     const router = useRouter();
     const {locales = [], locale: currentLocale, pathname, query} = router;
@@ -61,9 +60,9 @@ export default function Header() {
                         </div>
                         <div className="text-sm text-gray-600">
                             {loading ? (
-                                <span>{tHome("visits.loading")}</span>
+                                <span>{t("visits.loading")}</span>
                             ) : error ? null : (
-                                tHome.rich('visits.text', {
+                                t.rich('visits.text', {
                                     count: visits,
                                     span: (chunks) => <span className="font-semibold">{chunks}</span>,
                                 })
@@ -124,9 +123,9 @@ export default function Header() {
                     </div>
                     <div className="py-2 text-sm text-gray-600 border-t border-gray-100">
                         {loading ? (
-                            <span>{tHome("visits.loading")}</span>
+                            <span>{t("visits.loading")}</span>
                         ) : error ? null : (
-                            tHome.rich('visits.text', {
+                            t.rich('visits.text', {
                                 count: visits,
                                 span: (chunks) => <span className="font-semibold">{chunks}</span>,
                             })
