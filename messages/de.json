@@ -1,12 +1,13 @@
 {
   "home": {
     "intro": {
-      "headline": "<i> Willkommen auf</i> <strong>LFSB Planes Pictures </strong>",
+      "headline": "<i>Willkommen auf</i> <strong>LFSB Planes Pictures </strong>",
       "text": "<span>Entdecken Sie den Himmel durch mein Objektiv.</span>"
     },
     "about": {
-      "headline": "Über den Fotografen",
-      "text1": "Grüße! Ich bin Laurent Greder, ein begeisterter Flieger und engagierter Spotter. Mein Weg\n                        in der Luftfahrtfotografie begann vor einigen Jahren, angetrieben durch eine\n                        Tiefe Faszination für diese Wunder der Technik und die Geschichten, die sie zu\n                        durch den Himmel.",
+      "headline": "<i>Treffen Sie </i> <strong>den Fotografen</strong>",
+      "text": "lorem ipsum",
+      "text3": "Grüße! Ich bin Laurent Greder, ein begeisterter Flieger und engagierter Spotter. Mein Weg\n                        in der Luftfahrtfotografie begann vor einigen Jahren, angetrieben durch eine\n                        Tiefe Faszination für diese Wunder der Technik und die Geschichten, die sie zu\n                        durch den Himmel.",
       "text2": "Obwohl mein Hauptspielplatz das <span>EuroAirport Basel-Mulhouse-Freiburg</span> ist,\n                        Gelegentlich fotografiere ich einzigartige Luftfahrtszenen in\n                        <span>Flughafen Genf (LSGG)</span> and <span>Flughafen Zürich (LSZH)</span>.\n                        Jeder Standort bietet einen einzigartigen Einblick in die Welt der Luftfahrt, von den belebten internationalen Drehkreuzen bis zu\n                        ruhige Abfahrten in den Himmel.\n                        Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux\n                        départs sereins vers le ciel."
     }
   },
@@ -34,7 +35,8 @@
     },
     "meetThe": "Treffen Sie den",
     "by": "von",
-    "cta": "Möchten Sie mehr über dieses Flugzeug erfahren? <br></br> Klicken Sie auf die Schaltfläche unten, um weitere Details zu sehen."
+    "cta": "Möchten Sie mehr über dieses Flugzeug erfahren? <br></br> Klicken Sie auf die Schaltfläche unten, um weitere Details zu sehen.",
+    "cta2": "Klicken Sie auf die Schaltfläche unten, um weitere Details zu sehen."
   },
   "filter": {
     "operator": "Flugesellschaft",

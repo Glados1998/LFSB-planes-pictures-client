@@ -5,8 +5,9 @@
       "text": "<span>Discover the sky through my lens.</span>"
     },
     "about": {
-      "headline": "About the photographer",
-      "text1": "Greetings! I am Laurent Greder, an aviation enthusiast and dedicated spotter. My background\n                        in aviation photography began several years ago, powered by a\n                        deep fascination for these engineering wonders and the stories they bring to\n                        across the heavens.",
+      "headline": "<i>Meet </i> <strong>the photographer</strong>",
+      "text": "lorem ipsum",
+      "text3": "Greetings! I am Laurent Greder, an aviation enthusiast and dedicated spotter. My background\n                        in aviation photography began several years ago, powered by a\n                        deep fascination for these engineering wonders and the stories they bring to\n                        across the heavens.",
       "text2": "Although my main playground is the bustling <span>EuroAirport Basel-Mulhouse-Fribourg</span>,\n                        I occasionally capture unique aviation scenes from\n                        <span>Geneva Airport (LSGG)</span> and <span>Zurich Airport (LSZH)</span>.\n                        Each location offers a distinct insight into the world of aviation, from bustling international hubs to\n                        serene departures to the sky."
     }
   },
@@ -34,7 +35,8 @@
     },
     "meetThe": "Meet the",
     "by": "by",
-    "cta": "Do you want to know more about this aircraft? <br></br> Click on the button below to see more details."
+    "cta": "Do you want to know more about this aircraft? <br></br> Click on the button below to see more details.",
+    "cta2": "Click on the button below to see more details."
   },
   "filter": {
     "operator": "Operator",

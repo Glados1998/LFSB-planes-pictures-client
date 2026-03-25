@@ -5,7 +5,8 @@ import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious}
 import CarouselImageItem from "@/components/carouselImageItem";
 import axios from "axios";
 import CarouselSlide from "@/components/CarouselSlide";
-import IntroImage from "@/assets/images/introImage.jpg";
+import IntroImage from "@/assets/images/introThumbnail.jpg";
+import AboutThumbnail from "@/assets/images/aboutThumbnail.jpg";
 
 export async function getStaticProps(context) {
     return {
@@ -30,6 +31,11 @@ export default function Home() {
     const introText = t.rich("intro.text", {
         span: (chunks) => <span className="text-2xl font-light">{chunks}</span>
     });
+    const aboutHeadline = t.rich("about.headline", {
+        i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
+        strong: (chunks) => <span className="font-bold">{chunks}</span>
+    })
+    const aboutText = t.rich("about.text")
 
     useEffect(() => {
         axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=1&pagination[pageSize]=3&populate=*`)
@@ -61,14 +67,15 @@ export default function Home() {
                                     <CarouselImageItem aircraft={aircraft}/>
                                 </CarouselItem>
                             ))}
+                            <CarouselItem>
+                                <CarouselSlide image={AboutThumbnail} title={aboutHeadline} subtitle={aboutText}
+                                               url={"/"}/>
+                            </CarouselItem>
                         </CarouselContent>
                         <CarouselPrevious className="left-5"/>
                         <CarouselNext className="right-5"/>
                     </Carousel>
                 </header>
-                <main>
-
-                </main>
             </div>
         </div>
     )
