@@ -37,19 +37,11 @@ export default function CarouselImageItem({aircraft}) {
                     <header className="space-y-1">
                         <h3 className="mb-1 text-5xl font-semibold">
                             <span className="font-serif font-light italic">{t("meetThe")} </span>
-                            <span className="group relative inline-block cursor-default pb-1">
-                                {registrationLabel}
-                                <span
-                                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100"/>
-                            </span>
+                            {registrationLabel}
                         </h3>
                         <p className="text-3xl font-bold">
                             <span className="font-serif font-light italic">{t("by")} </span>
-                            <span className="group relative inline-block cursor-default pb-1">
-                                {operatorLabel}
-                                <span
-                                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100"/>
-                            </span>
+                            {operatorLabel}
                         </p>
                     </header>
 

@@ -22,18 +22,10 @@ export default function CarouselSlide({...props}) {
                 <div className="max-w-3xl space-y-4">
                     <header className="space-y-1">
                         <h3 className="mb-1 text-5xl font-semibold">
-                            <span className="group relative inline-block cursor-default pb-1">
-                                {props.title || 'N/A'}
-                                <span
-                                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100"/>
-                            </span>
+                            {props.title || 'N/A'}
                         </h3>
                         <p className="text-3xl font-bold">
-                            <span className="group relative inline-block cursor-default pb-1">
-                                {props.subtitle || 'N/A'}
-                                <span
-                                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100"/>
-                            </span>
+                            {props.subtitle || 'N/A'}
                         </p>
                     </header>
 
