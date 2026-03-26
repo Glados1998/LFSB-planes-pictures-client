@@ -22,6 +22,7 @@ export default function About() {
                     <div>
                         <h1 className={"text-4xl mb-4"}>
                             {t.rich("intro.title", {
+                                br: () => <br/>,
                                 i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
                                 strong: (chunks) => <span className="font-bold">{chunks}</span>
                             })}
@@ -40,13 +41,13 @@ export default function About() {
                     </div>
                     <div>
                         <h1 className={"text-4xl mb-4"}>
-                            {t.rich("about.title", {
+                            {t.rich("block2.title", {
                                 i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
                                 strong: (chunks) => <span className="font-bold">{chunks}</span>
                             })}
                         </h1>
                         <p>
-                            {t("about.text")}
+                            {t("block2.text")}
                         </p>
                     </div>
                 </div>

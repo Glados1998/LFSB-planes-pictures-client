@@ -29,6 +29,16 @@
       "creationDate": "Date de création"
     }
   },
+  "about": {
+    "intro": {
+      "title": "<i>Bienvenue sur </i> <br></br> <strong>LFSB Planes Pictures </strong>",
+      "text": "Découvrez le ciel à travers mon objectif."
+    },
+    "block2": {
+      "title": "<i>Rencontrez </i> <strong>le photographe</strong>",
+      "text": "lorem ipsum"
+    }
+  },
   "card": {
     "general": {
       "show": "Voire plus"
