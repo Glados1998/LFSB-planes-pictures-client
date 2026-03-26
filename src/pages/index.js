@@ -25,6 +25,7 @@ export default function Home() {
     const [aircrafts, setAircrafts] = useState([]);
 
     const introHeadline = t.rich("intro.headline", {
+        br: () => <br/>,
         i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
         strong: (chunks) => <span className="font-bold">{chunks}</span>
     });
@@ -54,8 +55,8 @@ export default function Home() {
                 <header className="space-y-8">
                     {/* Wide hero carousel */}
                     <Carousel
-                        /*opts={{loop: true}}
-                        plugins={[autoplay.current]}*/
+                        opts={{loop: true}}
+                        plugins={[autoplay.current]}
                         className="w-full"
                     >
                         <CarouselContent>
