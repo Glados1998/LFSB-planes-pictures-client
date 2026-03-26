@@ -47,6 +47,7 @@
   "header": {
     "home": "Startseite",
     "gallery": "Galerie",
+    "about": "Über mich",
     "language": "Sprache",
     "visits": {
       "loading": "Besucherzahl wird geladen...",
@@ -66,6 +67,7 @@
       "navigation": "Navigation",
       "home": "Startseite",
       "gallery": "Galerie",
+      "about": "Über mich",
       "dashboard": "Dashboard"
     }
   }

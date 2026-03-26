@@ -28,6 +28,7 @@ export default function Header() {
     const navItems = [
         {href: '/', label: 'home'},
         {href: '/gallery', label: 'gallery'},
+        {href: '/about', label: 'about'},
     ];
 
     return (

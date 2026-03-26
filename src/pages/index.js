@@ -70,7 +70,7 @@ export default function Home() {
                             ))}
                             <CarouselItem>
                                 <CarouselSlide image={AboutThumbnail} title={aboutHeadline} subtitle={aboutText}
-                                               url={"/"}/>
+                                               url={"/about"}/>
                             </CarouselItem>
                         </CarouselContent>
                         <CarouselPrevious className="left-5"/>

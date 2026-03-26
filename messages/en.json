@@ -47,6 +47,7 @@
   "header": {
     "home": "Home",
     "gallery": "Gallery",
+    "about": "About",
     "language": "Language",
     "visits": {
       "loading": "Loading visitor count...",
@@ -66,6 +67,7 @@
       "navigation": "Navigation",
       "home": "Home",
       "gallery": "Gallery",
+      "about": "About",
       "dashboard": "Dashboard"
     }
   }

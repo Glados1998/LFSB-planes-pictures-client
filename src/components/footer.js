@@ -5,6 +5,7 @@ import {SiNextdotjs, SiStrapi, SiVercel} from "react-icons/si";
 const navigation = [
     {label: 'home', path: '/'},
     {label: 'gallery', path: '/gallery/'},
+    {label: 'about', path: '/about/'},
     {label: 'dashboard', path: 'https://strapi-production-1911.up.railway.app/admin', external: true},
 ];
 
