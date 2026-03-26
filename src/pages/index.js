@@ -50,7 +50,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="">
+        <div>
             <div className="grid grid-flow-row gap-24">
                 <header className="space-y-8">
                     {/* Wide hero carousel */}
