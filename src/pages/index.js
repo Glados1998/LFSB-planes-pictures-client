@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import {useTranslations} from 'next-intl';
 import Autoplay from "embla-carousel-autoplay";
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
-import CarouselImageItem from "@/components/carouselImageItem";
+import CarouselImageSlide from "@/components/CarouselImageSlide";
 import axios from "axios";
 import CarouselSlide from "@/components/CarouselSlide";
 import IntroImage from "@/assets/images/introThumbnail.jpg";
@@ -64,7 +64,7 @@ export default function Home() {
                             </CarouselItem>
                             {aircrafts.map((aircraft, i) => (
                                 <CarouselItem key={i}>
-                                    <CarouselImageItem aircraft={aircraft}/>
+                                    <CarouselImageSlide aircraft={aircraft}/>
                                 </CarouselItem>
                             ))}
                             <CarouselItem>

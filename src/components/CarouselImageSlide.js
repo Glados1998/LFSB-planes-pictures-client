@@ -11,7 +11,7 @@ export async function getStaticProps(context) {
 }
 
 
-export default function CarouselImageItem({aircraft}) {
+export default function CarouselImageSlide({aircraft}) {
 
     const {attributes} = aircraft;
     const {image, operator, registration} = attributes;
