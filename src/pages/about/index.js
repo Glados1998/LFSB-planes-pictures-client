@@ -1,4 +1,6 @@
 import {useTranslations} from "next-intl";
+import AboutImage from "@/assets/images/aboutThumbnail.jpg";
+import Image from "next/image";
 
 export async function getStaticProps(context) {
     return {
@@ -13,15 +15,28 @@ export default function About() {
     const t = useTranslations("about");
 
     return (
-        <div className="container">
-            <h1>About Us</h1>
-            <p>Welcome to our website! We are passionate about aviation and dedicated to providing you with the best
-                experience possible. Our mission is to connect aviation enthusiasts, professionals, and hobbyists from
-                around the world through our platform.</p>
-            <p>Our team is made up of aviation experts, developers, and designers who work tirelessly to create a
-                user-friendly and informative website. We strive to offer a comprehensive database of aircraft, news,
-                and resources for everyone interested in aviation.</p>
-            <p>Thank you for visiting our site, and we hope you find it useful and enjoyable!</p>
+        <div className="container mx-auto px-4 py-8">
+            <div className={"grid grid-flow-row"}>
+                <div className={"flex flex-col md:flex-row justify-around "}>
+                    <div>
+                        <h1 className={"text-4xl mb-4"}>
+                            {t.rich("intro.title", {
+                                i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
+                                strong: (chunks) => <span className="font-bold">{chunks}</span>
+                            })}
+                        </h1>
+                        <p>
+                            {t("intro.text")}
+                        </p>
+                    </div>
+                    <div>
+                        <Image src={AboutImage} alt="" className={"w-auto h-90 shadow"}/>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
         </div>
     );
 }
