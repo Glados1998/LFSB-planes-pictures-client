@@ -30,7 +30,8 @@
   "about": {
     "intro": {
       "title": "<i>Bienvenue sur </i> <br></br> <strong>LFSB Planes Pictures </strong>",
-      "text": "Découvrez le ciel à travers mon objectif."
+      "text": "<strong>LFSB Planes Pictures</strong> est un assemblage de clichés d'avions de différentes formes et tailles.<br></br> qui sont présentés dans une galerie expansive filtrable par type d'avion, immatriculation, opérateur.",
+      "text2": "Chaque image peut être consultée individuellement avec les mêmes détails que ceux affichés dans la galerie et ses filtres. De plus, <strong>LFSB Planes Pictures</strong> extrait les métadonnées des images afin de montrer non seulement l'avion, mais aussi la manière dont la photo a été prise."
     },
     "about": {
       "title": "<i>Rencontrez </i> <strong>le photographe</strong>",

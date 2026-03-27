@@ -30,7 +30,8 @@
   "about": {
     "intro": {
       "title": "<i>Willkommen auf </i> <br></br> <strong>LFSB Planes Pictures </strong>",
-      "text": "Entdecken Sie den Himmel durch mein Objektiv."
+      "text": "<strong>LFSB Planes Pictures</strong> ist eine Sammlung von Schnappschüssen von Flugzeugen in verschiedenen Formen und Größen.<br></br> die in einer umfangreichen Galerie gezeigt werden, die nach Flugzeugtyp, Registrierung, Betreiber filterbar ist.",
+      "text2": "Jedes Bild kann einzeln mit denselben Details angezeigt werden, die auch in der Galerie und in den Filtern zu sehen sind. Außerdem extrahiert <strong>LFSB Planes Pictures</strong> die Metadaten der Bilder, sodass man nicht nur das Flugzeug sieht, sondern auch, wie das Foto aufgenommen wurde."
     },
     "about": {
       "title": "<i>Treffen Sie </i> <strong>den Fotografen</strong>",
