@@ -27,9 +27,22 @@ export default function About() {
                                 strong: (chunks) => <span className="font-bold">{chunks}</span>
                             })}
                         </h1>
-                        <p className="text-left leading-relaxed">
-                            {t("intro.text")}
-                        </p>
+                        <div className={"flex flex-col gap-4 text-left leading-relaxed"}>
+                            <p className="text-left leading-relaxed">
+                                {t.rich("intro.text", {
+                                    br: () => <br/>,
+                                    strong: (chunks) => <span className="font-bold">{chunks}</span>,
+                                    i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
+                                })}
+                            </p>
+                            <p className="text-left leading-relaxed">
+                                {t.rich("intro.text2", {
+                                    br: () => <br/>,
+                                    strong: (chunks) => <span className="font-bold">{chunks}</span>,
+                                    i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
+                                })}
+                            </p>
+                        </div>
                     </div>
                     <div>
                         <Image src={AboutImage} alt="About section image" className={"h-90 w-auto shadow"}/>
