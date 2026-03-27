@@ -6,9 +6,7 @@
     },
     "about": {
       "headline": "<i>Rencontrez</i> <strong>le photographe</strong>",
-      "text": "lorem ipsum",
-      "text3": "Salutations ! Je suis Laurent Greder, un passionné d'aviation et spotter dévoué. Mon parcours\n                        dans la photographie aéronautique a commencé il y a plusieurs années, alimenté par une\n                        fascination profonde pour ces merveilles d'ingénierie et les histoires qu'elles portent à\n                        travers les cieux.",
-      "text2": "Bien que mon principal terrain de jeu soit l'effervescent <span>EuroAirport Bâle-Mulhouse-Fribourg</span>,\n                        il m'arrive occasionnellement de capturer des scènes d'aviation uniques à\n                        <span>l'aéroport de Genève (LSGG)</span> and <span>l'aéroport de Zurich (LSZH)</span>.\n                        Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux\n                        départs sereins vers le ciel."
+      "text": "lorem ipsum"
     }
   },
   "gallery": {
@@ -36,7 +34,9 @@
     },
     "about": {
       "title": "<i>Rencontrez </i> <strong>le photographe</strong>",
-      "text": "lorem ipsum"
+      "text": "Salutations ! Je suis Laurent Greder, un passionné d'aviation et spotter dévoué. Mon parcours\n                        dans la photographie aéronautique a commencé il y a plusieurs années, alimenté par une\n                        fascination profonde pour ces merveilles d'ingénierie et les histoires qu'elles portent à\n                        travers les cieux.",
+      "text2": "Bien que mon principal terrain de jeu soit l'effervescent <span>EuroAirport Bâle-Mulhouse-Fribourg</span>,\n                        il m'arrive occasionnellement de capturer des scènes d'aviation uniques à\n                        <span>l'aéroport de Genève (LSGG)</span> and <span>l'aéroport de Zurich (LSZH)</span>.\n                        Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux\n                        départs sereins vers le ciel."
+
     }
   },
   "card": {

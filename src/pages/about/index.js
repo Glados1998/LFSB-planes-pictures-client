@@ -18,7 +18,7 @@ export default function About() {
     return (
         <div className="container mx-auto px-4 py-8">
             <div className={"grid grid-flow-row"}>
-                <div className={"flex flex-col md:flex-row justify-around mb-40"}>
+                <div className={"flex flex-col md:flex-row justify-around gap-12 mb-40"}>
                     <div>
                         <h1 className={"text-4xl mb-4"}>
                             {t.rich("intro.title", {
@@ -35,7 +35,7 @@ export default function About() {
                         <Image src={AboutImage} alt="" className={"w-auto h-90 shadow"}/>
                     </div>
                 </div>
-                <div className={"flex flex-col md:flex-row justify-around "}>
+                <div className={"flex flex-col md:flex-row justify-around gap-12"}>
                     <div>
                         <Image src={FatherImage} alt="" className={"w-auto h-90 shadow"}/>
                     </div>
@@ -46,9 +46,16 @@ export default function About() {
                                 strong: (chunks) => <span className="font-bold">{chunks}</span>
                             })}
                         </h1>
-                        <p>
-                            {t("about.text")}
-                        </p>
+                        <div className={"flex flex-col gap-4"}>
+                            <p>
+                                {t("about.text")}
+                            </p>
+                            <p>
+                                {t.rich("about.text2", {
+                                    span: (chunks) => <span className="font-bold">{chunks}</span>
+                                })}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

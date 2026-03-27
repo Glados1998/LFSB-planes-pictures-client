@@ -36,7 +36,8 @@
     },
     "about": {
       "title": "<i>Meet </i> <strong>the photographer</strong>",
-      "text": "lorem ipsum"
+      "text": "Greetings! I am Laurent Greder, an aviation enthusiast and dedicated spotter. My background\n                        in aviation photography began several years ago, powered by a\n                        deep fascination for these engineering wonders and the stories they bring to\n                        across the heavens.",
+      "text2": "Although my main playground is the bustling <span>EuroAirport Basel-Mulhouse-Fribourg</span>,\n                        I occasionally capture unique aviation scenes from\n                        <span>Geneva Airport (LSGG)</span> and <span>Zurich Airport (LSZH)</span>.\n                        Each location offers a distinct insight into the world of aviation, from bustling international hubs to\n                        serene departures to the sky."
     }
   },
   "card": {
