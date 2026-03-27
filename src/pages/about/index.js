@@ -16,42 +16,45 @@ export default function About() {
     const t = useTranslations("about");
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <div className={"grid grid-flow-row"}>
-                <div className={"flex flex-col md:flex-row justify-around gap-12 mb-40"}>
-                    <div>
-                        <h1 className={"text-4xl mb-4"}>
+        <div className="container mx-auto px-4 py-10 md:py-14">
+            <div className={"grid grid-flow-row gap-20"}>
+                <div className={"flex flex-col md:flex-row items-start justify-around"}>
+                    <div className="max-w-2xl text-left">
+                        <h1 className={"mb-4 text-left text-4xl leading-tight"}>
                             {t.rich("intro.title", {
                                 br: () => <br/>,
                                 i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
                                 strong: (chunks) => <span className="font-bold">{chunks}</span>
                             })}
                         </h1>
-                        <p>
+                        <p className="text-left leading-relaxed">
                             {t("intro.text")}
                         </p>
                     </div>
                     <div>
-                        <Image src={AboutImage} alt="" className={"w-auto h-90 shadow"}/>
+                        <Image src={AboutImage} alt="About section image" className={"h-90 w-auto shadow"}/>
                     </div>
                 </div>
-                <div className={"flex flex-col md:flex-row justify-around gap-12"}>
+                <div className={"flex flex-col md:flex-row items-start justify-around"}>
                     <div>
-                        <Image src={FatherImage} alt="" className={"w-auto h-90 shadow"}/>
+                        <Image src={FatherImage} alt="Photographer portrait" className={"h-90 w-auto shadow"}/>
                     </div>
-                    <div>
-                        <h1 className={"text-4xl mb-4"}>
+                    <div className="max-w-2xl text-left">
+                        <h1 className={"mb-4 text-left text-4xl leading-tight"}>
                             {t.rich("about.title", {
                                 i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
                                 strong: (chunks) => <span className="font-bold">{chunks}</span>
                             })}
                         </h1>
-                        <div className={"flex flex-col gap-4"}>
+                        <div className={"flex flex-col gap-4 text-left leading-relaxed"}>
                             <p>
-                                {t("about.text")}
+                                {t.rich("about.text", {
+                                    br: () => <br/>
+                                })}
                             </p>
                             <p>
                                 {t.rich("about.text2", {
+                                    br: () => <br/>,
                                     span: (chunks) => <span className="font-bold">{chunks}</span>
                                 })}
                             </p>
