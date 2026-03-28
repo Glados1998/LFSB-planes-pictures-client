@@ -27,14 +27,14 @@ export default function Home() {
     const introHeadline = t.rich("intro.headline", {
         br: () => <br/>,
         i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
-        strong: (chunks) => <span className="font-bold">{chunks}</span>
+        strong: (chunks) => <span className="font-semibold sm:font-bold">{chunks}</span>
     });
     const introText = t.rich("intro.text", {
-        span: (chunks) => <span className="text-base font-light sm:text-lg md:text-2xl">{chunks}</span>
+        span: (chunks) => <span className="text-sm font-light sm:text-lg md:text-2xl">{chunks}</span>
     });
     const aboutHeadline = t.rich("about.headline", {
         i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
-        strong: (chunks) => <span className="font-bold">{chunks}</span>
+        strong: (chunks) => <span className="font-semibold sm:font-bold">{chunks}</span>
     })
     const aboutText = t.rich("about.text")
 
@@ -55,7 +55,7 @@ export default function Home() {
                     {/* Wide hero carousel */}
                     <Carousel
                         opts={{loop: true}}
-                        plugins={[autoplay.current]}
+                        // plugins={[autoplay.current]}
                         className="w-full"
                     >
                         <CarouselContent>
@@ -72,8 +72,10 @@ export default function Home() {
                                                url={"/about"}/>
                             </CarouselItem>
                         </CarouselContent>
-                        <CarouselPrevious className="left-2 h-8 w-8 sm:left-5 sm:h-10 sm:w-10"/>
-                        <CarouselNext className="right-2 h-8 w-8 sm:right-5 sm:h-10 sm:w-10"/>
+                        <CarouselPrevious
+                            className="invisible left-2 h-5 w-5 sm:visible sm:left-5 sm:h-10 sm:w-10 border-none"/>
+                        <CarouselNext
+                            className="invisible right-2 h-5 w-5 sm:visible sm:right-5 sm:h-10 sm:w-10 border-none"/>
                     </Carousel>
                 </header>
             </div>

@@ -140,7 +140,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
             <div className="space-y-2">
                 <Label className="text-md font-bold">{t("reset")}:</Label>
                 <Button
-                    className={"hover:bg-red-500 hover:text-white"}
+                    className={"hover:bg-red-500 hover:border-red-500 hover:text-white"}
                     type="button"
                     variant="outline"
                     onClick={onResetFilters}

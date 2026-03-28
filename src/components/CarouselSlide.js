@@ -21,24 +21,24 @@ export default function CarouselSlide({...props}) {
             <div className="absolute inset-0 flex p-4 text-white sm:p-6 md:p-10 lg:p-16">
                 <div className="max-w-full space-y-2 sm:max-w-3xl sm:space-y-4">
                     <header className="space-y-1">
-                        <h3 className="mb-1 text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
+                        <h3 className="mb-1 text-xl font-semibold leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
                             {props.title || 'N/A'}
                         </h3>
-                        <p className="text-base font-light leading-snug sm:text-xl md:text-2xl lg:text-3xl">
+                        <p className="text-sm font-medium md:font-light leading-snug sm:text-xl md:text-2xl lg:text-3xl">
                             {props.subtitle || 'N/A'}
                         </p>
                     </header>
 
                     {props.url ? (
                         <>
-                            <p className="py-1 text-sm font-light sm:py-2 sm:text-base md:text-xl">
+                            <p className="py-1 text-xs font-medium sm:font-light sm:py-2 sm:text-base md:text-xl">
                                 {t.rich("cta2", {
                                     br: () => <br/>
                                 })}
                             </p>
                             <Link
                                 href={`/${props.url}`}
-                                className="inline-block rounded bg-white px-3 py-1.5 text-sm font-semibold text-black transition-colors duration-300 hover:cursor-pointer hover:bg-gray-200 sm:px-4 sm:py-2 sm:text-base"
+                                className="inline-block rounded bg-white px-2 py-1 text-xs font-semibold text-black transition-colors duration-300 hover:cursor-pointer hover:bg-gray-200 sm:px-4 sm:py-2 sm:text-base"
                             >
                                 {t("general.show")}
                             </Link>
