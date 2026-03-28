@@ -55,7 +55,7 @@ export default function Home() {
                     {/* Wide hero carousel */}
                     <Carousel
                         opts={{loop: true}}
-                        // plugins={[autoplay.current]}
+                        plugins={[autoplay.current]}
                         className="w-full"
                     >
                         <CarouselContent>
