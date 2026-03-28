@@ -117,7 +117,7 @@ export default function Gallery() {
                 <>
                     <main className={"flex flex-col flex-wrap justify-center"}>
                         <div
-                            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 justify-items-center">
+                            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 justify-items-center">
                             {aircraft.map(plane => (
                                 <Card key={plane.id} plane={plane}/>
                             ))}

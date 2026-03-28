@@ -24,7 +24,7 @@ export default function CarouselSlide({...props}) {
                         <h3 className="mb-1 text-5xl font-semibold">
                             {props.title || 'N/A'}
                         </h3>
-                        <p className="text-3xl font-bold">
+                        <p className="text-3xl font-light">
                             {props.subtitle || 'N/A'}
                         </p>
                     </header>

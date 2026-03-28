@@ -20,7 +20,7 @@ export default function Card({plane}) {
     const operatorLabel = operator?.data?.attributes?.label || 'N/A';
 
     return (
-        <Link href={`/gallery/${plane.id}`} className="relative group overflow-hidden shadow-lg rounded-lg">
+        <Link href={`/gallery/${plane.id}`} className="relative group overflow-hidden shadow">
             <div className="relative w-full h-64 md:size-full">
                 <img
                     src={imageUrl}
@@ -34,7 +34,7 @@ export default function Card({plane}) {
                 <h3 className="text-lg font-semibold">{aircraftType}</h3>
                 <p className="text-sm">{operatorLabel}</p>
                 <button
-                    className="mt-2 px-4 py-2 bg-white text-black text-sm font-semibold rounded hover:bg-gray-200 hover:cursor-pointer transition-colors duration-300">
+                    className="w-fit mt-2 px-4 py-2 bg-white text-black text-sm font-semibold rounded hover:bg-gray-200 hover:cursor-pointer transition-colors duration-300">
                     {t("general.show")}
                 </button>
             </div>
