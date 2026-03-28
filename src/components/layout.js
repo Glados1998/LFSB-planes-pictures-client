@@ -4,7 +4,7 @@ import {Analytics} from "@vercel/analytics/react"
 
 export default function Layout({children}) {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="bg-white flex min-h-screen flex-col">
             <Header/>
             <main className="flex-grow">
                 {children}

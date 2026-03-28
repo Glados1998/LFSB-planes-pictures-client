@@ -30,7 +30,7 @@ export default function Home() {
         strong: (chunks) => <span className="font-bold">{chunks}</span>
     });
     const introText = t.rich("intro.text", {
-        span: (chunks) => <span className="text-2xl font-light">{chunks}</span>
+        span: (chunks) => <span className="text-base font-light sm:text-lg md:text-2xl">{chunks}</span>
     });
     const aboutHeadline = t.rich("about.headline", {
         i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
@@ -51,8 +51,8 @@ export default function Home() {
 
     return (
         <div>
-            <div className="grid grid-flow-row gap-24">
-                <header className="space-y-8">
+            <div className="grid grid-flow-row gap-8 sm:gap-12 md:gap-24">
+                <header className="space-y-4 sm:space-y-8">
                     {/* Wide hero carousel */}
                     <Carousel
                         opts={{loop: true}}
@@ -63,8 +63,8 @@ export default function Home() {
                             <CarouselItem>
                                 <CarouselSlide image={IntroImage} title={introHeadline} subtitle={introText}/>
                             </CarouselItem>
-                            {aircrafts.map((aircraft, i) => (
-                                <CarouselItem key={i}>
+                            {aircrafts.map((aircraft) => (
+                                <CarouselItem key={aircraft.id}>
                                     <CarouselImageSlide aircraft={aircraft}/>
                                 </CarouselItem>
                             ))}
@@ -73,8 +73,8 @@ export default function Home() {
                                                url={"/about"}/>
                             </CarouselItem>
                         </CarouselContent>
-                        <CarouselPrevious className="left-5"/>
-                        <CarouselNext className="right-5"/>
+                        <CarouselPrevious className="left-2 h-8 w-8 sm:left-5 sm:h-10 sm:w-10"/>
+                        <CarouselNext className="right-2 h-8 w-8 sm:right-5 sm:h-10 sm:w-10"/>
                     </Carousel>
                 </header>
             </div>

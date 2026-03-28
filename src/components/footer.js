@@ -16,7 +16,7 @@ export default function Footer() {
     const iconClass = "h-4 w-4 shrink-0";
 
     return (
-        <footer className="mt-auto bg-gray-100 py-3 text-gray-800 md:py-4">
+        <footer className="bg-white py-3 text-gray-800 md:py-4">
             <div className="container mx-auto px-4">
                 <div className="grid gap-5 text-sm md:grid-cols-2 md:gap-6">
                     <section aria-labelledby="footer-site-title" className="space-y-1.5 leading-6">

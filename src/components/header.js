@@ -32,7 +32,7 @@ export default function Header() {
     ];
 
     return (
-        <header className="bg-white shadow-sm">
+        <header className="bg-white">
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                 <div className="flex items-center">
                     <Link href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600 mr-6">
