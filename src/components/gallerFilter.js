@@ -105,9 +105,9 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
     );
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="space-y-2">
-                <Label className="text-md font-bold">{t("operator")}:</Label>
+                <Label className="text-sm font-semibold sm:text-md sm:font-bold">{t("operator")}:</Label>
                 <Combobox
                     options={operators}
                     value={filters.operator}
@@ -117,7 +117,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
                 />
             </div>
             <div className="space-y-2">
-                <Label className="text-md font-bold">{t("type")}:</Label>
+                <Label className="text-sm font-semibold sm:text-md sm:font-bold">{t("type")}:</Label>
                 <Combobox
                     options={aircraftTypes}
                     value={filters.type}
@@ -127,7 +127,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
                 />
             </div>
             <div className="space-y-2">
-                <Label className="text-md font-bold">{t("registration")}:</Label>
+                <Label className="text-sm font-semibold sm:text-md sm:font-bold">{t("registration")}:</Label>
                 <Input
                     className={"bg-white hover:bg-gray-100"}
                     type="text"
@@ -138,7 +138,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
                 />
             </div>
             <div className="space-y-2">
-                <Label className="text-md font-bold">{t("reset")}:</Label>
+                <Label className="text-sm font-semibold sm:text-md sm:font-bold">{t("reset")}:</Label>
                 <Button
                     className={"hover:bg-red-500 hover:border-red-500 hover:text-white"}
                     type="button"

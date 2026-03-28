@@ -31,10 +31,10 @@ export default function Card({plane}) {
                     className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-10"></div>
             </div>
             <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
-                <h3 className="text-lg font-semibold">{aircraftType}</h3>
+                <h3 className="text-base sm:text-lg font-semibold">{aircraftType}</h3>
                 <p className="text-sm">{operatorLabel}</p>
                 <button
-                    className="w-fit mt-2 px-4 py-2 bg-white text-black text-sm font-semibold rounded hover:bg-gray-200 hover:cursor-pointer transition-colors duration-300">
+                    className="w-fit mt-2 px-2 py-1 sm:px-4 sm:py-2 bg-white text-black text-xs sm:text-sm font-semibold rounded hover:bg-gray-200 hover:cursor-pointer transition-colors duration-300">
                     {t("general.show")}
                 </button>
             </div>
