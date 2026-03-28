@@ -41,7 +41,6 @@ export default function Home() {
     useEffect(() => {
         axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=1&pagination[pageSize]=3&populate=*`)
             .then(response => {
-                console.log("Fetched aircraft data:", response.data.data);
                 setAircrafts(response.data.data);
             })
             .catch(error => {
