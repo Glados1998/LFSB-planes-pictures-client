@@ -1,16 +1,12 @@
 {
   "home": {
-    "headline": "Entdecken Sie den Himmel durch mein Objektiv",
-    "subheadline": "Betreten Sie eine Welt, in der das Brüllen von Düsentriebwerken und die Eleganz des Flugzeugdesigns\n                        werden lebendig. Willkommen in meiner privaten Fotogalerie, die den dynamischen Geist der Luftfahrt einfängt\n                        bis <span>EuroAirport Basel-Mulhouse-Freiburg</span> -\n                        Kultur und Innovation in der Luftfahrt.",
-    "about": {
-      "headline": "Über den Fotografen",
-      "text1": "Grüße! Ich bin Laurent Greder, ein begeisterter Flieger und engagierter Spotter. Mein Weg\n                        in der Luftfahrtfotografie begann vor einigen Jahren, angetrieben durch eine\n                        Tiefe Faszination für diese Wunder der Technik und die Geschichten, die sie zu\n                        durch den Himmel.",
-      "text2": "Obwohl mein Hauptspielplatz das <span>EuroAirport Basel-Mulhouse-Freiburg</span> ist,\n                        Gelegentlich fotografiere ich einzigartige Luftfahrtszenen in\n                        <span>Flughafen Genf (LSGG)</span> and <span>Flughafen Zürich (LSZH)</span>.\n                        Jeder Standort bietet einen einzigartigen Einblick in die Welt der Luftfahrt, von den belebten internationalen Drehkreuzen bis zu\n                        ruhige Abfahrten in den Himmel.\n                        Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux\n                        départs sereins vers le ciel."
+    "intro": {
+      "headline": "<i>Willkommen auf</i> <br></br> <strong>LFSB Planes Pictures </strong>",
+      "text": "<span>Entdecken Sie den Himmel durch mein Objektiv.</span>"
     },
-    "visits": {
-      "loading": "Besucherzahl wird geladen...",
-      "error": "Une erreur est survenue lors de la récupération des données des visiteurs",
-      "text": "Nombre de visiteurs : <span>{count}</span>"
+    "about": {
+      "headline": "<i>Treffen Sie </i> <strong>den Fotografen</strong>",
+      "text": "Treffen Sie den Fotografen und erfahren Sie mehr über LFSB Planes Pictures"
     }
   },
   "gallery": {
@@ -29,10 +25,29 @@
       "flash": "Blitz",
       "focalLength": "Fokuslänge",
       "creationDate": "Erstellungsdatum"
-    },
-    "card": {
-      "show": "Mehr Details"
     }
+  },
+  "about": {
+    "intro": {
+      "title": "<i>Willkommen auf </i> <br></br> <strong>LFSB Planes Pictures </strong>",
+      "text": "<strong>LFSB Planes Pictures</strong> ist eine Sammlung von Schnappschüssen von Flugzeugen in verschiedenen Formen und Größen.<br></br> die in einer umfangreichen Galerie gezeigt werden, die nach Flugzeugtyp, Registrierung, Betreiber filterbar ist.",
+      "text2": "Jedes Bild kann einzeln mit denselben Details angezeigt werden, die auch in der Galerie und in den Filtern zu sehen sind. Außerdem extrahiert <strong>LFSB Planes Pictures</strong> die Metadaten der Bilder, sodass man nicht nur das Flugzeug sieht, sondern auch, wie das Foto aufgenommen wurde."
+    },
+    "about": {
+      "title": "<i>Treffen Sie </i> <strong>den Fotografen</strong>",
+      "text": "Hallo! Ich bin Laurent Greder, ein begeisterter Flieger und engagierter Spotter. <br></br> Mein Weg in der Luftfahrtfotografie begann vor einigen Jahren, angetrieben durch eine Tiefe Faszination für diese Wunder der Technik und die Geschichten, die sie zu durch den Himmel.",
+      "text2": "Obwohl mein Hauptspielplatz das <span>EuroAirport Basel-Mulhouse-Freiburg</span> ist, Gelegentlich fotografiere ich einzigartige Luftfahrtszenen in <span>Flughafen Genf (LSGG)</span> and <span>Flughafen Zürich (LSZH)</span>. <br></br> Jeder Standort bietet einen einzigartigen Einblick in die Welt der Luftfahrt, von den belebten internationalen Drehkreuzen bis zu ruhige Abfahrten in den Himmel.\n                        Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux\n                        départs sereins vers le ciel."
+
+    }
+  },
+  "card": {
+    "general": {
+      "show": "Mehr Details"
+    },
+    "meetThe": "Treffen Sie den",
+    "by": "von",
+    "cta": "Möchten Sie mehr über dieses Flugzeug erfahren? <br></br> Klicken Sie auf die Schaltfläche unten, um weitere Details zu sehen.",
+    "cta2": "Klicken Sie auf die Schaltfläche unten, um weitere Details zu sehen."
   },
   "filter": {
     "operator": "Flugesellschaft",
@@ -43,7 +58,13 @@
   "header": {
     "home": "Startseite",
     "gallery": "Galerie",
-    "language": "Sprache"
+    "about": "Über mich",
+    "language": "Sprache",
+    "visits": {
+      "loading": "Besucherzahl wird geladen...",
+      "error": "Une erreur est survenue lors de la récupération des données des visiteurs",
+      "text": "Besucherzahl: <span>{count}</span>"
+    }
   },
   "footer": {
     "info": {
@@ -57,6 +78,7 @@
       "navigation": "Navigation",
       "home": "Startseite",
       "gallery": "Galerie",
+      "about": "Über mich",
       "dashboard": "Dashboard"
     }
   }

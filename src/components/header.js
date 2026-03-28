@@ -5,10 +5,12 @@ import {useTranslations} from "next-intl";
 import LanguageSwitcher from "@/components/languageSwitcher";
 import {Menu, X} from "lucide-react";
 import {Button} from "@/components/ui/button";
+import {useVisitorCounter} from "@/hooks/visitorCounter";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const t = useTranslations("header");
+    const {visits, loading, error} = useVisitorCounter();
     const router = useRouter();
     const {locales = [], locale: currentLocale, pathname, query} = router;
 
@@ -26,10 +28,11 @@ export default function Header() {
     const navItems = [
         {href: '/', label: 'home'},
         {href: '/gallery', label: 'gallery'},
+        {href: '/about', label: 'about'},
     ];
 
     return (
-        <header className="bg-white shadow-sm">
+        <header className="bg-white">
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                 <div className="flex items-center">
                     <Link href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600 mr-6">
@@ -49,11 +52,23 @@ export default function Header() {
                 </div>
 
                 <div className="flex items-center">
-                    <div className="hidden md:block mr-4">
-                        <span className={"mr-2 text-gray-800  font-medium"}>
-                            {t('language')} :
-                        </span>
-                        <LanguageSwitcher/>
+                    <div className="hidden md:flex items-center gap-4 mr-4">
+                        <div className="flex items-center">
+                            <span className={"mr-2 text-gray-800 font-medium"}>
+                                {t('language')} :
+                            </span>
+                            <LanguageSwitcher/>
+                        </div>
+                        <div className="text-sm text-gray-600">
+                            {loading ? (
+                                <span>{t("visits.loading")}</span>
+                            ) : error ? null : (
+                                t.rich('visits.text', {
+                                    count: visits,
+                                    span: (chunks) => <span className="font-semibold">{chunks}</span>,
+                                })
+                            )}
+                        </div>
                     </div>
                     <Button
                         variant="ghost"
@@ -106,6 +121,16 @@ export default function Header() {
                                 );
                             })}
                         </div>
+                    </div>
+                    <div className="py-2 text-sm text-gray-600 border-t border-gray-100">
+                        {loading ? (
+                            <span>{t("visits.loading")}</span>
+                        ) : error ? null : (
+                            t.rich('visits.text', {
+                                count: visits,
+                                span: (chunks) => <span className="font-semibold">{chunks}</span>,
+                            })
+                        )}
                     </div>
                 </nav>
             )}

@@ -5,7 +5,7 @@ import {Check} from "lucide-react";
 
 /**
  * LanguageSwitcher component provides a dropdown menu for switching between available messages.
- * Utilizes Next.js router for locale management and navigation.
+ * Uses Next.js router for locale management and navigation.
  *
  * @component
  * @returns {JSX.Element} The rendered language switcher dropdown.
@@ -26,11 +26,11 @@ export default function LanguageSwitcher() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="w-[60px]">
+                <Button variant="outline" className="w-10">
                     {currentLocale.toUpperCase()}
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-[60px]">
+            <DropdownMenuContent className="w-10">
                 {locales.map((locale) => (
                     <DropdownMenuItem
                         key={locale}

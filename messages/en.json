@@ -1,16 +1,12 @@
 {
   "home": {
-    "headline": "Discover the sky through my lens",
-    "subheadline": "Enter a world where the roar of jet engines and the elegance of aircraft design\n                        come to life. Welcome to my private photo gallery, capturing the dynamic spirit of aviation\n                        to <span>EuroAirport Basel-Mulhouse-Fribourg</span> –\n                        a crossroads of aeronautical cultures and innovation.",
-    "about": {
-      "headline": "About the photographer",
-      "text1": "Greetings! I am Laurent Greder, an aviation enthusiast and dedicated spotter. My background\n                        in aviation photography began several years ago, powered by a\n                        deep fascination for these engineering wonders and the stories they bring to\n                        across the heavens.",
-      "text2": "Although my main playground is the bustling <span>EuroAirport Basel-Mulhouse-Fribourg</span>,\n                        I occasionally capture unique aviation scenes from\n                        <span>Geneva Airport (LSGG)</span> and <span>Zurich Airport (LSZH)</span>.\n                        Each location offers a distinct insight into the world of aviation, from bustling international hubs to\n                        serene departures to the sky."
+    "intro": {
+      "headline": "<i> Welcome to </i> <br></br> <strong> LFSB Planes Pictures </strong>",
+      "text": "<span>Discover the sky through my lens.</span>"
     },
-    "visits": {
-      "loading": "Loading visitor count...",
-      "error": "Une erreur est survenue lors de la récupération des données des visiteurs",
-      "text": "Nombre de visiteurs : <span>{count}</span>"
+    "about": {
+      "headline": "<i>Meet </i> <strong>the photographer</strong>",
+      "text": "Meet the photograph and learn more about LFSB Planes Pictures"
     }
   },
   "gallery": {
@@ -29,10 +25,28 @@
       "flash": "Flash",
       "focalLength": "Focal length",
       "creationDate": "Creation date"
-    },
-    "card": {
-      "show": "Show more"
     }
+  },
+  "about": {
+    "intro": {
+      "title": "<i>Welcome to </i> <br></br> <strong>LFSB Planes Pictures </strong>",
+      "text": "<strong>Planes Pictures</strong> is an assemble of snapshots of aircraft in various shapes and sizes.<br></br> which are shown in a expansive gallery filtrable by aircraft type, registration, operator.",
+      "text2": "Each snapshot can be viewed individually with the same details as the ones shown in the gallery and its filters, also <strong>LFSB Planes Pictures</strong> extracts the images metadata so that not only see the aircraft but how it was taken."
+    },
+    "about": {
+      "title": "<i>Meet </i> <strong>the photographer</strong>",
+      "text": "Hello! I am Laurent Greder, an aviation enthusiast and dedicated spotter. <br></br> My background in aviation photography began several years ago, powered by a deep fascination for these engineering wonders and the stories they bring to across the heavens.",
+      "text2": "Although my main playground is the bustling <span>EuroAirport Basel-Mulhouse-Fribourg</span>, I occasionally capture unique aviation scenes from <span>Geneva Airport (LSGG)</span> and <span>Zurich Airport (LSZH)</span>. <br></br> Each location offers a distinct insight into the world of aviation, from bustling international hubs to serene departures to the sky."
+    }
+  },
+  "card": {
+    "general": {
+      "show": "Show more"
+    },
+    "meetThe": "Meet the",
+    "by": "by",
+    "cta": "Do you want to know more about this aircraft? <br></br> Click on the button below to see more details.",
+    "cta2": "Click on the button below to see more details."
   },
   "filter": {
     "operator": "Operator",
@@ -43,7 +57,13 @@
   "header": {
     "home": "Home",
     "gallery": "Gallery",
-    "language": "Language"
+    "about": "About",
+    "language": "Language",
+    "visits": {
+      "loading": "Loading visitor count...",
+      "error": "Une erreur est survenue lors de la récupération des données des visiteurs",
+      "text": "Visitor count: <span>{count}</span>"
+    }
   },
   "footer": {
     "info": {
@@ -57,6 +77,7 @@
       "navigation": "Navigation",
       "home": "Home",
       "gallery": "Gallery",
+      "about": "About",
       "dashboard": "Dashboard"
     }
   }

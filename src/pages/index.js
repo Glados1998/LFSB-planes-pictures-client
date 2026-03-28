@@ -1,8 +1,12 @@
-import Image from "next/image";
-import papaHeadshot from "@/assets/images/papa-profile2.jpg";
-import IntroImage from "@/assets/images/jan-kopriva-o-R0Qurz28g-unsplash.jpg";
+import {useEffect, useRef, useState} from "react";
 import {useTranslations} from 'next-intl';
-import {useVisitorCounter} from "@/hooks/visitorCounter";
+import Autoplay from "embla-carousel-autoplay";
+import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
+import CarouselImageSlide from "@/components/CarouselImageSlide";
+import axios from "axios";
+import CarouselSlide from "@/components/CarouselSlide";
+import IntroImage from "@/assets/images/introThumbnail.jpg";
+import AboutThumbnail from "@/assets/images/aboutThumbnail.jpg";
 
 export async function getStaticProps(context) {
     return {
@@ -16,93 +20,64 @@ export async function getStaticProps(context) {
 }
 
 export default function Home() {
-
-    const {visits, loading, error} = useVisitorCounter();
-
     const t = useTranslations("home");
+    const autoplay = useRef(Autoplay({delay: 8000, stopOnInteraction: false}));
+    const [aircrafts, setAircrafts] = useState([]);
+
+    const introHeadline = t.rich("intro.headline", {
+        br: () => <br/>,
+        i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
+        strong: (chunks) => <span className="font-semibold sm:font-bold">{chunks}</span>
+    });
+    const introText = t.rich("intro.text", {
+        span: (chunks) => <span className="text-sm font-light sm:text-lg md:text-2xl">{chunks}</span>
+    });
+    const aboutHeadline = t.rich("about.headline", {
+        i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
+        strong: (chunks) => <span className="font-semibold sm:font-bold">{chunks}</span>
+    })
+    const aboutText = t.rich("about.text")
+
+    useEffect(() => {
+        axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=1&pagination[pageSize]=3&populate=*`)
+            .then(response => {
+                setAircrafts(response.data.data);
+            })
+            .catch(error => {
+                console.error("Error fetching aircraft data:", error);
+            });
+    }, []);
+
     return (
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-flow-row gap-24 py-12">
-                <header className="flex flex-col lg:flex-row gap-12 items-center">
-                    <div className="lg:w-1/2">
-                <span className="text-2xl font-bold text-gray-600">
-                    {t("headline")}
-                </span>
-                        <hr className="my-4 border-t-2 w-56 border-gray-300"/>
-                        <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
-                            LFSB Planes Pictures
-                        </h1>
-                        <p className="text-lg sm:text-xl text-gray-600">
-                            {t.rich('subheadline', {
-                                span: (chunks) => <span className="font-semibold">{chunks}</span>,
-                            })}
-                        </p>
-                    </div>
-                    <div className="lg:w-1/2 relative aspect-video w-full max-w-2xl">
-                        <Image
-                            src={IntroImage}
-                            alt="header image"
-                            layout="responsive"
-                            className="rounded-lg shadow-lg"
-                            loading={"eager"}
-                        />
-                    </div>
+        <div>
+            <div className="grid grid-flow-row gap-8 sm:gap-12 md:gap-24">
+                <header className="space-y-4 sm:space-y-8">
+                    {/* Wide hero carousel */}
+                    <Carousel
+                        opts={{loop: true}}
+                        // plugins={[autoplay.current]}
+                        className="w-full"
+                    >
+                        <CarouselContent>
+                            <CarouselItem>
+                                <CarouselSlide image={IntroImage} title={introHeadline} subtitle={introText}/>
+                            </CarouselItem>
+                            {aircrafts.map((aircraft) => (
+                                <CarouselItem key={aircraft.id}>
+                                    <CarouselImageSlide aircraft={aircraft}/>
+                                </CarouselItem>
+                            ))}
+                            <CarouselItem>
+                                <CarouselSlide image={AboutThumbnail} title={aboutHeadline} subtitle={aboutText}
+                                               url={"/about"}/>
+                            </CarouselItem>
+                        </CarouselContent>
+                        <CarouselPrevious
+                            className="invisible left-2 h-5 w-5 sm:visible sm:left-5 sm:h-10 sm:w-10 border-none"/>
+                        <CarouselNext
+                            className="invisible right-2 h-5 w-5 sm:visible sm:right-5 sm:h-10 sm:w-10 border-none"/>
+                    </Carousel>
                 </header>
-
-                <main className="flex flex-col lg:flex-row gap-12 items-center">
-                    <div className="lg:w-1/2 relative aspect-4/3 w-full max-w-2xl">
-                        <Image
-                            src={papaHeadshot}
-                            alt="Laurent Greder"
-                            layout="responsive"
-                            objectFit="cover"
-                            className="rounded-lg shadow-lg"
-                            loading={"eager"}
-                        />
-                    </div>
-                    <div className="lg:w-1/2">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
-                            {t("about.headline")}
-                        </h2>
-                        <div className="space-y-4 text-gray-600">
-                            <p className="text-lg">
-                                {t("about.text1")}
-                            </p>
-                            <p className="text-lg">
-                                {t.rich('about.text2', {
-                                    span: (chunks) => <span className="font-semibold">{chunks}</span>,
-                                })}
-                            </p>
-                        </div>
-                    </div>
-                </main>
-                <footer className={"flex justify-center"}>
-                    <div>
-                        <h3>
-
-                        </h3>
-                    </div>
-                    <div className={`p-4 rounded-lg bg-gray-100 shadow-md`}>
-                        {
-                            loading ? (
-                                <p className="text-lg text-gray-600">
-                                    {t("visits.loading")}
-                                </p>
-                            ) : error ? (
-                                <p className="text-lg text-red-600">
-                                    {t("visits.error")}
-                                </p>
-                            ) : (
-                                <p className="text-lg text-gray-600">
-                                    {t.rich('visits.text', {
-                                        count: visits,
-                                        span: (chunks) => <span className="font-semibold">{chunks}</span>,
-                                    })}
-                                </p>
-                            )
-                        }
-                    </div>
-                </footer>
             </div>
         </div>
     )
