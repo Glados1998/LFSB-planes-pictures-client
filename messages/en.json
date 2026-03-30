@@ -7,6 +7,10 @@
     "about": {
       "headline": "<i>Meet </i> <strong>the photographer</strong>",
       "text": "Meet the photograph and learn more about LFSB Planes Pictures"
+    },
+    "welcome": {
+      "headline": "<i>The clarity in every picture</i>",
+      "text": "Plane Pictures is a collection of snapshots with details infos about the craft. <br></br> and image metadata extracted from the images."
     }
   },
   "gallery": {

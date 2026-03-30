@@ -5,8 +5,12 @@
       "text": "<span>Entdecken Sie den Himmel durch mein Objektiv.</span>"
     },
     "about": {
-      "headline": "<i>Treffen Sie </i> <strong>den Fotografen</strong>",
+      "headline": "<i>Treffen Sie</i> <strong>den Fotografen</strong>",
       "text": "Treffen Sie den Fotografen und erfahren Sie mehr über LFSB Planes Pictures"
+    },
+    "welcome": {
+      "headline": "<i>Die Klarheit in jedem Bild</i>",
+      "text": "Plane Pictures ist eine Sammlung von Schnappschüssen mit detaillierten Informationen über die Flugzeuge. <br></br> und Bildmetadaten, die aus den Bildern extrahiert wurden."
     }
   },
   "gallery": {

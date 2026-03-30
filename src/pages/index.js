@@ -38,6 +38,12 @@ export default function Home() {
     })
     const aboutText = t.rich("about.text")
 
+    const WelcomeHeadline = t.rich("welcome.headline", {
+        br: () => <br/>,
+        i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
+        strong: (chunks) => <span className="font-semibold sm:font-bold">{chunks}</span>
+    });
+
     useEffect(() => {
         axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=1&pagination[pageSize]=3&populate=*`)
             .then(response => {
@@ -50,7 +56,7 @@ export default function Home() {
 
     return (
         <div>
-            <div className="grid grid-flow-row gap-8 sm:gap-12 md:gap-24">
+            <div className="grid grid-flow-row gap-8 sm:gap-12 md:gap-11">
                 <header className="space-y-4 sm:space-y-8">
                     {/* Wide hero carousel */}
                     <Carousel
@@ -78,6 +84,16 @@ export default function Home() {
                             className="invisible right-2 h-5 w-5 sm:visible sm:right-5 sm:h-10 sm:w-10 border-none"/>
                     </Carousel>
                 </header>
+                <main className={"flex flex-col items-center justify-center  px-12 "}>
+                    <h2 className={"text-xl sm:text-2xl md:text-3xl text-center"}>
+                        {WelcomeHeadline}
+                    </h2>
+                    <p className={"text-center mt-2 mb-8 text-xs sm:text-base"}>
+                        {t.rich("welcome.text", {
+                            br: () => <br/>,
+                        })}
+                    </p>
+                </main>
             </div>
         </div>
     )

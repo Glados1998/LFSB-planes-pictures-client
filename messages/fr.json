@@ -7,6 +7,10 @@
     "about": {
       "headline": "<i>Rencontrez</i> <strong>le photographe</strong>",
       "text": "Rencontrez le photographe et en savoir plus sur LFSB Planes Pictures"
+    },
+    "welcome": {
+      "headline": "<i>La clarté dans chaque image</i>",
+      "text": "Plane Pictures est une collection de clichés avec des détails sur les avions. <br></br> et les métadonnées d'image extraites des images."
     }
   },
   "gallery": {
