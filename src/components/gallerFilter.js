@@ -53,7 +53,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
     const debouncedFetchOptions = useCallback(
         debounce((endpoint, query, callback) => {
             fetchOptions(endpoint, query).then(callback);
-        }, 300),
+        }, 150),
         [fetchOptions]
     );
 
