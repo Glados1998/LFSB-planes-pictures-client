@@ -45,9 +45,23 @@ export default function Home() {
     });
 
     useEffect(() => {
-        axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=1&pagination[pageSize]=3&populate=*`)
+        const SESSION_KEY = "carousel_aircrafts";
+
+        // Reuse cached data within the same browser session (survives refreshes).
+        // A new session (new tab / browser reopen) clears sessionStorage and
+        // triggers a fresh fetch with a new random page.
+        const cached = sessionStorage.getItem(SESSION_KEY);
+        if (cached) {
+            setAircrafts(JSON.parse(cached));
+            return;
+        }
+
+        const randomPage = Math.floor(Math.random() * 10) + 1;
+        axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=${randomPage}&pagination[pageSize]=3&populate=*`)
             .then(response => {
-                setAircrafts(response.data.data);
+                const data = response.data.data;
+                sessionStorage.setItem(SESSION_KEY, JSON.stringify(data));
+                setAircrafts(data);
             })
             .catch(error => {
                 console.error("Error fetching aircraft data:", error);
