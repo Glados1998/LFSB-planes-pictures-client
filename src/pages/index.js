@@ -7,6 +7,8 @@ import axios from "axios";
 import CarouselSlide from "@/components/CarouselSlide";
 import IntroImage from "@/assets/images/introThumbnail.jpg";
 import AboutThumbnail from "@/assets/images/aboutThumbnail.jpg";
+import {SESSION_STORAGE_KEYS} from "@/lib/sessionStorageKeys";
+import {getSessionJson, setSessionJson} from "@/lib/sessionStore";
 
 export async function getStaticProps(context) {
     return {
@@ -45,14 +47,12 @@ export default function Home() {
     });
 
     useEffect(() => {
-        const SESSION_KEY = "carousel_aircrafts";
-
         // Reuse cached data within the same browser session (survives refreshes).
         // A new session (new tab / browser reopen) clears sessionStorage and
         // triggers a fresh fetch with a new random page.
-        const cached = sessionStorage.getItem(SESSION_KEY);
-        if (cached) {
-            setAircrafts(JSON.parse(cached));
+        const cached = getSessionJson(SESSION_STORAGE_KEYS.CAROUSEL_AIRCRAFTS, []);
+        if (cached.length > 0) {
+            setAircrafts(cached);
             return;
         }
 
@@ -60,7 +60,7 @@ export default function Home() {
         axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=${randomPage}&pagination[pageSize]=3&populate=*`)
             .then(response => {
                 const data = response.data.data;
-                sessionStorage.setItem(SESSION_KEY, JSON.stringify(data));
+                setSessionJson(SESSION_STORAGE_KEYS.CAROUSEL_AIRCRAFTS, data);
                 setAircrafts(data);
             })
             .catch(error => {

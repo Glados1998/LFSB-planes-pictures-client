@@ -1,5 +1,7 @@
 import {useEffect} from 'react';
 import axios from 'axios';
+import {SESSION_STORAGE_KEYS} from '@/lib/sessionStorageKeys';
+import {hasSessionFlag, setSessionFlag} from '@/lib/sessionStore';
 
 /**
  * Custom React hook to increment the visitor counter via an API call.
@@ -12,12 +14,9 @@ import axios from 'axios';
  * Usage:
  *   Call `useIncrementVisitor()` inside a React component to increment the visitor count on mount.
  */
-const SESSION_KEY = 'lfsb_visited';
-
 export function useIncrementVisitor() {
     useEffect(() => {
-        // Only increment once per browser session to avoid counting refreshes
-        if (sessionStorage.getItem(SESSION_KEY)) {
+        if (hasSessionFlag(SESSION_STORAGE_KEYS.VISITOR_INCREMENTED)) {
             return;
         }
 
@@ -28,7 +27,7 @@ export function useIncrementVisitor() {
                 const apiUrl = process.env.STRAPI_API_URL;
                 const response = await axios.post(`${apiUrl}/visitor-counter/increment`);
                 if (!isCancelled) {
-                    sessionStorage.setItem(SESSION_KEY, '1');
+                    setSessionFlag(SESSION_STORAGE_KEYS.VISITOR_INCREMENTED);
                     console.log('Visitor count incremented:', response.data);
                 }
             } catch (err) {
