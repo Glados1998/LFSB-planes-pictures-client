@@ -10,8 +10,9 @@
     },
     "welcome": {
       "headline": "<i>Die Klarheit in jedem Bild</i>",
-      "text": "Plane Pictures ist eine Sammlung von Schnappschüssen mit detaillierten Informationen über die Flugzeuge. <br></br> und Bildmetadaten, die aus den Bildern extrahiert wurden."
-    }
+      "text": "LFSB Planes Pictures ist eine Sammlung von Flugzeugfotografien mit detaillierten Flugzeuginformationen und Metadaten, die aus jedem Bild extrahiert werden."
+    },
+    "carouselError": "Die vorgestellten Flugzeuge sind vorübergehend nicht verfügbar."
   },
   "gallery": {
     "details": {
@@ -28,7 +29,10 @@
       "exposureTime": "Aufnahmezeit",
       "flash": "Blitz",
       "focalLength": "Fokuslänge",
-      "creationDate": "Erstellungsdatum"
+      "creationDate": "Erstellungsdatum",
+      "loading": "Flugzeugdetails werden geladen...",
+      "notFound": "Für dieses Flugzeug wurden keine Details gefunden.",
+      "fetchError": "Beim Laden der Flugzeugdetails ist ein Fehler aufgetreten."
     }
   },
   "about": {
@@ -39,8 +43,8 @@
     },
     "about": {
       "title": "<i>Treffen Sie </i> <strong>den Fotografen</strong>",
-      "text": "Hallo! Ich bin Laurent Greder, ein begeisterter Flieger und engagierter Spotter. <br></br> Mein Weg in der Luftfahrtfotografie begann vor einigen Jahren, angetrieben durch eine Tiefe Faszination für diese Wunder der Technik und die Geschichten, die sie zu durch den Himmel.",
-      "text2": "Obwohl mein Hauptspielplatz das <span>EuroAirport Basel-Mulhouse-Freiburg</span> ist, Gelegentlich fotografiere ich einzigartige Luftfahrtszenen in <span>Flughafen Genf (LSGG)</span> and <span>Flughafen Zürich (LSZH)</span>. <br></br> Jeder Standort bietet einen einzigartigen Einblick in die Welt der Luftfahrt, von den belebten internationalen Drehkreuzen bis zu ruhige Abfahrten in den Himmel.\n                        Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux\n                        départs sereins vers le ciel."
+      "text": "Hallo! Ich bin Laurent Greder, ein Luftfahrtenthusiast und engagierter Spotter. <br></br> Mein Weg in die Luftfahrtfotografie begann vor einigen Jahren, angetrieben von einer tiefen Faszination für diese technischen Wunderwerke und die Geschichten, die sie durch den Himmel tragen.",
+      "text2": "Obwohl mein Hauptstandort der lebhafte <span>EuroAirport Basel-Mulhouse-Freiburg</span> ist, fotografiere ich gelegentlich auch am <span>Flughafen Genf (LSGG)</span> und am <span>Flughafen Zürich (LSZH)</span>. <br></br> Jeder Standort bietet einen eigenen Einblick in die Welt der Luftfahrt – von geschäftigen internationalen Drehkreuzen bis zu ruhigen Abflügen."
 
     }
   },
@@ -57,7 +61,9 @@
     "operator": "Flugesellschaft",
     "type": "Flugzeugtyp",
     "registration": "Registrierung",
-    "reset": "Filter zurücksetzen"
+    "reset": "Filter zurücksetzen",
+    "search": "{item} suchen...",
+    "notFound": "Keine Ergebnisse für {item}."
   },
   "header": {
     "home": "Startseite",
@@ -66,7 +72,7 @@
     "language": "Sprache",
     "visits": {
       "loading": "Besucherzahl wird geladen...",
-      "error": "Une erreur est survenue lors de la récupération des données des visiteurs",
+      "error": "Die Besucherzahl ist derzeit nicht verfügbar.",
       "text": "Besucherzahl: <span>{count}</span>"
     }
   },
@@ -85,5 +91,22 @@
       "about": "Über mich",
       "dashboard": "Dashboard"
     }
+  },
+  "galleryStates": {
+    "title": "Flugzeuggalerie",
+    "loading": "Flugzeuge werden geladen...",
+    "empty": "Keine Flugzeuge entsprechen diesen Filtern.",
+    "error": "Die Galerie konnte nicht geladen werden. Bitte versuchen Sie es erneut."
+  },
+  "errors": {
+    "notFound": {
+      "title": "Seite nicht gefunden",
+      "message": "Die angeforderte Seite existiert nicht oder wurde möglicherweise verschoben."
+    },
+    "server": {
+      "title": "Ein Fehler ist aufgetreten",
+      "message": "Die Seite konnte nicht angezeigt werden. Bitte versuchen Sie es später erneut."
+    },
+    "backHome": "Zurück zur Startseite"
   }
 }

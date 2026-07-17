@@ -6,7 +6,6 @@
  * @component
  */
 import {useRouter} from 'next/router';
-import axios from 'axios';
 import {useEffect, useState} from 'react';
 import Link from "next/link";
 import formatDate from "../../../utils/timeStampFormat";
@@ -24,6 +23,9 @@ import {
 } from "react-icons/md";
 import {useTranslations} from "next-intl";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
+import {apiClient, isRequestCanceled} from "@/lib/apiClient";
+import Image from "next/image";
+import Head from "next/head";
 
 /**
  * Fetches the translation messages for the current locale.
@@ -48,8 +50,8 @@ export async function getStaticProps(context) {
  */
 export async function getStaticPaths() {
     return {
-        paths: ["/gallery/id"],
-        fallback: true
+        paths: [],
+        fallback: "blocking"
     };
 }
 
@@ -111,32 +113,44 @@ export default function AircraftDetail() {
         aircraft: null,
         metaData: null,
         isLoading: true,
-        sysMessage: '',
+        error: null,
     });
 
     // useEffect hook to fetch the aircraft data when the id changes
     useEffect(() => {
-        // If an id is present, start loading and fetch the aircraft data
         if (id) {
-            setState(prevState => ({...prevState, isLoading: true}));
-            axios.get(`${process.env.STRAPI_API_URL}/aircrafts/${id}?populate=*`)
+            const controller = new AbortController();
+            apiClient.get(`/aircrafts/${id}?populate=*`, {signal: controller.signal})
                 .then(response => {
-                    // If data is returned, update the aircraft state
                     if (response.data.data) {
-                        setState(prevState => ({...prevState, aircraft: response.data.data}));
+                        setState({
+                            aircraft: response.data.data,
+                            metaData: null,
+                            isLoading: false,
+                            error: null,
+                        });
                     } else {
-                        setState(prevState => ({...prevState, sysMessage: 'No data found'}));
+                        setState({
+                            aircraft: null,
+                            metaData: null,
+                            isLoading: false,
+                            error: "notFound",
+                        });
                     }
                 })
                 .catch(error => {
-                    // If an error occurs, log it and set a system message
-                    console.error('Error fetching aircraft details:', error);
-                    setState(prevState => ({...prevState, sysMessage: 'An error occurred while fetching data'}));
-                })
-                .finally(() => {
-                    // Finally, stop loading
-                    setState(prevState => ({...prevState, isLoading: false}));
+                    if (!isRequestCanceled(error)) {
+                        console.error('Error fetching aircraft details:', error);
+                        setState({
+                            aircraft: null,
+                            metaData: null,
+                            isLoading: false,
+                            error: error?.response?.status === 404 ? "notFound" : "fetchError",
+                        });
+                    }
                 });
+
+            return () => controller.abort();
         }
     }, [id]);
 
@@ -144,31 +158,38 @@ export default function AircraftDetail() {
         if (state.aircraft) {
             const imageUrl = state.aircraft.attributes.image?.data?.attributes?.url;
             if (imageUrl) {
+                let isActive = true;
                 MetaDataReader(imageUrl)
                     .then(data => {
-                        setState(prevState => ({...prevState, metaData: data}));
+                        if (isActive) {
+                            setState(prevState => ({...prevState, metaData: data}));
+                        }
                     })
                     .catch(error => console.error('Error fetching EXIF data:', error));
+
+                return () => {
+                    isActive = false;
+                };
             }
         }
     }, [state.aircraft]);
 
     // Render loading, error, or no data states
     if (state.isLoading) {
-        return <div>Loading aircraft details...</div>;
+        return <main className="container mx-auto min-h-48 px-4 py-10" role="status">{t("loading")}</main>;
     }
 
-    if (state.sysMessage) {
+    if (state.error) {
         return (
-            <div>
-                <p>{state.sysMessage}</p>
+            <main className="container mx-auto min-h-48 px-4 py-10">
+                <p>{t(state.error)}</p>
                 <Link href="/gallery">{t("back")}</Link>
-            </div>
+            </main>
         );
     }
 
     if (!state.aircraft) {
-        return <div>No aircraft details available.</div>;
+        return <main className="container mx-auto min-h-48 px-4 py-10">{t("notFound")}</main>;
     }
 
     // Extract the aircraft attributes for easier access
@@ -176,13 +197,17 @@ export default function AircraftDetail() {
     const imageUrl = attributes.image?.data?.attributes?.url;
     const aircraftType = attributes.type?.data?.attributes?.label;
     const operator = attributes.operator?.data?.attributes?.label;
-    const dateOfRegistration = attributes.dateOfRegistration ? formatDate(attributes?.dateOfRegistration) : 'N/A';
+    const dateLocales = {fr: "fr-FR", en: "en-GB", de: "de-DE"};
+    const dateLocale = dateLocales[router.locale] || "en-GB";
+    const dateOfRegistration = formatDate(attributes.dateOfRegistration, dateLocale);
     const serviceNumber = attributes.serviceNumber;
     const registration = attributes.registration;
     const yearOfConstruction = attributes.yearOfConstruction;
 
     //extract the metadata
-    const flash = state.metaData?.Flash?.value?.Fired?.value || 'N/A';
+    const flashValue = state.metaData?.Flash?.value?.Fired?.value;
+    const hasFlashValue = flashValue !== null && flashValue !== undefined;
+    const flashWasTriggered = flashValue === true || flashValue === 1 || flashValue === '1' || flashValue === 'true';
     const iso = state.metaData?.ISOSpeedRatings?.value || 'N/A';
     const model = state.metaData?.Model?.description || 'N/A';
     const modelMaker = state.metaData?.Make?.description || 'N/A';
@@ -191,21 +216,31 @@ export default function AircraftDetail() {
     const exposureTime = state.metaData?.ExposureTime?.description || 'N/A';
     const artist = state.metaData?.Artist?.description || 'Laurent Greder';
     const copyright = state.metaData?.Copyright?.description || 'All Right Reserved';
-    const creationDate = formatDate(state.metaData?.CreateDate?.value || 'N/A');
+    const creationDate = formatDate(state.metaData?.CreateDate?.value, dateLocale);
 
     // Render the aircraft details and image overlay
     return (
         <>
-            <div className="container mx-auto px-4 py-10 max-w-7xl">
+            <Head>
+                <title>{registration || aircraftType || t("aircraftDetails")} | LFSB Planes Pictures</title>
+                <meta
+                    name="description"
+                    content={`${aircraftType || "Aircraft"} ${registration || ""} ${operator ? `operated by ${operator}` : ""}`.trim()}
+                />
+            </Head>
+            <main className="container mx-auto px-4 py-10 max-w-7xl">
                 <div className="grid md:grid-cols-2 gap-8">
                     <header className="w-full h-auto">
-                        <img
+                        <Image
                             src={imageUrl || notFound}
+                            width={1600}
+                            height={900}
+                            sizes="(min-width: 768px) 50vw, 100vw"
                             alt={aircraftType || 'Not found'}
                             className="w-full h-auto object-cover shadow"
                         />
                     </header>
-                    <main className="flex flex-col gap-6">
+                    <section className="flex flex-col gap-6">
                         <div className="flex justify-between items-center">
                             <Link href="/gallery"
                                   className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
@@ -213,7 +248,7 @@ export default function AircraftDetail() {
                             </Link>
                         </div>
                         <div>
-                            <h2 className="text-3xl font-bold">{aircraftType || 'N/A'}</h2>
+                            <h1 className="text-3xl font-bold">{aircraftType || 'N/A'}</h1>
                             <p className="text-2xl font-semibold text-slate-600">{operator || 'N/A'}</p>
                             <hr className="my-4 border-t-2 w-56 border-gray-300"/>
                         </div>
@@ -242,10 +277,12 @@ export default function AircraftDetail() {
                                                          label={t("exposureTime")} value={exposureTime}/>
                                         <ImageDetailItem icon={<MdIso className="size-7"/>} label="ISO" value={iso}/>
                                         <ImageDetailItem
-                                            icon={flash === 'true' ? <MdFlashOn className="size-7"/> :
+                                            icon={flashWasTriggered ? <MdFlashOn className="size-7"/> :
                                                 <MdFlashOff className="size-7"/>}
                                             label={t("flash")}
-                                            value={flash === 'true' ? t("flashTriggered") : t("flashNotTriggered")}
+                                            value={hasFlashValue
+                                                ? (flashWasTriggered ? t("flashTriggered") : t("flashNotTriggered"))
+                                                : "N/A"}
                                         />
                                         <ImageDetailItem icon={<MdBlurOn className="size-7"/>} label={t("focalLength")}
                                                          value={focalLength}/>
@@ -259,9 +296,9 @@ export default function AircraftDetail() {
                                 </AccordionContent>
                             </AccordionItem>
                         </Accordion>
-                    </main>
+                    </section>
                 </div>
-            </div>
+            </main>
         </>
     );
 }

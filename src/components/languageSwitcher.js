@@ -11,8 +11,8 @@ import {Check} from "lucide-react";
  * @returns {JSX.Element} The rendered language switcher dropdown.
  */
 export default function LanguageSwitcher() {
-    const {locales, locale: currentLocale, pathname, query} = useRouter();
     const router = useRouter();
+    const {locales = [], locale: currentLocale = "fr", pathname, query} = router;
 
     /**
      * Handles locale selection and navigates to the same route with the selected locale.
@@ -20,7 +20,9 @@ export default function LanguageSwitcher() {
      * @param {string} locale - The locale to switch to.
      */
     const handleSelect = (locale) => {
-        router.push({pathname, query}, pathname, {locale});
+        if (locale !== currentLocale) {
+            router.push({pathname, query}, undefined, {locale});
+        }
     };
 
     return (
@@ -35,6 +37,7 @@ export default function LanguageSwitcher() {
                     <DropdownMenuItem
                         key={locale}
                         onClick={() => handleSelect(locale)}
+                        disabled={locale === currentLocale}
                     >
                         <span>{locale.toUpperCase()}</span>
                         {locale === currentLocale && <Check className="ml-auto h-4 w-4"/>}

@@ -21,7 +21,7 @@ export default function Header() {
             return;
         }
 
-        router.push({pathname, query}, pathname, {locale});
+        router.push({pathname, query}, undefined, {locale});
         setIsMenuOpen(false);
     };
 
@@ -62,7 +62,9 @@ export default function Header() {
                         <div className="text-sm text-gray-600">
                             {loading ? (
                                 <span>{t("visits.loading")}</span>
-                            ) : error ? null : (
+                            ) : error ? (
+                                <span>{t("visits.error")}</span>
+                            ) : (
                                 t.rich('visits.text', {
                                     count: visits,
                                     span: (chunks) => <span className="font-semibold">{chunks}</span>,
@@ -125,7 +127,9 @@ export default function Header() {
                     <div className="py-2 text-sm text-gray-600 border-t border-gray-100">
                         {loading ? (
                             <span>{t("visits.loading")}</span>
-                        ) : error ? null : (
+                        ) : error ? (
+                            <span>{t("visits.error")}</span>
+                        ) : (
                             t.rich('visits.text', {
                                 count: visits,
                                 span: (chunks) => <span className="font-semibold">{chunks}</span>,

@@ -37,7 +37,7 @@ export default function CarouselSlide({...props}) {
                                 })}
                             </p>
                             <Link
-                                href={`/${props.url}`}
+                                href={props.url}
                                 className="inline-block rounded bg-white px-2 py-1 text-xs font-semibold text-black transition-colors duration-300 hover:cursor-pointer hover:bg-gray-200 sm:px-4 sm:py-2 sm:text-base"
                             >
                                 {t("general.show")}

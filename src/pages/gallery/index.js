@@ -1,10 +1,12 @@
-import axios from 'axios';
 import {useEffect, useState} from 'react';
-import qs from 'qs';
 import GalleryFilter from "@/components/gallerFilter";
 import Card from "@/components/card";
 import {PiWarningFill} from "react-icons/pi";
 import PaginationComponent from "@/components/paginationComponent";
+import {apiClient, isRequestCanceled} from "@/lib/apiClient";
+import {buildAircraftQuery} from "@/lib/aircraftQuery";
+import {useTranslations} from "next-intl";
+import Head from "next/head";
 
 const EMPTY_FILTERS = {
     operator: '',
@@ -36,50 +38,45 @@ export async function getStaticProps(context) {
  * @returns {JSX.Element} The rendered Gallery page.
  */
 export default function Gallery() {
-    const [sysMessage, setSysMessage] = useState('')
+    const t = useTranslations("galleryStates");
+    const [status, setStatus] = useState(null);
     const [aircraft, setAircraft] = useState([]);
     const [pagination, setPagination] = useState({});
-    const [pageIndex, setPageIndex] = useState(1)
+    const [pageIndex, setPageIndex] = useState(1);
     const [filters, setFilters] = useState(EMPTY_FILTERS);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const filterQuery = Object.entries(filters).reduce((acc, [key, value]) => {
-            if (value) {
-                if (key === 'registration') {
-                    acc[`filters[${key}][$containsi]`] = value;
-                } else {
-                    acc[`filters[${key}][id][$eqi]`] = value;
-                }
-            }
-            return acc;
-        }, {});
+        const controller = new AbortController();
+        const queryString = buildAircraftQuery(filters, pageIndex);
 
-        const queryString = qs.stringify({
-            ...filterQuery,
-            populate: '*',
-        }, {
-            encodeValuesOnly: true,
-            skipNulls: true
-        });
-
-        axios.get(`${process.env.STRAPI_API_URL}/aircrafts?sort[0]=DateOfPictureShoot:desc&${queryString}&pagination[page]=${pageIndex}&pagination[pageSize]=12`)
+        apiClient.get(`/aircrafts?${queryString}`, {signal: controller.signal})
             .then(res => {
                 if (res.data.data.length > 0) {
                     setAircraft(res.data.data);
                     setPagination(res.data.meta.pagination);
-                    setSysMessage('');
+                    setStatus(null);
                 } else {
                     setAircraft([]);
                     setPagination({});
-                    setSysMessage('Aucun données trouvées.');
+                    setStatus("empty");
                 }
             })
             .catch(err => {
-                console.error(err);
-                setAircraft([]);
-                setPagination({});
-                setSysMessage('Une erreur est survenue lors de la récupération des données');
+                if (!isRequestCanceled(err)) {
+                    console.error(err);
+                    setAircraft([]);
+                    setPagination({});
+                    setStatus("error");
+                }
+            })
+            .finally(() => {
+                if (!controller.signal.aborted) {
+                    setIsLoading(false);
+                }
             });
+
+        return () => controller.abort();
     }, [filters, pageIndex]);
 
     /**
@@ -90,6 +87,7 @@ export default function Gallery() {
      * @param {string} value - The new value for the filter.
      */
     const handleFilterChange = (filterType, value) => {
+        setIsLoading(true);
         setPageIndex(1);
         setFilters(prevFilters => ({
             ...prevFilters,
@@ -98,49 +96,58 @@ export default function Gallery() {
     };
 
     const handleResetFilters = () => {
+        setIsLoading(true);
         setPageIndex(1);
         setFilters(EMPTY_FILTERS);
     };
 
+    const handlePageChange = (page) => {
+        setIsLoading(true);
+        setPageIndex(page);
+    };
+
     return (
-        <div className={"container grid grid-flow-row gap-8 max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8"}>
+        <main className={"container grid grid-flow-row gap-8 max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8"}>
+            <Head>
+                <title>Gallery | LFSB Planes Pictures</title>
+            </Head>
+            <h1 className="sr-only">{t("title")}</h1>
             <header className={"flex justify-start px-4 py-2"}>
                 <GalleryFilter
                     filters={filters}
                     onFilterChange={handleFilterChange}
                     onResetFilters={handleResetFilters}
-                    dataPresent={aircraft.length > 0}
                 />
             </header>
 
-            {aircraft.length > 0 ? (
+            {isLoading ? (
+                <div className="flex min-h-48 items-center justify-center" role="status" aria-live="polite">
+                    <p>{t("loading")}</p>
+                </div>
+            ) : aircraft.length > 0 ? (
                 <>
-                    <main className={"flex flex-col flex-wrap justify-center"}>
+                    <section className={"flex flex-col flex-wrap justify-center"}>
                         <div
                             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 justify-items-center">
                             {aircraft.map(plane => (
                                 <Card key={plane.id} plane={plane}/>
                             ))}
                         </div>
-                    </main>
+                    </section>
                     <footer className={"flex justify-center items-center gap-4"}>
                         <PaginationComponent
                             pageIndex={pageIndex}
-                            setPageIndex={setPageIndex}
+                            setPageIndex={handlePageChange}
                             pagination={pagination}
                         />
                     </footer>
                 </>
-            ) : sysMessage && (
-                <div>
-                    <div>
-                        <div>
-                            <PiWarningFill/>
-                        </div>
-                        <p>{sysMessage}</p>
-                    </div>
+            ) : status && (
+                <div className="flex min-h-48 flex-col items-center justify-center gap-3 text-center" role="status">
+                    <PiWarningFill className="size-8 text-amber-600" aria-hidden="true"/>
+                    <p>{t(status)}</p>
                 </div>
             )}
-        </div>
+        </main>
     );
 }

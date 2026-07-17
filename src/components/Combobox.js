@@ -19,7 +19,7 @@ import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
  * @param {string} props.placeholder - Placeholder text for the input and empty state.
  * @returns {JSX.Element} The rendered Combobox component.
  */
-export function Combobox({options, value, onChange, onSearch, placeholder}) {
+export function Combobox({options, value, onChange, onSearch, placeholder, searchPlaceholder, emptyMessage}) {
     const [open, setOpen] = React.useState(false)
 
     return (
@@ -29,6 +29,7 @@ export function Combobox({options, value, onChange, onSearch, placeholder}) {
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
+                    aria-label={placeholder}
                     className="w-full justify-between"
                 >
                     {value
@@ -40,10 +41,10 @@ export function Combobox({options, value, onChange, onSearch, placeholder}) {
             <PopoverContent className="w-full p-0">
                 <Command shouldFilter={false}>
                     <CommandInput
-                        placeholder={`Search ${placeholder.toLowerCase()}...`}
+                        placeholder={searchPlaceholder}
                         onValueChange={onSearch}
                     />
-                    <CommandEmpty>No {placeholder.toLowerCase()} found.</CommandEmpty>
+                    <CommandEmpty>{emptyMessage}</CommandEmpty>
                     <CommandGroup>
                         {options.map((option) => (
                             <CommandItem

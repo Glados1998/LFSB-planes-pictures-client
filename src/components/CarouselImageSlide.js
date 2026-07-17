@@ -1,14 +1,7 @@
 import notFound from "@/assets/images/imageNotFound.jpg";
 import Link from "next/link";
 import {useTranslations} from "next-intl";
-
-export async function getStaticProps(context) {
-    return {
-        props: {
-            messages: (await import(`messages/${context.locale}.json`)).default
-        }
-    };
-}
+import Image from "next/image";
 
 
 export default function CarouselImageSlide({aircraft}) {
@@ -24,8 +17,10 @@ export default function CarouselImageSlide({aircraft}) {
     return (
         <div className={"relative aspect-video w-full overflow-hidden"}>
             <div className={"relative h-64 w-full md:size-full"}>
-                <img
+                <Image
                     src={imageUrl}
+                    fill
+                    sizes="100vw"
                     className="h-full w-full object-cover"
                     alt={registrationLabel}
                 />

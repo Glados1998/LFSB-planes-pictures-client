@@ -8,14 +8,10 @@ const ExifReader = require('exifreader');
  * @throws Will throw an error if the fetch operation fails.
  */
 export default async function MetaDataReader(imageUrl) {
-    try {
-        const response = await fetch(imageUrl);
-        const blob = await response.blob();
-        const arrayBuffer = await new Response(blob).arrayBuffer();
-        return ExifReader.load(arrayBuffer);
-    } catch (error) {
-        // Log the error and return an empty object
-        console.error('Error loading EXIF data:', error);
-        return {}; // Return an empty object or handle the error as needed
+    const response = await fetch(imageUrl);
+    if (!response.ok) {
+        throw new Error(`Unable to load image metadata (${response.status})`);
     }
+
+    return ExifReader.load(await response.arrayBuffer());
 }

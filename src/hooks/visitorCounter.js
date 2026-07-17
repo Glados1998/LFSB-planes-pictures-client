@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
-import axios from 'axios';
+import {apiClient, isRequestCanceled} from "@/lib/apiClient";
+import {VISITOR_COUNT_UPDATED_EVENT} from "@/hooks/useIncrementVisitor";
 
 /**
  * Custom React hook to fetch and manage the visitor counter from a Strapi API.
@@ -18,6 +19,7 @@ export function useVisitorCounter() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        const controller = new AbortController();
         /**
          * Fetches the visitor counter from the API and updates state.
          * Handles JSON validation and error management.
@@ -25,9 +27,7 @@ export function useVisitorCounter() {
         const getVisitorCounter = async () => {
             try {
                 // Fetch current count
-                const apiUrl = process.env.STRAPI_API_URL;
-
-                const res = await axios.get(`${apiUrl}/visitor-counter`);
+                const res = await apiClient.get('/visitor-counter', {signal: controller.signal});
 
                 // Check for non-JSON response
                 if (typeof res.data !== 'object') {
@@ -36,14 +36,24 @@ export function useVisitorCounter() {
                 const count = res.data?.data?.attributes?.count;
                 setVisits(count);
             } catch (err) {
-                console.error('Error fetching visitor count:', err);
-                setError(err);
+                if (!isRequestCanceled(err)) {
+                    console.error('Error fetching visitor count:', err);
+                    setError(err);
+                }
             } finally {
-                setLoading(false);
+                if (!controller.signal.aborted) {
+                    setLoading(false);
+                }
             }
         };
 
         getVisitorCounter();
+        window.addEventListener(VISITOR_COUNT_UPDATED_EVENT, getVisitorCounter);
+
+        return () => {
+            controller.abort();
+            window.removeEventListener(VISITOR_COUNT_UPDATED_EVENT, getVisitorCounter);
+        };
     }, []);
 
     return {visits, loading, error};

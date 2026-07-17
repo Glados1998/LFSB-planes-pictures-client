@@ -1,7 +1,9 @@
 import {useEffect} from 'react';
-import axios from 'axios';
 import {SESSION_STORAGE_KEYS} from '@/lib/sessionStorageKeys';
 import {hasSessionFlag, setSessionFlag} from '@/lib/sessionStore';
+import {apiClient, isRequestCanceled} from "@/lib/apiClient";
+
+export const VISITOR_COUNT_UPDATED_EVENT = "lfsb:visitor-count-updated";
 
 /**
  * Custom React hook to increment the visitor counter via an API call.
@@ -20,18 +22,17 @@ export function useIncrementVisitor() {
             return;
         }
 
-        let isCancelled = false;
+        const controller = new AbortController();
 
         const increment = async () => {
             try {
-                const apiUrl = process.env.STRAPI_API_URL;
-                const response = await axios.post(`${apiUrl}/visitor-counter/increment`);
-                if (!isCancelled) {
+                await apiClient.post('/visitor-counter/increment', null, {signal: controller.signal});
+                if (!controller.signal.aborted) {
                     setSessionFlag(SESSION_STORAGE_KEYS.VISITOR_INCREMENTED);
-                    console.log('Visitor count incremented:', response.data);
+                    window.dispatchEvent(new Event(VISITOR_COUNT_UPDATED_EVENT));
                 }
             } catch (err) {
-                if (!isCancelled) {
+                if (!isRequestCanceled(err)) {
                     console.error('Error incrementing visitor count:', err);
                 }
             }
@@ -39,8 +40,6 @@ export function useIncrementVisitor() {
 
         increment();
 
-        return () => {
-            isCancelled = true;
-        };
+        return () => controller.abort();
     }, []);
 }

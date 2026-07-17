@@ -1,67 +1,69 @@
-import {useCallback, useEffect, useMemo, useState} from "react";
-import axios from 'axios';
+import {useEffect, useMemo, useState} from "react";
 import {useTranslations} from "next-intl";
 import {Input} from "@/components/ui/input";
 import {Combobox} from "@/components/Combobox";
 import {Label} from "@/components/ui/label";
-import debounce from 'lodash/debounce';
 import {Button} from "@/components/ui/button";
+import {apiClient, isRequestCanceled} from "@/lib/apiClient";
 
 const ITEMS_PER_PAGE = 20;
+// Keep this legacy spelling until the Strapi content type is migrated.
+const AIRCRAFT_TYPE_ENDPOINT = "aircarft-types";
+
+function useFilterOptions(endpoint, query) {
+    const [options, setOptions] = useState([]);
+
+    useEffect(() => {
+        const controller = new AbortController();
+        const timeout = window.setTimeout(async () => {
+            try {
+                const response = await apiClient.get(`/${endpoint}`, {
+                    signal: controller.signal,
+                    params: {
+                        'filters[label][$containsi]': query,
+                        'pagination[pageSize]': ITEMS_PER_PAGE,
+                        sort: 'label:asc'
+                    }
+                });
+
+                setOptions(response.data.data.map(item => ({
+                    value: item.id,
+                    label: item.attributes.label,
+                })));
+            } catch (error) {
+                if (!isRequestCanceled(error)) {
+                    console.error(`Error fetching ${endpoint}:`, error);
+                    setOptions([]);
+                }
+            }
+        }, 150);
+
+        return () => {
+            window.clearTimeout(timeout);
+            controller.abort();
+        };
+    }, [endpoint, query]);
+
+    return options;
+}
 
 /**
  * GalleryFilter component for filtering gallery items by operator, aircraft type, and registration.
  *
  * @component
  * @param {Object} props
+ * @param {Object} props.filters - Current gallery filter values.
  * @param {function} props.onFilterChange - Callback function to handle filter changes.
- * @param {boolean} props.dataPresent - Indicates if data is present to enable/disable registration input.
+ * @param {function} props.onResetFilters - Callback used to clear all filters.
  * @returns {JSX.Element}
  */
-export default function GalleryFilter({filters, onFilterChange, onResetFilters, dataPresent}) {
+export default function GalleryFilter({filters, onFilterChange, onResetFilters}) {
     const t = useTranslations("filter");
 
-    const [operators, setOperators] = useState([]);
-    const [aircraftTypes, setAircraftTypes] = useState([]);
-
-    /**
-     * Fetches options from the API for the given endpoint and query.
-     *
-     * @param {string} endpoint - The API endpoint to fetch from.
-     * @param {string} [query=''] - The search query for filtering options.
-     * @returns {Promise<Array<{value: string, label: string}>>}
-     */
-    const fetchOptions = useCallback(async (endpoint, query = '') => {
-        try {
-            const response = await axios.get(`https://strapi-production-1911.up.railway.app/api/${endpoint}`, {
-                params: {
-                    'filters[label][$containsi]': query,
-                    'pagination[pageSize]': ITEMS_PER_PAGE,
-                    sort: 'label:asc'
-                }
-            });
-            return response.data.data.map(item => ({value: item.id, label: item.attributes.label}));
-        } catch (error) {
-            console.error(`Error fetching ${endpoint}:`, error);
-            return [];
-        }
-    }, []);
-
-    /**
-     * Debounced a version of fetchOptions to limit API calls during search.
-     */
-    const debouncedFetchOptions = useCallback(
-        debounce((endpoint, query, callback) => {
-            fetchOptions(endpoint, query).then(callback);
-        }, 150),
-        [fetchOptions]
-    );
-
-    // Fetch initial options for operators and aircraft types on mount.
-    useEffect(() => {
-        fetchOptions('operators').then(setOperators);
-        fetchOptions('aircarft-types').then(setAircraftTypes);
-    }, [fetchOptions]);
+    const [operatorQuery, setOperatorQuery] = useState('');
+    const [aircraftTypeQuery, setAircraftTypeQuery] = useState('');
+    const operators = useFilterOptions('operators', operatorQuery);
+    const aircraftTypes = useFilterOptions(AIRCRAFT_TYPE_ENDPOINT, aircraftTypeQuery);
 
     /**
      * Handles operator selection change.
@@ -87,7 +89,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
      * @param {string} query - Search query.
      */
     const handleOperatorSearch = (query) => {
-        debouncedFetchOptions('operators', query, setOperators);
+        setOperatorQuery(query);
     };
 
     /**
@@ -96,7 +98,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
      * @param {string} query - Search query.
      */
     const handleAircraftTypeSearch = (query) => {
-        debouncedFetchOptions('aircarft-types', query, setAircraftTypes);
+        setAircraftTypeQuery(query);
     };
 
     const hasActiveFilters = useMemo(
@@ -114,6 +116,8 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
                     onChange={handleOperatorChange}
                     onSearch={handleOperatorSearch}
                     placeholder={t("operator")}
+                    searchPlaceholder={t("search", {item: t("operator").toLowerCase()})}
+                    emptyMessage={t("notFound", {item: t("operator").toLowerCase()})}
                 />
             </div>
             <div className="space-y-2">
@@ -124,6 +128,8 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
                     onChange={handleAircraftTypeChange}
                     onSearch={handleAircraftTypeSearch}
                     placeholder={t("type")}
+                    searchPlaceholder={t("search", {item: t("type").toLowerCase()})}
+                    emptyMessage={t("notFound", {item: t("type").toLowerCase()})}
                 />
             </div>
             <div className="space-y-2">
@@ -133,7 +139,6 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters, 
                     type="text"
                     value={filters.registration}
                     onChange={(e) => onFilterChange('registration', e.target.value)}
-                    disabled={!dataPresent}
                     placeholder={t("registration")}
                 />
             </div>

@@ -2,6 +2,7 @@ import {useTranslations} from "next-intl";
 import AboutImage from "@/assets/images/aboutThumbnail.jpg";
 import FatherImage from "@/assets/images/papaProfile.jpg";
 import Image from "next/image";
+import Head from "next/head";
 
 export async function getStaticProps(context) {
     return {
@@ -16,7 +17,10 @@ export default function About() {
     const t = useTranslations("about");
 
     return (
-        <div className="container mx-auto px-4 py-10 md:py-14">
+        <main className="container mx-auto px-4 py-10 md:py-14">
+            <Head>
+                <title>About | LFSB Planes Pictures</title>
+            </Head>
             <div className={"grid grid-flow-row gap-20"}>
                 <div className={"flex flex-col md:flex-row items-start justify-around"}>
                     <div className="max-w-2xl text-left mb-10 md:mb-0">
@@ -54,12 +58,12 @@ export default function About() {
                                className={"h-full sm:h-90 w-auto shadow"}/>
                     </div>
                     <div className="max-w-2xl text-left mt-10 md:mt-0">
-                        <h1 className={"mb-4 text-left text-4xl leading-tight"}>
+                        <h2 className={"mb-4 text-left text-4xl leading-tight"}>
                             {t.rich("about.title", {
                                 i: (chunks) => <span className="font-serif italic font-light">{chunks}</span>,
                                 strong: (chunks) => <span className="font-bold">{chunks}</span>
                             })}
-                        </h1>
+                        </h2>
                         <div className={"flex flex-col gap-4 text-left leading-relaxed"}>
                             <p>
                                 {t.rich("about.text", {
@@ -76,6 +80,6 @@ export default function About() {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }

@@ -2,14 +2,6 @@ import Link from "next/link";
 import notFound from "@/assets/images/imageNotFound.jpg";
 import {useTranslations} from "next-intl";
 
-export async function getStaticProps(context) {
-    return {
-        props: {
-            messages: (await import(`messages/${context.locale}.json`)).default
-        }
-    };
-}
-
 export default function Card({plane}) {
     const t = useTranslations("card");
     const {attributes} = plane;
@@ -24,6 +16,8 @@ export default function Card({plane}) {
             <div className="relative w-full h-64 md:size-full">
                 <img
                     src={imageUrl}
+                    fill
+                    sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
                     alt={aircraftType}
                     className="w-full h-full md:size-max object-cover transition-transform duration-300 group-hover:scale-110"
                 />
@@ -33,10 +27,10 @@ export default function Card({plane}) {
             <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
                 <h3 className="text-base sm:text-lg font-semibold">{aircraftType}</h3>
                 <p className="text-sm">{operatorLabel}</p>
-                <button
+                <span
                     className="w-fit mt-2 px-2 py-1 sm:px-4 sm:py-2 bg-white text-black text-xs sm:text-sm font-semibold rounded hover:bg-gray-200 hover:cursor-pointer transition-colors duration-300">
                     {t("general.show")}
-                </button>
+                </span>
             </div>
         </Link>
     )

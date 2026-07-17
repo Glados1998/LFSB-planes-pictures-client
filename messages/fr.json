@@ -10,8 +10,9 @@
     },
     "welcome": {
       "headline": "<i>La clarté dans chaque image</i>",
-      "text": "Plane Pictures est une collection de clichés avec des détails sur les avions. <br></br> et les métadonnées d'image extraites des images."
-    }
+      "text": "LFSB Planes Pictures est une collection de photographies aéronautiques accompagnées d'informations détaillées sur les avions et des métadonnées extraites de chaque image."
+    },
+    "carouselError": "Les avions mis en avant sont temporairement indisponibles."
   },
   "gallery": {
     "details": {
@@ -28,19 +29,22 @@
       "exposureTime": "Temps d'exposition",
       "flash": "Flash",
       "focalLength": "Longueur focale",
-      "creationDate": "Date de création"
+      "creationDate": "Date de création",
+      "loading": "Chargement des détails de l'avion...",
+      "notFound": "Aucun détail n'a été trouvé pour cet avion.",
+      "fetchError": "Une erreur est survenue lors du chargement des détails de l'avion."
     }
   },
   "about": {
     "intro": {
       "title": "<i>Bienvenue sur </i> <br></br> <strong>LFSB Planes Pictures </strong>",
-      "text": "<strong>LFSB Planes Pictures</strong> est un assemblage de clichés d'avions de différentes formes et tailles.<br></br> qui sont présentés dans une galerie expansive filtrable par type d'avion, immatriculation, opérateur.",
+      "text": "<strong>LFSB Planes Pictures</strong> est une collection de photographies d'avions présentées dans une vaste galerie filtrable par type d'avion, immatriculation et opérateur.",
       "text2": "Chaque image peut être consultée individuellement avec les mêmes détails que ceux affichés dans la galerie et ses filtres. De plus, <strong>LFSB Planes Pictures</strong> extrait les métadonnées des images afin de montrer non seulement l'avion, mais aussi la manière dont la photo a été prise."
     },
     "about": {
       "title": "<i>Rencontrez </i> <strong>le photographe</strong>",
       "text": "Bonjour ! Je suis Laurent Greder, un passionné d'aviation et spotter dévoué. <br></br> Mon parcours dans la photographie aéronautique a commencé il y a plusieurs années, alimenté par une fascination profonde pour ces merveilles d'ingénierie et les histoires qu'elles portent à travers les cieux.",
-      "text2": "Bien que mon principal terrain de jeu soit l'effervescent <span>EuroAirport Bâle-Mulhouse-Fribourg</span>, il m'arrive occasionnellement de capturer des scènes d'aviation uniques à <span>l'aéroport de Genève (LSGG)</span> and <span>l'aéroport de Zurich (LSZH)</span>. <br></br> Chaque lieu offre un aperçu distinct du monde de l'aviation, des hubs internationaux animés aux départs sereins vers le ciel."
+      "text2": "Bien que mon principal terrain de jeu soit l'effervescent <span>EuroAirport Bâle-Mulhouse-Fribourg</span>, il m'arrive également de capturer des scènes d'aviation à <span>l'aéroport de Genève (LSGG)</span> et à <span>l'aéroport de Zurich (LSZH)</span>. <br></br> Chaque lieu offre un aperçu distinct du monde de l'aviation, des plateformes internationales animées aux départs paisibles."
 
     }
   },
@@ -57,7 +61,9 @@
     "operator": "Compagnie aérienne",
     "type": "Type d'avion",
     "registration": "Immatriculation",
-    "reset": "Réinitialiser les filtres"
+    "reset": "Réinitialiser les filtres",
+    "search": "Rechercher {item}...",
+    "notFound": "Aucun résultat pour {item}."
   },
   "header": {
     "home": "Accueil",
@@ -85,5 +91,22 @@
       "about": "À propos",
       "dashboard": "Tableau de bord"
     }
+  },
+  "galleryStates": {
+    "title": "Galerie d'avions",
+    "loading": "Chargement des avions...",
+    "empty": "Aucun avion ne correspond à ces filtres.",
+    "error": "La galerie n'a pas pu être chargée. Veuillez réessayer."
+  },
+  "errors": {
+    "notFound": {
+      "title": "Page introuvable",
+      "message": "La page demandée n'existe pas ou a peut-être été déplacée."
+    },
+    "server": {
+      "title": "Une erreur est survenue",
+      "message": "La page ne peut pas être affichée. Veuillez réessayer plus tard."
+    },
+    "backHome": "Retour à l'accueil"
   }
 }

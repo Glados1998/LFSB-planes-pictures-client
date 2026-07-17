@@ -6,10 +6,10 @@ export default function Layout({children}) {
     return (
         <div className="bg-white flex min-h-screen flex-col">
             <Header/>
-            <main className="flex-grow">
+            <div className="flex-grow">
                 {children}
                 <Analytics/>
-            </main>
+            </div>
             <Footer/>
         </div>
     );

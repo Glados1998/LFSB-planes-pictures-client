@@ -1,14 +1,15 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import {useTranslations} from 'next-intl';
 import Autoplay from "embla-carousel-autoplay";
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
 import CarouselImageSlide from "@/components/CarouselImageSlide";
-import axios from "axios";
 import CarouselSlide from "@/components/CarouselSlide";
 import IntroImage from "@/assets/images/introThumbnail.jpg";
 import AboutThumbnail from "@/assets/images/aboutThumbnail.jpg";
 import {SESSION_STORAGE_KEYS} from "@/lib/sessionStorageKeys";
 import {getSessionJson, setSessionJson} from "@/lib/sessionStore";
+import {apiClient, isRequestCanceled} from "@/lib/apiClient";
+import Head from "next/head";
 
 export async function getStaticProps(context) {
     return {
@@ -23,8 +24,11 @@ export async function getStaticProps(context) {
 
 export default function Home() {
     const t = useTranslations("home");
-    const autoplay = useRef(Autoplay({delay: 8000, stopOnInteraction: false}));
-    const [aircrafts, setAircrafts] = useState([]);
+    const [autoplay] = useState(() => Autoplay({delay: 8000, stopOnInteraction: false}));
+    const [aircrafts, setAircrafts] = useState(() =>
+        getSessionJson(SESSION_STORAGE_KEYS.CAROUSEL_AIRCRAFTS, [])
+    );
+    const [carouselError, setCarouselError] = useState(false);
 
     const introHeadline = t.rich("intro.headline", {
         br: () => <br/>,
@@ -47,35 +51,43 @@ export default function Home() {
     });
 
     useEffect(() => {
-        // Reuse cached data within the same browser session (survives refreshes).
-        // A new session (new tab / browser reopen) clears sessionStorage and
-        // triggers a fresh fetch with a new random page.
-        const cached = getSessionJson(SESSION_STORAGE_KEYS.CAROUSEL_AIRCRAFTS, []);
-        if (cached.length > 0) {
-            setAircrafts(cached);
+        if (aircrafts.length > 0) {
             return;
         }
 
+        const controller = new AbortController();
         const randomPage = Math.floor(Math.random() * 10) + 1;
-        axios.get(`${process.env.STRAPI_API_URL}/aircrafts?pagination[page]=${randomPage}&pagination[pageSize]=3&populate=*`)
+        apiClient.get(`/aircrafts?pagination[page]=${randomPage}&pagination[pageSize]=3&populate=*`, {
+            signal: controller.signal,
+        })
             .then(response => {
                 const data = response.data.data;
                 setSessionJson(SESSION_STORAGE_KEYS.CAROUSEL_AIRCRAFTS, data);
                 setAircrafts(data);
+                setCarouselError(false);
             })
             .catch(error => {
-                console.error("Error fetching aircraft data:", error);
+                if (!isRequestCanceled(error)) {
+                    console.error("Error fetching aircraft data:", error);
+                    setCarouselError(true);
+                }
             });
-    }, []);
+
+        return () => controller.abort();
+    }, [aircrafts.length]);
 
     return (
-        <div>
+        <main>
+            <Head>
+                <title>LFSB Planes Pictures</title>
+            </Head>
+            <h1 className="sr-only">LFSB Planes Pictures</h1>
             <div className="grid grid-flow-row gap-8 sm:gap-12 md:gap-11">
                 <header className="space-y-4 sm:space-y-8">
                     {/* Wide hero carousel */}
                     <Carousel
                         opts={{loop: true}}
-                        plugins={[autoplay.current]}
+                        plugins={[autoplay]}
                         className="w-full"
                     >
                         <CarouselContent>
@@ -89,7 +101,7 @@ export default function Home() {
                             ))}
                             <CarouselItem>
                                 <CarouselSlide image={AboutThumbnail} title={aboutHeadline} subtitle={aboutText}
-                                               url={"/about"}/>
+                                               url="/about"/>
                             </CarouselItem>
                         </CarouselContent>
                         <CarouselPrevious
@@ -97,8 +109,13 @@ export default function Home() {
                         <CarouselNext
                             className="invisible right-2 h-5 w-5 sm:visible sm:right-5 sm:h-10 sm:w-10 border-none"/>
                     </Carousel>
+                    {carouselError && (
+                        <p className="px-4 text-center text-sm text-amber-700" role="status">
+                            {t("carouselError")}
+                        </p>
+                    )}
                 </header>
-                <main className={"flex flex-col items-center justify-center  px-12 "}>
+                <section className={"flex flex-col items-center justify-center  px-12 "}>
                     <h2 className={"text-xl sm:text-2xl md:text-3xl text-center"}>
                         {WelcomeHeadline}
                     </h2>
@@ -107,8 +124,8 @@ export default function Home() {
                             br: () => <br/>,
                         })}
                     </p>
-                </main>
+                </section>
             </div>
-        </div>
+        </main>
     )
 }

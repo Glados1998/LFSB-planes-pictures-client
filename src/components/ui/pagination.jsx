@@ -43,14 +43,15 @@ function PaginationLink({
                             ...props
                         }) {
     return (
-        (<a
+        (<button
+            type="button"
             aria-current={isActive ? "page" : undefined}
             data-slot="pagination-link"
             data-active={isActive}
             className={cn(buttonVariants({
                 variant: isActive ? "outline" : "ghost",
                 size,
-            }), className)}
+            }), "disabled:pointer-events-none disabled:opacity-50", className)}
             {...props} />)
     );
 }

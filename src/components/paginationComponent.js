@@ -26,8 +26,7 @@ const PaginationComponent = ({pageIndex, setPageIndex, pagination}) => {
      *
      * @param {React.MouseEvent} event
      */
-    const handlePrevious = (event) => {
-        event.preventDefault();
+    const handlePrevious = () => {
         if (pageIndex > 1) {
             setPageIndex(pageIndex - 1);
         }
@@ -39,8 +38,7 @@ const PaginationComponent = ({pageIndex, setPageIndex, pagination}) => {
      *
      * @param {React.MouseEvent} event
      */
-    const handleNext = (event) => {
-        event.preventDefault();
+    const handleNext = () => {
         if (pageIndex < pagination.pageCount) {
             setPageIndex(pageIndex + 1);
         }
@@ -146,11 +144,19 @@ const PaginationComponent = ({pageIndex, setPageIndex, pagination}) => {
         <Pagination>
             <PaginationContent>
                 <PaginationItem>
-                    <PaginationPrevious onClick={handlePrevious}/>
+                    <PaginationPrevious
+                        onClick={handlePrevious}
+                        disabled={pageIndex <= 1}
+                        aria-disabled={pageIndex <= 1}
+                    />
                 </PaginationItem>
                 {renderPageNumbers()}
                 <PaginationItem>
-                    <PaginationNext onClick={handleNext}/>
+                    <PaginationNext
+                        onClick={handleNext}
+                        disabled={pageIndex >= pagination.pageCount}
+                        aria-disabled={pageIndex >= pagination.pageCount}
+                    />
                 </PaginationItem>
             </PaginationContent>
         </Pagination>

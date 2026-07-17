@@ -1,40 +1,79 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LFSB Planes Pictures Client
 
-## Getting Started
+Frontend for a multilingual aviation photography gallery backed by Strapi. The application uses the Next.js Pages Router
+and supports French, English, and German.
 
-First, run the development server:
+## Requirements
+
+- Node.js 22 LTS
+- npm 10 or later
+- A reachable Strapi instance with the aircraft, operator, aircraft-type, and visitor-counter endpoints
+
+## Local setup
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Copy the environment example to `.env` and set the Strapi API base URL:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000).
+
+`STRAPI_API_URL` is exposed to the browser by `next.config.js`; it must contain only the public API base URL and never a
+secret or access token.
+
+## Verification
+
+Run the complete frontend verification sequence before opening a pull request:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm test
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The tests use Node's built-in test runner and cover query construction, date fallbacks, session storage, and
+translation-key parity.
+The same sequence runs automatically in GitHub Actions for pushes and pull requests.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Project structure
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- `src/pages` — Next.js routes and localized static props
+- `src/components` — site components and reusable UI primitives
+- `src/lib` — API client, query construction, and browser-session utilities
+- `src/hooks` — visitor-counter behavior
+- `messages` — French, English, and German translations
+- `utils` — image metadata and date formatting
+- `test` — frontend unit tests
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## API boundary
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The frontend expects `STRAPI_API_URL` to end at the Strapi API root, for example `https://example.com/api`.
 
-## Learn More
+The current Strapi aircraft-type collection uses the legacy endpoint spelling `aircarft-types`. It is intentionally
+isolated in `src/components/gallerFilter.js` until the backend content type can be migrated.
 
-To learn more about Next.js, take a look at the following resources:
+Client requests use a shared Axios instance with a 15-second timeout. Gallery, filter-option, aircraft-detail, and
+visitor-counter requests cancel obsolete work when their components unmount or their inputs change.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Localization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Next.js locale routing is configured for:
 
-## Deploy on Vercel
+- `fr` — default
+- `en`
+- `de`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+When adding a message, add the same key to all three JSON files. `npm test` checks that the key sets remain identical.
