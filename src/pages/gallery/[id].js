@@ -17,10 +17,12 @@ import {
     MdCalendarMonth,
     MdCamera,
     MdCameraAlt,
+    MdClose,
     MdFlashOff,
     MdFlashOn,
     MdIso
 } from "react-icons/md";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {useTranslations} from "next-intl";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 import {apiClient, isRequestCanceled} from "@/lib/apiClient";
@@ -231,14 +233,51 @@ export default function AircraftDetail() {
             <main className="container mx-auto px-4 py-10 max-w-7xl">
                 <div className="grid md:grid-cols-2 gap-8">
                     <header className="w-full h-auto">
-                        <Image
-                            src={imageUrl || notFound}
-                            width={1600}
-                            height={900}
-                            sizes="(min-width: 768px) 50vw, 100vw"
-                            alt={aircraftType || 'Not found'}
-                            className="w-full h-auto object-cover shadow"
-                        />
+                        <DialogPrimitive.Root>
+                            <DialogPrimitive.Trigger asChild>
+                                <button
+                                    type="button"
+                                    aria-label={t("enlargeImage")}
+                                    className="block w-full cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+                                >
+                                    <Image
+                                        src={imageUrl || notFound}
+                                        width={1600}
+                                        height={900}
+                                        sizes="(min-width: 768px) 50vw, 100vw"
+                                        alt={aircraftType || 'Not found'}
+                                        className="w-full h-auto object-cover shadow"
+                                    />
+                                </button>
+                            </DialogPrimitive.Trigger>
+                            <DialogPrimitive.Portal>
+                                <DialogPrimitive.Overlay
+                                    className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0"
+                                />
+                                <DialogPrimitive.Content
+                                    aria-describedby={undefined}
+                                    className="fixed left-1/2 top-1/2 z-50 max-h-[calc(100vh-2rem)] max-w-[calc(100vw-2rem)] -translate-x-1/2 -translate-y-1/2 outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95"
+                                >
+                                    <DialogPrimitive.Title className="sr-only">
+                                        {aircraftType || t("imageDetails")}
+                                    </DialogPrimitive.Title>
+                                    <Image
+                                        src={imageUrl || notFound}
+                                        width={1600}
+                                        height={900}
+                                        sizes="100vw"
+                                        alt={aircraftType || 'Not found'}
+                                        className="block h-auto max-h-[calc(100vh-2rem)] w-auto max-w-[calc(100vw-2rem)] object-contain shadow-2xl"
+                                    />
+                                    <DialogPrimitive.Close
+                                        aria-label={t("closeImage")}
+                                        className="absolute left-3 top-3 flex size-10 items-center justify-center rounded-full bg-black/70 text-white shadow-lg transition-colors hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                                    >
+                                        <MdClose aria-hidden="true" className="size-7"/>
+                                    </DialogPrimitive.Close>
+                                </DialogPrimitive.Content>
+                            </DialogPrimitive.Portal>
+                        </DialogPrimitive.Root>
                     </header>
                     <section className="flex flex-col gap-6">
                         <div className="flex justify-between items-center">
@@ -247,11 +286,11 @@ export default function AircraftDetail() {
                                 {t("back")}
                             </Link>
                         </div>
-                        <div>
+                        {/*<div>
                             <h1 className="text-3xl font-bold">{aircraftType || 'N/A'}</h1>
                             <p className="text-2xl font-semibold text-slate-600">{operator || 'N/A'}</p>
                             <hr className="my-4 border-t-2 w-56 border-gray-300"/>
-                        </div>
+                        </div>*/}
                         <div className=" bg-slate-100 p-6 shadow">
                             <h3 className="text-xl font-semibold mb-4">{t("aircraftDetails")}</h3>
                             <div className="grid grid-cols-2 gap-4">

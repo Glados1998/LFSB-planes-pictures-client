@@ -23,6 +23,8 @@
       "serviceNumber": "Service number",
       "registration": "Registration",
       "imageDetails": "Image details",
+      "enlargeImage": "Enlarge aircraft image",
+      "closeImage": "Close enlarged image",
       "flashTriggered": "Flash (On, triggered)",
       "flashNotTriggered": "Flash (Off, not triggered)",
       "aperture": "Aperture",

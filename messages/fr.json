@@ -23,6 +23,8 @@
       "serviceNumber": "Numéro de serie",
       "registration": "Immatriculation",
       "imageDetails": "Détails de l'image",
+      "enlargeImage": "Agrandir l'image de l'avion",
+      "closeImage": "Fermer l'image agrandie",
       "flashTriggered": "Fash (Déclenché)",
       "flashNotTriggered": "Flash (Éteint, non déclenché)",
       "aperture": "Aperçu",

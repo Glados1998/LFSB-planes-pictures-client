@@ -53,6 +53,7 @@ export default function Gallery() {
         apiClient.get(`/aircrafts?${queryString}`, {signal: controller.signal})
             .then(res => {
                 if (res.data.data.length > 0) {
+                    console.log(res.data.data);
                     setAircraft(res.data.data);
                     setPagination(res.data.meta.pagination);
                     setStatus(null);

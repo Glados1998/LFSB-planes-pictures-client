@@ -23,6 +23,8 @@
       "serviceNumber": "Dienstnummer",
       "registration": "Registrierung",
       "imageDetails": "Bildinformationen",
+      "enlargeImage": "Flugzeugbild vergrößern",
+      "closeImage": "Vergrößertes Bild schließen",
       "flashTriggered": "Flash (Ein, ausgelöst)",
       "flashNotTriggered": "Flash (Aus, nicht ausgelöst)",
       "aperture": "Blende",
