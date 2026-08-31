@@ -5,6 +5,7 @@ import {Combobox} from "@/components/Combobox";
 import {Label} from "@/components/ui/label";
 import {Button} from "@/components/ui/button";
 import {apiClient, isRequestCanceled} from "@/lib/apiClient";
+import {RotateCcw} from "lucide-react";
 
 const ITEMS_PER_PAGE = 20;
 // Keep this legacy spelling until the Strapi content type is migrated.
@@ -142,15 +143,15 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters})
                     placeholder={t("registration")}
                 />
             </div>
-            <div className="space-y-2">
-                <Label className="text-sm font-semibold sm:text-md sm:font-bold">{t("reset")}:</Label>
+            <div className="flex items-end">
                 <Button
-                    className={"hover:bg-red-500 hover:border-red-500 hover:text-white"}
+                    className="group w-full border-slate-300 bg-white text-slate-600 shadow-sm hover:border-red-300 hover:bg-red-50 hover:text-red-700 disabled:bg-slate-50"
                     type="button"
                     variant="outline"
                     onClick={onResetFilters}
                     disabled={!hasActiveFilters}
                 >
+                    <RotateCcw className="size-4 transition-transform duration-300 group-hover:-rotate-45"/>
                     {t("reset")}
                 </Button>
             </div>
