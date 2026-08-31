@@ -2,6 +2,7 @@ import {useTranslations} from "next-intl";
 import notFound from "@/assets/images/imageNotFound.jpg";
 import Link from "next/link";
 import Image from "next/image";
+import {Button} from "@/components/ui/button";
 
 export default function CarouselSlide({...props}) {
 
@@ -36,12 +37,13 @@ export default function CarouselSlide({...props}) {
                                     br: () => <br/>
                                 })}
                             </p>
-                            <Link
-                                href={props.url}
-                                className="inline-block rounded bg-white px-2 py-1 text-xs font-semibold text-black transition-colors duration-300 hover:cursor-pointer hover:bg-gray-200 sm:px-4 sm:py-2 sm:text-base"
+                            <Button
+                                asChild
+                                variant="outline"
+                                className="h-8 px-2 text-xs sm:h-10 sm:px-4 sm:text-base"
                             >
-                                {t("general.show")}
-                            </Link>
+                                <Link href={props.url}>{t("general.show")}</Link>
+                            </Button>
                         </>
                     ) : null}
                 </div>

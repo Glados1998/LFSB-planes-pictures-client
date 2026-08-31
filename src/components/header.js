@@ -73,7 +73,7 @@ export default function Header() {
                         </div>
                     </div>
                     <Button
-                        variant="ghost"
+                        variant="outline"
                         size="icon"
                         className="md:hidden"
                         onClick={toggleMenu}
@@ -106,20 +106,18 @@ export default function Header() {
                                 const isActiveLocale = locale === currentLocale;
 
                                 return (
-                                    <button
+                                    <Button
                                         key={locale}
                                         type="button"
-                                        className={`rounded border px-2 py-1 text-sm font-medium transition ${
-                                            isActiveLocale
-                                                ? 'border-gray-800 bg-gray-800 text-white'
-                                                : 'border-gray-300 text-gray-800 hover:border-gray-600'
-                                        }`}
+                                        size="sm"
+                                        variant={isActiveLocale ? "default" : "outline"}
+                                        className={isActiveLocale ? "disabled:opacity-100" : undefined}
                                         onClick={() => handleLocaleChange(locale)}
                                         disabled={isActiveLocale}
                                         aria-current={isActiveLocale ? 'true' : undefined}
                                     >
                                         {locale.toUpperCase()}
-                                    </button>
+                                    </Button>
                                 );
                             })}
                         </div>

@@ -145,7 +145,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters})
             </div>
             <div className="flex items-end">
                 <Button
-                    className="group h-11 w-full touch-manipulation border-slate-300 bg-white text-slate-600 shadow-sm active:scale-[0.98] hover:border-red-300 hover:bg-red-50 hover:text-red-700 disabled:bg-slate-50 sm:h-9"
+                    className="group h-11 w-full hover:border-red-300 hover:bg-red-50 hover:text-red-700 disabled:bg-slate-50 sm:h-9"
                     type="button"
                     variant="outline"
                     onClick={onResetFilters}

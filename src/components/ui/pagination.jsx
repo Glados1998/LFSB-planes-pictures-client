@@ -49,7 +49,7 @@ function PaginationLink({
             data-slot="pagination-link"
             data-active={isActive}
             className={cn(buttonVariants({
-                variant: isActive ? "outline" : "ghost",
+                variant: isActive ? "default" : "outline",
                 size,
             }), "disabled:pointer-events-none disabled:opacity-50", className)}
             {...props} />)

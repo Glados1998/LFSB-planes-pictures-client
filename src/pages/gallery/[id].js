@@ -28,6 +28,7 @@ import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/co
 import {apiClient, isRequestCanceled} from "@/lib/apiClient";
 import Image from "next/image";
 import Head from "next/head";
+import {Button} from "@/components/ui/button";
 
 /**
  * Fetches the translation messages for the current locale.
@@ -185,7 +186,9 @@ export default function AircraftDetail() {
         return (
             <main className="container mx-auto min-h-48 px-4 py-10">
                 <p>{t(state.error)}</p>
-                <Link href="/gallery">{t("back")}</Link>
+                <Button asChild variant="outline">
+                    <Link href="/gallery">{t("back")}</Link>
+                </Button>
             </main>
         );
     }
@@ -235,10 +238,11 @@ export default function AircraftDetail() {
                     <header className="w-full h-auto">
                         <DialogPrimitive.Root>
                             <DialogPrimitive.Trigger asChild>
-                                <button
+                                <Button
                                     type="button"
+                                    variant="ghost"
                                     aria-label={t("enlargeImage")}
-                                    className="block w-full cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+                                    className="block h-auto w-full cursor-zoom-in p-0 shadow-none hover:bg-transparent focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
                                 >
                                     <Image
                                         src={imageUrl || notFound}
@@ -248,7 +252,7 @@ export default function AircraftDetail() {
                                         alt={aircraftType || 'Not found'}
                                         className="w-full h-auto object-cover shadow"
                                     />
-                                </button>
+                                </Button>
                             </DialogPrimitive.Trigger>
                             <DialogPrimitive.Portal>
                                 <DialogPrimitive.Overlay
@@ -271,7 +275,7 @@ export default function AircraftDetail() {
                                     />
                                     <DialogPrimitive.Close
                                         aria-label={t("closeImage")}
-                                        className="absolute left-3 top-3 flex size-10 items-center justify-center rounded-full bg-black/70 text-white shadow-lg transition-colors hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                                        className="absolute left-3 top-3 flex size-10 items-center border border-black justify-center rounded-full bg-black/70 text-white shadow-lg transition-colors hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                                     >
                                         <MdClose aria-hidden="true" className="size-7"/>
                                     </DialogPrimitive.Close>
@@ -281,10 +285,9 @@ export default function AircraftDetail() {
                     </header>
                     <section className="flex flex-col gap-6">
                         <div className="flex justify-between items-center">
-                            <Link href="/gallery"
-                                  className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
-                                {t("back")}
-                            </Link>
+                            <Button asChild variant="outline">
+                                <Link href="/gallery">{t("back")}</Link>
+                            </Button>
                         </div>
                         <div className=" bg-slate-100 p-6 shadow">
                             <h3 className="text-xl font-semibold mb-4">{t("aircraftDetails")}</h3>

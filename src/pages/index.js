@@ -105,9 +105,9 @@ export default function Home() {
                             </CarouselItem>
                         </CarouselContent>
                         <CarouselPrevious
-                            className="invisible left-2 h-5 w-5 sm:visible sm:left-5 sm:h-10 sm:w-10 border-none"/>
+                            className="invisible left-2 h-5 w-5 sm:visible sm:left-5 sm:h-10 sm:w-10"/>
                         <CarouselNext
-                            className="invisible right-2 h-5 w-5 sm:visible sm:right-5 sm:h-10 sm:w-10 border-none"/>
+                            className="invisible right-2 h-5 w-5 sm:visible sm:right-5 sm:h-10 sm:w-10"/>
                     </Carousel>
                     {carouselError && (
                         <p className="px-4 text-center text-sm text-amber-700" role="status">

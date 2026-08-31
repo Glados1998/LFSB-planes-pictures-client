@@ -1,6 +1,7 @@
 import Link from "next/link";
 import notFound from "@/assets/images/imageNotFound.jpg";
 import {useTranslations} from "next-intl";
+import {buttonVariants} from "@/components/ui/button";
 
 export default function Card({plane}) {
     const t = useTranslations("card");
@@ -28,7 +29,11 @@ export default function Card({plane}) {
                 <h3 className="text-base sm:text-lg font-semibold">{aircraftRegistration}</h3>
                 <p className="text-sm">{operatorLabel}</p>
                 <span
-                    className="w-fit mt-2 px-2 py-1 sm:px-4 sm:py-2 bg-white text-black text-xs sm:text-sm font-semibold rounded hover:bg-gray-200 hover:cursor-pointer transition-colors duration-300">
+                    className={buttonVariants({
+                        variant: "outline",
+                        size: "sm",
+                        className: "mt-2 w-fit text-xs group-hover:border-slate-400 group-hover:bg-slate-50 group-hover:text-slate-900 sm:h-9 sm:px-4 sm:text-sm"
+                    })}>
                     {t("general.show")}
                 </span>
             </div>

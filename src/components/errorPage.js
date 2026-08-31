@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import {useTranslations} from "next-intl";
+import {Button} from "@/components/ui/button";
 
 export default function ErrorPage({statusCode}) {
     const t = useTranslations("errors");
@@ -17,12 +18,9 @@ export default function ErrorPage({statusCode}) {
             <p className="text-sm font-semibold text-gray-500">{statusCode}</p>
             <h1 className="text-3xl font-bold sm:text-4xl">{title}</h1>
             <p className="max-w-xl text-gray-600">{message}</p>
-            <Link
-                href="/"
-                className="rounded-md bg-gray-900 px-4 py-2 font-semibold text-white transition-colors hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
-            >
-                {t("backHome")}
-            </Link>
+            <Button asChild variant="outline">
+                <Link href="/">{t("backHome")}</Link>
+            </Button>
         </main>
     );
 }
