@@ -108,7 +108,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters})
     );
 
     return (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             <div className="space-y-2">
                 <Label className="text-sm font-semibold sm:text-md sm:font-bold">{t("operator")}:</Label>
                 <Combobox
@@ -145,7 +145,7 @@ export default function GalleryFilter({filters, onFilterChange, onResetFilters})
             </div>
             <div className="flex items-end">
                 <Button
-                    className="group w-full border-slate-300 bg-white text-slate-600 shadow-sm hover:border-red-300 hover:bg-red-50 hover:text-red-700 disabled:bg-slate-50"
+                    className="group h-11 w-full touch-manipulation border-slate-300 bg-white text-slate-600 shadow-sm active:scale-[0.98] hover:border-red-300 hover:bg-red-50 hover:text-red-700 disabled:bg-slate-50 sm:h-9"
                     type="button"
                     variant="outline"
                     onClick={onResetFilters}
