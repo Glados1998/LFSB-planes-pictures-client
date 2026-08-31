@@ -286,11 +286,6 @@ export default function AircraftDetail() {
                                 {t("back")}
                             </Link>
                         </div>
-                        {/*<div>
-                            <h1 className="text-3xl font-bold">{aircraftType || 'N/A'}</h1>
-                            <p className="text-2xl font-semibold text-slate-600">{operator || 'N/A'}</p>
-                            <hr className="my-4 border-t-2 w-56 border-gray-300"/>
-                        </div>*/}
                         <div className=" bg-slate-100 p-6 shadow">
                             <h3 className="text-xl font-semibold mb-4">{t("aircraftDetails")}</h3>
                             <div className="grid grid-cols-2 gap-4">
